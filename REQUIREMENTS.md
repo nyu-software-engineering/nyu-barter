@@ -30,28 +30,28 @@
   
   **Use Cases:**
   
-  - Title: Make Item Requests
-    Actor: Customer
+  - Title: Make Item Requests  
+    Actor: Customer  
     Scenario: A customer can make a request for an item where it will be added to a list of requests.
     These requests can be seen by other user's who might have the item the customer is looking for.
-  - Title: Request a Trade
-    Actor: Customer
+  - Title: Request a Trade  
+    Actor: Customer   
     Scenario: A customer can see that they have an item that has been requested in the requests page 
     and can browse through the items that the requestor has to offer. If they find an item they like
     they can select it and request a trade.
-  - Title: Accept/Decline/Counter a Trade
-    Actor: Customer
+  - Title: Accept/Decline/Counter a Trade  
+    Actor: Customer  
     Scenario: If a trade request is received a customer can either accept it, decline it, or give a 
     counter offer.
-  - Title: Messaging
-    Actor: Customer
+  - Title: Messaging  
+    Actor: Customer  
     Scenario: If two customers agree on a trade they can message each other in order to schedule a meetup
     and trade the items.
-  - Title: Leave a review
-    Actor: Customer
+  - Title: Leave a review  
+    Actor: Customer   
     Scenario: Once a trade is made each party can leave a review for the users they made the exchange with.
-  - Title: Manage Users
-    Actor: Administrator
+  - Title: Manage Users   
+    Actor: Administrator   
     Scenario: Administrators are allowed to supervise all accounts so they could have access to removing 
     fraudulent accounts for example.
     
