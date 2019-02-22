@@ -57,4 +57,7 @@
     
     ![new use case film production 1](https://user-images.githubusercontent.com/36061474/53268012-eeccf980-36b2-11e9-96b1-c95bd80f4b90.png)
   
-  **Domain Models:**
+  **Domain Model:**  
+  
+  ![new domain model 3](https://user-images.githubusercontent.com/36061474/53271043-3fe0eb80-36bb-11e9-9e0e-cff6348c426d.png)
+
