@@ -1,6 +1,6 @@
-#NYU Barter
+# NYU Barter
 
-###Requirements
+### Requirements
 
   **Stakeholder:** *Insert Stakeholder interview stuff.* 
   
