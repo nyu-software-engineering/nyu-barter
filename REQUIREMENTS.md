@@ -7,15 +7,12 @@
   **End-user observation:** 
   
   - Stereotype Persona:
-     - Andrew a student who needs to buy a textbook
-     - Lisa a student who needs to buy a microwave for her dorm
-     - Andrew might need a $100 textbook for an upcoming class. 
-     Andrew can make a request through the app, and Lisa who has the textbook
-     can search through Andrew’s profile to see if there’s anything she’d like in 
-     exchange. Let’s say Andrew has a functional microwave that’s no longer needed
-     for their apartment (maybe their roommate has a better one). If Lisa wants to
-     make a trade, she can submit a trade request, and if approved by Andrew who 
-     wants the textbook, the transaction will then take place.
+     - Andrew a student who if frustrated since he cannot find a cheap textbook
+     for his upcoming Economics class.
+     - Lisa a student who spent a lot of money on setting up her dorm and still 
+     needs to buy a microwave, but has little money left.
+     - John who needs to get rid of his old couch, and does not want to simply throw it away 
+     and lose all it's value he spent on it.
     
   - Real-life end users:
      - Santiago one of our own group members bought a mini fridge for his dorm last year.
@@ -32,5 +29,32 @@
      facebook group or craigslist.
   
   **Use Cases:**
+  
+  - Title: Make Item Requests
+    Actor: Customer
+    Scenario: A customer can make a request for an item where it will be added to a list of requests.
+    These requests can be seen by other user's who might have the item the customer is looking for.
+  - Title: Request a Trade
+    Actor: Customer
+    Scenario: A customer can see that they have an item that has been requested in the requests page 
+    and can browse through the items that the requestor has to offer. If they find an item they like
+    they can select it and request a trade.
+  - Title: Accept/Decline/Counter a Trade
+    Actor: Customer
+    Scenario: If a trade request is received a customer can either accept it, decline it, or give a 
+    counter offer.
+  - Title: Messaging
+    Actor: Customer
+    Scenario: If two customers agree on a trade they can message each other in order to schedule a meetup
+    and trade the items.
+  - Title: Leave a review
+    Actor: Customer
+    Scenario: Once a trade is made each party can leave a review for the users they made the exchange with.
+  - Title: Manage Users
+    Actor: Administrator
+    Scenario: Administrators are allowed to supervise all accounts so they could have access to removing 
+    fraudulent accounts for example.
+    
+    ![new use case film production 1](https://user-images.githubusercontent.com/36061474/53268012-eeccf980-36b2-11e9-96b1-c95bd80f4b90.png)
   
   **Domain Models:**
