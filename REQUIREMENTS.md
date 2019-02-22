@@ -24,7 +24,6 @@
      like eBay which would require expensive shipping fees making the profit from his effort
      almost pointless he just kept it even though it is useless to him and takes up unnecessary
      space.
-    
      - Ivanna a friend of Santiago wanted to buy a dresser for her clothes, so she went on a
      Facebook group ment for buying stuff people do not need and went to go and pick up a dresser
      for a cheap price. Turns out the dresser was broken and the seller had been lying about it's
