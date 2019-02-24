@@ -2,7 +2,7 @@
 
 ### Requirements
 
-  **Stakeholder:** *Insert Stakeholder interview stuff.* 
+  **Stakeholder:**  We will be building a mobile app and web app where people can trade valuables in a barter like system and according to our stakeholders our project meets reasonable workload requirments.
   
   **End-user observation:** 
   
