@@ -1,0 +1,714 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 50;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		87139E12FFDDF2235CE9FB68 /* Pods_barterAppTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E6CCC1D68608C2634747965E /* Pods_barterAppTests.framework */; };
+		98351CCC22230400007EC636 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98351CCB22230400007EC636 /* AppDelegate.swift */; };
+		98351CCE22230400007EC636 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98351CCD22230400007EC636 /* ViewController.swift */; };
+		98351CD122230400007EC636 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 98351CCF22230400007EC636 /* Main.storyboard */; };
+		98351CD422230400007EC636 /* barterApp.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 98351CD222230400007EC636 /* barterApp.xcdatamodeld */; };
+		98351CD622230401007EC636 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 98351CD522230401007EC636 /* Assets.xcassets */; };
+		98351CD922230401007EC636 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 98351CD722230401007EC636 /* LaunchScreen.storyboard */; };
+		98351CE422230401007EC636 /* barterAppTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98351CE322230401007EC636 /* barterAppTests.swift */; };
+		98351CEF22230401007EC636 /* barterAppUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98351CEE22230401007EC636 /* barterAppUITests.swift */; };
+		F07E29554B8792D5CEC2D7AD /* Pods_barterAppUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 16769340BE90B677F0BF5061 /* Pods_barterAppUITests.framework */; };
+		F170BE0C8A0F2914605A49DE /* Pods_barterApp.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FE5751C5293D52EC52392F22 /* Pods_barterApp.framework */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		98351CE022230401007EC636 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 98351CC022230400007EC636 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 98351CC722230400007EC636;
+			remoteInfo = barterApp;
+		};
+		98351CEB22230401007EC636 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 98351CC022230400007EC636 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 98351CC722230400007EC636;
+			remoteInfo = barterApp;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		16769340BE90B677F0BF5061 /* Pods_barterAppUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_barterAppUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		45291BF2E8CBD9462B69B6DA /* Pods-barterAppTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-barterAppTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-barterAppTests/Pods-barterAppTests.debug.xcconfig"; sourceTree = "<group>"; };
+		645E68E86C701709159C3185 /* Pods-barterAppTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-barterAppTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-barterAppTests/Pods-barterAppTests.release.xcconfig"; sourceTree = "<group>"; };
+		8EC173EDA1D2F021FA976963 /* Pods-barterAppUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-barterAppUITests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-barterAppUITests/Pods-barterAppUITests.debug.xcconfig"; sourceTree = "<group>"; };
+		98351CC822230400007EC636 /* barterApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = barterApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		98351CCB22230400007EC636 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		98351CCD22230400007EC636 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		98351CD022230400007EC636 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		98351CD322230400007EC636 /* barterApp.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = barterApp.xcdatamodel; sourceTree = "<group>"; };
+		98351CD522230401007EC636 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		98351CD822230401007EC636 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		98351CDA22230401007EC636 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		98351CDF22230401007EC636 /* barterAppTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = barterAppTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		98351CE322230401007EC636 /* barterAppTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = barterAppTests.swift; sourceTree = "<group>"; };
+		98351CE522230401007EC636 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		98351CEA22230401007EC636 /* barterAppUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = barterAppUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		98351CEE22230401007EC636 /* barterAppUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = barterAppUITests.swift; sourceTree = "<group>"; };
+		98351CF022230401007EC636 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		992851DD3D499269F0F3E277 /* Pods-barterApp.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-barterApp.debug.xcconfig"; path = "Pods/Target Support Files/Pods-barterApp/Pods-barterApp.debug.xcconfig"; sourceTree = "<group>"; };
+		9A090B83CED51BD2FF768302 /* Pods-barterApp.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-barterApp.release.xcconfig"; path = "Pods/Target Support Files/Pods-barterApp/Pods-barterApp.release.xcconfig"; sourceTree = "<group>"; };
+		9A6E88C24175E25A2CBBE33B /* Pods-barterAppUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-barterAppUITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-barterAppUITests/Pods-barterAppUITests.release.xcconfig"; sourceTree = "<group>"; };
+		E6CCC1D68608C2634747965E /* Pods_barterAppTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_barterAppTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		FE5751C5293D52EC52392F22 /* Pods_barterApp.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_barterApp.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		98351CC522230400007EC636 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				F170BE0C8A0F2914605A49DE /* Pods_barterApp.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		98351CDC22230401007EC636 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				87139E12FFDDF2235CE9FB68 /* Pods_barterAppTests.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		98351CE722230401007EC636 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				F07E29554B8792D5CEC2D7AD /* Pods_barterAppUITests.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		98351CBF22230400007EC636 = {
+			isa = PBXGroup;
+			children = (
+				98351CCA22230400007EC636 /* barterApp */,
+				98351CE222230401007EC636 /* barterAppTests */,
+				98351CED22230401007EC636 /* barterAppUITests */,
+				98351CC922230400007EC636 /* Products */,
+				F4597BDC26CE369BBDD00AEF /* Pods */,
+				A8F713089599DF9F6F42E4FA /* Frameworks */,
+			);
+			sourceTree = "<group>";
+		};
+		98351CC922230400007EC636 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				98351CC822230400007EC636 /* barterApp.app */,
+				98351CDF22230401007EC636 /* barterAppTests.xctest */,
+				98351CEA22230401007EC636 /* barterAppUITests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		98351CCA22230400007EC636 /* barterApp */ = {
+			isa = PBXGroup;
+			children = (
+				98351CCB22230400007EC636 /* AppDelegate.swift */,
+				98351CCD22230400007EC636 /* ViewController.swift */,
+				98351CCF22230400007EC636 /* Main.storyboard */,
+				98351CD522230401007EC636 /* Assets.xcassets */,
+				98351CD722230401007EC636 /* LaunchScreen.storyboard */,
+				98351CDA22230401007EC636 /* Info.plist */,
+				98351CD222230400007EC636 /* barterApp.xcdatamodeld */,
+			);
+			path = barterApp;
+			sourceTree = "<group>";
+		};
+		98351CE222230401007EC636 /* barterAppTests */ = {
+			isa = PBXGroup;
+			children = (
+				98351CE322230401007EC636 /* barterAppTests.swift */,
+				98351CE522230401007EC636 /* Info.plist */,
+			);
+			path = barterAppTests;
+			sourceTree = "<group>";
+		};
+		98351CED22230401007EC636 /* barterAppUITests */ = {
+			isa = PBXGroup;
+			children = (
+				98351CEE22230401007EC636 /* barterAppUITests.swift */,
+				98351CF022230401007EC636 /* Info.plist */,
+			);
+			path = barterAppUITests;
+			sourceTree = "<group>";
+		};
+		A8F713089599DF9F6F42E4FA /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				FE5751C5293D52EC52392F22 /* Pods_barterApp.framework */,
+				E6CCC1D68608C2634747965E /* Pods_barterAppTests.framework */,
+				16769340BE90B677F0BF5061 /* Pods_barterAppUITests.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		F4597BDC26CE369BBDD00AEF /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				992851DD3D499269F0F3E277 /* Pods-barterApp.debug.xcconfig */,
+				9A090B83CED51BD2FF768302 /* Pods-barterApp.release.xcconfig */,
+				45291BF2E8CBD9462B69B6DA /* Pods-barterAppTests.debug.xcconfig */,
+				645E68E86C701709159C3185 /* Pods-barterAppTests.release.xcconfig */,
+				8EC173EDA1D2F021FA976963 /* Pods-barterAppUITests.debug.xcconfig */,
+				9A6E88C24175E25A2CBBE33B /* Pods-barterAppUITests.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		98351CC722230400007EC636 /* barterApp */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 98351CF322230401007EC636 /* Build configuration list for PBXNativeTarget "barterApp" */;
+			buildPhases = (
+				F2D881CEF6137CE6D031A8DD /* [CP] Check Pods Manifest.lock */,
+				98351CC422230400007EC636 /* Sources */,
+				98351CC522230400007EC636 /* Frameworks */,
+				98351CC622230400007EC636 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = barterApp;
+			productName = barterApp;
+			productReference = 98351CC822230400007EC636 /* barterApp.app */;
+			productType = "com.apple.product-type.application";
+		};
+		98351CDE22230401007EC636 /* barterAppTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 98351CF622230401007EC636 /* Build configuration list for PBXNativeTarget "barterAppTests" */;
+			buildPhases = (
+				68EC7FC2F37BAD1ABB1C061A /* [CP] Check Pods Manifest.lock */,
+				98351CDB22230401007EC636 /* Sources */,
+				98351CDC22230401007EC636 /* Frameworks */,
+				98351CDD22230401007EC636 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				98351CE122230401007EC636 /* PBXTargetDependency */,
+			);
+			name = barterAppTests;
+			productName = barterAppTests;
+			productReference = 98351CDF22230401007EC636 /* barterAppTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		98351CE922230401007EC636 /* barterAppUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 98351CF922230401007EC636 /* Build configuration list for PBXNativeTarget "barterAppUITests" */;
+			buildPhases = (
+				AC3DD44771B08AC9089D8BB4 /* [CP] Check Pods Manifest.lock */,
+				98351CE622230401007EC636 /* Sources */,
+				98351CE722230401007EC636 /* Frameworks */,
+				98351CE822230401007EC636 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				98351CEC22230401007EC636 /* PBXTargetDependency */,
+			);
+			name = barterAppUITests;
+			productName = barterAppUITests;
+			productReference = 98351CEA22230401007EC636 /* barterAppUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		98351CC022230400007EC636 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastSwiftUpdateCheck = 1010;
+				LastUpgradeCheck = 1010;
+				ORGANIZATIONNAME = "Kevin Maldjian";
+				TargetAttributes = {
+					98351CC722230400007EC636 = {
+						CreatedOnToolsVersion = 10.1;
+					};
+					98351CDE22230401007EC636 = {
+						CreatedOnToolsVersion = 10.1;
+						TestTargetID = 98351CC722230400007EC636;
+					};
+					98351CE922230401007EC636 = {
+						CreatedOnToolsVersion = 10.1;
+						TestTargetID = 98351CC722230400007EC636;
+					};
+				};
+			};
+			buildConfigurationList = 98351CC322230400007EC636 /* Build configuration list for PBXProject "barterApp" */;
+			compatibilityVersion = "Xcode 9.3";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 98351CBF22230400007EC636;
+			productRefGroup = 98351CC922230400007EC636 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				98351CC722230400007EC636 /* barterApp */,
+				98351CDE22230401007EC636 /* barterAppTests */,
+				98351CE922230401007EC636 /* barterAppUITests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		98351CC622230400007EC636 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				98351CD922230401007EC636 /* LaunchScreen.storyboard in Resources */,
+				98351CD622230401007EC636 /* Assets.xcassets in Resources */,
+				98351CD122230400007EC636 /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		98351CDD22230401007EC636 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		98351CE822230401007EC636 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		68EC7FC2F37BAD1ABB1C061A /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-barterAppTests-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		AC3DD44771B08AC9089D8BB4 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-barterAppUITests-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		F2D881CEF6137CE6D031A8DD /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-barterApp-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		98351CC422230400007EC636 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				98351CCE22230400007EC636 /* ViewController.swift in Sources */,
+				98351CD422230400007EC636 /* barterApp.xcdatamodeld in Sources */,
+				98351CCC22230400007EC636 /* AppDelegate.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		98351CDB22230401007EC636 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				98351CE422230401007EC636 /* barterAppTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		98351CE622230401007EC636 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				98351CEF22230401007EC636 /* barterAppUITests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		98351CE122230401007EC636 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 98351CC722230400007EC636 /* barterApp */;
+			targetProxy = 98351CE022230401007EC636 /* PBXContainerItemProxy */;
+		};
+		98351CEC22230401007EC636 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 98351CC722230400007EC636 /* barterApp */;
+			targetProxy = 98351CEB22230401007EC636 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		98351CCF22230400007EC636 /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				98351CD022230400007EC636 /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		98351CD722230401007EC636 /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				98351CD822230401007EC636 /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		98351CF122230401007EC636 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.1;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		98351CF222230401007EC636 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.1;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		98351CF422230401007EC636 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 992851DD3D499269F0F3E277 /* Pods-barterApp.debug.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 5YA56LWVA9;
+				INFOPLIST_FILE = barterApp/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = kevinMaldjian.barterApp;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 4.2;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		98351CF522230401007EC636 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 9A090B83CED51BD2FF768302 /* Pods-barterApp.release.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 5YA56LWVA9;
+				INFOPLIST_FILE = barterApp/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = kevinMaldjian.barterApp;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 4.2;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+		98351CF722230401007EC636 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 45291BF2E8CBD9462B69B6DA /* Pods-barterAppTests.debug.xcconfig */;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 5YA56LWVA9;
+				INFOPLIST_FILE = barterAppTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = kevinMaldjian.barterAppTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 4.2;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/barterApp.app/barterApp";
+			};
+			name = Debug;
+		};
+		98351CF822230401007EC636 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 645E68E86C701709159C3185 /* Pods-barterAppTests.release.xcconfig */;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 5YA56LWVA9;
+				INFOPLIST_FILE = barterAppTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = kevinMaldjian.barterAppTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 4.2;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/barterApp.app/barterApp";
+			};
+			name = Release;
+		};
+		98351CFA22230401007EC636 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 8EC173EDA1D2F021FA976963 /* Pods-barterAppUITests.debug.xcconfig */;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 5YA56LWVA9;
+				INFOPLIST_FILE = barterAppUITests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = kevinMaldjian.barterAppUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 4.2;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = barterApp;
+			};
+			name = Debug;
+		};
+		98351CFB22230401007EC636 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 9A6E88C24175E25A2CBBE33B /* Pods-barterAppUITests.release.xcconfig */;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 5YA56LWVA9;
+				INFOPLIST_FILE = barterAppUITests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = kevinMaldjian.barterAppUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 4.2;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = barterApp;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		98351CC322230400007EC636 /* Build configuration list for PBXProject "barterApp" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				98351CF122230401007EC636 /* Debug */,
+				98351CF222230401007EC636 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		98351CF322230401007EC636 /* Build configuration list for PBXNativeTarget "barterApp" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				98351CF422230401007EC636 /* Debug */,
+				98351CF522230401007EC636 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		98351CF622230401007EC636 /* Build configuration list for PBXNativeTarget "barterAppTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				98351CF722230401007EC636 /* Debug */,
+				98351CF822230401007EC636 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		98351CF922230401007EC636 /* Build configuration list for PBXNativeTarget "barterAppUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				98351CFA22230401007EC636 /* Debug */,
+				98351CFB22230401007EC636 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		98351CD222230400007EC636 /* barterApp.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				98351CD322230400007EC636 /* barterApp.xcdatamodel */,
+			);
+			currentVersion = 98351CD322230400007EC636 /* barterApp.xcdatamodel */;
+			path = barterApp.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
+	};
+	rootObject = 98351CC022230400007EC636 /* Project object */;
+}

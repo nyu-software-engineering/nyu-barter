@@ -1,0 +1,752 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 50;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		059DEB028946B7FB344CA7FD9350A696 /* Pods-barterApp-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = D46A1E6AA6EB363C7F115B0FD04693A7 /* Pods-barterApp-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		0FC185EB7717FF65B7BEE1947BD8ADC1 /* Pods-barterApp-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F277943113FA20F4E0BCDC1D9F193A1 /* Pods-barterApp-dummy.m */; };
+		26A87EDCA1261C4A00DA3E7CD95C817D /* Pods-barterAppTests-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 3590C9A87D47CFA31DFD19BE06C10156 /* Pods-barterAppTests-dummy.m */; };
+		3FDABF9AB2D3DD589DD42D983EC2A24B /* Pods-barterAppUITests-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 15B2EE93CD8E3FA0A4909D44B6358D8A /* Pods-barterAppUITests-dummy.m */; };
+		6116B75E758D68E562C40FF63C14818E /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5A16F4CFC63FAC439D7A04994F579A03 /* Foundation.framework */; };
+		706677C1B8AFB0527096776B66A8EEBC /* Pods-barterAppUITests-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 853B0B1D774FF40C5C7B80A686690B85 /* Pods-barterAppUITests-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		712A8B919E95B0CFCDD6BE3CD4FEE050 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5A16F4CFC63FAC439D7A04994F579A03 /* Foundation.framework */; };
+		7668A5C0D5570087FA3538461DFD5D88 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5A16F4CFC63FAC439D7A04994F579A03 /* Foundation.framework */; };
+		EDD362A441BDA937055BC0CFDC2FD4D6 /* Pods-barterAppTests-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = CD77AE74E9A028A558907179FB160475 /* Pods-barterAppTests-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		418A5D35F39B0931453B5AE2E2496507 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = D41D8CD98F00B204E9800998ECF8427E /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 19276AD46C11EEFDF997501D28EC6AE8;
+			remoteInfo = "Pods-barterApp";
+		};
+		E49BF01DF1C564E34E96483DC2B902E7 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = D41D8CD98F00B204E9800998ECF8427E /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 19276AD46C11EEFDF997501D28EC6AE8;
+			remoteInfo = "Pods-barterApp";
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		13581AC8A33819826C83881A2C1A2C38 /* Pods-barterAppTests-resources.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-barterAppTests-resources.sh"; sourceTree = "<group>"; };
+		15B2EE93CD8E3FA0A4909D44B6358D8A /* Pods-barterAppUITests-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-barterAppUITests-dummy.m"; sourceTree = "<group>"; };
+		19CB9C50D626644B0352C480324D7418 /* Pods-barterApp.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-barterApp.debug.xcconfig"; sourceTree = "<group>"; };
+		1F277943113FA20F4E0BCDC1D9F193A1 /* Pods-barterApp-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-barterApp-dummy.m"; sourceTree = "<group>"; };
+		2C23D00B808F8B722C53F9DC867EC7AA /* Pods-barterApp.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-barterApp.release.xcconfig"; sourceTree = "<group>"; };
+		3393170FEEC8F4E986EE6409AD3E07A7 /* Pods-barterAppUITests-frameworks.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-barterAppUITests-frameworks.sh"; sourceTree = "<group>"; };
+		3590C9A87D47CFA31DFD19BE06C10156 /* Pods-barterAppTests-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-barterAppTests-dummy.m"; sourceTree = "<group>"; };
+		48A88A69AB80B443F494495444FAE19D /* Pods-barterApp-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-barterApp-acknowledgements.markdown"; sourceTree = "<group>"; };
+		5A16F4CFC63FAC439D7A04994F579A03 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS11.3.sdk/System/Library/Frameworks/Foundation.framework; sourceTree = DEVELOPER_DIR; };
+		5C52332D45895763BACF55A5917B89C5 /* Pods-barterAppUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-barterAppUITests.release.xcconfig"; sourceTree = "<group>"; };
+		6AA22B1426E8891B37DDE3C2D0039F1C /* Pods_barterAppUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = Pods_barterAppUITests.framework; path = "Pods-barterAppUITests.framework"; sourceTree = BUILT_PRODUCTS_DIR; };
+		6BC1C3BE055D1981C554B6C4D8109D39 /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		6E02257044CD116C3B19307E7D5F5F77 /* Pods-barterAppTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-barterAppTests.release.xcconfig"; sourceTree = "<group>"; };
+		74C6793F2F638B2485BFD61595414F53 /* Pods-barterAppTests.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = "Pods-barterAppTests.modulemap"; sourceTree = "<group>"; };
+		8097E0A0DF494A29F5A0CF1A6F60B8DC /* Pods-barterAppUITests-resources.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-barterAppUITests-resources.sh"; sourceTree = "<group>"; };
+		83826F5ECB6E87923887F79F76A307C9 /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		853B0B1D774FF40C5C7B80A686690B85 /* Pods-barterAppUITests-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-barterAppUITests-umbrella.h"; sourceTree = "<group>"; };
+		855E4111382E087F58988C3C61444515 /* Pods-barterApp-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-barterApp-acknowledgements.plist"; sourceTree = "<group>"; };
+		8CEA26D4E54E6BBD78D42230B8C6B5F9 /* Pods-barterAppUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-barterAppUITests.debug.xcconfig"; sourceTree = "<group>"; };
+		8DD212937B50BF7B4E431B930809B605 /* Pods_barterApp.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = Pods_barterApp.framework; path = "Pods-barterApp.framework"; sourceTree = BUILT_PRODUCTS_DIR; };
+		93A4A3777CF96A4AAC1D13BA6DCCEA73 /* Podfile */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; lastKnownFileType = text; name = Podfile; path = ../Podfile; sourceTree = SOURCE_ROOT; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
+		9525B1A2AA34882085D6B3FF57DE09B0 /* Pods-barterApp-frameworks.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-barterApp-frameworks.sh"; sourceTree = "<group>"; };
+		AB23E24FDB93868AA05701A3F74022FA /* Pods-barterAppUITests-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-barterAppUITests-acknowledgements.markdown"; sourceTree = "<group>"; };
+		B5398DA84454B6779B9C77EA0D47A3A9 /* Pods-barterAppTests-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-barterAppTests-acknowledgements.markdown"; sourceTree = "<group>"; };
+		B7683D5FCD7E95C67A3AE4C4BAEE48D2 /* Pods-barterAppTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-barterAppTests.debug.xcconfig"; sourceTree = "<group>"; };
+		C5AC2ED808AE9BDD44BA16B6227F2F83 /* Pods-barterApp-resources.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-barterApp-resources.sh"; sourceTree = "<group>"; };
+		C6C762A143061C4CEAA93B24A58B6761 /* Pods-barterAppTests-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-barterAppTests-acknowledgements.plist"; sourceTree = "<group>"; };
+		CD77AE74E9A028A558907179FB160475 /* Pods-barterAppTests-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-barterAppTests-umbrella.h"; sourceTree = "<group>"; };
+		D46A1E6AA6EB363C7F115B0FD04693A7 /* Pods-barterApp-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-barterApp-umbrella.h"; sourceTree = "<group>"; };
+		E0F5D6F7F108A5F56003D5638BFE640A /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		E44CFCDAB500F61E14F3E53556F208BC /* Pods-barterApp.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = "Pods-barterApp.modulemap"; sourceTree = "<group>"; };
+		E8558215D82C68ED02B17A2A827F3403 /* Pods-barterAppUITests-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-barterAppUITests-acknowledgements.plist"; sourceTree = "<group>"; };
+		EA9B9A2F2A04515EDE3A4E1A919F4DF4 /* Pods-barterAppUITests.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = "Pods-barterAppUITests.modulemap"; sourceTree = "<group>"; };
+		F1F51B1617D7E4E7F08CE9CF383D1CA3 /* Pods_barterAppTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = Pods_barterAppTests.framework; path = "Pods-barterAppTests.framework"; sourceTree = BUILT_PRODUCTS_DIR; };
+		F546907CA5E869C59232F9D09CE8207A /* Pods-barterAppTests-frameworks.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-barterAppTests-frameworks.sh"; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		07B70EF1A97B4A0E1DF64CC40C41DD7D /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				7668A5C0D5570087FA3538461DFD5D88 /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		489618521C5EF0B2F5D80ACF9747FC59 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				712A8B919E95B0CFCDD6BE3CD4FEE050 /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		9128C362F87247DA6F840D71ADFDDC15 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				6116B75E758D68E562C40FF63C14818E /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		3B4A6009BD642C39AD3B921F94D40DDC /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				8DD212937B50BF7B4E431B930809B605 /* Pods_barterApp.framework */,
+				F1F51B1617D7E4E7F08CE9CF383D1CA3 /* Pods_barterAppTests.framework */,
+				6AA22B1426E8891B37DDE3C2D0039F1C /* Pods_barterAppUITests.framework */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		5E0D919E635D23B70123790B8308F8EF /* iOS */ = {
+			isa = PBXGroup;
+			children = (
+				5A16F4CFC63FAC439D7A04994F579A03 /* Foundation.framework */,
+			);
+			name = iOS;
+			sourceTree = "<group>";
+		};
+		7DB346D0F39D3F0E887471402A8071AB = {
+			isa = PBXGroup;
+			children = (
+				93A4A3777CF96A4AAC1D13BA6DCCEA73 /* Podfile */,
+				BC3CA7F9E30CC8F7E2DD044DD34432FC /* Frameworks */,
+				3B4A6009BD642C39AD3B921F94D40DDC /* Products */,
+				E8C9869ECFA66879776521CC9F6464E7 /* Targets Support Files */,
+			);
+			sourceTree = "<group>";
+		};
+		BC3CA7F9E30CC8F7E2DD044DD34432FC /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				5E0D919E635D23B70123790B8308F8EF /* iOS */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		C694FC5AF28C38E89938436AB21D9CDE /* Pods-barterAppTests */ = {
+			isa = PBXGroup;
+			children = (
+				6BC1C3BE055D1981C554B6C4D8109D39 /* Info.plist */,
+				74C6793F2F638B2485BFD61595414F53 /* Pods-barterAppTests.modulemap */,
+				B5398DA84454B6779B9C77EA0D47A3A9 /* Pods-barterAppTests-acknowledgements.markdown */,
+				C6C762A143061C4CEAA93B24A58B6761 /* Pods-barterAppTests-acknowledgements.plist */,
+				3590C9A87D47CFA31DFD19BE06C10156 /* Pods-barterAppTests-dummy.m */,
+				F546907CA5E869C59232F9D09CE8207A /* Pods-barterAppTests-frameworks.sh */,
+				13581AC8A33819826C83881A2C1A2C38 /* Pods-barterAppTests-resources.sh */,
+				CD77AE74E9A028A558907179FB160475 /* Pods-barterAppTests-umbrella.h */,
+				B7683D5FCD7E95C67A3AE4C4BAEE48D2 /* Pods-barterAppTests.debug.xcconfig */,
+				6E02257044CD116C3B19307E7D5F5F77 /* Pods-barterAppTests.release.xcconfig */,
+			);
+			name = "Pods-barterAppTests";
+			path = "Target Support Files/Pods-barterAppTests";
+			sourceTree = "<group>";
+		};
+		D1DD8B24CB3A3EA1BE36CA5C66FCDFB5 /* Pods-barterApp */ = {
+			isa = PBXGroup;
+			children = (
+				83826F5ECB6E87923887F79F76A307C9 /* Info.plist */,
+				E44CFCDAB500F61E14F3E53556F208BC /* Pods-barterApp.modulemap */,
+				48A88A69AB80B443F494495444FAE19D /* Pods-barterApp-acknowledgements.markdown */,
+				855E4111382E087F58988C3C61444515 /* Pods-barterApp-acknowledgements.plist */,
+				1F277943113FA20F4E0BCDC1D9F193A1 /* Pods-barterApp-dummy.m */,
+				9525B1A2AA34882085D6B3FF57DE09B0 /* Pods-barterApp-frameworks.sh */,
+				C5AC2ED808AE9BDD44BA16B6227F2F83 /* Pods-barterApp-resources.sh */,
+				D46A1E6AA6EB363C7F115B0FD04693A7 /* Pods-barterApp-umbrella.h */,
+				19CB9C50D626644B0352C480324D7418 /* Pods-barterApp.debug.xcconfig */,
+				2C23D00B808F8B722C53F9DC867EC7AA /* Pods-barterApp.release.xcconfig */,
+			);
+			name = "Pods-barterApp";
+			path = "Target Support Files/Pods-barterApp";
+			sourceTree = "<group>";
+		};
+		D9AE34DCBA976F62826ED45A3654C1E0 /* Pods-barterAppUITests */ = {
+			isa = PBXGroup;
+			children = (
+				E0F5D6F7F108A5F56003D5638BFE640A /* Info.plist */,
+				EA9B9A2F2A04515EDE3A4E1A919F4DF4 /* Pods-barterAppUITests.modulemap */,
+				AB23E24FDB93868AA05701A3F74022FA /* Pods-barterAppUITests-acknowledgements.markdown */,
+				E8558215D82C68ED02B17A2A827F3403 /* Pods-barterAppUITests-acknowledgements.plist */,
+				15B2EE93CD8E3FA0A4909D44B6358D8A /* Pods-barterAppUITests-dummy.m */,
+				3393170FEEC8F4E986EE6409AD3E07A7 /* Pods-barterAppUITests-frameworks.sh */,
+				8097E0A0DF494A29F5A0CF1A6F60B8DC /* Pods-barterAppUITests-resources.sh */,
+				853B0B1D774FF40C5C7B80A686690B85 /* Pods-barterAppUITests-umbrella.h */,
+				8CEA26D4E54E6BBD78D42230B8C6B5F9 /* Pods-barterAppUITests.debug.xcconfig */,
+				5C52332D45895763BACF55A5917B89C5 /* Pods-barterAppUITests.release.xcconfig */,
+			);
+			name = "Pods-barterAppUITests";
+			path = "Target Support Files/Pods-barterAppUITests";
+			sourceTree = "<group>";
+		};
+		E8C9869ECFA66879776521CC9F6464E7 /* Targets Support Files */ = {
+			isa = PBXGroup;
+			children = (
+				D1DD8B24CB3A3EA1BE36CA5C66FCDFB5 /* Pods-barterApp */,
+				C694FC5AF28C38E89938436AB21D9CDE /* Pods-barterAppTests */,
+				D9AE34DCBA976F62826ED45A3654C1E0 /* Pods-barterAppUITests */,
+			);
+			name = "Targets Support Files";
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXHeadersBuildPhase section */
+		1C9E8E9871DCB7CFD3D16068F2DAD302 /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				706677C1B8AFB0527096776B66A8EEBC /* Pods-barterAppUITests-umbrella.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		553F2005364277A0BF07CCADD143E670 /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				EDD362A441BDA937055BC0CFDC2FD4D6 /* Pods-barterAppTests-umbrella.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		CDD7DE8839C4DF3C352BBD177EC04075 /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				059DEB028946B7FB344CA7FD9350A696 /* Pods-barterApp-umbrella.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXHeadersBuildPhase section */
+
+/* Begin PBXNativeTarget section */
+		19276AD46C11EEFDF997501D28EC6AE8 /* Pods-barterApp */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 4D9150AE5C3842319689FE4FC85D73EB /* Build configuration list for PBXNativeTarget "Pods-barterApp" */;
+			buildPhases = (
+				ECECA072F169A7BCC09A25C495237263 /* Sources */,
+				9128C362F87247DA6F840D71ADFDDC15 /* Frameworks */,
+				CDD7DE8839C4DF3C352BBD177EC04075 /* Headers */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "Pods-barterApp";
+			productName = "Pods-barterApp";
+			productReference = 8DD212937B50BF7B4E431B930809B605 /* Pods_barterApp.framework */;
+			productType = "com.apple.product-type.framework";
+		};
+		A0CAF1DD09081457CF3271934EA52E96 /* Pods-barterAppUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = BD76F071FB2246ABE766D0D51069AABF /* Build configuration list for PBXNativeTarget "Pods-barterAppUITests" */;
+			buildPhases = (
+				FB8A09482EEE55402D0993E6A84F1966 /* Sources */,
+				07B70EF1A97B4A0E1DF64CC40C41DD7D /* Frameworks */,
+				1C9E8E9871DCB7CFD3D16068F2DAD302 /* Headers */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				81897B26B84AD88A0748C1133A99EC5A /* PBXTargetDependency */,
+			);
+			name = "Pods-barterAppUITests";
+			productName = "Pods-barterAppUITests";
+			productReference = 6AA22B1426E8891B37DDE3C2D0039F1C /* Pods_barterAppUITests.framework */;
+			productType = "com.apple.product-type.framework";
+		};
+		EAB9713E34EAE944E82743AB999B35C1 /* Pods-barterAppTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 4A10C7A2B107A848E6F115EEF20423E8 /* Build configuration list for PBXNativeTarget "Pods-barterAppTests" */;
+			buildPhases = (
+				22F62CDDD3654C7D3FDD2CD9350B0738 /* Sources */,
+				489618521C5EF0B2F5D80ACF9747FC59 /* Frameworks */,
+				553F2005364277A0BF07CCADD143E670 /* Headers */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				67D33354AE38570AD4B47A87629D666C /* PBXTargetDependency */,
+			);
+			name = "Pods-barterAppTests";
+			productName = "Pods-barterAppTests";
+			productReference = F1F51B1617D7E4E7F08CE9CF383D1CA3 /* Pods_barterAppTests.framework */;
+			productType = "com.apple.product-type.framework";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		D41D8CD98F00B204E9800998ECF8427E /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastSwiftUpdateCheck = 0930;
+				LastUpgradeCheck = 0930;
+			};
+			buildConfigurationList = 2D8E8EC45A3A1A1D94AE762CB5028504 /* Build configuration list for PBXProject "Pods" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+			);
+			mainGroup = 7DB346D0F39D3F0E887471402A8071AB;
+			productRefGroup = 3B4A6009BD642C39AD3B921F94D40DDC /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				19276AD46C11EEFDF997501D28EC6AE8 /* Pods-barterApp */,
+				EAB9713E34EAE944E82743AB999B35C1 /* Pods-barterAppTests */,
+				A0CAF1DD09081457CF3271934EA52E96 /* Pods-barterAppUITests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXSourcesBuildPhase section */
+		22F62CDDD3654C7D3FDD2CD9350B0738 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				26A87EDCA1261C4A00DA3E7CD95C817D /* Pods-barterAppTests-dummy.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		ECECA072F169A7BCC09A25C495237263 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				0FC185EB7717FF65B7BEE1947BD8ADC1 /* Pods-barterApp-dummy.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		FB8A09482EEE55402D0993E6A84F1966 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				3FDABF9AB2D3DD589DD42D983EC2A24B /* Pods-barterAppUITests-dummy.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		67D33354AE38570AD4B47A87629D666C /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = "Pods-barterApp";
+			target = 19276AD46C11EEFDF997501D28EC6AE8 /* Pods-barterApp */;
+			targetProxy = E49BF01DF1C564E34E96483DC2B902E7 /* PBXContainerItemProxy */;
+		};
+		81897B26B84AD88A0748C1133A99EC5A /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = "Pods-barterApp";
+			target = 19276AD46C11EEFDF997501D28EC6AE8 /* Pods-barterApp */;
+			targetProxy = 418A5D35F39B0931453B5AE2E2496507 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin XCBuildConfiguration section */
+		063198AB09B9CDB3A695432FC17AD8CA /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGNING_ALLOWED = NO;
+				CODE_SIGNING_REQUIRED = NO;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"POD_CONFIGURATION_RELEASE=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.1;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				STRIP_INSTALLED_PRODUCT = NO;
+				SYMROOT = "${SRCROOT}/../build";
+			};
+			name = Release;
+		};
+		27E80F0E1F126D9283B08DFD833834D2 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 6E02257044CD116C3B19307E7D5F5F77 /* Pods-barterAppTests.release.xcconfig */;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = NO;
+				CLANG_ENABLE_OBJC_WEAK = NO;
+				CODE_SIGN_IDENTITY = "";
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				INFOPLIST_FILE = "Target Support Files/Pods-barterAppTests/Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 12.1;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				MACH_O_TYPE = staticlib;
+				MODULEMAP_FILE = "Target Support Files/Pods-barterAppTests/Pods-barterAppTests.modulemap";
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PODS_ROOT = "$(SRCROOT)";
+				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
+				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Release;
+		};
+		378BECEA583DF76E9B4BC410B1CAA1F0 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 8CEA26D4E54E6BBD78D42230B8C6B5F9 /* Pods-barterAppUITests.debug.xcconfig */;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = NO;
+				CLANG_ENABLE_OBJC_WEAK = NO;
+				CODE_SIGN_IDENTITY = "";
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				INFOPLIST_FILE = "Target Support Files/Pods-barterAppUITests/Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 12.1;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				MACH_O_TYPE = staticlib;
+				MODULEMAP_FILE = "Target Support Files/Pods-barterAppUITests/Pods-barterAppUITests.modulemap";
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PODS_ROOT = "$(SRCROOT)";
+				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
+				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Debug;
+		};
+		87EAC867385563488A6D8F1E74AC46B4 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGNING_ALLOWED = NO;
+				CODE_SIGNING_REQUIRED = NO;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"POD_CONFIGURATION_DEBUG=1",
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.1;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				STRIP_INSTALLED_PRODUCT = NO;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SYMROOT = "${SRCROOT}/../build";
+			};
+			name = Debug;
+		};
+		9F719F1097664B65D851509B305ECD4C /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 2C23D00B808F8B722C53F9DC867EC7AA /* Pods-barterApp.release.xcconfig */;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = NO;
+				CLANG_ENABLE_OBJC_WEAK = NO;
+				CODE_SIGN_IDENTITY = "";
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				INFOPLIST_FILE = "Target Support Files/Pods-barterApp/Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 12.1;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				MACH_O_TYPE = staticlib;
+				MODULEMAP_FILE = "Target Support Files/Pods-barterApp/Pods-barterApp.modulemap";
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PODS_ROOT = "$(SRCROOT)";
+				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
+				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Release;
+		};
+		E7BD0E10CE2554C8A5EE9EC4CBF4C61A /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 5C52332D45895763BACF55A5917B89C5 /* Pods-barterAppUITests.release.xcconfig */;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = NO;
+				CLANG_ENABLE_OBJC_WEAK = NO;
+				CODE_SIGN_IDENTITY = "";
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				INFOPLIST_FILE = "Target Support Files/Pods-barterAppUITests/Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 12.1;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				MACH_O_TYPE = staticlib;
+				MODULEMAP_FILE = "Target Support Files/Pods-barterAppUITests/Pods-barterAppUITests.modulemap";
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PODS_ROOT = "$(SRCROOT)";
+				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
+				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Release;
+		};
+		EA0A0FB1A5BA3D75E23738AAE7AD93AB /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 19CB9C50D626644B0352C480324D7418 /* Pods-barterApp.debug.xcconfig */;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = NO;
+				CLANG_ENABLE_OBJC_WEAK = NO;
+				CODE_SIGN_IDENTITY = "";
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				INFOPLIST_FILE = "Target Support Files/Pods-barterApp/Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 12.1;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				MACH_O_TYPE = staticlib;
+				MODULEMAP_FILE = "Target Support Files/Pods-barterApp/Pods-barterApp.modulemap";
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PODS_ROOT = "$(SRCROOT)";
+				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
+				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Debug;
+		};
+		F5E9E1356F449353A141BFBF353EDE47 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = B7683D5FCD7E95C67A3AE4C4BAEE48D2 /* Pods-barterAppTests.debug.xcconfig */;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = NO;
+				CLANG_ENABLE_OBJC_WEAK = NO;
+				CODE_SIGN_IDENTITY = "";
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				INFOPLIST_FILE = "Target Support Files/Pods-barterAppTests/Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 12.1;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				MACH_O_TYPE = staticlib;
+				MODULEMAP_FILE = "Target Support Files/Pods-barterAppTests/Pods-barterAppTests.modulemap";
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PODS_ROOT = "$(SRCROOT)";
+				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
+				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Debug;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		2D8E8EC45A3A1A1D94AE762CB5028504 /* Build configuration list for PBXProject "Pods" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				87EAC867385563488A6D8F1E74AC46B4 /* Debug */,
+				063198AB09B9CDB3A695432FC17AD8CA /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		4A10C7A2B107A848E6F115EEF20423E8 /* Build configuration list for PBXNativeTarget "Pods-barterAppTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				F5E9E1356F449353A141BFBF353EDE47 /* Debug */,
+				27E80F0E1F126D9283B08DFD833834D2 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		4D9150AE5C3842319689FE4FC85D73EB /* Build configuration list for PBXNativeTarget "Pods-barterApp" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				EA0A0FB1A5BA3D75E23738AAE7AD93AB /* Debug */,
+				9F719F1097664B65D851509B305ECD4C /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		BD76F071FB2246ABE766D0D51069AABF /* Build configuration list for PBXNativeTarget "Pods-barterAppUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				378BECEA583DF76E9B4BC410B1CAA1F0 /* Debug */,
+				E7BD0E10CE2554C8A5EE9EC4CBF4C61A /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = D41D8CD98F00B204E9800998ECF8427E /* Project object */;
+}

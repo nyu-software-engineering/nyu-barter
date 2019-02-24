@@ -1,0 +1,20 @@
+# Uncomment the next line to define a global platform for your project
+# platform :ios, '9.0'
+
+target 'barterApp' do
+  # Comment the next line if you're not using Swift and don't want to use dynamic frameworks
+  use_frameworks!
+
+  # Pods for barterApp
+
+  target 'barterAppTests' do
+    inherit! :search_paths
+    # Pods for testing
+  end
+
+  target 'barterAppUITests' do
+    inherit! :search_paths
+    # Pods for testing
+  end
+
+end
