@@ -16,6 +16,7 @@
 		98351CD922230401007EC636 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 98351CD722230401007EC636 /* LaunchScreen.storyboard */; };
 		98351CE422230401007EC636 /* barterAppTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98351CE322230401007EC636 /* barterAppTests.swift */; };
 		98351CEF22230401007EC636 /* barterAppUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98351CEE22230401007EC636 /* barterAppUITests.swift */; };
+		98694FCB222305F8008AC17B /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 98694FCA222305F8008AC17B /* GoogleService-Info.plist */; };
 		F07E29554B8792D5CEC2D7AD /* Pods_barterAppUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 16769340BE90B677F0BF5061 /* Pods_barterAppUITests.framework */; };
 		F170BE0C8A0F2914605A49DE /* Pods_barterApp.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FE5751C5293D52EC52392F22 /* Pods_barterApp.framework */; };
 /* End PBXBuildFile section */
@@ -56,6 +57,7 @@
 		98351CEA22230401007EC636 /* barterAppUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = barterAppUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		98351CEE22230401007EC636 /* barterAppUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = barterAppUITests.swift; sourceTree = "<group>"; };
 		98351CF022230401007EC636 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		98694FCA222305F8008AC17B /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		992851DD3D499269F0F3E277 /* Pods-barterApp.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-barterApp.debug.xcconfig"; path = "Pods/Target Support Files/Pods-barterApp/Pods-barterApp.debug.xcconfig"; sourceTree = "<group>"; };
 		9A090B83CED51BD2FF768302 /* Pods-barterApp.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-barterApp.release.xcconfig"; path = "Pods/Target Support Files/Pods-barterApp/Pods-barterApp.release.xcconfig"; sourceTree = "<group>"; };
 		9A6E88C24175E25A2CBBE33B /* Pods-barterAppUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-barterAppUITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-barterAppUITests/Pods-barterAppUITests.release.xcconfig"; sourceTree = "<group>"; };
@@ -116,6 +118,7 @@
 		98351CCA22230400007EC636 /* barterApp */ = {
 			isa = PBXGroup;
 			children = (
+				98694FCA222305F8008AC17B /* GoogleService-Info.plist */,
 				98351CCB22230400007EC636 /* AppDelegate.swift */,
 				98351CCD22230400007EC636 /* ViewController.swift */,
 				98351CCF22230400007EC636 /* Main.storyboard */,
@@ -179,6 +182,7 @@
 				98351CC422230400007EC636 /* Sources */,
 				98351CC522230400007EC636 /* Frameworks */,
 				98351CC622230400007EC636 /* Resources */,
+				806C3570A2FA9466CB2C895A /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -276,6 +280,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				98351CD922230401007EC636 /* LaunchScreen.storyboard in Resources */,
+				98694FCB222305F8008AC17B /* GoogleService-Info.plist in Resources */,
 				98351CD622230401007EC636 /* Assets.xcassets in Resources */,
 				98351CD122230400007EC636 /* Main.storyboard in Resources */,
 			);
@@ -314,6 +319,26 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		806C3570A2FA9466CB2C895A /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${SRCROOT}/Pods/Target Support Files/Pods-barterApp/Pods-barterApp-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/GoogleUtilities/GoogleUtilities.framework",
+				"${BUILT_PRODUCTS_DIR}/nanopb/nanopb.framework",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GoogleUtilities.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/nanopb.framework",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-barterApp/Pods-barterApp-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		AC3DD44771B08AC9089D8BB4 /* [CP] Check Pods Manifest.lock */ = {
