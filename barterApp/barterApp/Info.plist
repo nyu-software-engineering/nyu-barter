@@ -24,6 +24,14 @@
 	<string>LaunchScreen</string>
 	<key>UIMainStoryboardFile</key>
 	<string>Main</string>
+	<key>UIAppFonts</key>
+	<array>
+		<string>SF-Pro-Text_Bold.otf</string>
+		<string>SF-Pro-Text_Heavy.otf</string>
+		<string>SF-Pro-Text_Light.otf</string>
+		<string>SF-Pro-Text_Medium.otf</string>
+		<string>SF-Pro-Text_Regular.otf</string>
+	</array>
 	<key>UIRequiredDeviceCapabilities</key>
 	<array>
 		<string>armv7</string>
