@@ -8,11 +8,18 @@
 
 import UIKit
 
-class FeedViewController: UIViewController {
+class FeedViewController: UIViewController, UICollectionViewDataSource, UICollectionViewDelegate{
 
+    private var cellsSizes = [CGSize]()
+    
+    @IBOutlet weak var collectionView: UICollectionView!
+    let items = ["1", "2", "1", "2","1", "2","1", "2","1", "2","1", "2","1", "2", ]
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        if let layout = collectionView?.collectionViewLayout as? GridLayout {
+            layout.delegate = self
+        }
         setUp.feedNav(navItem: self.navigationItem)
         setUp.filterButton(navItem: self.navigationItem)
         let searchBar = UISearchBar()
@@ -26,10 +33,43 @@ class FeedViewController: UIViewController {
         self.navigationController?.navigationBar.isTranslucent = false
         self.navigationController?.navigationBar.setBackgroundImage(UIImage(), for: .default)
         self.navigationController?.navigationBar.shadowImage = UIImage()
+        
+        collectionView.setContentOffset(CGPoint.zero, animated: false)
+        
+        cellsSizes = CellSizeProvider.provideSizes(items: items)
+        
+        collectionView.reloadData()
+        
+
+    
     }
+    
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        return items.count
+    }
+    
+    
+    
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "feedCell", for: indexPath) as! FeedCollectionViewCell
+        //cell.lblTitle.text = items[indexPath.item]
+        cell.background.backgroundColor = UIColor.random()
+        return cell
+    }
+    
+    
+    
 
 }
 
+extension FeedViewController: ContentDynamicLayoutDelegate {
+    func cellSize(indexPath: IndexPath) -> CGSize {
+        return cellsSizes[indexPath.item]
+    }
+    
+    
+    }
 
 
 /*
