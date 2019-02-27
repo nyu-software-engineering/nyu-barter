@@ -9,7 +9,7 @@
 /* Begin PBXBuildFile section */
 		87139E12FFDDF2235CE9FB68 /* Pods_barterAppTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E6CCC1D68608C2634747965E /* Pods_barterAppTests.framework */; };
 		98351CCC22230400007EC636 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98351CCB22230400007EC636 /* AppDelegate.swift */; };
-		98351CCE22230400007EC636 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98351CCD22230400007EC636 /* ViewController.swift */; };
+		98351CCE22230400007EC636 /* InitialViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98351CCD22230400007EC636 /* InitialViewController.swift */; };
 		98351CD122230400007EC636 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 98351CCF22230400007EC636 /* Main.storyboard */; };
 		98351CD422230400007EC636 /* barterApp.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 98351CD222230400007EC636 /* barterApp.xcdatamodeld */; };
 		98351CD622230401007EC636 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 98351CD522230401007EC636 /* Assets.xcassets */; };
@@ -17,6 +17,12 @@
 		98351CE422230401007EC636 /* barterAppTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98351CE322230401007EC636 /* barterAppTests.swift */; };
 		98351CEF22230401007EC636 /* barterAppUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98351CEE22230401007EC636 /* barterAppUITests.swift */; };
 		98694FCB222305F8008AC17B /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 98694FCA222305F8008AC17B /* GoogleService-Info.plist */; };
+		98E879D22225FA400015F62D /* Tab.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 98E879D12225FA400015F62D /* Tab.storyboard */; };
+		98E879D52226027B0015F62D /* appColors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98E879D42226027B0015F62D /* appColors.swift */; };
+		98E879D7222603090015F62D /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 98E879D6222603080015F62D /* Default-568h@2x.png */; };
+		98E879D922260BEC0015F62D /* Feed.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 98E879D822260BEC0015F62D /* Feed.storyboard */; };
+		98E879DD22260E700015F62D /* FeedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98E879DC22260E700015F62D /* FeedViewController.swift */; };
+		98E879DF222623090015F62D /* setUp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98E879DE222623080015F62D /* setUp.swift */; };
 		F07E29554B8792D5CEC2D7AD /* Pods_barterAppUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 16769340BE90B677F0BF5061 /* Pods_barterAppUITests.framework */; };
 		F170BE0C8A0F2914605A49DE /* Pods_barterApp.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FE5751C5293D52EC52392F22 /* Pods_barterApp.framework */; };
 /* End PBXBuildFile section */
@@ -45,7 +51,7 @@
 		8EC173EDA1D2F021FA976963 /* Pods-barterAppUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-barterAppUITests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-barterAppUITests/Pods-barterAppUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		98351CC822230400007EC636 /* barterApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = barterApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		98351CCB22230400007EC636 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		98351CCD22230400007EC636 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		98351CCD22230400007EC636 /* InitialViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InitialViewController.swift; sourceTree = "<group>"; };
 		98351CD022230400007EC636 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		98351CD322230400007EC636 /* barterApp.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = barterApp.xcdatamodel; sourceTree = "<group>"; };
 		98351CD522230401007EC636 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -88,6 +94,12 @@
 		98E879C92225F6E30015F62D /* SF-Pro-Display-Regular.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SF-Pro-Display-Regular.otf"; sourceTree = "<group>"; };
 		98E879CA2225F6E30015F62D /* SF-Pro-Display-Bold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SF-Pro-Display-Bold.otf"; sourceTree = "<group>"; };
 		98E879CB2225F6E40015F62D /* SF-Pro-Text-RegularItalic.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SF-Pro-Text-RegularItalic.otf"; sourceTree = "<group>"; };
+		98E879D12225FA400015F62D /* Tab.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Tab.storyboard; sourceTree = "<group>"; };
+		98E879D42226027B0015F62D /* appColors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = appColors.swift; sourceTree = "<group>"; };
+		98E879D6222603080015F62D /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
+		98E879D822260BEC0015F62D /* Feed.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Feed.storyboard; sourceTree = "<group>"; };
+		98E879DC22260E700015F62D /* FeedViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedViewController.swift; sourceTree = "<group>"; };
+		98E879DE222623080015F62D /* setUp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = setUp.swift; sourceTree = "<group>"; };
 		992851DD3D499269F0F3E277 /* Pods-barterApp.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-barterApp.debug.xcconfig"; path = "Pods/Target Support Files/Pods-barterApp/Pods-barterApp.debug.xcconfig"; sourceTree = "<group>"; };
 		9A090B83CED51BD2FF768302 /* Pods-barterApp.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-barterApp.release.xcconfig"; path = "Pods/Target Support Files/Pods-barterApp/Pods-barterApp.release.xcconfig"; sourceTree = "<group>"; };
 		9A6E88C24175E25A2CBBE33B /* Pods-barterAppUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-barterAppUITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-barterAppUITests/Pods-barterAppUITests.release.xcconfig"; sourceTree = "<group>"; };
@@ -126,6 +138,7 @@
 		98351CBF22230400007EC636 = {
 			isa = PBXGroup;
 			children = (
+				98E879D6222603080015F62D /* Default-568h@2x.png */,
 				98351CCA22230400007EC636 /* barterApp */,
 				98351CE222230401007EC636 /* barterAppTests */,
 				98351CED22230401007EC636 /* barterAppUITests */,
@@ -148,15 +161,10 @@
 		98351CCA22230400007EC636 /* barterApp */ = {
 			isa = PBXGroup;
 			children = (
-				98E879AD2225F6BE0015F62D /* fonts */,
-				98694FCA222305F8008AC17B /* GoogleService-Info.plist */,
-				98351CCB22230400007EC636 /* AppDelegate.swift */,
-				98351CCD22230400007EC636 /* ViewController.swift */,
-				98351CCF22230400007EC636 /* Main.storyboard */,
-				98351CD522230401007EC636 /* Assets.xcassets */,
-				98351CD722230401007EC636 /* LaunchScreen.storyboard */,
-				98351CDA22230401007EC636 /* Info.plist */,
-				98351CD222230400007EC636 /* barterApp.xcdatamodeld */,
+				98E879D32226023C0015F62D /* Resources */,
+				98E879D02225F9DD0015F62D /* Controller */,
+				98E879CD2225F9BA0015F62D /* Model */,
+				98E879CF2225F9CA0015F62D /* Views */,
 			);
 			path = barterApp;
 			sourceTree = "<group>";
@@ -214,6 +222,48 @@
 				98E879B22225F6E20015F62D /* SF-Pro-Text-SemiboldItalic.otf */,
 			);
 			path = fonts;
+			sourceTree = "<group>";
+		};
+		98E879CD2225F9BA0015F62D /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				98E879DE222623080015F62D /* setUp.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		98E879CF2225F9CA0015F62D /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				98351CCF22230400007EC636 /* Main.storyboard */,
+				98351CD722230401007EC636 /* LaunchScreen.storyboard */,
+				98E879D12225FA400015F62D /* Tab.storyboard */,
+				98E879D822260BEC0015F62D /* Feed.storyboard */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		98E879D02225F9DD0015F62D /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				98351CCD22230400007EC636 /* InitialViewController.swift */,
+				98E879DC22260E700015F62D /* FeedViewController.swift */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		98E879D32226023C0015F62D /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				98E879AD2225F6BE0015F62D /* fonts */,
+				98351CCB22230400007EC636 /* AppDelegate.swift */,
+				98351CDA22230401007EC636 /* Info.plist */,
+				98351CD522230401007EC636 /* Assets.xcassets */,
+				98694FCA222305F8008AC17B /* GoogleService-Info.plist */,
+				98351CD222230400007EC636 /* barterApp.xcdatamodeld */,
+				98E879D42226027B0015F62D /* appColors.swift */,
+			);
+			path = Resources;
 			sourceTree = "<group>";
 		};
 		A8F713089599DF9F6F42E4FA /* Frameworks */ = {
@@ -347,10 +397,13 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				98E879D22225FA400015F62D /* Tab.storyboard in Resources */,
+				98E879D922260BEC0015F62D /* Feed.storyboard in Resources */,
 				98351CD922230401007EC636 /* LaunchScreen.storyboard in Resources */,
 				98694FCB222305F8008AC17B /* GoogleService-Info.plist in Resources */,
 				98351CD622230401007EC636 /* Assets.xcassets in Resources */,
 				98351CD122230400007EC636 /* Main.storyboard in Resources */,
+				98E879D7222603090015F62D /* Default-568h@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -452,7 +505,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				98351CCE22230400007EC636 /* ViewController.swift in Sources */,
+				98351CCE22230400007EC636 /* InitialViewController.swift in Sources */,
+				98E879D52226027B0015F62D /* appColors.swift in Sources */,
+				98E879DD22260E700015F62D /* FeedViewController.swift in Sources */,
+				98E879DF222623090015F62D /* setUp.swift in Sources */,
 				98351CD422230400007EC636 /* barterApp.xcdatamodeld in Sources */,
 				98351CCC22230400007EC636 /* AppDelegate.swift in Sources */,
 			);
@@ -632,7 +688,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 5YA56LWVA9;
-				INFOPLIST_FILE = barterApp/Info.plist;
+				INFOPLIST_FILE = "$(SRCROOT)/barterApp/Resources/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -651,7 +707,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 5YA56LWVA9;
-				INFOPLIST_FILE = barterApp/Info.plist;
+				INFOPLIST_FILE = "$(SRCROOT)/barterApp/Resources/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
