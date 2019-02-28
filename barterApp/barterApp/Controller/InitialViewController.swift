@@ -9,6 +9,11 @@ import Foundation
 import UIKit
 
 class InitialViewController: UIViewController, UIViewControllerTransitioningDelegate {
+    
+    
+    override func viewWillAppear() {
+        //If needed
+    }
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -17,7 +22,8 @@ class InitialViewController: UIViewController, UIViewControllerTransitioningDele
     
     
     override func viewDidAppear(_ animated: Bool) {
-        goMainScreen() //We are skipping login currenlty
+        goMainScreen() //We are skipping login currently
+        
     }
     
     
