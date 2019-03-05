@@ -45,4 +45,11 @@ struct setUp{
         navItem.rightBarButtonItem = menuBarItem
 
     }
+    
+    static func setUpNav(navCon: UINavigationController){
+        navCon.navigationBar.barTintColor = .white
+        navCon.navigationBar.isTranslucent = false
+        navCon.navigationBar.setBackgroundImage(UIImage(), for: .default)
+        navCon.navigationBar.shadowImage = UIImage()
+    }
 }

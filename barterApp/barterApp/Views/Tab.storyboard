@@ -10,7 +10,7 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Compose-->
+        <!--View Controller-->
         <scene sceneID="DFo-PR-3FA">
             <objects>
                 <viewController id="WrE-ZH-gGK" sceneMemberID="viewController">
@@ -20,7 +20,7 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <viewLayoutGuide key="safeArea" id="JgZ-PK-LdF"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Compose" id="KX1-h5-yeF"/>
+                    <tabBarItem key="tabBarItem" title="" id="KX1-h5-yeF"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="uQ7-bV-MP3" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -52,10 +52,10 @@
             </objects>
             <point key="canvasLocation" x="41" y="-635"/>
         </scene>
-        <!--Tab Bar Controller-->
+        <!--Tab View Controller-->
         <scene sceneID="iru-bE-dWn">
             <objects>
-                <tabBarController storyboardIdentifier="MainTab" useStoryboardIdentifierAsRestorationIdentifier="YES" id="asY-Vi-baE" sceneMemberID="viewController">
+                <tabBarController storyboardIdentifier="MainTab" useStoryboardIdentifierAsRestorationIdentifier="YES" id="asY-Vi-baE" customClass="TabViewController" customModule="barterApp" customModuleProvider="target" sceneMemberID="viewController">
                     <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="RfY-st-BuO">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="49"/>
                         <autoresizingMask key="autoresizingMask"/>

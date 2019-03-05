@@ -14,7 +14,7 @@
         <scene sceneID="30L-xO-UpJ">
             <objects>
                 <navigationController id="dJU-nx-kBA" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Feed" id="vfT-go-ULm"/>
+                    <tabBarItem key="tabBarItem" title="Feed" selectedImage="home" id="vfT-go-ULm"/>
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="jDN-hB-i9o">
                         <rect key="frame" x="0.0" y="44" width="414" height="44"/>
@@ -115,4 +115,7 @@
             <point key="canvasLocation" x="282.60869565217394" y="89.732142857142847"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="home" width="20" height="20"/>
+    </resources>
 </document>
