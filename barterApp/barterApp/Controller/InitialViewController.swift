@@ -10,10 +10,6 @@ import UIKit
 
 class InitialViewController: UIViewController, UIViewControllerTransitioningDelegate {
     
-    
-    override func viewWillAppear() {
-        //If needed
-    }
 
     override func viewDidLoad() {
         super.viewDidLoad()
