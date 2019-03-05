@@ -15,7 +15,8 @@ For instructions on contributing to this project, read the following [CONTRIBUTI
 To be updated...
 
 ## Team Members
-* Anandini Chawla 
+* Anandini Chawla
 * Kevin Maldjian
 * Santiago Rendon
 * Sushanth Kambham
+* William Cho
