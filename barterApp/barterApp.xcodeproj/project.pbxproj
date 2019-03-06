@@ -33,6 +33,7 @@
 		98E879D922260BEC0015F62D /* Feed.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 98E879D822260BEC0015F62D /* Feed.storyboard */; };
 		98E879DD22260E700015F62D /* FeedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98E879DC22260E700015F62D /* FeedViewController.swift */; };
 		98E879DF222623090015F62D /* setUp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98E879DE222623080015F62D /* setUp.swift */; };
+		E984BE56222F81C000A68F1D /* barterAppTesting.swift in Sources */ = {isa = PBXBuildFile; fileRef = E984BE55222F81C000A68F1D /* barterAppTesting.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -44,6 +45,13 @@
 			remoteInfo = barterApp;
 		};
 		98351CEB22230401007EC636 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 98351CC022230400007EC636 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 98351CC722230400007EC636;
+			remoteInfo = barterApp;
+		};
+		E984BE58222F81C000A68F1D /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 98351CC022230400007EC636 /* Project object */;
 			proxyType = 1;
@@ -119,6 +127,9 @@
 		A9556B7E5EE7146B0C8C3BEF /* Pods-barterAppUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-barterAppUITests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-barterAppUITests/Pods-barterAppUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		AE55783532C4C4E1AF4D5E25 /* Pods-barterApp.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-barterApp.release.xcconfig"; path = "Pods/Target Support Files/Pods-barterApp/Pods-barterApp.release.xcconfig"; sourceTree = "<group>"; };
 		BCF8BA07F7154798DA58FD6B /* libPods-barterAppTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-barterAppTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		E984BE53222F81C000A68F1D /* barterAppTesting.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = barterAppTesting.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		E984BE55222F81C000A68F1D /* barterAppTesting.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = barterAppTesting.swift; sourceTree = "<group>"; };
+		E984BE57222F81C000A68F1D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		F2E640876DB89F59A3905520 /* libPods-barterAppUITests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-barterAppUITests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		FE69D8F4663E61839A554134 /* Pods-barterAppTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-barterAppTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-barterAppTests/Pods-barterAppTests.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -145,6 +156,13 @@
 			buildActionMask = 2147483647;
 			files = (
 				3DB1C6685A2C61641C2B3F72 /* libPods-barterAppUITests.a in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		E984BE50222F81C000A68F1D /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -181,6 +199,7 @@
 				98351CCA22230400007EC636 /* barterApp */,
 				98351CE222230401007EC636 /* barterAppTests */,
 				98351CED22230401007EC636 /* barterAppUITests */,
+				E984BE54222F81C000A68F1D /* barterAppTesting */,
 				98351CC922230400007EC636 /* Products */,
 				8DF4DF402FA597B8F5F4D336 /* Pods */,
 				1FE2703BA83BB55C99FE6B00 /* Frameworks */,
@@ -193,6 +212,7 @@
 				98351CC822230400007EC636 /* barterApp.app */,
 				98351CDF22230401007EC636 /* barterAppTests.xctest */,
 				98351CEA22230401007EC636 /* barterAppUITests.xctest */,
+				E984BE53222F81C000A68F1D /* barterAppTesting.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -337,6 +357,15 @@
 			path = Resources;
 			sourceTree = "<group>";
 		};
+		E984BE54222F81C000A68F1D /* barterAppTesting */ = {
+			isa = PBXGroup;
+			children = (
+				E984BE55222F81C000A68F1D /* barterAppTesting.swift */,
+				E984BE57222F81C000A68F1D /* Info.plist */,
+			);
+			path = barterAppTesting;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -396,6 +425,24 @@
 			productReference = 98351CEA22230401007EC636 /* barterAppUITests.xctest */;
 			productType = "com.apple.product-type.bundle.ui-testing";
 		};
+		E984BE52222F81C000A68F1D /* barterAppTesting */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = E984BE5C222F81C000A68F1D /* Build configuration list for PBXNativeTarget "barterAppTesting" */;
+			buildPhases = (
+				E984BE4F222F81C000A68F1D /* Sources */,
+				E984BE50222F81C000A68F1D /* Frameworks */,
+				E984BE51222F81C000A68F1D /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				E984BE59222F81C000A68F1D /* PBXTargetDependency */,
+			);
+			name = barterAppTesting;
+			productName = barterAppTesting;
+			productReference = E984BE53222F81C000A68F1D /* barterAppTesting.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -417,6 +464,10 @@
 						CreatedOnToolsVersion = 10.1;
 						TestTargetID = 98351CC722230400007EC636;
 					};
+					E984BE52222F81C000A68F1D = {
+						CreatedOnToolsVersion = 10.1;
+						TestTargetID = 98351CC722230400007EC636;
+					};
 				};
 			};
 			buildConfigurationList = 98351CC322230400007EC636 /* Build configuration list for PBXProject "barterApp" */;
@@ -435,6 +486,7 @@
 				98351CC722230400007EC636 /* barterApp */,
 				98351CDE22230401007EC636 /* barterAppTests */,
 				98351CE922230401007EC636 /* barterAppUITests */,
+				E984BE52222F81C000A68F1D /* barterAppTesting */,
 			);
 		};
 /* End PBXProject section */
@@ -462,6 +514,13 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 		98351CE822230401007EC636 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		E984BE51222F81C000A68F1D /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -565,6 +624,14 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		E984BE4F222F81C000A68F1D /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				E984BE56222F81C000A68F1D /* barterAppTesting.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
@@ -577,6 +644,11 @@
 			isa = PBXTargetDependency;
 			target = 98351CC722230400007EC636 /* barterApp */;
 			targetProxy = 98351CEB22230401007EC636 /* PBXContainerItemProxy */;
+		};
+		E984BE59222F81C000A68F1D /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 98351CC722230400007EC636 /* barterApp */;
+			targetProxy = E984BE58222F81C000A68F1D /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
@@ -840,6 +912,44 @@
 			};
 			name = Release;
 		};
+		E984BE5A222F81C000A68F1D /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				INFOPLIST_FILE = barterAppTesting/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.SungjeaCho.barterAppTesting;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 4.2;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/barterApp.app/barterApp";
+			};
+			name = Debug;
+		};
+		E984BE5B222F81C000A68F1D /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				INFOPLIST_FILE = barterAppTesting/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.SungjeaCho.barterAppTesting;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 4.2;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/barterApp.app/barterApp";
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -875,6 +985,15 @@
 			buildConfigurations = (
 				98351CFA22230401007EC636 /* Debug */,
 				98351CFB22230401007EC636 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		E984BE5C222F81C000A68F1D /* Build configuration list for PBXNativeTarget "barterAppTesting" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				E984BE5A222F81C000A68F1D /* Debug */,
+				E984BE5B222F81C000A68F1D /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
