@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Firebase
 
 class FeedViewController: UIViewController, UICollectionViewDataSource, UICollectionViewDelegate{
 
@@ -14,6 +15,9 @@ class FeedViewController: UIViewController, UICollectionViewDataSource, UICollec
     
     @IBOutlet weak var collectionView: UICollectionView!
     let items = ["1", "2", "1", "2","1", "2","1", "2","1", "2","1", "2","1", "2", "1", "2", "1", "2","1", "2","1", "2","1", "2","1", "2","1", "2", "1", "2", "1", "2","1", "2","1", "2","1", "2","1", "2","1", "2"]
+    
+    var barterItems: [BABarterItem] = []
+    var serviceObserver: UInt?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -47,6 +51,8 @@ class FeedViewController: UIViewController, UICollectionViewDataSource, UICollec
         cellsSizes = CellSizeProvider.provideSizes(items: items)
         collectionView.reloadData()
         
+        observeServicesOnBackend()
+        
         
 //        let button = UIButton()
 //        button.setImage(UIImage(named: "addItem.png"), for: .normal)
@@ -63,7 +69,7 @@ class FeedViewController: UIViewController, UICollectionViewDataSource, UICollec
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return items.count
+        return barterItems.count
     }
     
     
@@ -78,6 +84,26 @@ class FeedViewController: UIViewController, UICollectionViewDataSource, UICollec
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         print("User tapped on cell %d", indexPath)
+    }
+    
+    
+    @objc func observeServicesOnBackend() {
+        serviceObserver = DataService.sharedInstance.FEED_REF.observe(.value, with: { snapshot in
+            
+            self.barterItems = []
+            if let _ = snapshot.value as? NSNull {
+                debugPrint("No bulletins available.")
+            } else {
+                if snapshot.hasChildren() {
+                    for snapshot in snapshot.children {
+                        let item = BABarterItem(snapshot: snapshot as! DataSnapshot)
+                        self.barterItems.append(item)
+                        print(item.title)
+                    }
+                }
+                self.collectionView.reloadData()
+            }
+        })
     }
     
 
