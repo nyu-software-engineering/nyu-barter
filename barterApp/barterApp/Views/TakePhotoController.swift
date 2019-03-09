@@ -14,7 +14,7 @@ import Photos
 
 class TakePhotoController: UIViewController  {
     
-    
+    var ref: DatabaseReference!
     var currentVC: UIViewController!
     
     override func viewDidAppear(_ animated: Bool) {
@@ -43,19 +43,24 @@ class TakePhotoController: UIViewController  {
     @IBOutlet weak var titleOutlet: UITextField!
     @IBOutlet weak var descriptionOutlet: UITextField!
     
-    @IBAction func titleAction(_ sender: Any) {
-        
-        
-        
-        
+    @IBAction func post(_ sender: Any) {
+        if (!titleOutlet.text!.isEmpty && !descriptionOutlet.text!.isEmpty){
+            
+            
+            print("Posting Data")
+            ref = Database.database().reference()
+            let userId = "testUserID"
+            let itemTitle = titleOutlet.text
+            let itemDescription = descriptionOutlet.text
+            let dateTime = ""
+            let photoURL = ""
+            self.ref.child("barters").childByAutoId().setValue(["userID": userId, "title": itemTitle, "descr" : itemDescription, "dateTime": dateTime,  "photoUrl" : photoURL])
+            
+            
+        }
         
     }
-    
-    @IBAction func descriptionAction(_ sender: Any) {
-        
-        
-        
-    }
+   
     
     
     
