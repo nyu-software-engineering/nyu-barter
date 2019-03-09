@@ -10,31 +10,104 @@ import Foundation
 import UIKit
 import Firebase
 import FirebaseDatabase
+import Photos
 
-class TakePhotoController: UIViewController, UINavigationControllerDelegate, UIImagePickerControllerDelegate  {
-    var imagePicker: UIImagePickerController!
-
+class TakePhotoController: UIViewController  {
+    
+    
+    var currentVC: UIViewController!
+    
+    override func viewDidAppear(_ animated: Bool) {
+        
+        super.viewDidAppear(animated)
+        
+        let actionSheet = UIAlertController(title: nil, message: nil, preferredStyle: .actionSheet)
+        
+        actionSheet.addAction(UIAlertAction(title: "Camera", style: .default, handler: { (alert:UIAlertAction!) -> Void in
+            self.camera()
+        }))
+        
+        actionSheet.addAction(UIAlertAction(title: "Gallery", style: .default, handler: { (alert:UIAlertAction!) -> Void in
+            self.photoLibrary()
+        }))
+        
+        actionSheet.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
+        
+        self.present(actionSheet, animated: true, completion: nil)
+        
+    }
+    
+    
+    //Outlets
     @IBOutlet weak var photo: UIImageView!
+    @IBOutlet weak var titleOutlet: UITextField!
+    @IBOutlet weak var descriptionOutlet: UITextField!
     
-    
-    
-    
-    
-    
-    
-    
-    @IBAction func takePhoto(_ sender: Any) {
+    @IBAction func titleAction(_ sender: Any) {
         
-        imagePicker =  UIImagePickerController()
-        imagePicker.delegate = self
-        imagePicker.sourceType = .camera
         
-        present(imagePicker, animated: true, completion: nil)
         
+        
+        
+    }
+    
+    @IBAction func descriptionAction(_ sender: Any) {
+        
+        
+        
+    }
+    
+    
+    
+    
+    
+    
+    func camera()
+    {
+        if UIImagePickerController.isSourceTypeAvailable(.camera){
+            let myPickerController = UIImagePickerController()
+            myPickerController.delegate = self;
+            myPickerController.sourceType = .camera
+            self.present(myPickerController, animated: true, completion: nil)
+        }
+        
+    }
+    
+    func photoLibrary()
+    {
+        
+        if UIImagePickerController.isSourceTypeAvailable(.photoLibrary){
+            let myPickerController = UIImagePickerController()
+            myPickerController.delegate = self;
+            myPickerController.sourceType = .photoLibrary
+            self.present(myPickerController, animated: true, completion: nil)
+        }
+        
+    }
+    
+    
+   
+   
+}
+
+
+extension TakePhotoController: UIImagePickerControllerDelegate, UINavigationControllerDelegate{
+    func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
+        currentVC.dismiss(animated: true, completion: nil)
     }
     
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
-        imagePicker.dismiss(animated: true, completion: nil)
-        photo.image = info[.originalImage] as? UIImage
+        
+        // The info dictionary may contain multiple representations of the image. You want to use the original.
+        guard let selectedImage = info[.originalImage] as? UIImage else {
+            fatalError("Expected a dictionary containing an image, but was provided the following: \(info)")
+        }
+        
+        // Set photoImageView to display the selected image.
+        photo.image = selectedImage
+        
+        // Dismiss the picker.
+        dismiss(animated: true, completion: nil)
     }
+    
 }

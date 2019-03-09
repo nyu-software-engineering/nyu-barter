@@ -41,6 +41,7 @@
                                 <state key="normal" title="Add Test"/>
                                 <connections>
                                     <action selector="createTestData:" destination="50m-z7-Gxp" eventType="touchUpInside" id="JiO-I5-jEs"/>
+                                    <segue destination="Vdl-LZ-mJK" kind="presentation" id="V3c-wy-7Iw"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -68,28 +69,57 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="CXi-cp-9Mi">
-                                <rect key="frame" x="87" y="309" width="240" height="278"/>
+                                <rect key="frame" x="0.0" y="44" width="414" height="375"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="urc-47-ELo">
-                                <rect key="frame" x="161" y="687" width="92" height="30"/>
+                            <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Enter Description" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="4Hr-Ag-tNY">
+                                <rect key="frame" x="20" y="579" width="366" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="TAKE PHOTO"/>
+                                <nil key="textColor"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
                                 <connections>
-                                    <action selector="takePhoto:" destination="Vdl-LZ-mJK" eventType="touchUpInside" id="ac1-uA-jL4"/>
+                                    <action selector="descriptionAction:" destination="Vdl-LZ-mJK" eventType="editingDidEnd" id="ac7-E0-ylP"/>
                                 </connections>
-                            </button>
+                            </textField>
+                            <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Enter Title " textAlignment="natural" clearsOnBeginEditing="YES" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="KXA-fr-Zsi">
+                                <rect key="frame" x="20" y="503" width="366" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <nil key="textColor"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                                <connections>
+                                    <action selector="titleAction:" destination="Vdl-LZ-mJK" eventType="editingDidEnd" id="BuO-OS-cJR"/>
+                                </connections>
+                            </textField>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <viewLayoutGuide key="safeArea" id="fbA-Lx-cRX"/>
                     </view>
                     <connections>
+                        <outlet property="descriptionOutlet" destination="4Hr-Ag-tNY" id="WYs-1h-nOS"/>
                         <outlet property="photo" destination="CXi-cp-9Mi" id="jgS-oh-NSY"/>
+                        <outlet property="titleOutlet" destination="KXA-fr-Zsi" id="so3-v0-oRD"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="y6d-vN-W1c" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1397.1014492753625" y="67.633928571428569"/>
+        </scene>
+        <!--Add Info Controller-->
+        <scene sceneID="fTu-cz-nb6">
+            <objects>
+                <viewController id="dGY-st-CFE" customClass="AddInfoController" customModule="barterApp" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="U8Y-h1-Tad">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <viewLayoutGuide key="safeArea" id="0Qf-Pi-0D1"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Amo-0w-joV" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2143" y="64"/>
         </scene>
     </scenes>
 </document>
