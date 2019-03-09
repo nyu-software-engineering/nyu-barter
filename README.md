@@ -27,7 +27,7 @@ pod install
 
 Now that all of the dependencies are installed, click on the file named: 
 
-* barterApp.xcworkspace * 
+**barterApp.xcworkspace 
 
 The product can be buit on a simulated device by clicking the play button in the top left corner.
 
