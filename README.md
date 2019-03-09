@@ -11,8 +11,28 @@ This project is currently being developed as part of NYU's Agile Software Develo
 ## Contributing
 For instructions on contributing to this project, read the following [CONTRIBUTING.md](CONTRIBUTING.md) file
 
-## Building and Testing
-To be updated...
+## Building and Testing | iOS App 
+The iOS app uses [Cocoapods](https://cocoapods.org/) as an application level dependency manager. This can be installed by typing:
+
+```
+$ sudo gem install cocoapods
+```
+
+Once installed, pull the current code and locate the folder named "barterApp"
+Cd into this directory and type the command
+
+```
+pod install
+```
+
+Now that all of the dependencies are installed, click on the file named: 
+
+* barterApp.xcworkspace * 
+
+The product can be buit on a simulated device by clicking the play button in the top left corner.
+
+## Building and Testing | Web App 
+
 
 ## Team Members
 * Anandini Chawla
