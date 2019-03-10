@@ -1,4 +1,4 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+You can also run app on our [website](https://barter.cf/)
 
 ## Available Scripts
 
