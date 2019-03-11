@@ -18,7 +18,6 @@ class TakePhotoController: UIViewController  {
     var currentVC: UIViewController!
     
     override func viewDidAppear(_ animated: Bool) {
-        
         super.viewDidAppear(animated)
         
         let actionSheet = UIAlertController(title: nil, message: nil, preferredStyle: .actionSheet)
@@ -52,7 +51,7 @@ class TakePhotoController: UIViewController  {
             let userId = "testUserID"
             let itemTitle = titleOutlet.text
             let itemDescription = descriptionOutlet.text
-            let dateTime = ""
+            let dateTime = ServerValue.timestamp()
             let photoURL = ""
             self.ref.child("barters").childByAutoId().setValue(["userID": userId, "title": itemTitle, "descr" : itemDescription, "dateTime": dateTime,  "photoUrl" : photoURL])
             
@@ -61,12 +60,6 @@ class TakePhotoController: UIViewController  {
         
     }
    
-    
-    
-    
-    
-    
-    
     func camera()
     {
         if UIImagePickerController.isSourceTypeAvailable(.camera){
@@ -89,10 +82,6 @@ class TakePhotoController: UIViewController  {
         }
         
     }
-    
-    
-   
-   
 }
 
 

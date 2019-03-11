@@ -316,8 +316,6 @@
 				98E879D822260BEC0015F62D /* Feed.storyboard */,
 				9858204A2226EF0E00E03C17 /* CellSizeProvider.swift */,
 				98EA823B222EEA0900F0AFC9 /* CreatePost.storyboard */,
-				E9A4570522335CC4000D6744 /* AddInfoController.swift */,
-				E9A4570322331D4C000D6744 /* TakePhotoController.swift */,
 				98EA823D222EEC1C00F0AFC9 /* Listings.storyboard */,
 			);
 			path = Views;
@@ -351,6 +349,8 @@
 		98EA823F222EECDD00F0AFC9 /* CreatePost */ = {
 			isa = PBXGroup;
 			children = (
+				E9A4570522335CC4000D6744 /* AddInfoController.swift */,
+				E9A4570322331D4C000D6744 /* TakePhotoController.swift */,
 				98EA8240222EED1800F0AFC9 /* CreateViewController.swift */,
 			);
 			path = CreatePost;
