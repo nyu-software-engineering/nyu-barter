@@ -64,19 +64,35 @@ class TakePhotoController: UIViewController  {
             
             print("Posting Data")
             ref = Database.database().reference()
+            
+            
             let userId = "testUserID"
             let itemTitle = titleOutlet.text
             let itemDescription = descriptionOutlet.text
             let dateTime = ""
-            let photoURL = ""
+            
+            let photoURL = NSURL(fileURLWithPath: NSTemporaryDirectory()).appendingPathComponent(photo!.debugDescription);
+            
+            
+            
+            
             self.ref.child("barters").childByAutoId().setValue(["userID": userId, "title": itemTitle, "descr" : itemDescription, "dateTime": dateTime,  "photoUrl" : photoURL])
             
-            
+           
+        
         }
         
     }
+    
+
+    
+    
+  
+    
+    
    
     
+  
     
     
     
