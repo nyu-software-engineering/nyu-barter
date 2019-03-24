@@ -17,6 +17,10 @@ class TakePhotoController: UIViewController  {
     var ref: DatabaseReference!
     var currentVC: UIViewController!
     
+    override func viewWillAppear(_ animated: Bool) {
+        self.subscribeToKeyboardNotifications()
+    }
+    
     override func viewDidAppear(_ animated: Bool) {
         
         super.viewDidAppear(animated)
@@ -35,6 +39,17 @@ class TakePhotoController: UIViewController  {
         
         self.present(actionSheet, animated: true, completion: nil)
         
+    }
+    
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(TakePhotoController.dismissKeyboard))
+        view.addGestureRecognizer(tap)
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        self.unsubscribeFromKeyboardNotifications()
     }
     
     
@@ -90,6 +105,8 @@ class TakePhotoController: UIViewController  {
         
     }
     
+
+    
     
    
    
@@ -114,5 +131,58 @@ extension TakePhotoController: UIImagePickerControllerDelegate, UINavigationCont
         // Dismiss the picker.
         dismiss(animated: true, completion: nil)
     }
+    
+}
+
+
+extension TakePhotoController: UITextFieldDelegate {
+    
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        self.view.endEditing(true)
+        return false
+    }
+    
+    
+    func subscribeToKeyboardNotifications() {
+        NotificationCenter.default.addObserver(self, selector: #selector(TakePhotoController.keyboardWillHide(_:)), name: UIWindow.keyboardWillHideNotification, object: nil)
+        
+        NotificationCenter.default.addObserver(self, selector: #selector(TakePhotoController.keyboardWillShow(_:)), name: UIWindow.keyboardWillShowNotification, object: nil)
+        
+    }
+    
+    
+    @objc func keyboardWillShow(_ notification: Notification) {
+        
+        if titleOutlet.isFirstResponder{
+            self.view.frame.origin.y = 0
+        }
+        if descriptionOutlet.isFirstResponder{
+            self.view.frame.origin.y = 0
+        }
+        
+        
+    }
+    
+    @objc func keyboardWillHide(_ notification: Notification) {
+        self.view.frame.origin.y=0
+    }
+    func getKeyboardHeight(_ notification: Notification) -> CGFloat {
+        let userInfo = (notification as NSNotification).userInfo!
+        let keyboardSize = userInfo[UIResponder.keyboardFrameEndUserInfoKey] as! NSValue // of CGRect
+        return keyboardSize.cgRectValue.height
+    }
+    
+    func unsubscribeFromKeyboardNotifications(){
+        
+        NotificationCenter.default.removeObserver(self)
+        
+        
+
+    }
+    
+    @objc func dismissKeyboard() {
+        view.endEditing(true)
+    }
+    
     
 }
