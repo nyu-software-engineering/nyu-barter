@@ -15,7 +15,7 @@ class BABarterItem {
     var ref: DatabaseReference
     var title: String
     var descr: String
-    var dateTime: String
+    var dateTime: Int
     var photoUrl: String
     var userId: String
     
@@ -26,7 +26,9 @@ class BABarterItem {
         self.ref = snapshot.ref
         self.title = (snapshot.value! as AnyObject).object(forKey: "title") as! String
         self.descr = (snapshot.value! as AnyObject).object(forKey: "descr") as! String
-        self.dateTime = (snapshot.value! as AnyObject).object(forKey: "dateTime") as? String ?? "defaultDateTime"
+
+        self.dateTime = (snapshot.value! as AnyObject).object(forKey: "dateTime") as! Int
+
         self.photoUrl = (snapshot.value! as AnyObject).object(forKey: "photoUrl") as! String
         if let _userId = (snapshot.value! as AnyObject).object(forKey: "userId") as? String {
             self.userId = _userId

@@ -6,6 +6,7 @@
 //  Copyright © 2019 Kevin Maldjian. All rights reserved.
 //
 
+
 import Foundation
 import UIKit
 import Firebase
@@ -17,12 +18,7 @@ class TakePhotoController: UIViewController  {
     var ref: DatabaseReference!
     var currentVC: UIViewController!
     
-    override func viewWillAppear(_ animated: Bool) {
-        self.subscribeToKeyboardNotifications()
-    }
-    
     override func viewDidAppear(_ animated: Bool) {
-        
         super.viewDidAppear(animated)
         
         let actionSheet = UIAlertController(title: nil, message: nil, preferredStyle: .actionSheet)
@@ -42,17 +38,6 @@ class TakePhotoController: UIViewController  {
     }
     
     
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(TakePhotoController.dismissKeyboard))
-        view.addGestureRecognizer(tap)
-    }
-    
-    override func viewWillDisappear(_ animated: Bool) {
-        self.unsubscribeFromKeyboardNotifications()
-    }
-    
-    
     //Outlets
     @IBOutlet weak var photo: UIImageView!
     @IBOutlet weak var titleOutlet: UITextField!
@@ -64,39 +49,17 @@ class TakePhotoController: UIViewController  {
             
             print("Posting Data")
             ref = Database.database().reference()
-            
-            
             let userId = "testUserID"
             let itemTitle = titleOutlet.text
             let itemDescription = descriptionOutlet.text
-            let dateTime = ""
-            
-            let photoURL = NSURL(fileURLWithPath: NSTemporaryDirectory()).appendingPathComponent(photo!.debugDescription);
-            
-            
-            
-            
+            let dateTime = ServerValue.timestamp()
+            let photoURL = ""
             self.ref.child("barters").childByAutoId().setValue(["userID": userId, "title": itemTitle, "descr" : itemDescription, "dateTime": dateTime,  "photoUrl" : photoURL])
             
-           
-        
+            
         }
         
     }
-    
-
-    
-    
-  
-    
-    
-   
-    
-  
-    
-    
-    
-    
     
     func camera()
     {
@@ -120,16 +83,13 @@ class TakePhotoController: UIViewController  {
         }
         
     }
-    
-
-    
-    
-   
-   
 }
 
 
-extension TakePhotoController: UIImagePickerControllerDelegate, UINavigationControllerDelegate{
+
+extension TakePhotoController: UITextFieldDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
+    
+    
     func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
         currentVC.dismiss(animated: true, completion: nil)
     }
@@ -147,11 +107,6 @@ extension TakePhotoController: UIImagePickerControllerDelegate, UINavigationCont
         // Dismiss the picker.
         dismiss(animated: true, completion: nil)
     }
-    
-}
-
-
-extension TakePhotoController: UITextFieldDelegate {
     
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         self.view.endEditing(true)

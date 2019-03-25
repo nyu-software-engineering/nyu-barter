@@ -27,10 +27,16 @@ class CreateViewController: UIViewController {
         let userId = "testUserID"
         let itemTitle = "Iphone 6s"
         let itemDescription = "Looking to trade for a toaster"
-        let dateTime = ""
+        let dateTime = ServerValue.timestamp()
         let photoURL = ""
         self.ref.child("barters").childByAutoId().setValue(["userID": userId, "title": itemTitle, "descr" : itemDescription, "dateTime": dateTime,  "photoUrl" : photoURL])
     }
+    
+    
+    
+    
+
+    
     /*
     // MARK: - Navigation
 
