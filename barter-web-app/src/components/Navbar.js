@@ -8,7 +8,7 @@ const STATUS = {
 
 
 const Navbar = () => {
-<<<<<<< HEAD
+
   constructor(props); 
      //super(props); 
 
@@ -53,7 +53,7 @@ const Navbar = () => {
 
     );
   }
-=======
+
   return(
     <nav>
       <div>
@@ -65,7 +65,7 @@ const Navbar = () => {
       </div>
     </nav>
     )
->>>>>>> 96561d17125398856c7fa0a68b19cec0328dcf0d
+
 }
 
 

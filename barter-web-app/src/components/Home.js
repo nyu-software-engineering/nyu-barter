@@ -7,8 +7,7 @@ import { NavLink } from "react-router-dom";
 import PreviewPicture from './PreviewPicture';
 <<<<<<< HEAD
 
-=======
->>>>>>> 96561d17125398856c7fa0a68b19cec0328dcf0d
+
 
 const config = {
     apiKey: process.env.REACT_APP_FIREBASE_KEY,
@@ -60,10 +59,7 @@ class Home extends React.Component {
           title,
           userID,
     });
-<<<<<<< HEAD
 
-=======
->>>>>>> 96561d17125398856c7fa0a68b19cec0328dcf0d
     this.setState({dateTime: ''});
     this.setState({descr: ''});
     this.setState({photoUrl: ''});
