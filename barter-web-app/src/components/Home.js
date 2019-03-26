@@ -4,7 +4,7 @@ import firebase from 'firebase';
 import Rebase from 're-base';
 import StyledFirebaseAuth from "react-firebaseui/StyledFirebaseAuth";
 import { NavLink } from "react-router-dom";
-import PreviewPicture from 'PreviewPicture';
+import PreviewPicture from './PreviewPicture';
 
 const config = {
     apiKey: process.env.REACT_APP_FIREBASE_KEY,
