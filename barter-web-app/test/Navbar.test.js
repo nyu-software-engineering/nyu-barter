@@ -21,7 +21,7 @@ test('Link changes the class when hovered', () => {
     <Navbar></Navbar>
   );
   let tree = component.toJSON();
-  console.log(tree);
+  //console.log(tree);
   expect(tree).toMatchSnapshot();
 
   // manually trigger the callback
