@@ -8,3 +8,7 @@ before_install:
   - npm i -g npm@6.7.0
 install:
   - npm install
+cache: 
+  - npm
+script:
+  - npm run test
