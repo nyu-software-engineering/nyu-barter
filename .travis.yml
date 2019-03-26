@@ -9,4 +9,4 @@ before_install:
 install:
   - npm install
 script:
-  - echo "test passed"
+  - npm run test
