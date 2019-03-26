@@ -2,7 +2,7 @@ You can also run app on our [website](https://barter.cf/)
 
 ## Available Scripts
 
-In the project directory, you can run:
+In the project directory, you can run :
 
 ### `npm start`
 
