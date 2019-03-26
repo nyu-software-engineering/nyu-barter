@@ -5,19 +5,23 @@ import Rebase from 're-base';
 import StyledFirebaseAuth from "react-firebaseui/StyledFirebaseAuth";
 import { NavLink } from "react-router-dom";
 import PreviewPicture from './PreviewPicture';
+<<<<<<< HEAD
 
+=======
+>>>>>>> 96561d17125398856c7fa0a68b19cec0328dcf0d
 
 const config = {
     apiKey: process.env.REACT_APP_FIREBASE_KEY,
     authDomain: process.env.REACT_APP_FIREBASE_DOMAIN,
     databaseURL: process.env.REACT_APP_FIREBASE_DATABASE,
     projectId: process.env.REACT_APP_FIREBASE_PROJECT_ID,
-    storageBucket: process.env.REACT_APP_FIREBASE_STORAGE_BUCKETId,
+    storageBucket: process.env.REACT_APP_FIREBASE_STORAGE_BUCKET,
     messagingSenderId: process.env.REACT_APP_FIREBASE_SENDER_ID
 };
 
 const app = firebase.initializeApp(config);
 const base = Rebase.createClass(app.database());
+
 class Home extends React.Component {
   constructor() {
     super();
@@ -26,10 +30,10 @@ class Home extends React.Component {
       isSignedIn: false,
       title: '',
       descr: '',
-      photoUrl: '',
+      photoUrl: null,
       userID: '',
       dateTime: '',
-      keys: []
+      keys: [],
     }
     this.onSubmit = this.onSubmit.bind(this);
     this.handleChange = this.handleChange.bind(this);
@@ -56,7 +60,10 @@ class Home extends React.Component {
           title,
           userID,
     });
+<<<<<<< HEAD
 
+=======
+>>>>>>> 96561d17125398856c7fa0a68b19cec0328dcf0d
     this.setState({dateTime: ''});
     this.setState({descr: ''});
     this.setState({photoUrl: ''});
@@ -112,19 +119,25 @@ class Home extends React.Component {
             <h1>NYU Barter</h1>
             <script src="https://www.gstatic.com/firebasejs/5.8.4/firebase.js"></script>
             <input type="text" name="search" placeholder="Search for items" />
-              <a href="/inventory"><button type="myItems">My Items</button></a>
-              <a href="/interests"><button type="interestedItems">Interested Items</button></a>
+              <NavLink to="/inventory"><button type="myItems">My Items</button></NavLink>
+              <NavLink to="/interests"><button type="interestedItems">Interested Items</button></NavLink>
               <button onClick={() => firebase.auth().signOut()}>Logout</button>
           </div>
       </header>
       <div className='container'>
         <section className='add-item'>
-            <form onSubmit={this.onSubmit}>
+              <form>
               <input type="text" name="title" placeholder="What item do you want to trade?" onChange={this.handleChange} value={this.state.item} />
               <input type="text" name="descr" placeholder="Describe your item" onChange={this.handleChange} value={this.state.descr} />
-              <input type="text" name="photoUrl" placeholder="Add a picture of your item" onChange={this.handleChange} value={this.state.photoUrl} />
-              <button type="submit">Add Item to Barter</button>
-            </form>
+              <label class="upload-group">
+              Upload Image
+              <input type="file" class="upload-group" id="file" onChange={(event) => {
+                this.addPicture(event);
+              }}/>
+              </label>
+              <PreviewPicture photoUrl={this.state.photoUrl}/>
+              <button type="btn btn-priamry" onClick={this.onSubmit} type="reset">Add Item to Barter</button>
+              </form>
         </section>
         <section className='display-item'>
           <div className='wrapper'>
@@ -143,6 +156,17 @@ class Home extends React.Component {
         )}
       </div>
     );
+  }
+
+  addPicture(event){
+    let reader = new FileReader();
+    let file = event.target.files[0];
+    reader.onloadend = ()=>{
+      this.setState({
+        photoUrl: reader.result
+      });
+    };
+    reader.readAsDataURL(file);
   }
 }
 

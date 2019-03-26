@@ -1,4 +1,5 @@
 import React from 'react';
+import { NavLink } from "react-router-dom"
 
 const STATUS = {
   HOVERED: 'hovered',
@@ -7,6 +8,7 @@ const STATUS = {
 
 
 const Navbar = () => {
+<<<<<<< HEAD
   constructor(props); 
      //super(props); 
 
@@ -51,6 +53,19 @@ const Navbar = () => {
 
     );
   }
+=======
+  return(
+    <nav>
+      <div>
+        <ul>
+          <li><NavLink to="/">Home</NavLink></li>
+          <li><NavLink to="/interests">Interests</NavLink></li>
+          <li><NavLink to="/inventory">Inventory</NavLink></li>
+        </ul>
+      </div>
+    </nav>
+    )
+>>>>>>> 96561d17125398856c7fa0a68b19cec0328dcf0d
 }
 
 

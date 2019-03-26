@@ -26,6 +26,9 @@ h1{
 .App-link {
   color: #61dafb;
 }
+label.upload-group{
+  text-align: center;
+}
 
 @keyframes App-logo-spin {
   from {

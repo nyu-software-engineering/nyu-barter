@@ -7,4 +7,8 @@ const PreviewPicture = (props) =>{
     );
 };
 
+<<<<<<< HEAD
 export default PreviewPicture;
+=======
+export default PreviewPicture;
+>>>>>>> 96561d17125398856c7fa0a68b19cec0328dcf0d
