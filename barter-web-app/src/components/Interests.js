@@ -20,7 +20,6 @@ class Interests extends React.Component {
         </div>
       );
    }
-
 }
 
 
