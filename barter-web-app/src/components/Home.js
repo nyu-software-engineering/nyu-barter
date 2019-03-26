@@ -5,7 +5,7 @@ import Rebase from 're-base';
 import StyledFirebaseAuth from "react-firebaseui/StyledFirebaseAuth";
 import { NavLink } from "react-router-dom";
 import PreviewPicture from './PreviewPicture';
-<<<<<<< HEAD
+
 
 
 
