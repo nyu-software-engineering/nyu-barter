@@ -6,7 +6,11 @@ import Navbar from "./components/Navbar";
 import Link from '../Link.react';
 import renderer from 'react-test-renderer';
 
-const testFirebase = require('firebase-functions-test')();
+const testFirebase = require('firebase-functions-test')({
+  databaseURL: 'https://https://barterapp-ef89b.firebaseio.com',
+  storageBucket: 'BarterApp.appspot.com',
+  projectId: 'BarterApp',
+}, 'path/to/serviceAccountKey.json');
 
 
 it('renders without crashing', () => {
