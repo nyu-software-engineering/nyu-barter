@@ -6,6 +6,8 @@ import Navbar from "./components/Navbar";
 import Link from '../Link.react';
 import renderer from 'react-test-renderer';
 
+const testFirebase = require('firebase-functions-test')();
+
 
 it('renders without crashing', () => {
   const div = document.createElement('div');
