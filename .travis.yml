@@ -2,7 +2,7 @@ language: node_js
 services:
   - Firebase
 node_js:
-  - "10.15.3"
+  - "11.10.0"
 before_install:
   - cd barter-web-app
   - npm i -g npm@6.7.0
