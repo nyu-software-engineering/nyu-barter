@@ -7,4 +7,7 @@ const PreviewPicture = (props) =>{
     );
 };
 
+
+
 export default PreviewPicture;
+

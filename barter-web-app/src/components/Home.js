@@ -1,10 +1,13 @@
 import React, { Component } from 'react';
-import '../App.css';
+// import '../App.css';
 import firebase from 'firebase';
 import Rebase from 're-base';
 import StyledFirebaseAuth from "react-firebaseui/StyledFirebaseAuth";
 import { NavLink } from "react-router-dom";
 import PreviewPicture from './PreviewPicture';
+
+
+
 
 const config = {
     apiKey: process.env.REACT_APP_FIREBASE_KEY,
@@ -14,7 +17,6 @@ const config = {
     storageBucket: process.env.REACT_APP_FIREBASE_STORAGE_BUCKET,
     messagingSenderId: process.env.REACT_APP_FIREBASE_SENDER_ID
 };
-
 
 const app = firebase.initializeApp(config);
 const base = Rebase.createClass(app.database());
@@ -57,12 +59,13 @@ class Home extends React.Component {
           title,
           userID,
     });
+
     this.setState({dateTime: ''});
     this.setState({descr: ''});
     this.setState({photoUrl: ''});
     this.setState({title: ''});
   }
-
+  
   componentDidMount = ()=>{
     firebase.auth().onAuthStateChanged(user =>{
       this.setState({isSignedIn:!!user});

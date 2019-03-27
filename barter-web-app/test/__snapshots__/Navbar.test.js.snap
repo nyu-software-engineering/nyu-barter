@@ -1,0 +1,34 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Link changes the class when hovered 1`] = `
+<nav>
+  <div>
+    <ul>
+      <li>
+        <a
+          className="normal"
+          href="/"
+          onMouseEnter={[Function]}
+          onMouseLeave={[Function]}
+        >
+          Home
+        </a>
+      </li>
+      <li>
+        <a
+          href="/interests"
+        >
+          Interests
+        </a>
+      </li>
+      <li>
+        <a
+          href="/inventory"
+        >
+          Inventory
+        </a>
+      </li>
+    </ul>
+  </div>
+</nav>
+`;
