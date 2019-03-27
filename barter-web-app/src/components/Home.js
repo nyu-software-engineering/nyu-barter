@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-// import '../App.css';
+import '../App.css';
 import firebase from 'firebase';
 import Rebase from 're-base';
 import StyledFirebaseAuth from "react-firebaseui/StyledFirebaseAuth";
@@ -65,7 +65,7 @@ class Home extends React.Component {
     this.setState({photoUrl: ''});
     this.setState({title: ''});
   }
-  
+
   componentDidMount = ()=>{
     firebase.auth().onAuthStateChanged(user =>{
       this.setState({isSignedIn:!!user});
