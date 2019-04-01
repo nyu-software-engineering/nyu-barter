@@ -113,12 +113,18 @@ class Home extends React.Component {
           <span>
            <header>
           <div className='wrapper'>
-            <h1>NYU Barter</h1>
+
+            <nav className = "navbar navbar-expand-lg navbar-light bg-light">
+            <h1 className = "navbar-brand">NYU Barter</h1>
             <script src="https://www.gstatic.com/firebasejs/5.8.4/firebase.js"></script>
-            <input type="text" name="search" placeholder="Search for items" />
-              <NavLink to="/inventory"><button type="myItems">My Items</button></NavLink>
-              <NavLink to="/interests"><button type="interestedItems">Interested Items</button></NavLink>
-              <button onClick={() => firebase.auth().signOut()}>Logout</button>
+            <button className = "navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+              <span className = "navbar-toggler-icon"></span>
+            </button>
+            <input className = "form-control" type="text" name="search" placeholder="Search for items" />
+              <NavLink to="/inventory"><button className = "btn btn-info" type="myItems">My Items</button></NavLink>
+              <NavLink to="/interests"><button className = "btn btn-info" type="interestedItems">Interested Items</button></NavLink>
+              <button className = "btn btn-info" onClick={() => firebase.auth().signOut()}>Logout</button>
+            </nav>
           </div>
       </header>
       <div className='container'>
