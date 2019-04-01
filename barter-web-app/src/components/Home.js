@@ -113,17 +113,55 @@ class Home extends React.Component {
           <span>
            <header>
           <div className='wrapper'>
-
-            <nav className = "navbar navbar-expand-lg navbar-light bg-light">
-            <h1 className = "navbar-brand">NYU Barter</h1>
-            <script src="https://www.gstatic.com/firebasejs/5.8.4/firebase.js"></script>
-            <button className = "navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-              <span className = "navbar-toggler-icon"></span>
+          <nav className ="navbar navbar-expand-lg navbar-light bg-light">
+            <a className ="navbar-brand" href="#">NYU Barter</a>
+            <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+              <span className ="navbar-toggler-icon"></span>
             </button>
-            <input className = "form-control" type="text" name="search" placeholder="Search for items" />
+          <div className ="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul className ="navbar-nav mr-auto">
+              <li className ="nav-item active">
               <NavLink to="/inventory"><button className = "btn btn-info" type="myItems">My Items</button></NavLink>
-              <NavLink to="/interests"><button className = "btn btn-info" type="interestedItems">Interested Items</button></NavLink>
-              <button className = "btn btn-info" onClick={() => firebase.auth().signOut()}>Logout</button>
+            </li>
+            <li className="nav-item">
+             <NavLink to="/interests"><button className = "btn btn-info" type="interestedItems">Interested Items</button></NavLink>
+            </li>
+            <li className ="nav-item">
+                    <button className = "btn btn-info" onClick={() => firebase.auth().signOut()}>Logout</button>
+            </li>
+            </ul>
+          </div>
+
+            {/* <nav className = "navbar navbar-expand-lg navbar-light bg-light">
+              <h1 className = "navbar-brand">NYU Barter</h1>
+              <script src="https://www.gstatic.com/firebasejs/5.8.4/firebase.js"></script>
+              <button className = "navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span className = "navbar-toggler-icon"></span>
+              </button>
+              <div className ="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul className ="navbar-nav mr-auto">
+                  <li className  ="nav-item active">
+                    <NavLink to="/inventory"><button className = "btn btn-info" type="myItems">My Items</button></NavLink>
+                  </li>
+                  <li className ="nav-item">
+                    <NavLink to="/interests"><button className = "btn btn-info" type="interestedItems">Interested Items</button></NavLink>
+                  </li>
+                  <li className ="nav-item">
+                    <button className = "btn btn-info" onClick={() => firebase.auth().signOut()}>Logout</button>
+                  </li>
+                </ul>
+              </div> 
+
+              <form class="form-inline my-2 my-lg-0">
+                <input class="form-control mr-sm-2"  type="text" name="search" placeholder="Search for items" />
+                <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+            </form>
+              
+            </nav> */}
+            <form className ="form-inline my-2 my-lg-0">
+      <input className ="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search"/>
+      <button className ="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+    </form>
             </nav>
           </div>
       </header>
