@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-// import '../App.css';
+import '../App.css';
 import firebase from 'firebase';
 import Rebase from 're-base';
 import StyledFirebaseAuth from "react-firebaseui/StyledFirebaseAuth";
@@ -65,7 +65,7 @@ class Home extends React.Component {
     this.setState({photoUrl: ''});
     this.setState({title: ''});
   }
-  
+
   componentDidMount = ()=>{
     firebase.auth().onAuthStateChanged(user =>{
       this.setState({isSignedIn:!!user});
@@ -82,7 +82,8 @@ class Home extends React.Component {
       var k = keys[i];
       var user = barters[k].userID;
       var title = barters[k].title;
-      result.push({user, title});
+      var photoUrl = barters[k].photoUrl;
+      result.push({user, title, photoUrl});
     }
     this.setState({keys: result});
   }
@@ -101,9 +102,9 @@ class Home extends React.Component {
   render() {
     const keys = this.state.keys;
     const itemList = keys.map(itemId => {
-      console.log(itemId.title)
+      console.log(itemId, "ok")
       return(
-        <li>{itemId.title}</li>
+        <li>{itemId.title}: <PreviewPicture photoUrl={itemId.photoUrl}/></li>
       )
     });
     return (
