@@ -99,22 +99,28 @@ class Home extends React.Component {
     });
   }
 
-  render() {
+  renderCards () {
     const keys = this.state.keys;
     const itemList = keys.map(itemId => {
       console.log(itemId, "ok")
       return(
 
-        <div className ="card" styles="width: 18rem;">
-          <p className = "card-img top"><PreviewPicture photoUrl={itemId.photoUrl}/></p>
-          <div className ="card-body">
-            <h5 className ="card-title">{itemId.title}</h5>
+        <div className = "col-3"> 
+          <div className ="card" styles="width: 18rem;">
+            <p className = "card-img top"><PreviewPicture photoUrl={itemId.photoUrl}/></p>
+            <div className ="card-body">
+              <h5 className ="card-title">{itemId.title}</h5>
+            </div>
           </div>
         </div>
-
     //  
       )
     });
+    return itemList;
+  }
+
+  render() {
+
     return (
       <div className='home'>
       {this.state.isSignedIn ? (
@@ -165,9 +171,9 @@ class Home extends React.Component {
         </section>
         <section className='display-item'>
           <div className='wrapper'>
-            <ul>
-              {itemList}
-            </ul>
+            <div className="row">
+              {this.renderCards()}
+            </div>
           </div>
         </section>
       </div>
