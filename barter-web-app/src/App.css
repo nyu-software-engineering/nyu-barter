@@ -1,8 +1,24 @@
-button { 
+/* button { 
   margin: 5px 5px 5px 5px;
-  /* margin-right: 150px;  */
+  /* margin-right: 150px;  
+
+} */
+
+.btn-primary, .btn-primary:hover, .btn-primary:active, .btn-primary:visited {
+  
+  background-color: rgb(255, 63, 85); 
+  border-color:  rgb(255, 63, 85); 
+  border-radius: 15px;  
 
 }
+
+.form-inline .form-control {
+  display: inline-block;
+  width: 700px;
+  vertical-align: middle;
+}
+
+
 
 
 

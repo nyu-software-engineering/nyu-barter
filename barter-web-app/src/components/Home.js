@@ -104,7 +104,15 @@ class Home extends React.Component {
     const itemList = keys.map(itemId => {
       console.log(itemId, "ok")
       return(
-        <li>{itemId.title}: <PreviewPicture photoUrl={itemId.photoUrl}/></li>
+
+        <div className ="card" styles="width: 18rem;">
+          <p className = "card-img top"><PreviewPicture photoUrl={itemId.photoUrl}/></p>
+          <div className ="card-body">
+            <h5 className ="card-title">{itemId.title}</h5>
+          </div>
+        </div>
+
+    //  
       )
     });
     return (
@@ -124,15 +132,15 @@ class Home extends React.Component {
                 <input class="form-control mr-sm-2" name = "search" type="search" placeholder="Search" aria-label="Search" />
                 <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
               </form>
-                <ul class="navbar-nav mr-auto">
+                <ul class="navbar-nav ml-auto">
                   <li class="nav-item active">
-                    <NavLink to="/inventory"><button className = "btn btn-info btn-toolbar " type="myItems">My Items</button></NavLink>
+                    <NavLink to="/inventory"> <button className = "btn btn-primary m-2 " type="myItems">My Items</button></NavLink>
                   </li>
                   <li class="nav-item">
-                    <NavLink to="/interests"><button className = "btn btn-info btn-toolbar" type="interestedItem">Interested Items</button></NavLink>
+                    <NavLink to="/interests"><button className = "btn btn-primary m-2" type="interestedItem">Interested Items</button></NavLink>
                   </li>
                 <li class="nav-item">
-                  <button className = "btn btn-info btn-toolbar" onClick={() => firebase.auth().signOut()}>Logout</button>
+                  <button className = "btn btn-primary m-2" onClick={() => firebase.auth().signOut()}>Logout</button>
                 </li>
               </ul>
               
