@@ -16,6 +16,9 @@ class AddInfoController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        print("travis ci!");
+        
     }
     
 }
