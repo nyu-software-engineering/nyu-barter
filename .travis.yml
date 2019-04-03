@@ -1,0 +1,7 @@
+language: swift  #1
+osx_image: xcode10.1 #2
+xcode_project: barterApp.xcodeproj #3
+xcode_scheme: barterApp #4
+
+notifications:
+  slack: nyu-agile-software:4Ll9V7RPK8fkqf2dGDvWiEGt
