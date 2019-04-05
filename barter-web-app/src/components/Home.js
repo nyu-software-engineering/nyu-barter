@@ -50,6 +50,7 @@ class Home extends React.Component {
     }
   }
   onSubmit(event){
+      var userRef = firebase.database().ref('barterUsers/' + userID).child('myItems')
       var newPostKey = firebase.database().ref().child('barters').push().key;
       const {isSignedIn, title, descr, photoUrl, userID} = this.state;
       firebase.database().ref('barters/' + newPostKey).set({
@@ -60,6 +61,15 @@ class Home extends React.Component {
           userID,
     });
 
+    var newUserKey = firebase.database().ref('barterUsers/' + userID + '/myItems').push().key;
+    firebase.database().ref('barterUsers/' + userID + '/myItems/' + newUserKey).set({
+      dateTime: firebase.database.ServerValue.TIMESTAMP,
+      descr,
+      photoUrl,
+      title,
+      userID,
+    })
+
     this.setState({dateTime: ''});
     this.setState({descr: ''});
     this.setState({photoUrl: ''});
@@ -68,6 +78,20 @@ class Home extends React.Component {
 
   componentDidMount = ()=>{
     firebase.auth().onAuthStateChanged(user =>{
+      //Start change
+      if(user){
+        const userRef = firebase.database().ref('barterUsers')
+        const curUser = user.uid;
+        
+        userRef.orderByValue().equalTo(curUser).once("value",snapshot => {
+          if (!snapshot.exists()){
+            //userRef.child('userID').set(curUser)
+            userRef.child(curUser)
+          }
+            
+        })
+      }
+      //End changes
       this.setState({isSignedIn:!!user});
       this.setState({userID:user['uid']});
     });
@@ -182,6 +206,7 @@ class Home extends React.Component {
           <StyledFirebaseAuth class="LoginButtons"
             uiConfig={this.uiConfig}
             firebaseAuth={firebase.auth()}
+
           />
         )}
       </div>
