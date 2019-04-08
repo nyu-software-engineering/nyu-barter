@@ -10,11 +10,11 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Navigation Controller-->
+        <!--Post-->
         <scene sceneID="NRD-Nb-KY1">
             <objects>
                 <navigationController id="jxW-qc-kvZ" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" systemItem="more" id="YVL-c5-3t0"/>
+                    <tabBarItem key="tabBarItem" title="Post" image="post" selectedImage="post" id="YVL-c5-3t0"/>
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="IZe-CP-E9e">
                         <rect key="frame" x="0.0" y="44" width="414" height="44"/>
@@ -124,4 +124,7 @@
             <point key="canvasLocation" x="2184" y="151"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="post" width="45" height="45"/>
+    </resources>
 </document>
