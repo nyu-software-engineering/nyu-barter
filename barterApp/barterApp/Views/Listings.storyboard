@@ -28,14 +28,24 @@
             </objects>
             <point key="canvasLocation" x="-298" y="150"/>
         </scene>
-        <!--View Controller-->
+        <!--Listings View Controller-->
         <scene sceneID="m1J-mt-u5L">
             <objects>
-                <viewController id="RzU-rH-gpd" sceneMemberID="viewController">
+                <viewController id="RzU-rH-gpd" customClass="ListingsViewController" customModule="barterApp" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="513-uV-ocB">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" red="0.94901960780000005" green="0.33333333329999998" blue="0.32156862749999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="14I-Hm-PfJ">
+                                <rect key="frame" x="115" y="396" width="185" height="104"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Log Out"/>
+                                <connections>
+                                    <action selector="logOut:" destination="RzU-rH-gpd" eventType="touchUpInside" id="ahL-ed-Sxp"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <viewLayoutGuide key="safeArea" id="vaa-h8-zwf"/>
                     </view>
                     <navigationItem key="navigationItem" id="wnE-cb-dRm"/>
