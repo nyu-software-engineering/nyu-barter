@@ -21,22 +21,34 @@ class TakePhotoController: UIViewController  {
     
     var currentVC: UIViewController!
     
+    var flag = true
+    
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
+        showAlert()
         
-        let actionSheet = UIAlertController(title: nil, message: nil, preferredStyle: .actionSheet)
+      
+    }
+    
+    func showAlert(){
         
-        actionSheet.addAction(UIAlertAction(title: "Camera", style: .default, handler: { (alert:UIAlertAction!) -> Void in
-            self.camera()
-        }))
-        
-        actionSheet.addAction(UIAlertAction(title: "Gallery", style: .default, handler: { (alert:UIAlertAction!) -> Void in
-            self.photoLibrary()
-        }))
-        
-        actionSheet.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
-        
-        self.present(actionSheet, animated: true, completion: nil)
+        if(flag){
+            let actionSheet = UIAlertController(title: nil, message: nil, preferredStyle: .actionSheet)
+            
+            actionSheet.addAction(UIAlertAction(title: "Camera", style: .default, handler: { (alert:UIAlertAction!) -> Void in
+                self.camera()
+            }))
+            
+            actionSheet.addAction(UIAlertAction(title: "Gallery", style: .default, handler: { (alert:UIAlertAction!) -> Void in
+                self.photoLibrary()
+            }))
+            
+            actionSheet.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
+            
+            self.present(actionSheet, animated: true, completion: nil)
+            flag = false
+            
+        }
         
     }
     
@@ -46,6 +58,8 @@ class TakePhotoController: UIViewController  {
     @IBOutlet weak var descriptionOutlet: UITextField!
     
     @IBAction func post(_ sender: Any) {
+        
+        
         if (!titleOutlet.text!.isEmpty && !descriptionOutlet.text!.isEmpty){
             
             
@@ -59,9 +73,7 @@ class TakePhotoController: UIViewController  {
             self.ref.child("barters").childByAutoId().setValue(["userID": userId, "title": itemTitle, "descr" : itemDescription, "dateTime": dateTime,  "photoUrl" : photoUrl])
             
             uploadMedia()
-            
-            
-            
+            dismiss(animated: true, completion: nil)
             
             
             
@@ -71,7 +83,7 @@ class TakePhotoController: UIViewController  {
     
     func uploadMedia() {
         
-        let storageRef = Storage.storage().reference().child("items")
+        let storageRef = Storage.storage().reference().child("items/grass.png")
         
         if let uploadData = self.photo.image!.pngData(){
             
@@ -86,6 +98,8 @@ class TakePhotoController: UIViewController  {
             
         }
     }
+    
+    
     
     func camera()
     {
