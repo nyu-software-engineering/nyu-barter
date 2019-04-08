@@ -9,17 +9,111 @@
 import UIKit
 import CoreData
 import Firebase
+import GoogleSignIn
+import FBSDKCoreKit
 
 @UIApplicationMain
-class AppDelegate: UIResponder, UIApplicationDelegate {
+class AppDelegate: UIResponder, UIApplicationDelegate, GIDSignInDelegate {
 
     var window: UIWindow?
 
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
+        FBSDKApplicationDelegate.sharedInstance().application(application, didFinishLaunchingWithOptions : launchOptions)
         FirebaseApp.configure()
+        GIDSignIn.sharedInstance().clientID = FirebaseApp.app()?.options.clientID
+        GIDSignIn.sharedInstance().delegate = self
         return true
+    }
+    
+    func application(_ application: UIApplication, open url: URL, options: [UIApplication.OpenURLOptionsKey : Any]) -> Bool {
+        
+        let googleDidHandle = GIDSignIn.sharedInstance().handle(url,sourceApplication:options[UIApplication.OpenURLOptionsKey.sourceApplication] as? String, annotation: [:])
+        
+        
+        let facebookDidHandle = FBSDKApplicationDelegate.sharedInstance().application(application, open: url, sourceApplication: options[UIApplication.OpenURLOptionsKey.sourceApplication] as? String, annotation: options[UIApplication.OpenURLOptionsKey.annotation])
+        
+        return googleDidHandle || facebookDidHandle
+    }
+    
+    
+    func sign(_ signIn: GIDSignIn!, didSignInFor user: GIDGoogleUser!, withError error: Error?) {
+        
+        if let error = error {
+            print(error)
+            return
+        }
+        
+        guard let authentication = user.authentication else { return }
+        let credential = GoogleAuthProvider.credential(withIDToken: authentication.idToken,
+                                                       accessToken: authentication.accessToken)
+        Auth.auth().signInAndRetrieveData(with: credential) { (authResult, error) in
+            if let error = error {
+                print(error)
+                return
+            }
+            // User is signed in
+            // ...
+            if let user = user {
+                // User found
+                BACurrentUser.currentUser.uid = Auth.auth().currentUser?.uid
+                var userValues: [String: Any] = [:]
+                if let usersName = user.profile.givenName {
+                    BACurrentUser.currentUser.fName = usersName
+                    BACurrentUser.currentUser.lName = user.profile.familyName
+                    userValues["fName"] = user.profile.givenName
+                    userValues["lName"] = user.profile.familyName
+                }
+                if let usersPhoto = user.profile.imageURL(withDimension: 250) {
+                    BACurrentUser.currentUser.photoURL = usersPhoto.absoluteString
+                    userValues["photoURL"] = usersPhoto.absoluteString
+                }
+                if let usersEmail = user.profile.email {
+                    BACurrentUser.currentUser.email = usersEmail
+                    userValues["email"] = usersEmail
+                }
+                
+                // Update the users values (or create them if this is the first login)
+                DataService.sharedInstance.USER_REF.child(BACurrentUser.currentUser.uid!).updateChildValues(userValues, withCompletionBlock: { err, ref in
+                    if let error = err {
+                        print(error.localizedDescription)
+                    } else {
+                        
+                        let storyboard = UIStoryboard(name: "Tab", bundle: nil)
+                        let mainPage = storyboard.instantiateViewController(withIdentifier: "MainTab")
+                        self.window?.rootViewController = mainPage
+                        
+                        
+                        
+                        // Here is the logic for checking a verified phone, we wont use that in this sprint
+                        
+                        
+                        
+//                        self.phoneCheck = Database.database().reference()
+//                        self.phoneCheck.child("users").child(userID!).observeSingleEvent(of: .value, with: { (snapshot) in
+//                            // Get user value
+//                            if snapshot.hasChild("phoneNumber"){
+//                                print("fonud")
+//                                let storyboard = UIStoryboard(name: "Tab", bundle: nil)
+//                                let mainPage = storyboard.instantiateViewController(withIdentifier: "MainTab")
+//                                self.window?.rootViewController = mainPage
+//                            }else{
+//                                print("We did it!")
+//                                let storyboard = UIStoryboard(name: "Main", bundle: nil)
+//                                let mainPage = storyboard.instantiateViewController(withIdentifier: "StartVerificationViewController")
+//                                self.window?.rootViewController = mainPage
+//                            }
+                        
+                            // ...
+//                        }) { (error) in
+//                            print(error.localizedDescription)
+//                        }
+                        
+                    }
+                })
+            }
+        }
     }
 
     func applicationWillResignActive(_ application: UIApplication) {
