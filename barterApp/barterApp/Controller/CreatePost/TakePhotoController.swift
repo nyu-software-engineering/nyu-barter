@@ -29,6 +29,7 @@ class TakePhotoController: UIViewController  {
         
       
     }
+   
     
     func showAlert(){
         
@@ -128,6 +129,11 @@ class TakePhotoController: UIViewController  {
 
 
 extension TakePhotoController: UITextFieldDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
+    
+    override func viewDidLoad() {
+        self.titleOutlet.delegate = self
+        self.descriptionOutlet.delegate = self
+    }
     
     
     func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
