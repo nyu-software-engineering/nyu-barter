@@ -16,6 +16,9 @@ import Photos
 class TakePhotoController: UIViewController  {
     
     var ref: DatabaseReference!
+    
+    var storageRef: StorageReference!
+    
     var currentVC: UIViewController!
     
     override func viewDidAppear(_ animated: Bool) {
@@ -37,7 +40,6 @@ class TakePhotoController: UIViewController  {
         
     }
     
-    
     //Outlets
     @IBOutlet weak var photo: UIImageView!
     @IBOutlet weak var titleOutlet: UITextField!
@@ -53,12 +55,36 @@ class TakePhotoController: UIViewController  {
             let itemTitle = titleOutlet.text
             let itemDescription = descriptionOutlet.text
             let dateTime = ServerValue.timestamp()
-            let photoURL = ""
-            self.ref.child("barters").childByAutoId().setValue(["userID": userId, "title": itemTitle, "descr" : itemDescription, "dateTime": dateTime,  "photoUrl" : photoURL])
+            let photoUrl =  "hello"
+            self.ref.child("barters").childByAutoId().setValue(["userID": userId, "title": itemTitle, "descr" : itemDescription, "dateTime": dateTime,  "photoUrl" : photoUrl])
+            
+            uploadMedia()
+            
+            
+            
+            
             
             
         }
         
+    }
+    
+    func uploadMedia() {
+        
+        let storageRef = Storage.storage().reference().child("items")
+        
+        if let uploadData = self.photo.image!.pngData(){
+            
+            storageRef.putData(uploadData, metadata: nil, completion:
+                { (metadata, error) in
+                if error != nil {
+                    print(error)
+                    return
+                }
+                print(metadata)
+            })
+            
+        }
     }
     
     func camera()
