@@ -44,7 +44,10 @@ class TakePhotoController: UIViewController  {
                 self.photoLibrary()
             }))
             
-            actionSheet.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
+            //actionSheet.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
+            actionSheet.addAction(UIAlertAction(title: "Cancel", style: .default, handler: { (alert:UIAlertAction!) -> Void in
+                self.dismiss(animated: true, completion: nil)
+            }))
             
             self.present(actionSheet, animated: true, completion: nil)
             flag = false
