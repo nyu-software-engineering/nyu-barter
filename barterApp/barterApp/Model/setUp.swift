@@ -22,7 +22,7 @@ class setUp: NSObject{
         menuBtn.setImage(UIImage(named:"BlankProfilePicture.png"), for: .normal)
         if let usersPhoto = BACurrentUser.currentUser.photoURL {
             let url = URL(string: usersPhoto)
-            menuBtn.kf.setImage(with: url, for: .normal)
+            menuBtn.kf.setImage(with: url, for: .normal, placeholder: UIImage(named:"BlankProfilePicture.png"))
         }
 
 
