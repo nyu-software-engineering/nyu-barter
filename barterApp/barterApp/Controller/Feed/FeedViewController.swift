@@ -55,11 +55,21 @@ class FeedViewController: UIViewController, UICollectionViewDataSource, UICollec
         collectionView.reloadData()
         
         observeServicesOnBackend()
-        hideKeyboardWhenTappedAround()
         
+        let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(self.dismissKeyboard))
+        view.addGestureRecognizer(tap)
     
     }
     
+    @objc func dismissKeyboard() {
+        //Causes the view (or one of its embedded text fields) to resign the first responder status.
+        self.navigationController?.navigationBar.topItem?.titleView!.endEditing(true)
+        print("Registered")
+    }
+    func scrollViewDidScroll(_ scrollView: UIScrollView) {
+        self.navigationController?.navigationBar.topItem?.titleView!.endEditing(true)
+    }
+        
 
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
