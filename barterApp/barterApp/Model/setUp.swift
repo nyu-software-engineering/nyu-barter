@@ -8,16 +8,19 @@
 
 import Foundation
 import UIKit
+import Kingfisher
 
 
-struct setUp{
+class setUp: NSObject{
+    
+    
     
     
     static func feedNav(navItem : UINavigationItem){
         let menuBtn = UIButton(type: .custom)
         menuBtn.frame = CGRect(x: 0.0, y: 0.0, width: 25, height: 25)
         menuBtn.setImage(UIImage(named:"BlankProfilePicture.png"), for: .normal)
-        //menuBtn.addTarget(self, action: #selector(sideMenu), for: UIControlEvents.touchUpInside)
+      //  menuBtn.addTarget(self, action: #selector(setUp.sideMenu), for: UIControl.Event.touchUpInside)
         menuBtn.showsTouchWhenHighlighted = true
         let menuBarItem = UIBarButtonItem(customView: menuBtn)
         let currWidth = menuBarItem.customView?.widthAnchor.constraint(equalToConstant: 25)
@@ -52,4 +55,9 @@ struct setUp{
         navCon.navigationBar.setBackgroundImage(UIImage(), for: .default)
         navCon.navigationBar.shadowImage = UIImage()
     }
+    
+    @objc func sideMenu(){
+        print("Here")
+    }
+    
 }

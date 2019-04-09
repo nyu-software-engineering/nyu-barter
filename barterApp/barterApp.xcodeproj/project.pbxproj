@@ -9,13 +9,21 @@
 /* Begin PBXBuildFile section */
 		40A12E8752F781D8990F0D9B /* Pods_barterAppTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 201EB24DE270DF9CAFC78EBD /* Pods_barterAppTests.framework */; };
 		98351CCC22230400007EC636 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98351CCB22230400007EC636 /* AppDelegate.swift */; };
-		98351CCE22230400007EC636 /* InitialViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98351CCD22230400007EC636 /* InitialViewController.swift */; };
 		98351CD122230400007EC636 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 98351CCF22230400007EC636 /* Main.storyboard */; };
 		98351CD422230400007EC636 /* barterApp.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 98351CD222230400007EC636 /* barterApp.xcdatamodeld */; };
 		98351CD622230401007EC636 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 98351CD522230401007EC636 /* Assets.xcassets */; };
 		98351CD922230401007EC636 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 98351CD722230401007EC636 /* LaunchScreen.storyboard */; };
 		98351CE422230401007EC636 /* barterAppTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98351CE322230401007EC636 /* barterAppTests.swift */; };
 		98351CEF22230401007EC636 /* barterAppUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98351CEE22230401007EC636 /* barterAppUITests.swift */; };
+		9836687B225B9CB6003CBD24 /* CustomOverlay.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98366877225B9CB4003CBD24 /* CustomOverlay.swift */; };
+		9836687C225B9CB6003CBD24 /* CustomPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98366878225B9CB5003CBD24 /* CustomPage.swift */; };
+		9836687D225B9CB6003CBD24 /* MenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98366879225B9CB6003CBD24 /* MenuViewController.swift */; };
+		9836687E225B9CB6003CBD24 /* InitialViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9836687A225B9CB6003CBD24 /* InitialViewController.swift */; };
+		98366881225B9D29003CBD24 /* CustomPage.xib in Resources */ = {isa = PBXBuildFile; fileRef = 98366880225B9D29003CBD24 /* CustomPage.xib */; };
+		98366883225B9F47003CBD24 /* BACurrentUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98366882225B9F47003CBD24 /* BACurrentUser.swift */; };
+		98366885225BA664003CBD24 /* CustomOverlay.xib in Resources */ = {isa = PBXBuildFile; fileRef = 98366884225BA664003CBD24 /* CustomOverlay.xib */; };
+		98366887225BB05B003CBD24 /* TheInterfaceManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98366886225BB05B003CBD24 /* TheInterfaceManager.swift */; };
+		9836688A225BBFED003CBD24 /* ListingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98366889225BBFED003CBD24 /* ListingsViewController.swift */; };
 		985820452226E9D400E03C17 /* GridLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 985820442226E9D400E03C17 /* GridLayout.swift */; };
 		985820472226EA1D00E03C17 /* ContentDynamicLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 985820462226EA1D00E03C17 /* ContentDynamicLayout.swift */; };
 		9858204B2226EF0E00E03C17 /* CellSizeProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9858204A2226EF0E00E03C17 /* CellSizeProvider.swift */; };
@@ -67,7 +75,6 @@
 		7B884781614DAD20890DA042 /* Pods-barterAppTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-barterAppTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-barterAppTests/Pods-barterAppTests.debug.xcconfig"; sourceTree = "<group>"; };
 		98351CC822230400007EC636 /* barterApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = barterApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		98351CCB22230400007EC636 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		98351CCD22230400007EC636 /* InitialViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InitialViewController.swift; sourceTree = "<group>"; };
 		98351CD022230400007EC636 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		98351CD322230400007EC636 /* barterApp.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = barterApp.xcdatamodel; sourceTree = "<group>"; };
 		98351CD522230401007EC636 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -79,6 +86,15 @@
 		98351CEA22230401007EC636 /* barterAppUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = barterAppUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		98351CEE22230401007EC636 /* barterAppUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = barterAppUITests.swift; sourceTree = "<group>"; };
 		98351CF022230401007EC636 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		98366877225B9CB4003CBD24 /* CustomOverlay.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomOverlay.swift; sourceTree = "<group>"; };
+		98366878225B9CB5003CBD24 /* CustomPage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomPage.swift; sourceTree = "<group>"; };
+		98366879225B9CB6003CBD24 /* MenuViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MenuViewController.swift; sourceTree = "<group>"; };
+		9836687A225B9CB6003CBD24 /* InitialViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InitialViewController.swift; sourceTree = "<group>"; };
+		98366880225B9D29003CBD24 /* CustomPage.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CustomPage.xib; sourceTree = "<group>"; };
+		98366882225B9F47003CBD24 /* BACurrentUser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BACurrentUser.swift; sourceTree = "<group>"; };
+		98366884225BA664003CBD24 /* CustomOverlay.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CustomOverlay.xib; sourceTree = "<group>"; };
+		98366886225BB05B003CBD24 /* TheInterfaceManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TheInterfaceManager.swift; sourceTree = "<group>"; };
+		98366889225BBFED003CBD24 /* ListingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListingsViewController.swift; sourceTree = "<group>"; };
 		985820442226E9D400E03C17 /* GridLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GridLayout.swift; sourceTree = "<group>"; };
 		985820462226EA1D00E03C17 /* ContentDynamicLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentDynamicLayout.swift; sourceTree = "<group>"; };
 		9858204A2226EF0E00E03C17 /* CellSizeProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CellSizeProvider.swift; sourceTree = "<group>"; };
@@ -232,6 +248,34 @@
 			path = barterAppUITests;
 			sourceTree = "<group>";
 		};
+		98366876225B9863003CBD24 /* Login */ = {
+			isa = PBXGroup;
+			children = (
+				98366877225B9CB4003CBD24 /* CustomOverlay.swift */,
+				98366878225B9CB5003CBD24 /* CustomPage.swift */,
+				9836687A225B9CB6003CBD24 /* InitialViewController.swift */,
+				98366879225B9CB6003CBD24 /* MenuViewController.swift */,
+			);
+			path = Login;
+			sourceTree = "<group>";
+		};
+		9836687F225B9D1F003CBD24 /* Login */ = {
+			isa = PBXGroup;
+			children = (
+				98366880225B9D29003CBD24 /* CustomPage.xib */,
+				98366884225BA664003CBD24 /* CustomOverlay.xib */,
+			);
+			path = Login;
+			sourceTree = "<group>";
+		};
+		98366888225BBFD1003CBD24 /* Listings */ = {
+			isa = PBXGroup;
+			children = (
+				98366889225BBFED003CBD24 /* ListingsViewController.swift */,
+			);
+			path = Listings;
+			sourceTree = "<group>";
+		};
 		985820432226E9A100E03C17 /* Layout */ = {
 			isa = PBXGroup;
 			children = (
@@ -246,6 +290,7 @@
 			children = (
 				9858204C2226EF9700E03C17 /* Font.swift */,
 				9858204E22273A2E00E03C17 /* Color.swift */,
+				98366886225BB05B003CBD24 /* TheInterfaceManager.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -253,6 +298,7 @@
 		986E06212226645A00CE7EB4 /* Feed */ = {
 			isa = PBXGroup;
 			children = (
+				98EA823F222EECDD00F0AFC9 /* CreatePost */,
 				98E879DC22260E700015F62D /* FeedViewController.swift */,
 				986E061F2226645300CE7EB4 /* FeedCollectionViewCell.swift */,
 			);
@@ -302,6 +348,7 @@
 				98E879DE222623080015F62D /* setUp.swift */,
 				98582056222EE27900E03C17 /* DataService.swift */,
 				98EA82422230490A00F0AFC9 /* BABarterItem.swift */,
+				98366882225B9F47003CBD24 /* BACurrentUser.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -309,6 +356,7 @@
 		98E879CF2225F9CA0015F62D /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				9836687F225B9D1F003CBD24 /* Login */,
 				985820432226E9A100E03C17 /* Layout */,
 				98351CCF22230400007EC636 /* Main.storyboard */,
 				98351CD722230401007EC636 /* LaunchScreen.storyboard */,
@@ -324,8 +372,8 @@
 		98E879D02225F9DD0015F62D /* Controller */ = {
 			isa = PBXGroup;
 			children = (
-				98EA823F222EECDD00F0AFC9 /* CreatePost */,
-				98351CCD22230400007EC636 /* InitialViewController.swift */,
+				98366888225BBFD1003CBD24 /* Listings */,
+				98366876225B9863003CBD24 /* Login */,
 				986E06212226645A00CE7EB4 /* Feed */,
 				9858205022274B9D00E03C17 /* TabViewController.swift */,
 			);
@@ -378,6 +426,7 @@
 				98351CC522230400007EC636 /* Frameworks */,
 				98351CC622230400007EC636 /* Resources */,
 				33DCD9FD92203DA1A55AEBE3 /* [CP] Embed Pods Frameworks */,
+				9C120F2B8F40C224597CF62E /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -478,9 +527,11 @@
 				98E879D22225FA400015F62D /* Tab.storyboard in Resources */,
 				98E879D922260BEC0015F62D /* Feed.storyboard in Resources */,
 				98351CD922230401007EC636 /* LaunchScreen.storyboard in Resources */,
+				98366885225BA664003CBD24 /* CustomOverlay.xib in Resources */,
 				98694FCB222305F8008AC17B /* GoogleService-Info.plist in Resources */,
 				98351CD622230401007EC636 /* Assets.xcassets in Resources */,
 				98351CD122230400007EC636 /* Main.storyboard in Resources */,
+				98366881225B9D29003CBD24 /* CustomPage.xib in Resources */,
 				98EA823C222EEA0900F0AFC9 /* CreatePost.storyboard in Resources */,
 				98E879D7222603090015F62D /* Default-568h@2x.png in Resources */,
 			);
@@ -546,15 +597,27 @@
 			);
 			inputPaths = (
 				"${SRCROOT}/Pods/Target Support Files/Pods-barterApp/Pods-barterApp-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/Bolts/Bolts.framework",
+				"${BUILT_PRODUCTS_DIR}/FBSDKCoreKit/FBSDKCoreKit.framework",
+				"${BUILT_PRODUCTS_DIR}/FBSDKLoginKit/FBSDKLoginKit.framework",
 				"${BUILT_PRODUCTS_DIR}/GTMSessionFetcher/GTMSessionFetcher.framework",
+				"${BUILT_PRODUCTS_DIR}/GoogleToolboxForMac/GoogleToolboxForMac.framework",
 				"${BUILT_PRODUCTS_DIR}/GoogleUtilities/GoogleUtilities.framework",
+				"${BUILT_PRODUCTS_DIR}/Kingfisher/Kingfisher.framework",
+				"${BUILT_PRODUCTS_DIR}/SwiftyOnboard/SwiftyOnboard.framework",
 				"${BUILT_PRODUCTS_DIR}/leveldb-library/leveldb.framework",
 				"${BUILT_PRODUCTS_DIR}/nanopb/nanopb.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Bolts.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FBSDKCoreKit.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FBSDKLoginKit.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GTMSessionFetcher.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GoogleToolboxForMac.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GoogleUtilities.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Kingfisher.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwiftyOnboard.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/leveldb.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/nanopb.framework",
 			);
@@ -581,6 +644,24 @@
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
+		9C120F2B8F40C224597CF62E /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${SRCROOT}/Pods/Target Support Files/Pods-barterApp/Pods-barterApp-resources.sh",
+				"${PODS_ROOT}/GoogleSignIn/Resources/GoogleSignIn.bundle",
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/GoogleSignIn.bundle",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-barterApp/Pods-barterApp-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
@@ -588,20 +669,26 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				98351CCE22230400007EC636 /* InitialViewController.swift in Sources */,
 				98582057222EE27900E03C17 /* DataService.swift in Sources */,
 				98E879D52226027B0015F62D /* appColors.swift in Sources */,
 				986E06202226645300CE7EB4 /* FeedCollectionViewCell.swift in Sources */,
 				98E879DD22260E700015F62D /* FeedViewController.swift in Sources */,
+				9836687B225B9CB6003CBD24 /* CustomOverlay.swift in Sources */,
 				98EA8241222EED1800F0AFC9 /* CreateViewController.swift in Sources */,
 				9858205122274B9D00E03C17 /* TabViewController.swift in Sources */,
 				985820472226EA1D00E03C17 /* ContentDynamicLayout.swift in Sources */,
 				9858204F22273A2E00E03C17 /* Color.swift in Sources */,
+				98366887225BB05B003CBD24 /* TheInterfaceManager.swift in Sources */,
+				9836687D225B9CB6003CBD24 /* MenuViewController.swift in Sources */,
+				9836688A225BBFED003CBD24 /* ListingsViewController.swift in Sources */,
 				98E879DF222623090015F62D /* setUp.swift in Sources */,
 				985820452226E9D400E03C17 /* GridLayout.swift in Sources */,
+				9836687E225B9CB6003CBD24 /* InitialViewController.swift in Sources */,
+				98366883225B9F47003CBD24 /* BACurrentUser.swift in Sources */,
 				9858204D2226EF9700E03C17 /* Font.swift in Sources */,
 				9858204B2226EF0E00E03C17 /* CellSizeProvider.swift in Sources */,
 				98351CD422230400007EC636 /* barterApp.xcdatamodeld in Sources */,
+				9836687C225B9CB6003CBD24 /* CustomPage.swift in Sources */,
 				E9A4570422331D4C000D6744 /* TakePhotoController.swift in Sources */,
 				98351CCC22230400007EC636 /* AppDelegate.swift in Sources */,
 				98EA82432230490A00F0AFC9 /* BABarterItem.swift in Sources */,
@@ -770,6 +857,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 12.1;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
+				"OTHER_LDFLAGS[sdk=iphoneos*]" = "-ObjC";
 				SDKROOT = iphoneos;
 				SWIFT_COMPILATION_MODE = wholemodule;
 				SWIFT_OPTIMIZATION_LEVEL = "-O";

@@ -6,8 +6,12 @@
 //  Copyright © 2019 Kevin Maldjian. All rights reserved.
 //
 
+
+
+
 import UIKit
 import Firebase
+import Kingfisher
 
 class FeedViewController: UIViewController, UICollectionViewDataSource, UICollectionViewDelegate{
 
@@ -31,6 +35,7 @@ class FeedViewController: UIViewController, UICollectionViewDataSource, UICollec
         //Navigation Setup
         setUp.feedNav(navItem: self.navigationItem)
         setUp.filterButton(navItem: self.navigationItem)
+        
         setUp.setUpNav(navCon: self.navigationController!)
         
         //Search Bar Setup
@@ -52,6 +57,10 @@ class FeedViewController: UIViewController, UICollectionViewDataSource, UICollec
         collectionView.reloadData()
         
         observeServicesOnBackend()
+        print("FIRST NAME" )
+        print(BACurrentUser.currentUser.photoURL)
+        
+
         
         
 //        let button = UIButton()
@@ -104,6 +113,11 @@ class FeedViewController: UIViewController, UICollectionViewDataSource, UICollec
                 self.collectionView.reloadData()
             }
         })
+    }
+    
+    
+    @objc func sideMenu(){
+        print("Over here")
     }
     
 
