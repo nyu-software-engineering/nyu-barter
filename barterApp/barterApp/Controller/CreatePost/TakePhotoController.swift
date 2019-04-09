@@ -197,7 +197,7 @@ extension TakePhotoController: UITextFieldDelegate, UIImagePickerControllerDeleg
 
     }
     
-    @objc func dismissKeyboard() {
+    @objc override func dismissKeyboard() {
         view.endEditing(true)
     }
     
