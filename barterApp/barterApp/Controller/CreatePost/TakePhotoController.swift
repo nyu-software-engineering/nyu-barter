@@ -23,16 +23,21 @@ class TakePhotoController: UIViewController  {
     
     var flag = true
     
+
+    
+    //Outlets
+    @IBOutlet weak var photo: UIImageView!
+    @IBOutlet weak var titleOutlet: UITextField!
+    @IBOutlet weak var descriptionOutlet: UITextField!
+    
+    
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         showAlert()
-        
-      
     }
-   
+    
     
     func showAlert(){
-        
         if(flag){
             let actionSheet = UIAlertController(title: nil, message: nil, preferredStyle: .actionSheet)
             
@@ -51,65 +56,32 @@ class TakePhotoController: UIViewController  {
             
             self.present(actionSheet, animated: true, completion: nil)
             flag = false
-            
         }
-        
     }
     
-    //Outlets
-    @IBOutlet weak var photo: UIImageView!
-    @IBOutlet weak var titleOutlet: UITextField!
-    @IBOutlet weak var descriptionOutlet: UITextField!
-    
     @IBAction func post(_ sender: Any) {
-        
-        
         if (!titleOutlet.text!.isEmpty && !descriptionOutlet.text!.isEmpty){
-            
-            
             print("Posting Data")
             ref = Database.database().reference()
             let userId = BACurrentUser.currentUser.uid
             let itemTitle = titleOutlet.text
             let itemDescription = descriptionOutlet.text
             let dateTime = ServerValue.timestamp()
-           // let photoUrl =  "hello"
-           // self.ref.child("barters").childByAutoId().setValue(["userID": userId, "title": itemTitle, "descr" : itemDescription, "dateTime": dateTime,  "photoUrl" : photoUrl])
-            
-            
-            
-            
             uploadMedia() { url in
                 guard let url = url else { return }
                 self.ref.child("barters").childByAutoId().setValue([
                     "userID"    : userId!,
-                    "title"      : itemTitle!,
-                    "descr"    : itemDescription!,
-                    "dateTime"     : dateTime,
-                    "photoUrl"       : url,
+                    "title"     : itemTitle!,
+                    "descr"     : itemDescription!,
+                    "dateTime"  : dateTime,
+                    "photoUrl"  : url,
                     ])
-            }
+                }
+            self.tabBarController?.selectedIndex = 0
         }
-            dismiss(animated: true, completion: nil)
-        }
+    }
     
-//    func uploadMediaa() {
-//
-//        // let storageRef = Storage.storage().reference().child()
-//
-//        if let uploadData = self.photo.image!.pngData(){
-//
-//            storageRef.putData(uploadData, metadata: nil, completion:
-//                { (metadata, error) in
-//                if error != nil {
-//                    print(error)
-//                    return
-//                }
-//                print(metadata)
-//            })
-//
-//        }
-//    }
+
     
     
     func uploadMedia(completion: @escaping (_ url: String?) -> Void) {
@@ -128,35 +100,7 @@ class TakePhotoController: UIViewController  {
             }
         }
     }
-
-//    func uploadProfileImage(_ image:UIImage, completion: @escaping ((_ url:URL?)->())) {
-//        guard let uid = Auth.auth().currentUser?.uid else { return }
-//        let storageRef = Storage.storage().reference().child("user/\(uid)")
-//
-//        let imageData = photo.image!.jpegData(compressionQuality: 0.75)
-//
-//        let metaData = StorageMetadata()
-//        metaData.contentType = "image/jpg"
-//
-//        storageRef.putData(imageData!, metadata: metaData) { metaData, error in
-//            if error == nil, metaData != nil {
-//
-//                storageRef.downloadURL { url, error in
-//                    completion(url)
-//                    // success!
-//                }
-//            } else {
-//                // failed
-//                completion(nil)
-//            }
-//        }
-//    }
-    
-
-        
-    
-    
-    
+ 
     func camera()
     {
         if UIImagePickerController.isSourceTypeAvailable(.camera){
