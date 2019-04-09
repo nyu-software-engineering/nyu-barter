@@ -199,14 +199,7 @@ extension TakePhotoController: UITextFieldDelegate, UIImagePickerControllerDeleg
         return keyboardSize.cgRectValue.height
     }
     
-<<<<<<< HEAD
-   
-  
-    @objc func dismissKeyboard() {
-        view.endEditing(true)
-    }
-    
-||||||| merged common ancestors
+
     func unsubscribeFromKeyboardNotifications(){
         
         NotificationCenter.default.removeObserver(self)
@@ -218,16 +211,5 @@ extension TakePhotoController: UITextFieldDelegate, UIImagePickerControllerDeleg
     @objc func dismissKeyboard() {
         view.endEditing(true)
     }
-    
-=======
-    func unsubscribeFromKeyboardNotifications(){
-        
-        NotificationCenter.default.removeObserver(self)
-        
-        
-
-    }
-    
->>>>>>> dd4fe0c1afdb9d5a135550c933f135141a084126
     
 }
