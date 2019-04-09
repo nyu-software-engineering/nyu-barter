@@ -1,6 +1,6 @@
 //
 //  StoryboardExampleViewController.swift
-//  rushApp
+//  barterApp
 //
 //  Created by Kevin Maldjian on 8/8/18.
 //  Copyright © 2018 Kevin Maldjian. All rights reserved.
@@ -85,7 +85,7 @@ extension MenuViewController: SwiftyOnboardDelegate, SwiftyOnboardDataSource {
         if index == 0 {
             //On the first page, change the text in the labels to say the following:
             view?.titleLabel.text = "Rush"
-            view?.subTitleLabel.text = "List items you want \n to trade"
+            view?.subTitleLabel.text = "List items you wish \n to trade"
         } else if index == 1 {
             //On the second page, change the text in the labels to say the following:
             view?.titleLabel.text = "Rush"

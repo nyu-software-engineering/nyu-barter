@@ -10,7 +10,7 @@ import UIKit
 
 class FeedCollectionViewCell: UICollectionViewCell {
     @IBOutlet weak var background: UIView!
-    
+    @IBOutlet weak var itemPhoto: UIImageView!
     @IBOutlet weak var lblTitle: UILabel!
     
 }

@@ -64,7 +64,18 @@
                                                     <subviews>
                                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="zJz-c7-iO4">
                                                             <rect key="frame" x="5" y="5" width="165" height="165"/>
+                                                            <subviews>
+                                                                <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="84U-qj-bQv">
+                                                                    <rect key="frame" x="0.0" y="0.0" width="165" height="165"/>
+                                                                </imageView>
+                                                            </subviews>
                                                             <color key="backgroundColor" red="0.81599003079999999" green="0.28706461189999999" blue="0.27840113640000003" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                                            <constraints>
+                                                                <constraint firstItem="84U-qj-bQv" firstAttribute="leading" secondItem="zJz-c7-iO4" secondAttribute="leading" id="01O-yL-kte"/>
+                                                                <constraint firstAttribute="trailing" secondItem="84U-qj-bQv" secondAttribute="trailing" id="E4u-ok-yhB"/>
+                                                                <constraint firstAttribute="bottom" secondItem="84U-qj-bQv" secondAttribute="bottom" id="ViS-S6-dcr"/>
+                                                                <constraint firstItem="84U-qj-bQv" firstAttribute="top" secondItem="zJz-c7-iO4" secondAttribute="top" id="bR3-am-chi"/>
+                                                            </constraints>
                                                         </view>
                                                     </subviews>
                                                     <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -87,6 +98,7 @@
                                         <size key="customSize" width="175" height="175"/>
                                         <connections>
                                             <outlet property="background" destination="zJz-c7-iO4" id="aae-ca-FaW"/>
+                                            <outlet property="itemPhoto" destination="84U-qj-bQv" id="lj2-Gd-BKG"/>
                                         </connections>
                                     </collectionViewCell>
                                 </cells>

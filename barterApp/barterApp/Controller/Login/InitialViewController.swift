@@ -1,6 +1,6 @@
 //
 //  ViewController.swift
-//  hairCut
+//  barterApp
 //
 //  Created by Kevin Maldjian on 1/10/18.
 //  Copyright © 2018 Kevin Maldjian. All rights reserved.

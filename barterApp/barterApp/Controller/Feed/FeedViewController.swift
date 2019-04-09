@@ -27,6 +27,8 @@ class FeedViewController: UIViewController, UICollectionViewDataSource, UICollec
         super.viewDidLoad()
         
         view.accessibilityIdentifier = "homeFeed"
+        let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(self.dismissKeyboard))
+        view.addGestureRecognizer(tap)
         
         self.tabBarController?.tabBar.items?[0].image = UIImage(named: "home.png")
         self.tabBarController?.tabBar.tintColor = .black
@@ -56,15 +58,11 @@ class FeedViewController: UIViewController, UICollectionViewDataSource, UICollec
         
         observeServicesOnBackend()
         
-        let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(self.dismissKeyboard))
-        view.addGestureRecognizer(tap)
     
     }
     
     @objc func dismissKeyboard() {
-        //Causes the view (or one of its embedded text fields) to resign the first responder status.
         self.navigationController?.navigationBar.topItem?.titleView!.endEditing(true)
-        print("Registered")
     }
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
         self.navigationController?.navigationBar.topItem?.titleView!.endEditing(true)
@@ -79,8 +77,11 @@ class FeedViewController: UIViewController, UICollectionViewDataSource, UICollec
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "feedCell", for: indexPath) as! FeedCollectionViewCell
-        //cell.lblTitle.text = items[indexPath.item]
-        cell.background.backgroundColor = UIColor.random()
+        //cell.background.backgroundColor = UIColor.random()
+        cell.background.backgroundColor = .gray
+        let index = barterItems.count - indexPath.row - 1
+        let barterUrl = URL(string: barterItems[index].photoUrl)
+        cell.itemPhoto.kf.setImage(with: barterUrl)
         return cell
     }
     
