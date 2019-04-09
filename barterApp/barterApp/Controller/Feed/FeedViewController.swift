@@ -35,7 +35,6 @@ class FeedViewController: UIViewController, UICollectionViewDataSource, UICollec
         //Navigation Setup
         setUp.feedNav(navItem: self.navigationItem)
         setUp.filterButton(navItem: self.navigationItem)
-        
         setUp.setUpNav(navCon: self.navigationController!)
         
         //Search Bar Setup
@@ -46,8 +45,7 @@ class FeedViewController: UIViewController, UICollectionViewDataSource, UICollec
             textfield.backgroundColor = UIColor(red:0.90, green:0.90, blue:0.90, alpha:1.0)
         }
         self.navigationController?.navigationBar.topItem?.titleView = searchBar
-        
-        
+
         //Collection View Setup
         if let layout = collectionView?.collectionViewLayout as? GridLayout {
             layout.delegate = self
@@ -57,32 +55,27 @@ class FeedViewController: UIViewController, UICollectionViewDataSource, UICollec
         collectionView.reloadData()
         
         observeServicesOnBackend()
-        print("FIRST NAME" )
-        print(BACurrentUser.currentUser.photoURL)
         
-
-        
-        
-//        let button = UIButton()
-//        button.setImage(UIImage(named: "addItem.png"), for: .normal)
-//        button.sizeToFit()
-//        button.translatesAutoresizingMaskIntoConstraints = false
-//
-//        self.tabBarController?.tabBar.addSubview(button)
-//        self.tabBarController?.tabBar.centerXAnchor.constraint(equalTo: button.centerXAnchor).isActive = true
-//        self.tabBarController?.tabBar.topAnchor.constraint(equalTo: button.centerYAnchor).isActive = true
-//
-//
-
+        let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(self.dismissKeyboard))
+        view.addGestureRecognizer(tap)
     
     }
+    
+    @objc func dismissKeyboard() {
+        //Causes the view (or one of its embedded text fields) to resign the first responder status.
+        self.navigationController?.navigationBar.topItem?.titleView!.endEditing(true)
+        print("Registered")
+    }
+    func scrollViewDidScroll(_ scrollView: UIScrollView) {
+        self.navigationController?.navigationBar.topItem?.titleView!.endEditing(true)
+    }
+        
+
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return barterItems.count
     }
-    
-    
-    
+        
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "feedCell", for: indexPath) as! FeedCollectionViewCell
@@ -130,5 +123,8 @@ extension FeedViewController: ContentDynamicLayoutDelegate {
     
     
     }
+
+
+
 
 

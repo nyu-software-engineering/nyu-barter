@@ -87,8 +87,9 @@ class TakePhotoController: UIViewController  {
     
     
     func uploadMedia(completion: @escaping (_ url: String?) -> Void) {
-        guard let uid = Auth.auth().currentUser?.uid else { return }
-        let storageRef = Storage.storage().reference().child("user/\(uid)")
+        //guard let uid = Auth.auth().currentUser?.uid else { return }
+        let uuid = UUID().uuidString
+        let storageRef = Storage.storage().reference().child("itemPhotos/\(uuid)")
         if let uploadData = photo.image!.jpegData(compressionQuality: 0.75) {
             storageRef.putData(uploadData, metadata: nil) { (metadata, error) in
                 if error != nil {
@@ -198,11 +199,35 @@ extension TakePhotoController: UITextFieldDelegate, UIImagePickerControllerDeleg
         return keyboardSize.cgRectValue.height
     }
     
+<<<<<<< HEAD
    
   
     @objc func dismissKeyboard() {
         view.endEditing(true)
     }
     
+||||||| merged common ancestors
+    func unsubscribeFromKeyboardNotifications(){
+        
+        NotificationCenter.default.removeObserver(self)
+        
+        
+
+    }
+    
+    @objc func dismissKeyboard() {
+        view.endEditing(true)
+    }
+    
+=======
+    func unsubscribeFromKeyboardNotifications(){
+        
+        NotificationCenter.default.removeObserver(self)
+        
+        
+
+    }
+    
+>>>>>>> dd4fe0c1afdb9d5a135550c933f135141a084126
     
 }
