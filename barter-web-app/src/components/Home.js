@@ -5,9 +5,7 @@ import Rebase from 're-base';
 import StyledFirebaseAuth from "react-firebaseui/StyledFirebaseAuth";
 import { NavLink } from "react-router-dom";
 import PreviewPicture from './PreviewPicture';
-
-
-
+const uuidv4 = require('uuid/v4');
 
 const config = {
     apiKey: process.env.REACT_APP_FIREBASE_KEY,
@@ -30,6 +28,7 @@ class Home extends React.Component {
       title: '',
       descr: '',
       photoUrl: null,
+      picture: null,
       userID: '',
       dateTime: '',
       keys: [],
@@ -50,15 +49,35 @@ class Home extends React.Component {
     }
   }
   onSubmit(event){
+      var userRef = firebase.database().ref('barterUsers/' + userID).child('myItems')
       var newPostKey = firebase.database().ref().child('barters').push().key;
-      const {isSignedIn, title, descr, photoUrl, userID} = this.state;
-      firebase.database().ref('barters/' + newPostKey).set({
-          dateTime: firebase.database.ServerValue.TIMESTAMP,
-          descr,
-          photoUrl,
-          title,
-          userID,
-    });
+      let {isSignedIn, title, descr, photoUrl, picture, userID} = this.state;
+      var storageRef = firebase.storage().ref();
+      var uniqueID = uuidv4();
+      console.log(uniqueID)
+      var itemPhotosRef = storageRef.child(`itemPhotos/${uniqueID}`);
+      let picUrl = null;
+      itemPhotosRef.put(picture).then((snapshot)=> {
+        snapshot.ref.getDownloadURL().then((downloadURL) =>{
+          photoUrl = downloadURL;
+          firebase.database().ref('barters/' + newPostKey).set({
+              dateTime: firebase.database.ServerValue.TIMESTAMP,
+              descr,
+              photoUrl,
+              title,
+              userID,
+          });
+        })
+      });
+
+    var newUserKey = firebase.database().ref('barterUsers/' + userID + '/myItems').push().key;
+    firebase.database().ref('barterUsers/' + userID + '/myItems/' + newUserKey).set({
+      dateTime: firebase.database.ServerValue.TIMESTAMP,
+      descr,
+      photoUrl,
+      title,
+      userID,
+    })
 
     this.setState({dateTime: ''});
     this.setState({descr: ''});
@@ -68,6 +87,20 @@ class Home extends React.Component {
 
   componentDidMount = ()=>{
     firebase.auth().onAuthStateChanged(user =>{
+      //Start change
+      if(user){
+        const userRef = firebase.database().ref('barterUsers')
+        const curUser = user.uid;
+
+        userRef.orderByValue().equalTo(curUser).once("value",snapshot => {
+          if (!snapshot.exists()){
+            //userRef.child('userID').set(curUser)
+            userRef.child(curUser)
+          }
+
+        })
+      }
+      //End changes
       this.setState({isSignedIn:!!user});
       this.setState({userID:user['uid']});
     });
@@ -98,27 +131,60 @@ class Home extends React.Component {
     });
   }
 
-  render() {
+  renderCards () {
     const keys = this.state.keys;
     const itemList = keys.map(itemId => {
       return(
-        <li>{itemId.title}: <PreviewPicture photoUrl={itemId.photoUrl}/></li>
+
+        <div className = "col-3">
+          <div className ="card" styles="width: 18rem;">
+            <p className = "card-img top"><PreviewPicture photoUrl={itemId.photoUrl}/></p>
+            <div className ="card-body">
+              <h5 className ="card-title">{itemId.title}</h5>
+            </div>
+          </div>
+        </div>
+    //
       )
     });
+    return itemList;
+  }
+
+  render() {
+
     return (
       <div className='home'>
       {this.state.isSignedIn ? (
           <span>
-           <header>
+          <header>
           <div className='wrapper'>
-            <h1>NYU Barter</h1>
             <script src="https://www.gstatic.com/firebasejs/5.8.4/firebase.js"></script>
-            <input type="text" name="search" placeholder="Search for items" />
-              <NavLink to="/inventory"><button type="myItems">My Items</button></NavLink>
-              <NavLink to="/interests"><button type="interestedItems">Interested Items</button></NavLink>
-              <button onClick={() => firebase.auth().signOut()}>Logout</button>
+            <nav class="navbar navbar-expand-lg navbar-light bg-light">
+              <a class="navbar-brand" href="#">Navbar</a>
+              <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+              <span class="navbar-toggler-icon"></span>
+              </button>
+              <div class="collapse navbar-collapse" id="navbarSupportedContent">
+              <form class="form-inline my-2 my-lg-0">
+                <input class="form-control mr-sm-2" name = "search" type="search" placeholder="Search" aria-label="Search" />
+                <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+              </form>
+                <ul class="navbar-nav ml-auto">
+                  <li class="nav-item active">
+                    <NavLink to="/inventory"> <button className = "btn btn-primary m-2 " type="myItems">My Items</button></NavLink>
+                  </li>
+                  <li class="nav-item">
+                    <NavLink to="/interests"><button className = "btn btn-primary m-2" type="interestedItem">Interested Items</button></NavLink>
+                  </li>
+                <li class="nav-item">
+                  <button className = "btn btn-primary m-2" onClick={() => firebase.auth().signOut()}>Logout</button>
+                </li>
+              </ul>
+
+              </div>
+            </nav>
           </div>
-      </header>
+        </header>
       <div className='container'>
         <section className='add-item'>
               <form>
@@ -127,7 +193,7 @@ class Home extends React.Component {
               <label class="upload-group">
               Upload Image
               <input type="file" class="upload-group" id="file" onChange={(event) => {
-                this.addPicture(event);
+                this.displayPicture(event);
               }}/>
               </label>
               <PreviewPicture photoUrl={this.state.photoUrl}/>
@@ -136,9 +202,9 @@ class Home extends React.Component {
         </section>
         <section className='display-item'>
           <div className='wrapper'>
-            <ul>
-              {itemList}
-            </ul>
+            <div className="row">
+              {this.renderCards()}
+            </div>
           </div>
         </section>
       </div>
@@ -147,26 +213,21 @@ class Home extends React.Component {
           <StyledFirebaseAuth class="LoginButtons"
             uiConfig={this.uiConfig}
             firebaseAuth={firebase.auth()}
+
           />
         )}
       </div>
     );
   }
 
-  addPicture(event){
+  displayPicture(event){
     //new
-    var storageRef = firebase.storage().ref();
-    console.log(storageRef, "bpyy");
-    var itemPhotosRef = storageRef.child('itemPhotos/${UUID}');
-    //
     let reader = new FileReader();
     let file = event.target.files[0];
-    
-    itemPhotosRef.put(file).then(function(snapshot) {
-      console.log('Uploaded a blob or file!');
-    });
+
     reader.onloadend = ()=>{
       this.setState({
+        picture: file,
         photoUrl: reader.result
       });
     };
