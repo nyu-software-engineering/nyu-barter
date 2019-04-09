@@ -23,15 +23,21 @@ class TakePhotoController: UIViewController  {
     
     var flag = true
     
+
+    
+    //Outlets
+    @IBOutlet weak var photo: UIImageView!
+    @IBOutlet weak var titleOutlet: UITextField!
+    @IBOutlet weak var descriptionOutlet: UITextField!
+    
+    
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         showAlert()
-        
-      
     }
     
+    
     func showAlert(){
-        
         if(flag){
             let actionSheet = UIAlertController(title: nil, message: nil, preferredStyle: .actionSheet)
             
@@ -43,64 +49,58 @@ class TakePhotoController: UIViewController  {
                 self.photoLibrary()
             }))
             
-            actionSheet.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
+            //actionSheet.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
+            actionSheet.addAction(UIAlertAction(title: "Cancel", style: .default, handler: { (alert:UIAlertAction!) -> Void in
+                self.tabBarController?.selectedIndex = 0
+            }))
             
             self.present(actionSheet, animated: true, completion: nil)
             flag = false
-            
         }
-        
     }
     
-    //Outlets
-    @IBOutlet weak var photo: UIImageView!
-    @IBOutlet weak var titleOutlet: UITextField!
-    @IBOutlet weak var descriptionOutlet: UITextField!
-    
     @IBAction func post(_ sender: Any) {
-        
-        
         if (!titleOutlet.text!.isEmpty && !descriptionOutlet.text!.isEmpty){
-            
-            
             print("Posting Data")
             ref = Database.database().reference()
-            let userId = "testUserID"
+            let userId = BACurrentUser.currentUser.uid
             let itemTitle = titleOutlet.text
             let itemDescription = descriptionOutlet.text
             let dateTime = ServerValue.timestamp()
-            let photoUrl =  "hello"
-            self.ref.child("barters").childByAutoId().setValue(["userID": userId, "title": itemTitle, "descr" : itemDescription, "dateTime": dateTime,  "photoUrl" : photoUrl])
-            
-            uploadMedia()
-            dismiss(animated: true, completion: nil)
-            
-            
-            
-        }
-        
-    }
-    
-    func uploadMedia() {
-        
-        let storageRef = Storage.storage().reference().child("items/grass.png")
-        
-        if let uploadData = self.photo.image!.pngData(){
-            
-            storageRef.putData(uploadData, metadata: nil, completion:
-                { (metadata, error) in
-                if error != nil {
-                    print(error)
-                    return
+            uploadMedia() { url in
+                guard let url = url else { return }
+                self.ref.child("barters").childByAutoId().setValue([
+                    "userID"    : userId!,
+                    "title"     : itemTitle!,
+                    "descr"     : itemDescription!,
+                    "dateTime"  : dateTime,
+                    "photoUrl"  : url,
+                    ])
                 }
-                print(metadata)
-            })
-            
+            self.tabBarController?.selectedIndex = 0
         }
     }
     
+
     
     
+    func uploadMedia(completion: @escaping (_ url: String?) -> Void) {
+        guard let uid = Auth.auth().currentUser?.uid else { return }
+        let storageRef = Storage.storage().reference().child("user/\(uid)")
+        if let uploadData = photo.image!.jpegData(compressionQuality: 0.75) {
+            storageRef.putData(uploadData, metadata: nil) { (metadata, error) in
+                if error != nil {
+                    print("error")
+                    completion(nil)
+                } else {
+                    storageRef.downloadURL { url, error in
+                        completion(url?.absoluteString)
+                    }
+                }
+            }
+        }
+    }
+ 
     func camera()
     {
         if UIImagePickerController.isSourceTypeAvailable(.camera){
@@ -128,6 +128,11 @@ class TakePhotoController: UIViewController  {
 
 
 extension TakePhotoController: UITextFieldDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
+    
+    override func viewDidLoad() {
+        self.titleOutlet.delegate = self
+        self.descriptionOutlet.delegate = self
+    }
     
     
     func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
