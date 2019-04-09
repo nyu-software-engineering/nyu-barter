@@ -74,7 +74,6 @@ class Home extends React.Component {
     firebase.database().ref('barters').on('value', this.gotData.bind(this), this.errData);
   }
   gotData(data){
-    //console.log(data.val())
     var barters = data.val();
     var keys = Object.keys(barters);
     const result = []
@@ -102,7 +101,6 @@ class Home extends React.Component {
   render() {
     const keys = this.state.keys;
     const itemList = keys.map(itemId => {
-      console.log(itemId, "ok")
       return(
         <li>{itemId.title}: <PreviewPicture photoUrl={itemId.photoUrl}/></li>
       )
@@ -156,8 +154,17 @@ class Home extends React.Component {
   }
 
   addPicture(event){
+    //new
+    var storageRef = firebase.storage().ref();
+    console.log(storageRef, "bpyy");
+    var itemPhotosRef = storageRef.child('itemPhotos/${UUID}');
+    //
     let reader = new FileReader();
     let file = event.target.files[0];
+    
+    itemPhotosRef.put(file).then(function(snapshot) {
+      console.log('Uploaded a blob or file!');
+    });
     reader.onloadend = ()=>{
       this.setState({
         photoUrl: reader.result
