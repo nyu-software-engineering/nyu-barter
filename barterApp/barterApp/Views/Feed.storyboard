@@ -71,29 +71,29 @@
                                                             </subviews>
                                                             <color key="backgroundColor" red="0.81599003079999999" green="0.28706461189999999" blue="0.27840113640000003" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                                             <constraints>
-                                                                <constraint firstItem="84U-qj-bQv" firstAttribute="leading" secondItem="zJz-c7-iO4" secondAttribute="leading" id="01O-yL-kte"/>
-                                                                <constraint firstAttribute="trailing" secondItem="84U-qj-bQv" secondAttribute="trailing" id="E4u-ok-yhB"/>
-                                                                <constraint firstAttribute="bottom" secondItem="84U-qj-bQv" secondAttribute="bottom" id="ViS-S6-dcr"/>
-                                                                <constraint firstItem="84U-qj-bQv" firstAttribute="top" secondItem="zJz-c7-iO4" secondAttribute="top" id="bR3-am-chi"/>
+                                                                <constraint firstAttribute="trailing" secondItem="84U-qj-bQv" secondAttribute="trailing" id="Z5k-Kp-Stw"/>
+                                                                <constraint firstAttribute="bottom" secondItem="84U-qj-bQv" secondAttribute="bottom" id="rBq-mJ-sW3"/>
+                                                                <constraint firstItem="84U-qj-bQv" firstAttribute="top" secondItem="zJz-c7-iO4" secondAttribute="top" id="vxQ-Qy-GML"/>
+                                                                <constraint firstItem="84U-qj-bQv" firstAttribute="leading" secondItem="zJz-c7-iO4" secondAttribute="leading" id="w8k-Ih-K9e"/>
                                                             </constraints>
                                                         </view>
                                                     </subviews>
                                                     <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     <constraints>
-                                                        <constraint firstItem="zJz-c7-iO4" firstAttribute="top" secondItem="zy4-9r-LSC" secondAttribute="top" constant="5" id="26f-9k-NX6"/>
-                                                        <constraint firstItem="zJz-c7-iO4" firstAttribute="leading" secondItem="zy4-9r-LSC" secondAttribute="leading" constant="5" id="KVm-cc-wxx"/>
-                                                        <constraint firstItem="zJz-c7-iO4" firstAttribute="centerY" secondItem="zy4-9r-LSC" secondAttribute="centerY" id="MlV-sr-mdf"/>
-                                                        <constraint firstItem="zJz-c7-iO4" firstAttribute="centerX" secondItem="zy4-9r-LSC" secondAttribute="centerX" id="ldF-Ng-8lA"/>
+                                                        <constraint firstItem="zJz-c7-iO4" firstAttribute="centerY" secondItem="zy4-9r-LSC" secondAttribute="centerY" id="ADt-kt-RdS"/>
+                                                        <constraint firstItem="zJz-c7-iO4" firstAttribute="centerX" secondItem="zy4-9r-LSC" secondAttribute="centerX" id="bI7-pQ-bbA"/>
+                                                        <constraint firstItem="zJz-c7-iO4" firstAttribute="top" secondItem="zy4-9r-LSC" secondAttribute="top" constant="5" id="ccR-jd-Cf3"/>
+                                                        <constraint firstItem="zJz-c7-iO4" firstAttribute="leading" secondItem="zy4-9r-LSC" secondAttribute="leading" constant="5" id="fdm-1l-cZP"/>
                                                     </constraints>
                                                 </view>
                                             </subviews>
                                         </view>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <constraints>
-                                            <constraint firstAttribute="bottom" secondItem="zy4-9r-LSC" secondAttribute="bottom" id="NMG-Ah-s5U"/>
-                                            <constraint firstItem="zy4-9r-LSC" firstAttribute="leading" secondItem="rG0-DP-IGl" secondAttribute="leadingMargin" constant="-8" id="Uts-qX-KGc"/>
-                                            <constraint firstItem="zy4-9r-LSC" firstAttribute="top" secondItem="rG0-DP-IGl" secondAttribute="top" id="Yk6-SN-TFl"/>
-                                            <constraint firstAttribute="trailing" secondItem="zy4-9r-LSC" secondAttribute="trailing" id="a08-bl-0GO"/>
+                                            <constraint firstAttribute="bottom" secondItem="zy4-9r-LSC" secondAttribute="bottom" id="1IW-cv-qam"/>
+                                            <constraint firstItem="zy4-9r-LSC" firstAttribute="top" secondItem="rG0-DP-IGl" secondAttribute="top" id="IkL-QM-saQ"/>
+                                            <constraint firstItem="zy4-9r-LSC" firstAttribute="leading" secondItem="rG0-DP-IGl" secondAttribute="leading" id="acl-RQ-XZy"/>
+                                            <constraint firstAttribute="trailing" secondItem="zy4-9r-LSC" secondAttribute="trailing" id="l5r-pq-jYc"/>
                                         </constraints>
                                         <size key="customSize" width="175" height="175"/>
                                         <connections>
@@ -120,11 +120,53 @@
                     <navigationItem key="navigationItem" id="eXd-vB-MAX"/>
                     <connections>
                         <outlet property="collectionView" destination="S0S-fd-ElO" id="UCQ-sv-Glv"/>
+                        <segue destination="9vG-OV-M49" kind="show" identifier="infoView" id="qrf-Xr-ikp"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="012-D3-x4t" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="282.60869565217394" y="89.732142857142847"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="awv-ss-9x7">
+            <objects>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="us5-qd-d31" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <navigationController id="9vG-OV-M49" sceneMemberID="viewController">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="paE-fQ-J7f">
+                        <rect key="frame" x="0.0" y="44" width="414" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <toolbar key="toolbar" opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="rQt-xJ-EmO">
+                        <autoresizingMask key="autoresizingMask"/>
+                    </toolbar>
+                    <connections>
+                        <segue destination="qAJ-zY-4c2" kind="relationship" relationship="rootViewController" id="BWl-H9-uGp"/>
+                    </connections>
+                </navigationController>
+            </objects>
+            <point key="canvasLocation" x="1190" y="90"/>
+        </scene>
+        <!--Item Info View Controller-->
+        <scene sceneID="hml-ke-5HH">
+            <objects>
+                <viewController id="qAJ-zY-4c2" customClass="ItemInfoViewController" customModule="barterApp" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="U5f-wP-e8d">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <viewLayoutGuide key="safeArea" id="cqg-L6-oQA"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="qMl-SJ-hxH">
+                        <barButtonItem key="leftBarButtonItem" systemItem="stop" id="JxF-is-oyZ">
+                            <connections>
+                                <action selector="backToFeed:" destination="qAJ-zY-4c2" id="ZXE-0B-0o6"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="a0q-7I-5vS" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2129" y="90"/>
         </scene>
     </scenes>
     <resources>

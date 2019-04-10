@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		40A12E8752F781D8990F0D9B /* Pods_barterAppTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 201EB24DE270DF9CAFC78EBD /* Pods_barterAppTests.framework */; };
+		9811BCBD225D9A07005EF041 /* ItemInfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9811BCBC225D9A07005EF041 /* ItemInfoViewController.swift */; };
 		98351CCC22230400007EC636 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98351CCB22230400007EC636 /* AppDelegate.swift */; };
 		98351CD122230400007EC636 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 98351CCF22230400007EC636 /* Main.storyboard */; };
 		98351CD422230400007EC636 /* barterApp.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 98351CD222230400007EC636 /* barterApp.xcdatamodeld */; };
@@ -72,6 +73,7 @@
 		61CB81D1574D37924D861EB6 /* Pods-barterApp.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-barterApp.release.xcconfig"; path = "Pods/Target Support Files/Pods-barterApp/Pods-barterApp.release.xcconfig"; sourceTree = "<group>"; };
 		75CF628420DCC6EF37086D70 /* Pods-barterApp.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-barterApp.debug.xcconfig"; path = "Pods/Target Support Files/Pods-barterApp/Pods-barterApp.debug.xcconfig"; sourceTree = "<group>"; };
 		7B884781614DAD20890DA042 /* Pods-barterAppTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-barterAppTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-barterAppTests/Pods-barterAppTests.debug.xcconfig"; sourceTree = "<group>"; };
+		9811BCBC225D9A07005EF041 /* ItemInfoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemInfoViewController.swift; sourceTree = "<group>"; };
 		98351CC822230400007EC636 /* barterApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = barterApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		98351CCB22230400007EC636 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		98351CD022230400007EC636 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -298,6 +300,7 @@
 			children = (
 				98E879DC22260E700015F62D /* FeedViewController.swift */,
 				986E061F2226645300CE7EB4 /* FeedCollectionViewCell.swift */,
+				9811BCBC225D9A07005EF041 /* ItemInfoViewController.swift */,
 			);
 			path = Feed;
 			sourceTree = "<group>";
@@ -667,6 +670,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				98582057222EE27900E03C17 /* DataService.swift in Sources */,
+				9811BCBD225D9A07005EF041 /* ItemInfoViewController.swift in Sources */,
 				98E879D52226027B0015F62D /* appColors.swift in Sources */,
 				986E06202226645300CE7EB4 /* FeedCollectionViewCell.swift in Sources */,
 				98E879DD22260E700015F62D /* FeedViewController.swift in Sources */,

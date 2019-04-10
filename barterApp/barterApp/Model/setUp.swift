@@ -60,6 +60,15 @@ class setUp: NSObject{
         navCon.navigationBar.isTranslucent = false
         navCon.navigationBar.setBackgroundImage(UIImage(), for: .default)
         navCon.navigationBar.shadowImage = UIImage()
+        navCon.navigationBar.tintColor = .black
+    }
+    
+    static func setUpPicNav(navCon: UINavigationController){
+        navCon.navigationBar.barTintColor = .black
+        navCon.navigationBar.isTranslucent = false
+        navCon.navigationBar.setBackgroundImage(UIImage(), for: .default)
+        navCon.navigationBar.shadowImage = UIImage()
+        navCon.navigationBar.tintColor = .white
     }
     
     @objc func sideMenu(){

@@ -28,6 +28,7 @@ class FeedViewController: UIViewController, UICollectionViewDataSource, UICollec
         
         view.accessibilityIdentifier = "homeFeed"
         let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(self.dismissKeyboard))
+        tap.cancelsTouchesInView = false
         view.addGestureRecognizer(tap)
         
         self.tabBarController?.tabBar.items?[0].image = UIImage(named: "home.png")
@@ -87,6 +88,7 @@ class FeedViewController: UIViewController, UICollectionViewDataSource, UICollec
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         print("User tapped on cell %d", indexPath)
+        performSegue(withIdentifier: "infoView", sender: self)
     }
     
     
