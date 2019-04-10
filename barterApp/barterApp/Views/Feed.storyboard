@@ -9,6 +9,17 @@
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
+    <customFonts key="customFonts">
+        <array key="SanFranciscoText-Bold.otf">
+            <string>SanFranciscoText-Bold</string>
+        </array>
+        <array key="SanFranciscoText-Heavy.otf">
+            <string>SanFranciscoText-Heavy</string>
+        </array>
+        <array key="SanFranciscoText-Regular.otf">
+            <string>SanFranciscoText-Regular</string>
+        </array>
+    </customFonts>
     <scenes>
         <!--Feed-->
         <scene sceneID="30L-xO-UpJ">
@@ -69,6 +80,8 @@
                                                                     <rect key="frame" x="0.0" y="0.0" width="165" height="165"/>
                                                                     <userDefinedRuntimeAttributes>
                                                                         <userDefinedRuntimeAttribute type="string" keyPath="heroID" value="photo"/>
+                                                                        <userDefinedRuntimeAttribute type="boolean" keyPath="isHeroEnabledForSubviews" value="YES"/>
+                                                                        <userDefinedRuntimeAttribute type="boolean" keyPath="isHeroEnabled" value="YES"/>
                                                                     </userDefinedRuntimeAttributes>
                                                                 </imageView>
                                                             </subviews>
@@ -134,7 +147,7 @@
         <scene sceneID="awv-ss-9x7">
             <objects>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="us5-qd-d31" userLabel="First Responder" sceneMemberID="firstResponder"/>
-                <navigationController id="9vG-OV-M49" sceneMemberID="viewController">
+                <navigationController hidesBottomBarWhenPushed="YES" id="9vG-OV-M49" sceneMemberID="viewController">
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="paE-fQ-J7f">
                         <rect key="frame" x="0.0" y="44" width="414" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
@@ -147,31 +160,80 @@
                     </connections>
                 </navigationController>
             </objects>
-            <point key="canvasLocation" x="1212" y="809"/>
+            <point key="canvasLocation" x="1190" y="90"/>
         </scene>
         <!--Item Info View Controller-->
         <scene sceneID="hml-ke-5HH">
             <objects>
-                <viewController id="qAJ-zY-4c2" customClass="ItemInfoViewController" customModule="barterApp" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="itemVC" hidesBottomBarWhenPushed="YES" id="qAJ-zY-4c2" customClass="ItemInfoViewController" customModule="barterApp" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="U5f-wP-e8d">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="BlankProfilePicture" translatesAutoresizingMaskIntoConstraints="NO" id="BUi-Rw-oxT">
-                                <rect key="frame" x="82" y="323" width="250" height="250"/>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="BlankProfilePicture" translatesAutoresizingMaskIntoConstraints="NO" id="BUi-Rw-oxT">
+                                <rect key="frame" x="0.0" y="239" width="414" height="462"/>
                                 <userDefinedRuntimeAttributes>
                                     <userDefinedRuntimeAttribute type="string" keyPath="heroID" value="photo"/>
+                                    <userDefinedRuntimeAttribute type="boolean" keyPath="isHeroEnabled" value="YES"/>
+                                    <userDefinedRuntimeAttribute type="boolean" keyPath="isHeroEnabledForSubviews" value="YES"/>
                                 </userDefinedRuntimeAttributes>
                             </imageView>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="rwb-e6-AUK">
+                                <rect key="frame" x="20" y="138" width="60" height="60"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="60" id="OGE-LJ-GF2"/>
+                                </constraints>
+                            </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Blah" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="EDY-6g-7t6">
+                                <rect key="frame" x="88" y="138" width="207" height="28"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="28" id="T00-On-X9H"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="SanFranciscoText-Heavy" family="San Francisco Text" pointSize="19"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Blah" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="YR3-7J-0dl">
+                                <rect key="frame" x="88" y="170" width="207" height="28"/>
+                                <fontDescription key="fontDescription" name="SanFranciscoText-Regular" family="San Francisco Text" pointSize="15"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8T3-iC-hOL">
+                                <rect key="frame" x="65" y="709" width="284" height="61"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <fontDescription key="fontDescription" name="SanFranciscoText-Bold" family="San Francisco Text" pointSize="20"/>
+                                <state key="normal" title="Contact">
+                                    <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <gestureRecognizers/>
                         <constraints>
-                            <constraint firstItem="BUi-Rw-oxT" firstAttribute="centerX" secondItem="U5f-wP-e8d" secondAttribute="centerX" id="pn9-gg-3Dv"/>
-                            <constraint firstItem="BUi-Rw-oxT" firstAttribute="leading" secondItem="cqg-L6-oQA" secondAttribute="leading" constant="82" id="qr6-85-duV"/>
-                            <constraint firstItem="BUi-Rw-oxT" firstAttribute="centerY" secondItem="U5f-wP-e8d" secondAttribute="centerY" id="rnO-Ex-nT8"/>
-                            <constraint firstItem="BUi-Rw-oxT" firstAttribute="top" secondItem="cqg-L6-oQA" secondAttribute="top" constant="235" id="tm7-S4-FTT"/>
+                            <constraint firstItem="rwb-e6-AUK" firstAttribute="bottom" secondItem="YR3-7J-0dl" secondAttribute="bottom" id="6cq-hb-Cgh"/>
+                            <constraint firstItem="EDY-6g-7t6" firstAttribute="leading" secondItem="rwb-e6-AUK" secondAttribute="trailing" constant="8" symbolic="YES" id="9qz-ah-kq8"/>
+                            <constraint firstItem="EDY-6g-7t6" firstAttribute="trailing" secondItem="YR3-7J-0dl" secondAttribute="trailing" id="B3n-dO-UIz"/>
+                            <constraint firstAttribute="trailing" secondItem="BUi-Rw-oxT" secondAttribute="trailing" id="GPb-9V-gLK"/>
+                            <constraint firstItem="rwb-e6-AUK" firstAttribute="leading" secondItem="U5f-wP-e8d" secondAttribute="leadingMargin" id="Ghq-ac-GGz"/>
+                            <constraint firstItem="cqg-L6-oQA" firstAttribute="trailing" secondItem="EDY-6g-7t6" secondAttribute="trailing" constant="119" id="Kqh-nL-jLe"/>
+                            <constraint firstItem="cqg-L6-oQA" firstAttribute="bottom" secondItem="8T3-iC-hOL" secondAttribute="bottom" constant="92" id="P4P-qc-Pa9"/>
+                            <constraint firstItem="8T3-iC-hOL" firstAttribute="leading" secondItem="cqg-L6-oQA" secondAttribute="leading" constant="65" id="Q7a-X5-Zb8"/>
+                            <constraint firstItem="rwb-e6-AUK" firstAttribute="top" secondItem="cqg-L6-oQA" secondAttribute="top" constant="50" id="Ttl-SB-A0Z"/>
+                            <constraint firstItem="EDY-6g-7t6" firstAttribute="leading" secondItem="YR3-7J-0dl" secondAttribute="leading" id="YAz-A7-lSa"/>
+                            <constraint firstItem="BUi-Rw-oxT" firstAttribute="top" secondItem="cqg-L6-oQA" secondAttribute="top" constant="151" id="aqF-Fw-TAb"/>
+                            <constraint firstItem="8T3-iC-hOL" firstAttribute="centerX" secondItem="BUi-Rw-oxT" secondAttribute="centerX" id="bDr-M7-9id"/>
+                            <constraint firstItem="8T3-iC-hOL" firstAttribute="top" secondItem="BUi-Rw-oxT" secondAttribute="bottom" constant="8" symbolic="YES" id="fG6-h5-ORk"/>
+                            <constraint firstItem="BUi-Rw-oxT" firstAttribute="top" secondItem="rwb-e6-AUK" secondAttribute="bottom" constant="41" id="hrV-gn-wkX"/>
+                            <constraint firstItem="YR3-7J-0dl" firstAttribute="top" secondItem="EDY-6g-7t6" secondAttribute="bottom" constant="4" id="jew-T7-b1f"/>
+                            <constraint firstItem="BUi-Rw-oxT" firstAttribute="leading" secondItem="U5f-wP-e8d" secondAttribute="leading" id="pFo-U6-jjV"/>
+                            <constraint firstItem="BUi-Rw-oxT" firstAttribute="bottom" secondItem="cqg-L6-oQA" secondAttribute="bottom" constant="-161" id="xJK-RA-uwn"/>
+                            <constraint firstItem="rwb-e6-AUK" firstAttribute="top" secondItem="EDY-6g-7t6" secondAttribute="top" id="yG2-sj-wbn"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="cqg-L6-oQA"/>
+                        <connections>
+                            <outletCollection property="gestureRecognizers" destination="yKJ-Jh-tnZ" appends="YES" id="zbv-pH-lWL"/>
+                        </connections>
                     </view>
                     <navigationItem key="navigationItem" id="qMl-SJ-hxH">
                         <barButtonItem key="leftBarButtonItem" systemItem="stop" id="JxF-is-oyZ">
@@ -180,11 +242,21 @@
                             </connections>
                         </barButtonItem>
                     </navigationItem>
+                    <nil key="simulatedBottomBarMetrics"/>
                     <connections>
+                        <outlet property="btnContact" destination="8T3-iC-hOL" id="nD2-DB-NSh"/>
                         <outlet property="itemPhoto" destination="BUi-Rw-oxT" id="pXn-II-Oqd"/>
+                        <outlet property="lblDescription" destination="YR3-7J-0dl" id="J3l-Rr-0lF"/>
+                        <outlet property="lblTitle" destination="EDY-6g-7t6" id="yE3-pY-5aO"/>
+                        <outlet property="posterImage" destination="rwb-e6-AUK" id="ngh-Mj-NR8"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="a0q-7I-5vS" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <swipeGestureRecognizer direction="down" id="yKJ-Jh-tnZ">
+                    <connections>
+                        <action selector="backToFeed:" destination="qAJ-zY-4c2" id="cKI-AB-11z"/>
+                    </connections>
+                </swipeGestureRecognizer>
             </objects>
             <point key="canvasLocation" x="2128.985507246377" y="89.732142857142847"/>
         </scene>

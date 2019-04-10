@@ -26,14 +26,9 @@ class BABarterItem {
         self.ref = snapshot.ref
         self.title = (snapshot.value! as AnyObject).object(forKey: "title") as! String
         self.descr = (snapshot.value! as AnyObject).object(forKey: "descr") as! String
-
         self.dateTime = (snapshot.value! as AnyObject).object(forKey: "dateTime") as! Int
-
-        self.photoUrl = (snapshot.value! as AnyObject).object(forKey: "photoUrl") as? String ?? "defaultPhotoUrl"
-        if let _userId = (snapshot.value! as AnyObject).object(forKey: "userId") as? String {
-            self.userId = _userId
-        } else {
-            self.userId = ""
-        }
+        self.photoUrl = ((snapshot.value! as AnyObject).object(forKey: "photoUrl") as? String)!
+        self.userId = ((snapshot.value! as AnyObject).object(forKey: "userID") as? String)!
     }
 }
+

@@ -93,29 +93,21 @@ class FeedViewController: UIViewController, UICollectionViewDataSource, UICollec
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         print("User tapped on cell %d", indexPath)
-        
         let cell = collectionView.cellForItem(at: indexPath) as! FeedCollectionViewCell
-        passBarter = barterItems[indexPath.row]
+        let index = barterItems.count - indexPath.row - 1
+        passBarter = barterItems[index]
         passImage = cell.itemPhoto.image
-        print(passBarter.descr)
         performSegue(withIdentifier: "infoView", sender: self)
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        print("Anyone here")
-        print(passBarter.descr)
-        
-//        if let vc = segue.destination.children[0] as? ItemInfoViewController {
-//            vc.itemPhoto.image = passImage
-//        }
-//        
-        //let vc = segue.destination as? ItemInfoViewController
-        
-//        let destinationNavigationController = segue.destination as! UINavigationController
-//        let targetController = destinationNavigationController.topViewController as! ItemInfoViewController
-//        targetController.itemPhoto.image = passImage
-        //vc!.itemPhoto.image = passImage
-        //vc!.barterItem = passBarter
+        if segue.identifier == "infoView"
+        {
+            let destViewController = segue.destination as! UINavigationController
+            let infoVC = destViewController.viewControllers.first as! ItemInfoViewController
+            infoVC.barterItem = passBarter
+            infoVC.passPhoto = passImage
+        }
     }
     
     
@@ -130,7 +122,6 @@ class FeedViewController: UIViewController, UICollectionViewDataSource, UICollec
                     for snapshot in snapshot.children {
                         let item = BABarterItem(snapshot: snapshot as! DataSnapshot)
                         self.barterItems.append(item)
-                        print(item.title)
                     }
                 }
                 self.collectionView.reloadData()

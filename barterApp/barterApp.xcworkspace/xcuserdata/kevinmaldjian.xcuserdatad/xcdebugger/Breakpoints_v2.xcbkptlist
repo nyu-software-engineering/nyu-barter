@@ -9,14 +9,46 @@
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "barterApp/Controller/Feed/FeedViewController.swift"
-            timestampString = "576562666.707778"
+            filePath = "barterApp/Controller/Feed/ItemInfoViewController.swift"
+            timestampString = "576571152.880415"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "118"
-            endingLineNumber = "118"
-            landmarkName = "prepare(for:sender:)"
+            startingLineNumber = "66"
+            endingLineNumber = "66"
+            landmarkName = "getPoster()"
             landmarkType = "7">
+            <Locations>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "barterApp.ItemInfoViewController.getPoster() -&gt; ()"
+                  moduleName = "barterApp"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/kevinmaldjian/Projects/nyu-barter/barterApp/barterApp/Controller/Feed/ItemInfoViewController.swift"
+                  timestampString = "576567672.517189"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "42"
+                  endingLineNumber = "42"
+                  offsetFromSymbolStart = "48">
+               </Location>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 (__C.FIRDataSnapshot) -&gt; () in barterApp.ItemInfoViewController.getPoster() -&gt; ()"
+                  moduleName = "barterApp"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/kevinmaldjian/Projects/nyu-barter/barterApp/barterApp/Controller/Feed/ItemInfoViewController.swift"
+                  timestampString = "576567672.518898"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "42"
+                  endingLineNumber = "42"
+                  offsetFromSymbolStart = "44">
+               </Location>
+            </Locations>
          </BreakpointContent>
       </BreakpointProxy>
    </Breakpoints>

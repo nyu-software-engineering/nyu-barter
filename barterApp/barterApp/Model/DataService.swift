@@ -16,6 +16,7 @@ class DataService {
     private var _USER_REF                       = Database.database().reference().child("users")
     private var _FEED_REF                       = Database.database().reference().child("barters")
     private var _STORAGE_REF                    = Storage.storage().reference()
+    private var _SELLER_REF                     = Database.database().reference().child("users") 
     
     var USER_REF: DatabaseReference {
         return _USER_REF
@@ -27,6 +28,10 @@ class DataService {
     
     var STORAGE_REF: StorageReference {
         return _STORAGE_REF
+    }
+    
+    var SELLER_REF: DatabaseReference {
+        return _SELLER_REF
     }
 
 }
