@@ -5,9 +5,19 @@ import Rebase from 're-base';
 import StyledFirebaseAuth from "react-firebaseui/StyledFirebaseAuth";
 import { NavLink } from "react-router-dom";
 import PreviewPicture from './PreviewPicture';
+import Item from './Item';
+import 'bootstrap/dist/js/bootstrap.bundle.min';
+// import 'font-awesomenpm i --save @fortawesome/react-fontawesome';
+import { library } from '@fortawesome/fontawesome-svg-core'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faCamera } from '@fortawesome/free-solid-svg-icons'
+import {faSearch} from '@fortawesome/free-solid-svg-icons'
+import {faBars} from '@fortawesome/free-solid-svg-icons'
+// import Home from './components/Home';
 
-
-
+library.add(faCamera)
+library.add(faSearch)
+library.add(faBars)
 
 const config = {
     apiKey: process.env.REACT_APP_FIREBASE_KEY,
@@ -33,9 +43,12 @@ class Home extends React.Component {
       userID: '',
       dateTime: '',
       keys: [],
+      showBar: false
     }
     this.onSubmit = this.onSubmit.bind(this);
     this.handleChange = this.handleChange.bind(this);
+    this.addItem = this.addItem.bind(this);
+    this.renderItem = this.renderItem.bind(this);
   }
 
   uiConfig = {
@@ -49,6 +62,7 @@ class Home extends React.Component {
       signInSuccess: () => false
     }
   }
+
   onSubmit(event){
       var newPostKey = firebase.database().ref().child('barters').push().key;
       const {isSignedIn, title, descr, photoUrl, userID} = this.state;
@@ -60,19 +74,16 @@ class Home extends React.Component {
           userID,
     });
 
-    this.setState({dateTime: ''});
-    this.setState({descr: ''});
-    this.setState({photoUrl: ''});
-    this.setState({title: ''});
+    this.setState({dateTime: '', descr: '', photoUrl: '', title: ''});
   }
 
   componentDidMount = ()=>{
     firebase.auth().onAuthStateChanged(user =>{
-      this.setState({isSignedIn:!!user});
-      this.setState({userID:user['uid']});
+      this.setState({isSignedIn:!!user, userID:user['uid']});
     });
     firebase.database().ref('barters').on('value', this.gotData.bind(this), this.errData);
   }
+
   gotData(data){
     //console.log(data.val())
     var barters = data.val();
@@ -99,12 +110,21 @@ class Home extends React.Component {
     });
   }
 
+  addItem(){
+    this.setState({showBar: true}); 
+  }
+
+  renderItem(){
+    return this.state.showBar ? <Item/> : null;
+  }
+
   renderCards () {
     const keys = this.state.keys;
     const itemList = keys.map(itemId => {
       console.log(itemId, "ok")
       return(
 
+       
         <div className = "col-3"> 
           <div className ="card" styles="width: 18rem;">
             <p className = "card-img top"><PreviewPicture photoUrl={itemId.photoUrl}/></p>
@@ -113,6 +133,7 @@ class Home extends React.Component {
             </div>
           </div>
         </div>
+        
     //  
       )
     });
@@ -122,6 +143,7 @@ class Home extends React.Component {
   render() {
 
     return (
+      
       <div className='home'>
       {this.state.isSignedIn ? (
           <span>
@@ -129,75 +151,81 @@ class Home extends React.Component {
           <div className='wrapper'>
             <script src="https://www.gstatic.com/firebasejs/5.8.4/firebase.js"></script>
             <nav class="navbar navbar-expand-lg navbar-light bg-light">
-              <a class="navbar-brand" href="#">Navbar</a>
+              <a class="navbar-brand" href="#">Barter</a>
               <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
               <span class="navbar-toggler-icon"></span>
               </button>
               <div class="collapse navbar-collapse" id="navbarSupportedContent">
-              <form class="form-inline my-2 my-lg-0">
-                <input class="form-control mr-sm-2" name = "search" type="search" placeholder="Search" aria-label="Search" />
-                <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
-              </form>
+                <form class="form-inline my-2 my-lg-0">
+                  <div class="input-group mb-3">
+                    <div class="input-group-prepend">
+                      <span class="input-group-text" id="basic-addon1"><FontAwesomeIcon icon="search" /></span>
+                    </div>
+                    <input class="form-control mr-sm-2" name = "search" type="search" placeholder="Search" aria-label="Search" />
+                    <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+                  </div>
+                </form>
                 <ul class="navbar-nav ml-auto">
+                  
+                  {/* add item button */}
                   <li class="nav-item active">
-                    <NavLink to="/inventory"> <button className = "btn btn-primary m-2 " type="myItems">My Items</button></NavLink>
+                    <button type="button" class="btn btn-primary m-2" data-toggle="modal" data-target="#addItem">
+                    <p> Add Item <FontAwesomeIcon icon="camera" /></p>
+                    </button>
+                    <Item />
                   </li>
+                  
+                  {/* signout button */}
                   <li class="nav-item">
-                    <NavLink to="/interests"><button className = "btn btn-primary m-2" type="interestedItem">Interested Items</button></NavLink>
+                    <button className = "btn btn-primary m-2" onClick={() => firebase.auth().signOut()}>Logout</button>
                   </li>
-                <li class="nav-item">
-                  <button className = "btn btn-primary m-2" onClick={() => firebase.auth().signOut()}>Logout</button>
-                </li>
-              </ul>
-              
-              </div>
-            </nav>
-          </div>
-        </header>
-      <div className='container'>
-        <section className='add-item'>
-              <form>
-              <input type="text" name="title" placeholder="What item do you want to trade?" onChange={this.handleChange} value={this.state.item} />
-              <input type="text" name="descr" placeholder="Describe your item" onChange={this.handleChange} value={this.state.descr} />
-              <label class="upload-group">
-              Upload Image
-              <input type="file" class="upload-group" id="file" onChange={(event) => {
-                this.addPicture(event);
-              }}/>
-              </label>
-              <PreviewPicture photoUrl={this.state.photoUrl}/>
-              <button type="btn btn-priamry" onClick={this.onSubmit} type="reset">Add Item to Barter</button>
-              </form>
-        </section>
-        <section className='display-item'>
-          <div className='wrapper'>
-            <div className="row">
-              {this.renderCards()}
+
+                  {/* drop down menu for  */}
+                  <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                      <span> <FontAwesomeIcon icon="bars" /></span>
+                    </a>
+                    <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                      <a class="dropdown-item" href="#">
+                        <li class="nav-item active">
+                        <NavLink to="/inventory"> <button className = "btn btn-primary m-2 " type="myItems">My Items</button></NavLink>
+                        </li>
+                      </a>
+                      <a class="dropdown-item" href="#">
+                        <li class="nav-item">
+                        <NavLink to="/interests"><button className= "btn btn-primary m-2" type="interestedItem">Interested Items</button></NavLink>
+                          </li>
+                        </a>
+                      </div>
+                    </li>
+                  </ul>
+                </div>
+              </nav>
             </div>
-          </div>
-        </section>
-      </div>
-          </span>
+          </header>
+          <div className='container'>
+            <section className='display-item'>
+              <div className='wrapper'>
+                <div className="row">
+                  {this.renderCards()}
+                </div>
+                
+              </div>
+            </section>
+           </div>
+         </span>
         ) : (
           <StyledFirebaseAuth class="LoginButtons"
             uiConfig={this.uiConfig}
             firebaseAuth={firebase.auth()}
+
           />
         )}
       </div>
+   
     );
-  }
+  };
 
-  addPicture(event){
-    let reader = new FileReader();
-    let file = event.target.files[0];
-    reader.onloadend = ()=>{
-      this.setState({
-        photoUrl: reader.result
-      });
-    };
-    reader.readAsDataURL(file);
-  }
 }
 
 export default Home;
