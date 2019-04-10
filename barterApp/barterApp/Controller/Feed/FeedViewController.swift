@@ -6,7 +6,13 @@
 //  Copyright © 2019 Kevin Maldjian. All rights reserved.
 //
 
+
+
+
 import UIKit
+import Firebase
+import Kingfisher
+import Hero
 
 class FeedViewController: UIViewController, UICollectionViewDataSource, UICollectionViewDelegate{
 
@@ -15,10 +21,20 @@ class FeedViewController: UIViewController, UICollectionViewDataSource, UICollec
     @IBOutlet weak var collectionView: UICollectionView!
     let items = ["1", "2", "1", "2","1", "2","1", "2","1", "2","1", "2","1", "2", "1", "2", "1", "2","1", "2","1", "2","1", "2","1", "2","1", "2", "1", "2", "1", "2","1", "2","1", "2","1", "2","1", "2","1", "2"]
     
+    var barterItems: [BABarterItem] = []
+    var serviceObserver: UInt?
+    var passBarter : BABarterItem!
+    var passImage : UIImage!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        self.hero.isEnabled = true
+        
         view.accessibilityIdentifier = "homeFeed"
+        let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(self.dismissKeyboard))
+        tap.cancelsTouchesInView = false
+        view.addGestureRecognizer(tap)
         
         self.tabBarController?.tabBar.items?[0].image = UIImage(named: "home.png")
         self.tabBarController?.tabBar.tintColor = .black
@@ -37,8 +53,7 @@ class FeedViewController: UIViewController, UICollectionViewDataSource, UICollec
             textfield.backgroundColor = UIColor(red:0.90, green:0.90, blue:0.90, alpha:1.0)
         }
         self.navigationController?.navigationBar.topItem?.titleView = searchBar
-        
-        
+
         //Collection View Setup
         if let layout = collectionView?.collectionViewLayout as? GridLayout {
             layout.delegate = self
@@ -47,37 +62,76 @@ class FeedViewController: UIViewController, UICollectionViewDataSource, UICollec
         cellsSizes = CellSizeProvider.provideSizes(items: items)
         collectionView.reloadData()
         
+        observeServicesOnBackend()
         
-//        let button = UIButton()
-//        button.setImage(UIImage(named: "addItem.png"), for: .normal)
-//        button.sizeToFit()
-//        button.translatesAutoresizingMaskIntoConstraints = false
-//
-//        self.tabBarController?.tabBar.addSubview(button)
-//        self.tabBarController?.tabBar.centerXAnchor.constraint(equalTo: button.centerXAnchor).isActive = true
-//        self.tabBarController?.tabBar.topAnchor.constraint(equalTo: button.centerYAnchor).isActive = true
-//
-//
+    
+    }
+    
+    @objc func dismissKeyboard() {
+        self.navigationController?.navigationBar.topItem?.titleView!.endEditing(true)
+    }
+    func scrollViewDidScroll(_ scrollView: UIScrollView) {
+        self.navigationController?.navigationBar.topItem?.titleView!.endEditing(true)
+    }
+        
 
     
-    }
-    
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return items.count
+        return barterItems.count
     }
-    
-    
-    
+        
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "feedCell", for: indexPath) as! FeedCollectionViewCell
-        //cell.lblTitle.text = items[indexPath.item]
-        cell.background.backgroundColor = UIColor.random()
+        //cell.background.backgroundColor = UIColor.random()
+        cell.background.backgroundColor = .gray
+        let index = barterItems.count - indexPath.row - 1
+        let barterUrl = URL(string: barterItems[index].photoUrl)
+        cell.itemPhoto.kf.setImage(with: barterUrl)
         return cell
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         print("User tapped on cell %d", indexPath)
+        let cell = collectionView.cellForItem(at: indexPath) as! FeedCollectionViewCell
+        let index = barterItems.count - indexPath.row - 1
+        passBarter = barterItems[index]
+        passImage = cell.itemPhoto.image
+        performSegue(withIdentifier: "infoView", sender: self)
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "infoView"
+        {
+            let destViewController = segue.destination as! UINavigationController
+            let infoVC = destViewController.viewControllers.first as! ItemInfoViewController
+            infoVC.barterItem = passBarter
+            infoVC.passPhoto = passImage
+        }
+    }
+    
+    
+    @objc func observeServicesOnBackend() {
+        serviceObserver = DataService.sharedInstance.FEED_REF.observe(.value, with: { snapshot in
+            
+            self.barterItems = []
+            if let _ = snapshot.value as? NSNull {
+                debugPrint("No bulletins available.")
+            } else {
+                if snapshot.hasChildren() {
+                    for snapshot in snapshot.children {
+                        let item = BABarterItem(snapshot: snapshot as! DataSnapshot)
+                        self.barterItems.append(item)
+                    }
+                }
+                self.collectionView.reloadData()
+            }
+        })
+    }
+    
+    
+    @objc func sideMenu(){
+        print("Over here")
     }
     
 
@@ -90,5 +144,8 @@ extension FeedViewController: ContentDynamicLayoutDelegate {
     
     
     }
+
+
+
 
 

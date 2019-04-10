@@ -8,21 +8,30 @@
 
 import Foundation
 import UIKit
+import Kingfisher
 
 
-struct setUp{
+class setUp: NSObject{
+    
+    
     
     
     static func feedNav(navItem : UINavigationItem){
         let menuBtn = UIButton(type: .custom)
-        menuBtn.frame = CGRect(x: 0.0, y: 0.0, width: 25, height: 25)
+        menuBtn.frame = CGRect(x: 0.0, y: 0.0, width: 30, height: 30)
         menuBtn.setImage(UIImage(named:"BlankProfilePicture.png"), for: .normal)
-        //menuBtn.addTarget(self, action: #selector(sideMenu), for: UIControlEvents.touchUpInside)
+        if let usersPhoto = BACurrentUser.currentUser.photoURL {
+            let url = URL(string: usersPhoto)
+            menuBtn.kf.setImage(with: url, for: .normal, placeholder: UIImage(named:"BlankProfilePicture.png"))
+        }
+
+
+      //  menuBtn.addTarget(self, action: #selector(setUp.sideMenu), for: UIControl.Event.touchUpInside)
         menuBtn.showsTouchWhenHighlighted = true
         let menuBarItem = UIBarButtonItem(customView: menuBtn)
-        let currWidth = menuBarItem.customView?.widthAnchor.constraint(equalToConstant: 25)
+        let currWidth = menuBarItem.customView?.widthAnchor.constraint(equalToConstant: 30)
         currWidth?.isActive = true
-        let currHeight = menuBarItem.customView?.heightAnchor.constraint(equalToConstant: 25)
+        let currHeight = menuBarItem.customView?.heightAnchor.constraint(equalToConstant: 30)
         currHeight?.isActive = true
         let radius = menuBtn.layer.frame.width/2.0
         menuBtn.layer.cornerRadius = radius
@@ -51,5 +60,19 @@ struct setUp{
         navCon.navigationBar.isTranslucent = false
         navCon.navigationBar.setBackgroundImage(UIImage(), for: .default)
         navCon.navigationBar.shadowImage = UIImage()
+        navCon.navigationBar.tintColor = .black
     }
+    
+    static func setUpPicNav(navCon: UINavigationController){
+        navCon.navigationBar.barTintColor = .black
+        navCon.navigationBar.isTranslucent = false
+        navCon.navigationBar.setBackgroundImage(UIImage(), for: .default)
+        navCon.navigationBar.shadowImage = UIImage()
+        navCon.navigationBar.tintColor = .white
+    }
+    
+    @objc func sideMenu(){
+        print("Here")
+    }
+    
 }

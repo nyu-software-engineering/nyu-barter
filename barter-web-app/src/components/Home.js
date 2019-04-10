@@ -14,6 +14,7 @@ import { faCamera } from '@fortawesome/free-solid-svg-icons'
 import {faSearch} from '@fortawesome/free-solid-svg-icons'
 import {faBars} from '@fortawesome/free-solid-svg-icons'
 // import Home from './components/Home';
+const uuidv4 = require('uuid/v4');
 
 library.add(faCamera)
 library.add(faSearch)
@@ -40,6 +41,7 @@ class Home extends React.Component {
       title: '',
       descr: '',
       photoUrl: null,
+      picture: null,
       userID: '',
       dateTime: '',
       keys: [],
@@ -64,15 +66,35 @@ class Home extends React.Component {
   }
 
   onSubmit(event){
+      var userRef = firebase.database().ref('barterUsers/' + userID).child('myItems')
       var newPostKey = firebase.database().ref().child('barters').push().key;
-      const {isSignedIn, title, descr, photoUrl, userID} = this.state;
-      firebase.database().ref('barters/' + newPostKey).set({
-          dateTime: firebase.database.ServerValue.TIMESTAMP,
-          descr,
-          photoUrl,
-          title,
-          userID,
-    });
+      let {isSignedIn, title, descr, photoUrl, picture, userID} = this.state;
+      var storageRef = firebase.storage().ref();
+      var uniqueID = uuidv4();
+      console.log(uniqueID)
+      var itemPhotosRef = storageRef.child(`itemPhotos/${uniqueID}`);
+      let picUrl = null;
+      itemPhotosRef.put(picture).then((snapshot)=> {
+        snapshot.ref.getDownloadURL().then((downloadURL) =>{
+          photoUrl = downloadURL;
+          firebase.database().ref('barters/' + newPostKey).set({
+              dateTime: firebase.database.ServerValue.TIMESTAMP,
+              descr,
+              photoUrl,
+              title,
+              userID,
+          });
+        })
+      });
+
+    var newUserKey = firebase.database().ref('barterUsers/' + userID + '/myItems').push().key;
+    firebase.database().ref('barterUsers/' + userID + '/myItems/' + newUserKey).set({
+      dateTime: firebase.database.ServerValue.TIMESTAMP,
+      descr,
+      photoUrl,
+      title,
+      userID,
+    })
 
     this.setState({dateTime: '', descr: '', photoUrl: '', title: ''});
   }
@@ -85,7 +107,6 @@ class Home extends React.Component {
   }
 
   gotData(data){
-    //console.log(data.val())
     var barters = data.val();
     var keys = Object.keys(barters);
     const result = []
@@ -121,7 +142,6 @@ class Home extends React.Component {
   renderCards () {
     const keys = this.state.keys;
     const itemList = keys.map(itemId => {
-      console.log(itemId, "ok")
       return(
 
        
