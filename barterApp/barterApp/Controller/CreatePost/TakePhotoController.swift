@@ -31,6 +31,8 @@ class TakePhotoController: UIViewController  {
     @IBOutlet weak var descriptionOutlet: UITextField!
     
     
+  
+    
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         showAlert()
@@ -85,8 +87,9 @@ class TakePhotoController: UIViewController  {
     
     
     func uploadMedia(completion: @escaping (_ url: String?) -> Void) {
-        guard let uid = Auth.auth().currentUser?.uid else { return }
-        let storageRef = Storage.storage().reference().child("user/\(uid)")
+        //guard let uid = Auth.auth().currentUser?.uid else { return }
+        let uuid = UUID().uuidString
+        let storageRef = Storage.storage().reference().child("itemPhotos/\(uuid)")
         if let uploadData = photo.image!.jpegData(compressionQuality: 0.75) {
             storageRef.putData(uploadData, metadata: nil) { (metadata, error) in
                 if error != nil {
@@ -129,14 +132,28 @@ class TakePhotoController: UIViewController  {
 
 extension TakePhotoController: UITextFieldDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
     
+    
+    override func viewWillAppear(_ animated: Bool) {
+        self.subscribeToKeyboardNotifications()
+    }
+    
     override func viewDidLoad() {
         self.titleOutlet.delegate = self
         self.descriptionOutlet.delegate = self
+        
     }
     
     
     func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
         currentVC.dismiss(animated: true, completion: nil)
+    }
+    
+    
+    func subscribeToKeyboardNotifications() {
+        
+        NotificationCenter.default.addObserver(self, selector: #selector(self.keyboardWillShow(_:)), name: UIResponder.keyboardWillShowNotification, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(self.keyboardWillHide(_:)), name: UIResponder.keyboardWillHideNotification, object: nil)
+        
     }
     
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
@@ -159,25 +176,19 @@ extension TakePhotoController: UITextFieldDelegate, UIImagePickerControllerDeleg
     }
     
     
-    func subscribeToKeyboardNotifications() {
-        NotificationCenter.default.addObserver(self, selector: #selector(TakePhotoController.keyboardWillHide(_:)), name: UIWindow.keyboardWillHideNotification, object: nil)
-        
-        NotificationCenter.default.addObserver(self, selector: #selector(TakePhotoController.keyboardWillShow(_:)), name: UIWindow.keyboardWillShowNotification, object: nil)
-        
-    }
-    
     
     @objc func keyboardWillShow(_ notification: Notification) {
-        
+      
         if titleOutlet.isFirstResponder{
-            self.view.frame.origin.y = 0
-        }
-        if descriptionOutlet.isFirstResponder{
-            self.view.frame.origin.y = 0
+            self.view.frame.origin.y = getKeyboardHeight(notification) * (-1)
         }
         
+        if descriptionOutlet.isFirstResponder{
+            self.view.frame.origin.y = getKeyboardHeight(notification) * (-1)
+        }
         
     }
+    
     
     @objc func keyboardWillHide(_ notification: Notification) {
         self.view.frame.origin.y=0
@@ -188,6 +199,7 @@ extension TakePhotoController: UITextFieldDelegate, UIImagePickerControllerDeleg
         return keyboardSize.cgRectValue.height
     }
     
+
     func unsubscribeFromKeyboardNotifications(){
         
         NotificationCenter.default.removeObserver(self)
@@ -199,6 +211,5 @@ extension TakePhotoController: UITextFieldDelegate, UIImagePickerControllerDeleg
     @objc func dismissKeyboard() {
         view.endEditing(true)
     }
-    
     
 }

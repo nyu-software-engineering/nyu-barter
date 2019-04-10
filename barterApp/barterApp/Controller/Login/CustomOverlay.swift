@@ -1,6 +1,6 @@
 //
 //  CustomOverlay.swift
-//  rushApp
+//  barterApp
 //
 //  Created by Kevin Maldjian on 8/8/18.
 //  Copyright © 2018 Kevin Maldjian. All rights reserved.

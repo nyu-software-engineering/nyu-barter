@@ -8,6 +8,14 @@
 
 /* Begin PBXBuildFile section */
 		40A12E8752F781D8990F0D9B /* Pods_barterAppTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 201EB24DE270DF9CAFC78EBD /* Pods_barterAppTests.framework */; };
+		9811BCBD225D9A07005EF041 /* ItemInfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9811BCBC225D9A07005EF041 /* ItemInfoViewController.swift */; };
+		9811BCC0225DB58C005EF041 /* BASellingUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9811BCBF225DB58C005EF041 /* BASellingUser.swift */; };
+		9811BCC1225DBEF2005EF041 /* SF-Pro-Display-Black.otf in Resources */ = {isa = PBXBuildFile; fileRef = 98E879B92225F6E20015F62D /* SF-Pro-Display-Black.otf */; };
+		9811BCC2225DBEFE005EF041 /* SF-Pro-Text-Regular.otf in Resources */ = {isa = PBXBuildFile; fileRef = 98E879C72225F6E30015F62D /* SF-Pro-Text-Regular.otf */; };
+		9811BCC3225DBF10005EF041 /* SF-Pro-Text-Heavy.otf in Resources */ = {isa = PBXBuildFile; fileRef = 98E879BF2225F6E20015F62D /* SF-Pro-Text-Heavy.otf */; };
+		9811BCC4225DBF18005EF041 /* SF-Pro-Text-Bold.otf in Resources */ = {isa = PBXBuildFile; fileRef = 98E879C12225F6E30015F62D /* SF-Pro-Text-Bold.otf */; };
+		9811BCC5225DBF22005EF041 /* SF-Pro-Text-Light.otf in Resources */ = {isa = PBXBuildFile; fileRef = 98E879BA2225F6E20015F62D /* SF-Pro-Text-Light.otf */; };
+		9811BCC6225DBF25005EF041 /* SF-Pro-Text-Medium.otf in Resources */ = {isa = PBXBuildFile; fileRef = 98E879AE2225F6E10015F62D /* SF-Pro-Text-Medium.otf */; };
 		98351CCC22230400007EC636 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98351CCB22230400007EC636 /* AppDelegate.swift */; };
 		98351CD122230400007EC636 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 98351CCF22230400007EC636 /* Main.storyboard */; };
 		98351CD422230400007EC636 /* barterApp.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 98351CD222230400007EC636 /* barterApp.xcdatamodeld */; };
@@ -72,6 +80,8 @@
 		61CB81D1574D37924D861EB6 /* Pods-barterApp.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-barterApp.release.xcconfig"; path = "Pods/Target Support Files/Pods-barterApp/Pods-barterApp.release.xcconfig"; sourceTree = "<group>"; };
 		75CF628420DCC6EF37086D70 /* Pods-barterApp.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-barterApp.debug.xcconfig"; path = "Pods/Target Support Files/Pods-barterApp/Pods-barterApp.debug.xcconfig"; sourceTree = "<group>"; };
 		7B884781614DAD20890DA042 /* Pods-barterAppTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-barterAppTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-barterAppTests/Pods-barterAppTests.debug.xcconfig"; sourceTree = "<group>"; };
+		9811BCBC225D9A07005EF041 /* ItemInfoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemInfoViewController.swift; sourceTree = "<group>"; };
+		9811BCBF225DB58C005EF041 /* BASellingUser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BASellingUser.swift; sourceTree = "<group>"; };
 		98351CC822230400007EC636 /* barterApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = barterApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		98351CCB22230400007EC636 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		98351CD022230400007EC636 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -192,6 +202,14 @@
 			name = Pods;
 			sourceTree = "<group>";
 		};
+		9811BCBE225DA1BB005EF041 /* Feed */ = {
+			isa = PBXGroup;
+			children = (
+				986E061F2226645300CE7EB4 /* FeedCollectionViewCell.swift */,
+			);
+			path = Feed;
+			sourceTree = "<group>";
+		};
 		98351CBF22230400007EC636 = {
 			isa = PBXGroup;
 			children = (
@@ -297,7 +315,7 @@
 			isa = PBXGroup;
 			children = (
 				98E879DC22260E700015F62D /* FeedViewController.swift */,
-				986E061F2226645300CE7EB4 /* FeedCollectionViewCell.swift */,
+				9811BCBC225D9A07005EF041 /* ItemInfoViewController.swift */,
 			);
 			path = Feed;
 			sourceTree = "<group>";
@@ -311,6 +329,7 @@
 				98E879BC2225F6E20015F62D /* SF-Pro-Display-BoldItalic.otf */,
 				98E879B32225F6E20015F62D /* SF-Pro-Display-Heavy.otf */,
 				98E879BE2225F6E20015F62D /* SF-Pro-Display-HeavyItalic.otf */,
+				98E879C72225F6E30015F62D /* SF-Pro-Text-Regular.otf */,
 				98E879C52225F6E30015F62D /* SF-Pro-Display-Light.otf */,
 				98E879BB2225F6E20015F62D /* SF-Pro-Display-LightItalic.otf */,
 				98E879B52225F6E20015F62D /* SF-Pro-Display-Medium.otf */,
@@ -331,7 +350,6 @@
 				98E879B82225F6E20015F62D /* SF-Pro-Text-LightItalic.otf */,
 				98E879AE2225F6E10015F62D /* SF-Pro-Text-Medium.otf */,
 				98E879AF2225F6E10015F62D /* SF-Pro-Text-MediumItalic.otf */,
-				98E879C72225F6E30015F62D /* SF-Pro-Text-Regular.otf */,
 				98E879CB2225F6E40015F62D /* SF-Pro-Text-RegularItalic.otf */,
 				98E879C82225F6E30015F62D /* SF-Pro-Text-Semibold.otf */,
 				98E879B22225F6E20015F62D /* SF-Pro-Text-SemiboldItalic.otf */,
@@ -345,6 +363,7 @@
 				98E879DE222623080015F62D /* setUp.swift */,
 				98582056222EE27900E03C17 /* DataService.swift */,
 				98EA82422230490A00F0AFC9 /* BABarterItem.swift */,
+				9811BCBF225DB58C005EF041 /* BASellingUser.swift */,
 				98366882225B9F47003CBD24 /* BACurrentUser.swift */,
 			);
 			path = Model;
@@ -353,6 +372,7 @@
 		98E879CF2225F9CA0015F62D /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				9811BCBE225DA1BB005EF041 /* Feed */,
 				9836687F225B9D1F003CBD24 /* Login */,
 				985820432226E9A100E03C17 /* Layout */,
 				98351CCF22230400007EC636 /* Main.storyboard */,
@@ -523,14 +543,20 @@
 				98EA823E222EEC1C00F0AFC9 /* Listings.storyboard in Resources */,
 				98E879D22225FA400015F62D /* Tab.storyboard in Resources */,
 				98E879D922260BEC0015F62D /* Feed.storyboard in Resources */,
+				9811BCC3225DBF10005EF041 /* SF-Pro-Text-Heavy.otf in Resources */,
 				98351CD922230401007EC636 /* LaunchScreen.storyboard in Resources */,
+				9811BCC6225DBF25005EF041 /* SF-Pro-Text-Medium.otf in Resources */,
 				98366885225BA664003CBD24 /* CustomOverlay.xib in Resources */,
 				98694FCB222305F8008AC17B /* GoogleService-Info.plist in Resources */,
 				98351CD622230401007EC636 /* Assets.xcassets in Resources */,
 				98351CD122230400007EC636 /* Main.storyboard in Resources */,
 				98366881225B9D29003CBD24 /* CustomPage.xib in Resources */,
+				9811BCC5225DBF22005EF041 /* SF-Pro-Text-Light.otf in Resources */,
+				9811BCC2225DBEFE005EF041 /* SF-Pro-Text-Regular.otf in Resources */,
+				9811BCC4225DBF18005EF041 /* SF-Pro-Text-Bold.otf in Resources */,
 				98EA823C222EEA0900F0AFC9 /* CreatePost.storyboard in Resources */,
 				98E879D7222603090015F62D /* Default-568h@2x.png in Resources */,
+				9811BCC1225DBEF2005EF041 /* SF-Pro-Display-Black.otf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -600,6 +626,7 @@
 				"${BUILT_PRODUCTS_DIR}/GTMSessionFetcher/GTMSessionFetcher.framework",
 				"${BUILT_PRODUCTS_DIR}/GoogleToolboxForMac/GoogleToolboxForMac.framework",
 				"${BUILT_PRODUCTS_DIR}/GoogleUtilities/GoogleUtilities.framework",
+				"${BUILT_PRODUCTS_DIR}/Hero/Hero.framework",
 				"${BUILT_PRODUCTS_DIR}/Kingfisher/Kingfisher.framework",
 				"${BUILT_PRODUCTS_DIR}/SwiftyOnboard/SwiftyOnboard.framework",
 				"${BUILT_PRODUCTS_DIR}/leveldb-library/leveldb.framework",
@@ -613,6 +640,7 @@
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GTMSessionFetcher.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GoogleToolboxForMac.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GoogleUtilities.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Hero.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Kingfisher.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwiftyOnboard.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/leveldb.framework",
@@ -667,6 +695,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				98582057222EE27900E03C17 /* DataService.swift in Sources */,
+				9811BCBD225D9A07005EF041 /* ItemInfoViewController.swift in Sources */,
 				98E879D52226027B0015F62D /* appColors.swift in Sources */,
 				986E06202226645300CE7EB4 /* FeedCollectionViewCell.swift in Sources */,
 				98E879DD22260E700015F62D /* FeedViewController.swift in Sources */,
@@ -686,6 +715,7 @@
 				9858204B2226EF0E00E03C17 /* CellSizeProvider.swift in Sources */,
 				98351CD422230400007EC636 /* barterApp.xcdatamodeld in Sources */,
 				9836687C225B9CB6003CBD24 /* CustomPage.swift in Sources */,
+				9811BCC0225DB58C005EF041 /* BASellingUser.swift in Sources */,
 				E9A4570422331D4C000D6744 /* TakePhotoController.swift in Sources */,
 				98351CCC22230400007EC636 /* AppDelegate.swift in Sources */,
 				98EA82432230490A00F0AFC9 /* BABarterItem.swift in Sources */,

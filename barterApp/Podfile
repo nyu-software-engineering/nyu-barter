@@ -13,7 +13,7 @@ target 'barterApp' do
   pod 'FBSDKLoginKit'
   pod 'GoogleSignIn'
   pod 'Kingfisher'
-
+  pod 'Hero'
 
 
   # Pods for barterApp
