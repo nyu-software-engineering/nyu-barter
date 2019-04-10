@@ -36,27 +36,23 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="CXi-cp-9Mi">
-                                <rect key="frame" x="0.0" y="44" width="414" height="375"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="CXi-cp-9Mi">
+                                <rect key="frame" x="0.0" y="88" width="414" height="412"/>
                             </imageView>
-                            <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Enter Title " textAlignment="natural" clearsOnBeginEditing="YES" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="KXA-fr-Zsi">
-                                <rect key="frame" x="20" y="503" width="366" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Enter Title " textAlignment="natural" clearsOnBeginEditing="YES" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="KXA-fr-Zsi">
+                                <rect key="frame" x="24" y="550" width="366" height="30"/>
                                 <nil key="textColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
-                            <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Enter Description" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="4Hr-Ag-tNY">
-                                <rect key="frame" x="20" y="579" width="366" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Enter Description" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="4Hr-Ag-tNY">
+                                <rect key="frame" x="24" y="630" width="366" height="30"/>
                                 <nil key="textColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="uQt-kM-MI5">
-                                <rect key="frame" x="188" y="666" width="31" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="uQt-kM-MI5">
+                                <rect key="frame" x="192" y="710" width="31" height="30"/>
                                 <state key="normal" title="Post"/>
                                 <connections>
                                     <action selector="post:" destination="Vdl-LZ-mJK" eventType="touchUpInside" id="LuA-YW-fxz"/>
@@ -64,6 +60,23 @@
                             </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="4Hr-Ag-tNY" firstAttribute="top" secondItem="KXA-fr-Zsi" secondAttribute="bottom" constant="50" id="0mi-ee-i9w"/>
+                            <constraint firstItem="fbA-Lx-cRX" firstAttribute="trailing" secondItem="4Hr-Ag-tNY" secondAttribute="trailing" constant="24" id="16l-5i-dhp"/>
+                            <constraint firstItem="fbA-Lx-cRX" firstAttribute="trailing" secondItem="KXA-fr-Zsi" secondAttribute="trailing" constant="24" id="55Q-sh-y7r"/>
+                            <constraint firstItem="uQt-kM-MI5" firstAttribute="top" secondItem="4Hr-Ag-tNY" secondAttribute="bottom" constant="50" id="8xw-Hs-cUg"/>
+                            <constraint firstItem="CXi-cp-9Mi" firstAttribute="top" secondItem="fbA-Lx-cRX" secondAttribute="top" id="BWt-e5-rJe"/>
+                            <constraint firstItem="uQt-kM-MI5" firstAttribute="leading" secondItem="fbA-Lx-cRX" secondAttribute="leading" constant="192" id="SoI-Ks-waH"/>
+                            <constraint firstItem="CXi-cp-9Mi" firstAttribute="leading" secondItem="fbA-Lx-cRX" secondAttribute="leading" id="ew6-On-4mq"/>
+                            <constraint firstItem="4Hr-Ag-tNY" firstAttribute="leading" secondItem="fbA-Lx-cRX" secondAttribute="leading" constant="24" id="glO-vT-QrI"/>
+                            <constraint firstItem="uQt-kM-MI5" firstAttribute="top" secondItem="4Hr-Ag-tNY" secondAttribute="bottom" constant="50" id="mIz-ZQ-z0O"/>
+                            <constraint firstItem="4Hr-Ag-tNY" firstAttribute="top" secondItem="KXA-fr-Zsi" secondAttribute="bottom" constant="50" id="mgN-iT-zZN"/>
+                            <constraint firstItem="KXA-fr-Zsi" firstAttribute="leading" secondItem="fbA-Lx-cRX" secondAttribute="leading" constant="24" id="ofT-CB-FmM"/>
+                            <constraint firstItem="CXi-cp-9Mi" firstAttribute="trailing" secondItem="fbA-Lx-cRX" secondAttribute="trailing" id="ojF-Uw-w4x"/>
+                            <constraint firstItem="KXA-fr-Zsi" firstAttribute="top" secondItem="CXi-cp-9Mi" secondAttribute="bottom" constant="50" id="q2g-mv-5wV"/>
+                            <constraint firstItem="fbA-Lx-cRX" firstAttribute="trailing" secondItem="uQt-kM-MI5" secondAttribute="trailing" constant="191" id="qex-gi-5RP"/>
+                            <constraint firstItem="fbA-Lx-cRX" firstAttribute="bottom" secondItem="uQt-kM-MI5" secondAttribute="bottom" constant="73" id="yW1-Y8-l9j"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="fbA-Lx-cRX"/>
                     </view>
                     <navigationItem key="navigationItem" id="SDY-vn-7nZ"/>
