@@ -90,6 +90,7 @@ PODS:
   - GoogleUtilities/UserDefaults (5.5.0):
     - GoogleUtilities/Logger
   - GTMSessionFetcher/Core (1.2.1)
+  - Hero (1.4.0)
   - Kingfisher (5.3.1)
   - leveldb-library (1.20)
   - nanopb (0.3.901):
@@ -107,6 +108,7 @@ DEPENDENCIES:
   - Firebase/Database
   - Firebase/Storage
   - GoogleSignIn
+  - Hero
   - Kingfisher
   - SwiftyOnboard
 
@@ -128,6 +130,7 @@ SPEC REPOS:
     - GoogleToolboxForMac
     - GoogleUtilities
     - GTMSessionFetcher
+    - Hero
     - Kingfisher
     - leveldb-library
     - nanopb
@@ -150,11 +153,12 @@ SPEC CHECKSUMS:
   GoogleToolboxForMac: ff31605b7d66400dcec09bed5861689aebadda4d
   GoogleUtilities: 6481e6318c5fcabaaa8513ef8120f329055d7c10
   GTMSessionFetcher: 32aeca0aa144acea523e1c8e053089dec2cb98ca
+  Hero: bac92350d7201a1a940003e0767c7b52ce7c99a1
   Kingfisher: d9e7e0b209b59b8f9873aa2f37654e81a7beea51
   leveldb-library: 08cba283675b7ed2d99629a4bc5fd052cd2bb6a5
   nanopb: 2901f78ea1b7b4015c860c2fdd1ea2fee1a18d48
   SwiftyOnboard: de60e90c2af23dd61b01ec0c6a8d0be3370f857b
 
-PODFILE CHECKSUM: 19e00cd9fbf5a32b97580e753cbb90fe8a8e000c
+PODFILE CHECKSUM: 8ec41a012fee882aee08f98170b8e8c442de7361
 
 COCOAPODS: 1.5.3

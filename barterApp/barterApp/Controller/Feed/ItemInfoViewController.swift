@@ -7,14 +7,18 @@
 //
 
 import UIKit
+import Hero
 
 class ItemInfoViewController: UIViewController {
-
+    
+    var barterItem : BABarterItem!
+    
+    @IBOutlet weak var itemPhoto: UIImageView!
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        self.hero.isEnabled = true
         setUp.setUpPicNav(navCon: self.navigationController!)
-
+       // print(barterItem.descr)
         // Do any additional setup after loading the view.
     }
     

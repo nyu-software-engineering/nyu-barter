@@ -67,6 +67,9 @@
                                                             <subviews>
                                                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="84U-qj-bQv">
                                                                     <rect key="frame" x="0.0" y="0.0" width="165" height="165"/>
+                                                                    <userDefinedRuntimeAttributes>
+                                                                        <userDefinedRuntimeAttribute type="string" keyPath="heroID" value="photo"/>
+                                                                    </userDefinedRuntimeAttributes>
                                                                 </imageView>
                                                             </subviews>
                                                             <color key="backgroundColor" red="0.81599003079999999" green="0.28706461189999999" blue="0.27840113640000003" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
@@ -144,7 +147,7 @@
                     </connections>
                 </navigationController>
             </objects>
-            <point key="canvasLocation" x="1190" y="90"/>
+            <point key="canvasLocation" x="1212" y="809"/>
         </scene>
         <!--Item Info View Controller-->
         <scene sceneID="hml-ke-5HH">
@@ -153,7 +156,21 @@
                     <view key="view" contentMode="scaleToFill" id="U5f-wP-e8d">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="BlankProfilePicture" translatesAutoresizingMaskIntoConstraints="NO" id="BUi-Rw-oxT">
+                                <rect key="frame" x="82" y="323" width="250" height="250"/>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="string" keyPath="heroID" value="photo"/>
+                                </userDefinedRuntimeAttributes>
+                            </imageView>
+                        </subviews>
                         <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="BUi-Rw-oxT" firstAttribute="centerX" secondItem="U5f-wP-e8d" secondAttribute="centerX" id="pn9-gg-3Dv"/>
+                            <constraint firstItem="BUi-Rw-oxT" firstAttribute="leading" secondItem="cqg-L6-oQA" secondAttribute="leading" constant="82" id="qr6-85-duV"/>
+                            <constraint firstItem="BUi-Rw-oxT" firstAttribute="centerY" secondItem="U5f-wP-e8d" secondAttribute="centerY" id="rnO-Ex-nT8"/>
+                            <constraint firstItem="BUi-Rw-oxT" firstAttribute="top" secondItem="cqg-L6-oQA" secondAttribute="top" constant="235" id="tm7-S4-FTT"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="cqg-L6-oQA"/>
                     </view>
                     <navigationItem key="navigationItem" id="qMl-SJ-hxH">
@@ -163,13 +180,17 @@
                             </connections>
                         </barButtonItem>
                     </navigationItem>
+                    <connections>
+                        <outlet property="itemPhoto" destination="BUi-Rw-oxT" id="pXn-II-Oqd"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="a0q-7I-5vS" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2129" y="90"/>
+            <point key="canvasLocation" x="2128.985507246377" y="89.732142857142847"/>
         </scene>
     </scenes>
     <resources>
+        <image name="BlankProfilePicture" width="720" height="720"/>
         <image name="home" width="20" height="20"/>
     </resources>
 </document>
