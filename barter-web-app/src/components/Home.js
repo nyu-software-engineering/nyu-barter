@@ -50,8 +50,9 @@ class Home extends React.Component {
     }
   }
   onSubmit(event){
-      var userRef = firebase.database().ref('barterUsers/' + userID).child('myItems')
+      var userRefKey = firebase.database().ref('users/' + userID).child('myItems').push().key;
       var newPostKey = firebase.database().ref().child('barters').push().key;
+      var itemID = newPostKey;
       const {isSignedIn, title, descr, photoUrl, userID} = this.state;
       firebase.database().ref('barters/' + newPostKey).set({
           dateTime: firebase.database.ServerValue.TIMESTAMP,
@@ -61,14 +62,7 @@ class Home extends React.Component {
           userID,
     });
 
-    var newUserKey = firebase.database().ref('barterUsers/' + userID + '/myItems').push().key;
-    firebase.database().ref('barterUsers/' + userID + '/myItems/' + newUserKey).set({
-      dateTime: firebase.database.ServerValue.TIMESTAMP,
-      descr,
-      photoUrl,
-      title,
-      userID,
-    })
+    firebase.database().ref('users/' + userID + '/myItems/' + userRefKey).set(itemID);
 
     this.setState({dateTime: ''});
     this.setState({descr: ''});
@@ -78,20 +72,22 @@ class Home extends React.Component {
 
   componentDidMount = ()=>{
     firebase.auth().onAuthStateChanged(user =>{
-      //Start change
       if(user){
-        const userRef = firebase.database().ref('barterUsers')
+        const userRef = firebase.database().ref('users')
         const curUser = user.uid;
+        const UserEmail = user.email;
+        const photoURL = user.photoURL;
         
         userRef.orderByValue().equalTo(curUser).once("value",snapshot => {
           if (!snapshot.exists()){
-            //userRef.child('userID').set(curUser)
             userRef.child(curUser)
+            firebase.database().ref('users/' + curUser).child('email').set(UserEmail);
+            firebase.database().ref('users/' + curUser).child('photoURL').set(photoURL);
           }
             
         })
       }
-      //End changes
+      
       this.setState({isSignedIn:!!user});
       this.setState({userID:user['uid']});
     });
