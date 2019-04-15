@@ -66,9 +66,8 @@ class Home extends React.Component {
   }
 
   onSubmit(event){
-      var userRefKey = firebase.database().ref('users/' + userID).child('myItems').push().key;
+      
       var newPostKey = firebase.database().ref().child('barters').push().key;
-
 
       let {isSignedIn, title, descr, photoUrl, picture, userID} = this.state;
       var storageRef = firebase.storage().ref();
@@ -89,8 +88,8 @@ class Home extends React.Component {
         })
       });
 
-
-    firebase.database().ref('users/' + userID + '/myItems/' + userRefKey).set(itemID);
+      firebase.database().ref('users/' + userID).child('myItems');
+      firebase.database().ref('users/' + userID + '/myItems').push(newPostKey);
 
     this.setState({dateTime: '', descr: '', photoUrl: '', title: ''});
   }
@@ -114,7 +113,8 @@ class Home extends React.Component {
         })
       }
       
-      this.setState({isSignedIn:!!user, userID:user['uid']});
+      this.setState({isSignedIn:!!user})
+      this.setState({userID:user['uid']});
 
     });
     firebase.database().ref('barters').on('value', this.gotData.bind(this), this.errData);
