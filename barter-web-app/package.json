@@ -52,7 +52,7 @@
     "firebase-functions-test": "^0.1.6",
     "firebase-mock": "^2.2.10",
     "font-awesome": "^4.7.0",
-    "jest": "^24.5.0",
+    "jest": "23.6.0",
     "mocha": "^6.0.2"
   }
 }
