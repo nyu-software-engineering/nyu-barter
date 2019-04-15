@@ -66,8 +66,10 @@ class Home extends React.Component {
   }
 
   onSubmit(event){
-      var userRef = firebase.database().ref('barterUsers/' + userID).child('myItems')
+      var userRefKey = firebase.database().ref('users/' + userID).child('myItems').push().key;
       var newPostKey = firebase.database().ref().child('barters').push().key;
+
+
       let {isSignedIn, title, descr, photoUrl, picture, userID} = this.state;
       var storageRef = firebase.storage().ref();
       var uniqueID = uuidv4();
@@ -87,21 +89,33 @@ class Home extends React.Component {
         })
       });
 
-    var newUserKey = firebase.database().ref('barterUsers/' + userID + '/myItems').push().key;
-    firebase.database().ref('barterUsers/' + userID + '/myItems/' + newUserKey).set({
-      dateTime: firebase.database.ServerValue.TIMESTAMP,
-      descr,
-      photoUrl,
-      title,
-      userID,
-    })
+
+    firebase.database().ref('users/' + userID + '/myItems/' + userRefKey).set(itemID);
 
     this.setState({dateTime: '', descr: '', photoUrl: '', title: ''});
   }
 
   componentDidMount = ()=>{
     firebase.auth().onAuthStateChanged(user =>{
+      
+      if(user){
+        const userRef = firebase.database().ref('users')
+        const curUser = user.uid;
+        const UserEmail = user.email;
+        const photoURL = user.photoURL;
+        
+        userRef.orderByValue().equalTo(curUser).once("value",snapshot => {
+          if (!snapshot.exists()){
+            userRef.child(curUser)
+            firebase.database().ref('users/' + curUser).child('email').set(UserEmail);
+            firebase.database().ref('users/' + curUser).child('photoURL').set(photoURL);
+          }
+            
+        })
+      }
+      
       this.setState({isSignedIn:!!user, userID:user['uid']});
+
     });
     firebase.database().ref('barters').on('value', this.gotData.bind(this), this.errData);
   }
