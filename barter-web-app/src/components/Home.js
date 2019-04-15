@@ -66,9 +66,9 @@ class Home extends React.Component {
   }
 
   onSubmit(event){
-      
-      var newPostKey = firebase.database().ref().child('barters').push().key;
 
+      var userRef = firebase.database().ref('barterUsers/' + userID).child('myItems')
+      var newPostKey = firebase.database().ref().child('barters').push().key;
       let {isSignedIn, title, descr, photoUrl, picture, userID} = this.state;
       var storageRef = firebase.storage().ref();
       var uniqueID = uuidv4();
@@ -88,14 +88,18 @@ class Home extends React.Component {
         })
       });
 
+
       firebase.database().ref('users/' + userID).child('myItems');
       firebase.database().ref('users/' + userID + '/myItems').push(newPostKey);
+
+
 
     this.setState({dateTime: '', descr: '', photoUrl: '', title: ''});
   }
 
   componentDidMount = ()=>{
     firebase.auth().onAuthStateChanged(user =>{
+
       
       if(user){
         const userRef = firebase.database().ref('users')
@@ -115,6 +119,7 @@ class Home extends React.Component {
       
       this.setState({isSignedIn:!!user})
       this.setState({userID:user['uid']});
+
 
     });
     firebase.database().ref('barters').on('value', this.gotData.bind(this), this.errData);
