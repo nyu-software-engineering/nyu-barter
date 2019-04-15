@@ -12,11 +12,32 @@
 
 }
 
+.btn-info, .btn-info:hover, .btn-info:active, .btn-info:visited{
+  background-color: white; 
+  border-color: white;
+  border-radius: 15px;  
+  color: rgb(255, 63, 85); 
+
+}
+
 .form-inline .form-control {
   display: inline-block;
-  width: 700px;
+  width: 800px;
   vertical-align: middle;
 }
+
+.glyphicon glyphicon-camera{
+  color: aliceblue;
+}
+
+.modal-header, .modal-footer{
+  background-color: rgb(255, 63, 85); 
+  color:white; 
+  font-size: 20px;
+  font-family: sans-serif;
+   
+}
+
 
 
 
