@@ -149,6 +149,7 @@ extension TakePhotoController: UITextFieldDelegate, UIImagePickerControllerDeleg
     
     
     override func viewWillAppear(_ animated: Bool) {
+        self.flag = true
         self.subscribeToKeyboardNotifications()
     }
     
@@ -160,7 +161,7 @@ extension TakePhotoController: UITextFieldDelegate, UIImagePickerControllerDeleg
     
     
     func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
-        currentVC.dismiss(animated: true, completion: nil)
+        self.dismiss(animated: true, completion: nil)
     }
     
     
