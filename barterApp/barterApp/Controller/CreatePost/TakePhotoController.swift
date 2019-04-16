@@ -45,19 +45,25 @@ class TakePhotoController: UIViewController  {
             
             actionSheet.addAction(UIAlertAction(title: "Camera", style: .default, handler: { (alert:UIAlertAction!) -> Void in
                 self.camera()
+                
             }))
             
             actionSheet.addAction(UIAlertAction(title: "Gallery", style: .default, handler: { (alert:UIAlertAction!) -> Void in
                 self.photoLibrary()
+                
             }))
             
             //actionSheet.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
             actionSheet.addAction(UIAlertAction(title: "Cancel", style: .default, handler: { (alert:UIAlertAction!) -> Void in
                 self.tabBarController?.selectedIndex = 0
+        
             }))
             
+            
+            
             self.present(actionSheet, animated: true, completion: nil)
-            flag = false
+            self.flag = false
+            
         }
     }
     
@@ -81,6 +87,15 @@ class TakePhotoController: UIViewController  {
                 }
             self.tabBarController?.selectedIndex = 0
         }
+        
+        //bug fixes 4/16/19
+        self.flag = true
+        self.photo.isHidden = true
+        self.descriptionOutlet.text = "";
+        self.titleOutlet.text = "";
+        
+        
+        
     }
     
 
