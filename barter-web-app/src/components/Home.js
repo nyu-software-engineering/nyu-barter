@@ -135,16 +135,14 @@ class Home extends React.Component {
     const keys = this.state.keys;
     const itemList = keys.map(itemId => {
       return(
-
         <div className = "col-3">
           <div className ="card" styles="width: 18rem;">
             <p className = "card-img top"><PreviewPicture photoUrl={itemId.photoUrl}/></p>
             <div className ="card-body">
-              <h5 className ="card-title">{itemId.title}</h5>
+              <a href="#" data-toggle="collapse" data-target="#hide" ><h5 className ="card-title">{itemId.title}</h5></a>
             </div>
           </div>
         </div>
-    //
       )
     });
     return itemList;
