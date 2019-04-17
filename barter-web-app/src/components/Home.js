@@ -71,7 +71,6 @@ class Home extends React.Component {
       let {isSignedIn, title, descr, photoUrl, picture, userID} = this.state;
       var storageRef = firebase.storage().ref();
       var uniqueID = uuidv4();
-      console.log(uniqueID)
       var itemPhotosRef = storageRef.child(`itemPhotos/${uniqueID}`);
       let picUrl = null;
       itemPhotosRef.put(picture).then((snapshot)=> {
@@ -151,20 +150,25 @@ class Home extends React.Component {
 
   renderCards () {
     const keys = this.state.keys;
+    var counter = 0
+    var label = ''
+    var displayDescr = 'displayDescr';
     const itemList = keys.map(itemId => {
-      console.log(itemId.title, itemId.descr);
+      counter += 1;
+      var uniqueID = "h" + uuidv4();
+      label = "#" + uniqueID;
       return(
         <div className = "col-3">
        <div className ="card" styles="width: 18rem;">
          <p className = "card-img top"><PreviewPicture photoUrl={itemId.photoUrl}/></p>
          <div className ="card-body">
-           <a href="#" class="item-title" data-toggle="modal" data-target="#displayDescr"><h5 className ="card-title">{itemId.title}</h5></a>
-           <div class="modal fade" id="displayDescr" tabindex="-1" role="dialog" aria-labelledby="descrLabel" aria-hidden="true">
+           <a href="#" class="item-title" data-toggle="modal" data-target={label}><h5 className ="card-title">{itemId.title}</h5></a>
+           <div class="modal fade" id={uniqueID} tabindex="-1" role="dialog" aria-labelledby="descrLabel" aria-hidden="true">
              <div class="modal-dialog" role="document">
                <div class="modal-content">
-                 <div class="modal-body" id="descrLabel">
+                 <div class="modal-body">
                    <h4> Would like to trade for - </h4>
-                   <h6> {itemId.descr}  </h6>
+                   <h6> {itemId.descr}</h6>
                  </div>
                </div>
              </div>
