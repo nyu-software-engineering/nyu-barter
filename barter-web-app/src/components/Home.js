@@ -14,6 +14,7 @@ import {faSearch} from '@fortawesome/free-solid-svg-icons'
 import {faBars} from '@fortawesome/free-solid-svg-icons'
 import {faHome} from '@fortawesome/free-solid-svg-icons'
 import {faArchway} from '@fortawesome/free-solid-svg-icons'
+import {faHeart} from '@fortawesome/free-solid-svg-icons'
 const uuidv4 = require('uuid/v4');
 
 
@@ -22,6 +23,7 @@ library.add(faSearch)
 library.add(faBars)
 library.add(faHome)
 library.add(faArchway)
+library.add(faHeart)
 
 const config = {
     apiKey: process.env.REACT_APP_FIREBASE_KEY,
@@ -158,11 +160,11 @@ class Home extends React.Component {
       label = "#" + uniqueID;
       return(
         <div className = "col-3">
-<<<<<<< HEAD
         <div className ="card" styles="width: 18rem;">
           <p className = "card-img top"><PreviewPicture photoUrl={itemId.photoUrl}/></p>
           <div className ="card-body">
             <a href="#" class="item-title" data-toggle="modal" data-target="#displayDescr"><h5 className ="card-title">{itemId.title}</h5></a>
+            <button className="heart pull-right"><FontAwesomeIcon icon="heart" /></button> 
             <div class="modal fade" id="displayDescr" tabindex="-1" role="dialog" aria-labelledby="descrLabel" aria-hidden="true">
               <div class="modal-dialog" role="document">
                 <div class="modal-content">
@@ -176,25 +178,6 @@ class Home extends React.Component {
           </div>
         </div>
       </div>
-=======
-       <div className ="card" styles="width: 18rem;">
-         <p className = "card-img top"><PreviewPicture photoUrl={itemId.photoUrl}/></p>
-         <div className ="card-body">
-           <a href="#" class="item-title" data-toggle="modal" data-target={label}><h5 className ="card-title">{itemId.title}</h5></a>
-           <div class="modal fade" id={uniqueID} tabindex="-1" role="dialog" aria-labelledby="descrLabel" aria-hidden="true">
-             <div class="modal-dialog" role="document">
-               <div class="modal-content">
-                 <div class="modal-body">
-                   <h4> Would like to trade for - </h4>
-                   <h6> {itemId.descr}</h6>
-                 </div>
-               </div>
-             </div>
-           </div>
-         </div>
-       </div>
-     </div>
->>>>>>> 8540bdd1831b34545add49735e86c19d4f88f24b
       )
     });
     return itemList;
