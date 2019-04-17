@@ -151,6 +151,7 @@ class Home extends React.Component {
   renderCards () {
     const keys = this.state.keys;
     const itemList = keys.map(itemId => {
+      console.log(itemId.title, itemId.descr);
       return(
       
       
