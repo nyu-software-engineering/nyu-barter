@@ -6,9 +6,26 @@ import Rebase from 're-base';
 import StyledFirebaseAuth from "react-firebaseui/StyledFirebaseAuth";
 import { NavLink } from "react-router-dom";
 import PreviewPicture from './PreviewPicture';
+import 'bootstrap/dist/js/bootstrap.bundle.min';
+import { library } from '@fortawesome/fontawesome-svg-core'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faCamera } from '@fortawesome/free-solid-svg-icons'
+import {faSearch} from '@fortawesome/free-solid-svg-icons'
+import {faBars} from '@fortawesome/free-solid-svg-icons'
+import {faHome} from '@fortawesome/free-solid-svg-icons'
+import {faArchway} from '@fortawesome/free-solid-svg-icons'
 const uuidv4 = require('uuid/v4');
 
 
+<<<<<<< HEAD
+library.add(faCamera)
+library.add(faSearch)
+library.add(faBars)
+library.add(faHome)
+library.add(faArchway)
+
+=======
+>>>>>>> ee3c7c916f663fd38ff88ac026c2992a5e44a822
 const config = {
     apiKey: process.env.REACT_APP_FIREBASE_KEY,
     authDomain: process.env.REACT_APP_FIREBASE_DOMAIN,
@@ -117,7 +134,11 @@ class Home extends React.Component {
       var user = barters[k].userID;
       var title = barters[k].title;
       var photoUrl = barters[k].photoUrl;
+<<<<<<< HEAD
+      var descr = barters[k].descr; 
+=======
       var descr = barters[k].descr;
+>>>>>>> ee3c7c916f663fd38ff88ac026c2992a5e44a822
       result.push({user, title, photoUrl, descr});
     }
     this.setState({keys: result});
@@ -139,6 +160,20 @@ class Home extends React.Component {
     const itemList = keys.map(itemId => {
       console.log(itemId.title, itemId.descr);
       return(
+<<<<<<< HEAD
+      
+      
+        <div className= "col-3"> 
+          <div className ="card" styles="width: 18rem;">
+            <p className = "card-img top"><PreviewPicture photoUrl={itemId.photoUrl}/></p>
+            <div className ="card-body">
+              <a href="#" class="item-title" data-toggle="modal" data-target="#displayDescr"><h5 className ="card-title">{itemId.title}</h5></a>
+            </div>
+          </div>
+        </div> 
+
+    //
+=======
         <div className = "col-3">
        <div className ="card" styles="width: 18rem;">
          <p className = "card-img top"><PreviewPicture photoUrl={itemId.photoUrl}/></p>
@@ -157,6 +192,7 @@ class Home extends React.Component {
          </div>
        </div>
      </div>
+>>>>>>> ee3c7c916f663fd38ff88ac026c2992a5e44a822
       )
     });
     return itemList;
@@ -173,21 +209,32 @@ class Home extends React.Component {
             <script src="https://www.gstatic.com/firebasejs/5.8.4/firebase.js"></script>
 
             <nav class="navbar navbar-expand-lg navbar-light bg-light">
-              <a class="navbar-brand" href="#">Navbar</a>
+              <a class="navbar-brand" href="#">NYU Barter</a>
               <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
               <span class="navbar-toggler-icon"></span>
               </button>
               <div class="collapse navbar-collapse" id="navbarSupportedContent">
               <form class="form-inline my-2 my-lg-0">
+                <div className="input-group mb-0 searchBtn">
+                  <div className="input-group-prepend">
+                    <span className="input-group-text"><FontAwesomeIcon icon="search" /></span>
+                  </div>
+                </div>
                 <input class="form-control mr-sm-2" name = "search" type="search" placeholder="Search" aria-label="Search" />
                 <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
               </form>
+              
                 <ul class="navbar-nav ml-auto">
+                <li class="nav-item active">
+                  <button type="button" class="btn btn-primary m-2" data-toggle="modal" data-target="#addItem">
+                    <FontAwesomeIcon icon="camera" /> Add Item 
+                  </button>
+                </li>
                   <li class="nav-item active">
-                    <NavLink to="/inventory"> <button className = "btn btn-primary m-2 " type="myItems">My Items</button></NavLink>
+                    <NavLink to="/inventory"> <button className = "btn btn-primary m-2 " type="myItems"><FontAwesomeIcon icon="home" /> My Items</button></NavLink>
                   </li>
                   <li class="nav-item">
-                    <NavLink to="/interests"><button className = "btn btn-primary m-2" type="interestedItem">Interested Items</button></NavLink>
+                    <NavLink to="/interests"><button className = "btn btn-primary m-2" type="interestedItem"><FontAwesomeIcon icon="archway" /> Interested Items</button></NavLink>
                   </li>
                 <li class="nav-item">
                   <button className = "btn btn-primary m-2" onClick={() => firebase.auth().signOut()}>Logout</button>
@@ -199,20 +246,47 @@ class Home extends React.Component {
           </div>
         </header>
       <div className='container'>
-        <section className='add-item'>
-              <form>
-              <input type="text" name="title" placeholder="What item do you want to trade?" onChange={this.handleChange} value={this.state.item} />
-              <input type="text" name="descr" placeholder="Describe your item" onChange={this.handleChange} value={this.state.descr} />
+      <div class="modal fade" id="addItem" tabindex="-1" role="dialog" aria-labelledby="addItemLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <p class="heading" id="addItemLabel">
+                <strong>Add Item</strong>
+              </p>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true" class="white-text">&times;</span>
+              </button>
+            </div>
+            <div class="modal-body">
+              <div class="form-group row"> 
+                <div class="col-sm-10">
+                    <input type="text" class="form-control" name="title" placeholder="What item do you want to trade?" onChange={this.handleChange} value={this.state.item} />
+                </div>
+              </div> 
+              <br />
+              <div class="form-group row">
+                <div class="col-sm-10">
+                  <input type="text" class="form-control" name="descr" placeholder="Describe your item" onChange={this.handleChange} value={this.state.descr} />
+                </div>
+              </div>
               <label class="upload-group">
-              Upload Image
-              <input type="file" class="upload-group" id="file" onChange={(event) => {
-                this.displayPicture(event);
-              }}/>
+                  Upload Image
+                <br/>
+                <span class="btn btn-default btn-file">
+                  <input type="file" class="upload-group" id="file" onChange={(event) => {
+                    this.displayPicture(event);
+                  }}/>
+                </span>
               </label>
               <PreviewPicture photoUrl={this.state.photoUrl}/>
-              <button type="btn btn-priamry" onClick={this.onSubmit} type="reset">Add Item to Barter</button>
-              </form>
-        </section>
+            </div>
+            <div class="modal-footer">
+              {/* <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button> */}
+              <button type="btn btn-info" onClick={this.onSubmit} type="reset" data-dismiss="modal" id="addItemBtn">Add Item to Barter</button>
+            </div>
+          </div>
+        </div>
+      </div>
         <section className='display-item'>
           <div className='wrapper'>
             <div className="row">
