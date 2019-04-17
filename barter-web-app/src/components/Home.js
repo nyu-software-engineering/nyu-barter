@@ -86,15 +86,6 @@ class Home extends React.Component {
         })
       });
 
-    var newUserKey = firebase.database().ref('barterUsers/' + userID + '/myItems').push().key;
-    firebase.database().ref('barterUsers/' + userID + '/myItems/' + newUserKey).set({
-      dateTime: firebase.database.ServerValue.TIMESTAMP,
-      descr,
-      photoUrl,
-      title,
-      userID,
-    })
-
     this.setState({dateTime: ''});
     this.setState({descr: ''});
     this.setState({photoUrl: ''});
@@ -103,20 +94,20 @@ class Home extends React.Component {
 
   componentDidMount = ()=>{
     firebase.auth().onAuthStateChanged(user =>{
-      //Start change
       if(user){
         const userRef = firebase.database().ref('barterUsers')
         const curUser = user.uid;
 
         userRef.orderByValue().equalTo(curUser).once("value",snapshot => {
           if (!snapshot.exists()){
-            //userRef.child('userID').set(curUser)
-            userRef.child(curUser)
+            firebase.database().ref('users/' + curUser).child('email').set(user.email);
+            firebase.database().ref('users/' + curUser).child('photoURL').set(user.photoURL);
+            
           }
 
         })
       }
-      //End changes
+      
       this.setState({isSignedIn:!!user});
       this.setState({userID:user['uid']});
     });
