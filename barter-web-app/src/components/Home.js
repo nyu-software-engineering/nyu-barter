@@ -132,7 +132,7 @@ class Home extends React.Component {
       var user = barters[k].userID;
       var title = barters[k].title;
       var photoUrl = barters[k].photoUrl;
-      var descr = barters[k].descr; 
+      var descr = barters[k].descr;
       result.push({user, title, photoUrl, descr});
     }
     this.setState({keys: result});
@@ -151,8 +151,8 @@ class Home extends React.Component {
 
   renderCards () {
     const keys = this.state.keys;
-    var counter = 0
-    var label = ''
+    var counter = 0;
+    var label = '';
     var displayDescr = 'displayDescr';
     const itemList = keys.map(itemId => {
       counter += 1;
@@ -160,24 +160,24 @@ class Home extends React.Component {
       label = "#" + uniqueID;
       return(
         <div className = "col-3">
-        <div className ="card" styles="width: 18rem;">
-          <p className = "card-img top"><PreviewPicture photoUrl={itemId.photoUrl}/></p>
-          <div className ="card-body">
-            <a href="#" class="item-title" data-toggle="modal" data-target="#displayDescr"><h5 className ="card-title">{itemId.title}</h5></a>
-            <button className="heart pull-right"><FontAwesomeIcon icon="heart" /></button> 
-            <div class="modal fade" id="displayDescr" tabindex="-1" role="dialog" aria-labelledby="descrLabel" aria-hidden="true">
-              <div class="modal-dialog" role="document">
-                <div class="modal-content">
-                  <div class="modal-body" id="descrLabel">
-                    <h4> Would like to trade for - </h4>
-                    <h6> {itemId.descr}  </h6>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
+       <div className ="card" styles="width: 18rem;">
+         <p className = "card-img top"><PreviewPicture photoUrl={itemId.photoUrl}/></p>
+         <div className ="card-body">
+           <a href="#" class="item-title" data-toggle="modal" data-target={label}><h5 className ="card-title">{itemId.title}</h5></a>
+           <button className="heart pull-right"><FontAwesomeIcon icon="heart" /> </button> 
+           <div class="modal fade" id={uniqueID} tabindex="-1" role="dialog" aria-labelledby="descrLabel" aria-hidden="true">
+             <div class="modal-dialog" role="document">
+               <div class="modal-content">
+                 <div class="modal-body">
+                   <h4> Would like to trade for - </h4>
+                   <h6> {itemId.descr}</h6>
+                 </div>
+               </div>
+             </div>
+           </div>
+         </div>
+       </div>
+     </div>
       )
     });
     return itemList;
