@@ -17,10 +17,6 @@ import {faArchway} from '@fortawesome/free-solid-svg-icons'
 const uuidv4 = require('uuid/v4');
 
 
-<<<<<<< HEAD
-=======
-
->>>>>>> 288406c9f1b552aa480eb25d65441232771149c2
 library.add(faCamera)
 library.add(faSearch)
 library.add(faBars)
@@ -135,11 +131,7 @@ class Home extends React.Component {
       var user = barters[k].userID;
       var title = barters[k].title;
       var photoUrl = barters[k].photoUrl;
-<<<<<<< HEAD
       var descr = barters[k].descr; 
-=======
-      var descr = barters[k].descr;
->>>>>>> 288406c9f1b552aa480eb25d65441232771149c2
       result.push({user, title, photoUrl, descr});
     }
     this.setState({keys: result});
@@ -161,39 +153,24 @@ class Home extends React.Component {
     const itemList = keys.map(itemId => {
       console.log(itemId.title, itemId.descr);
       return(
-<<<<<<< HEAD
-      
-      
-        <div className= "col-3"> 
-          <div className ="card" styles="width: 18rem;">
-            <p className = "card-img top"><PreviewPicture photoUrl={itemId.photoUrl}/></p>
-            <div className ="card-body">
-              <a href="#" class="item-title" data-toggle="modal" data-target="#displayDescr"><h5 className ="card-title">{itemId.title}</h5></a>
+        <div className = "col-3">
+        <div className ="card" styles="width: 18rem;">
+          <p className = "card-img top"><PreviewPicture photoUrl={itemId.photoUrl}/></p>
+          <div className ="card-body">
+            <a href="#" class="item-title" data-toggle="modal" data-target="#displayDescr"><h5 className ="card-title">{itemId.title}</h5></a>
+            <div class="modal fade" id="displayDescr" tabindex="-1" role="dialog" aria-labelledby="descrLabel" aria-hidden="true">
+              <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                  <div class="modal-body" id="descrLabel">
+                    <h4> Would like to trade for - </h4>
+                    <h6> {itemId.descr}  </h6>
+                  </div>
+                </div>
+              </div>
             </div>
           </div>
-        </div> 
-
-    //
-=======
-        <div className = "col-3">
-       <div className ="card" styles="width: 18rem;">
-         <p className = "card-img top"><PreviewPicture photoUrl={itemId.photoUrl}/></p>
-         <div className ="card-body">
-           <a href="#" class="item-title" data-toggle="modal" data-target="#displayDescr"><h5 className ="card-title">{itemId.title}</h5></a>
-           <div class="modal fade" id="displayDescr" tabindex="-1" role="dialog" aria-labelledby="descrLabel" aria-hidden="true">
-             <div class="modal-dialog" role="document">
-               <div class="modal-content">
-                 <div class="modal-body" id="descrLabel">
-                   <h4> Would like to trade for - </h4>
-                   <h6> {itemId.descr}  </h6>
-                 </div>
-               </div>
-             </div>
-           </div>
-         </div>
-       </div>
-     </div>
->>>>>>> 288406c9f1b552aa480eb25d65441232771149c2
+        </div>
+      </div>
       )
     });
     return itemList;
