@@ -21,9 +21,13 @@
     "firebaseui": "^3.5.2",
     "font-awesome": "^4.7.0",
     "history": "^4.9.0",
+<<<<<<< HEAD
     "i": "^0.3.6",
     "jquery": "^3.4.0",
     "npm": "^6.9.0",
+=======
+    "jquery": "^3.4.0",
+>>>>>>> ee3c7c916f663fd38ff88ac026c2992a5e44a822
     "popper.js": "^1.15.0",
     "re-base": "^4.0.0",
     "react": "^16.8.5",
