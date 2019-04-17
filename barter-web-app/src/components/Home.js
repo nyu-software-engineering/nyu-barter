@@ -1,11 +1,13 @@
 import React, { Component } from 'react';
 import '../App.css';
+import 'bootstrap/dist/js/bootstrap.bundle.min';
 import firebase from 'firebase';
 import Rebase from 're-base';
 import StyledFirebaseAuth from "react-firebaseui/StyledFirebaseAuth";
 import { NavLink } from "react-router-dom";
 import PreviewPicture from './PreviewPicture';
 const uuidv4 = require('uuid/v4');
+
 
 const config = {
     apiKey: process.env.REACT_APP_FIREBASE_KEY,
@@ -115,7 +117,8 @@ class Home extends React.Component {
       var user = barters[k].userID;
       var title = barters[k].title;
       var photoUrl = barters[k].photoUrl;
-      result.push({user, title, photoUrl});
+      var descr = barters[k].descr;
+      result.push({user, title, photoUrl, descr});
     }
     this.setState({keys: result});
   }
@@ -136,13 +139,23 @@ class Home extends React.Component {
     const itemList = keys.map(itemId => {
       return(
         <div className = "col-3">
-          <div className ="card" styles="width: 18rem;">
-            <p className = "card-img top"><PreviewPicture photoUrl={itemId.photoUrl}/></p>
-            <div className ="card-body">
-              <a href="#" data-toggle="collapse" data-target="#hide" ><h5 className ="card-title">{itemId.title}</h5></a>
-            </div>
-          </div>
-        </div>
+       <div className ="card" styles="width: 18rem;">
+         <p className = "card-img top"><PreviewPicture photoUrl={itemId.photoUrl}/></p>
+         <div className ="card-body">
+           <a href="#" class="item-title" data-toggle="modal" data-target="#displayDescr"><h5 className ="card-title">{itemId.title}</h5></a>
+           <div class="modal fade" id="displayDescr" tabindex="-1" role="dialog" aria-labelledby="descrLabel" aria-hidden="true">
+             <div class="modal-dialog" role="document">
+               <div class="modal-content">
+                 <div class="modal-body" id="descrLabel">
+                   <h4> Would like to trade for - </h4>
+                   <h6> {itemId.descr}  </h6>
+                 </div>
+               </div>
+             </div>
+           </div>
+         </div>
+       </div>
+     </div>
       )
     });
     return itemList;
@@ -157,6 +170,7 @@ class Home extends React.Component {
           <header>
           <div className='wrapper'>
             <script src="https://www.gstatic.com/firebasejs/5.8.4/firebase.js"></script>
+
             <nav class="navbar navbar-expand-lg navbar-light bg-light">
               <a class="navbar-brand" href="#">Navbar</a>
               <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -213,6 +227,7 @@ class Home extends React.Component {
             firebaseAuth={firebase.auth()}
 
           />
+
         )}
       </div>
     );

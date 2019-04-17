@@ -16,6 +16,8 @@
     "firebase-admin": "^7.1.1",
     "firebaseui": "^3.5.2",
     "history": "^4.9.0",
+    "jquery": "^3.4.0",
+    "popper.js": "^1.15.0",
     "re-base": "^4.0.0",
     "react": "^16.8.5",
     "react-dom": "^16.8.5",
