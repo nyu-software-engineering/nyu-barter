@@ -133,7 +133,7 @@ class Home extends React.Component {
       var title = barters[k].title;
       var photoUrl = barters[k].photoUrl;
       var descr = barters[k].descr;
-      result.push({user, title, photoUrl, descr});
+      result.push({user, title, photoUrl, descr, _id: k});
     }
     this.setState({keys: result});
   }
@@ -149,12 +149,34 @@ class Home extends React.Component {
     });
   }
 
+  addFave = (i) => () => {
+    console.log(this.state.userID); 
+    const item = this.state.keys[i]; 
+    // console.log(item); 
+    const uID = item.userID; 
+    const userRef = firebase.database().ref(`users/${this.state.userID}/faves`); 
+    userRef.child(item._id).set(true, () => {
+      console.log('done');
+      // console.log("for user=" + uID);
+    }); 
+    // console.log(this.state.keys[i]);
+
+  }; 
+
+  removeFave = (i) => () => {
+    this.setState((prevState) => {
+      const nextState = { ...prevState}; 
+      nextState.faves.splice(i,1); 
+      return nextState; 
+    }); 
+  }; 
+
   renderCards () {
     const keys = this.state.keys;
     var counter = 0;
     var label = '';
     var displayDescr = 'displayDescr';
-    const itemList = keys.map(itemId => {
+    const itemList = keys.map((itemId,i) => {
       counter += 1;
       var uniqueID = "h" + uuidv4();
       label = "#" + uniqueID;
@@ -164,7 +186,7 @@ class Home extends React.Component {
          <p className = "card-img top"><PreviewPicture photoUrl={itemId.photoUrl}/></p>
          <div className ="card-body">
            <a href="#" class="item-title" data-toggle="modal" data-target={label}><h5 className ="card-title">{itemId.title}</h5></a>
-           <button className="heart pull-right"><FontAwesomeIcon icon="heart" /> </button> 
+           <button className="heart pull-right" key={i} onClick={this.addFave(i)}><FontAwesomeIcon icon="heart" /> </button> 
            <div class="modal fade" id={uniqueID} tabindex="-1" role="dialog" aria-labelledby="descrLabel" aria-hidden="true">
              <div class="modal-dialog" role="document">
                <div class="modal-content">
@@ -182,6 +204,8 @@ class Home extends React.Component {
     });
     return itemList;
   }
+
+
 
   render() {
 
