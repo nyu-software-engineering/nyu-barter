@@ -67,7 +67,6 @@ class Home extends React.Component {
     }
   }
   onSubmit(event){
-      var userRef = firebase.database().ref('barterUsers/' + userID).child('myItems')
       var newPostKey = firebase.database().ref().child('barters').push().key;
       let {isSignedIn, title, descr, photoUrl, picture, userID} = this.state;
       var storageRef = firebase.storage().ref();
@@ -96,7 +95,7 @@ class Home extends React.Component {
   componentDidMount = ()=>{
     firebase.auth().onAuthStateChanged(user =>{
       if(user){
-        const userRef = firebase.database().ref('barterUsers')
+        const userRef = firebase.database().ref('users')
         const curUser = user.uid;
 
         userRef.orderByValue().equalTo(curUser).once("value",snapshot => {
