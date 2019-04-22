@@ -20,19 +20,25 @@ class ListingsViewController: UIViewController, UITableViewDelegate, UITableView
     
     var ref: DatabaseReference?
     var databaseHandle: DatabaseHandle?
-    var postData = [String]()
-    var data = [Cell]()
+    
+    
+    var barterItems: [BABarterItem] = []
+    var serviceObserver: UInt?
+    var barter : BABarterItem!
+    var image: UIImage!
     
     
     
+
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return postData.count
+        return barterItems.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "tableCell", for: indexPath)
-        let index = postData.count - indexPath.row - 1
-        cell.textLabel?.text = postData[index]
+        let index = barterItems.count - indexPath.row - 1
+        cell.textLabel?.text = barterItems[index].title
+        
         return cell
         
     }
@@ -72,17 +78,7 @@ class ListingsViewController: UIViewController, UITableViewDelegate, UITableView
         
         ref = Database.database().reference()
         
-        databaseHandle = ref?.child("barters").observe(.childAdded, with: { (DataSnapshot) in
-            let post = DataSnapshot.value as? String
-            
-            if let actualPost = post {
-                self.postData.append(actualPost)
-                self.tableView.reloadData()
-            }
-        })
         
-        
-        favoritesButton(self)
         
         
         
@@ -90,6 +86,15 @@ class ListingsViewController: UIViewController, UITableViewDelegate, UITableView
 
         // Do any additional setup after loading the view.
     }
+    
+    
+    
+    
+    
+    
+    
+    
+    //-----
     
 
     @IBAction func logOut(_ sender: Any) {

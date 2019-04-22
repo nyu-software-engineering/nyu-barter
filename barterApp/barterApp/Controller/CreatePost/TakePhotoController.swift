@@ -40,6 +40,7 @@ class TakePhotoController: UIViewController  {
     
     
     func showAlert(){
+        
         if(flag){
             let actionSheet = UIAlertController(title: nil, message: nil, preferredStyle: .actionSheet)
             
@@ -56,13 +57,13 @@ class TakePhotoController: UIViewController  {
             //actionSheet.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
             actionSheet.addAction(UIAlertAction(title: "Cancel", style: .default, handler: { (alert:UIAlertAction!) -> Void in
                 self.tabBarController?.selectedIndex = 0
-        
+                self.flag = true
+                
             }))
             
-            
-            
-            self.present(actionSheet, animated: true, completion: nil)
             self.flag = false
+            self.present(actionSheet, animated: true, completion: nil)
+            
             
         }
     }
@@ -149,8 +150,8 @@ extension TakePhotoController: UITextFieldDelegate, UIImagePickerControllerDeleg
     
     
     override func viewWillAppear(_ animated: Bool) {
-        self.flag = true
         self.subscribeToKeyboardNotifications()
+        
     }
     
     override func viewDidLoad() {
