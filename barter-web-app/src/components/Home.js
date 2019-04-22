@@ -14,7 +14,8 @@ import {faSearch} from '@fortawesome/free-solid-svg-icons'
 import {faBars} from '@fortawesome/free-solid-svg-icons'
 import {faHome} from '@fortawesome/free-solid-svg-icons'
 import {faArchway} from '@fortawesome/free-solid-svg-icons'
-import {faHeart} from '@fortawesome/free-solid-svg-icons'
+import {faHeart as solidHeart} from '@fortawesome/free-solid-svg-icons'
+import {faHeart as regularHeart} from '@fortawesome/free-regular-svg-icons'
 const uuidv4 = require('uuid/v4');
 
 
@@ -23,7 +24,7 @@ library.add(faSearch)
 library.add(faBars)
 library.add(faHome)
 library.add(faArchway)
-library.add(faHeart)
+// library.add(faHeart)
 
 const config = {
     apiKey: process.env.REACT_APP_FIREBASE_KEY,
@@ -170,13 +171,14 @@ class Home extends React.Component {
       counter += 1;
       var uniqueID = "h" + uuidv4();
       label = "#" + uniqueID;
+      var heartBool = false;
       return(
         <div className = "col-3">
        <div className ="card" styles="width: 18rem;">
          <p className = "card-img top"><PreviewPicture photoUrl={itemId.photoUrl}/></p>
          <div className ="card-body">
            <a href="#" class="item-title" data-toggle="modal" data-target={label}><h5 className ="card-title">{itemId.title}</h5></a>
-           <button className="heart pull-right" key={i} onClick={this.addFave(i)}><FontAwesomeIcon icon="heart" /> </button> 
+           <button className="heart pull-right" key={i} onClick={this.addFave(i)}><FontAwesomeIcon icon={heartBool ? solidHeart : regularHeart} /> </button> 
            <div class="modal fade" id={uniqueID} tabindex="-1" role="dialog" aria-labelledby="descrLabel" aria-hidden="true">
              <div class="modal-dialog" role="document">
                <div class="modal-content">

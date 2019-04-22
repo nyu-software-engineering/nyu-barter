@@ -73,8 +73,13 @@ class Interests extends React.Component {
     
     console.log("logging snap");
     var faves = snap.val(); 
+    if(!faves) {
+      return;
+    }
     var keys = Object.keys(faves); 
-
+    this.setState({
+      items: []
+    });
     keys.forEach(key => {
       // console.log(key);
       firebase.database().ref(`barters/${key}`).on('value', (snap) => {
@@ -218,7 +223,7 @@ class Interests extends React.Component {
       <section className='display-item'>
         <div className='wrapper'>
           <div className="row">
-            {this.renderCards()}
+            {this.state.items.length ? this.renderCards() : <h1>No Faves....</h1>}
           </div>
         </div>
       </section>
