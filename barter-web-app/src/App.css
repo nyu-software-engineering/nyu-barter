@@ -22,10 +22,9 @@ body{
   vertical-align: middle;
 }
 
-.navbar-brand{
- 
-  font-family: "Comic Sans MS", cursive, sans-serif; 
+.homeLink{
   color:rgb(255, 63, 85); 
+  font-family: "Comic Sans MS", cursive, sans-serif; 
   font-size: 17px;
   /* margin-bottom:150px; */
 }
@@ -62,7 +61,7 @@ body{
   color: rgb(255, 63, 85); 
 }
 
-.InventoryHeader{
+.pageHeader{
   background-color:  rgb(255, 63, 85); 
   color: white;
   
@@ -71,7 +70,7 @@ body{
   text-align: center; 
   /* height: 80px; */
 }
-.InvText{
+.pageText{
   padding-top:15px;
 }
 

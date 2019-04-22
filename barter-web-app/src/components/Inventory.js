@@ -161,7 +161,7 @@ class Inventory extends React.Component {
             <script src="https://www.gstatic.com/firebasejs/5.8.4/firebase.js"></script>
 
             <nav class="navbar navbar-expand-lg navbar-light bg-light">
-              <a class="navbar-brand" href="#">NYU Barter</a>
+              <a class="navbar-brand homeLink" href="/">NYU Barter</a>
               <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
               <span class="navbar-toggler-icon"></span>
               </button>
@@ -197,8 +197,8 @@ class Inventory extends React.Component {
             </nav>
           </div>
         </header>
-        <header className="InventoryHeader">
-            <h1 className="InvText">Inventory</h1>
+        <header className="pageHeader">
+            <h1 className="pageText">Inventory</h1>
           </header>
       <div className='container'>
       <div class="modal fade" id="addItem" tabindex="-1" role="dialog" aria-labelledby="addItemLabel" aria-hidden="true">
