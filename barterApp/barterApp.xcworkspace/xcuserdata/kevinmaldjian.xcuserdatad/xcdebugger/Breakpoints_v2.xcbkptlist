@@ -10,11 +10,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "barterApp/Controller/Feed/ItemInfoViewController.swift"
-            timestampString = "576571152.880415"
+            timestampString = "577720555.848363"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "66"
-            endingLineNumber = "66"
+            startingLineNumber = "78"
+            endingLineNumber = "78"
             landmarkName = "getPoster()"
             landmarkType = "7">
             <Locations>
