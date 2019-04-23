@@ -4,7 +4,7 @@ class Contact extends React.Component{
   render(){
     return(
       <div>
-      <p>Contact me at {this.props.email || 'email not found'}</p>
+      <p>Contact: {this.props.email || 'email not found'}</p>
       </div>
     )
   }
