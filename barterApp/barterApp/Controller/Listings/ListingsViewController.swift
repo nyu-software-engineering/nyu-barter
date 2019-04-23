@@ -148,6 +148,15 @@ class ListingsViewController: UIViewController, UITableViewDelegate, UITableView
         
     }
     
+    //class function Singleton
+    
+    class func sharedInstance() -> ListingsViewController {
+        struct Singleton {
+            static var sharedInstance = ListingsViewController()
+        }
+        return Singleton.sharedInstance
+    }
+    
     
     
     
