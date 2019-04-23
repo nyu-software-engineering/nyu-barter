@@ -29,7 +29,7 @@ class ListingsViewController: UIViewController, UITableViewDelegate, UITableView
     
     override func viewWillAppear(_ animated: Bool) {
         //initially on items to trade
-        tradingButton(self)
+        //tradingButton(self)
         tableView.estimatedRowHeight = 100
         
     }
@@ -81,21 +81,22 @@ class ListingsViewController: UIViewController, UITableViewDelegate, UITableView
         let index = barterItems.count - indexPath.row - 1
         cell.textLabel?.text = barterItems[index].title
         cell.detailTextLabel?.text = barterItems[index].descr
+        let image = UIImage(named: "BlankProfilePicture")
+        let photoUrl = URL(string: barterItems[index].photoUrl)
+        cell.imageView?.kf.setImage(with: photoUrl, placeholder: image)
         
-        let photoUrl = barterItems[index].photoUrl
+       // let storageRef = Storage.storage().reference(forURL: photoUrl)
         
-        let storageRef = Storage.storage().reference(forURL: photoUrl)
-        
-        storageRef.getData(maxSize: 1 * 1024 * 1024) { (data, error) -> Void in
-            // Create a UIImage, add it to the array
-            if(data == nil){
-                cell.imageView?.image = UIImage.init(named: "default")
-            }
-            else{
-                let pic = UIImage(data: data!)
-                cell.imageView?.image = pic
-            }
-        }
+//        storageRef.getData(maxSize: 1 * 1024 * 1024) { (data, error) -> Void in
+//            // Create a UIImage, add it to the array
+//            if(data == nil){
+//                cell.imageView?.image = UIImage.init(named: "default")
+//            }
+//            else{
+//                let pic = UIImage(data: data!)
+//                cell.imageView?.image = pic
+//            }
+//        }
         
         
         
@@ -103,31 +104,31 @@ class ListingsViewController: UIViewController, UITableViewDelegate, UITableView
         
     }
     
-    @IBOutlet weak var favoritesOutlet: UIButton!
-    @IBOutlet weak var tradingOutlet: UIButton!
-    @IBOutlet weak var tradedOutlet: UIButton!
-    
-    
-    @IBAction func favoritesButton(_ sender: Any) {
-        enableAllButtons()
-        favoritesOutlet.isEnabled = false
-    }
-    
-    @IBAction func tradingButton(_ sender: Any) {
-        enableAllButtons()
-        tradingOutlet.isEnabled = false
-    }
-    
-    @IBAction func tradedButton(_ sender: Any) {
-        enableAllButtons()
-        tradedOutlet.isEnabled = false
-    }
-    
-    func enableAllButtons(){
-        favoritesOutlet.isEnabled = true
-        tradingOutlet.isEnabled = true
-        tradedOutlet.isEnabled = true
-    }
+//    @IBOutlet weak var favoritesOutlet: UIButton!
+//    @IBOutlet weak var tradingOutlet: UIButton!
+//    @IBOutlet weak var tradedOutlet: UIButton!
+//    
+//    
+//    @IBAction func favoritesButton(_ sender: Any) {
+//        enableAllButtons()
+//        favoritesOutlet.isEnabled = false
+//    }
+//    
+//    @IBAction func tradingButton(_ sender: Any) {
+//        enableAllButtons()
+//        tradingOutlet.isEnabled = false
+//    }
+//    
+//    @IBAction func tradedButton(_ sender: Any) {
+//        enableAllButtons()
+//        tradedOutlet.isEnabled = false
+//    }
+//    
+//    func enableAllButtons(){
+//        favoritesOutlet.isEnabled = true
+//        tradingOutlet.isEnabled = true
+//        tradedOutlet.isEnabled = true
+//    }
     
     @IBOutlet weak var tableView: UITableView!
     

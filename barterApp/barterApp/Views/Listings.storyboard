@@ -47,17 +47,8 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="m7F-ww-VSY">
-                                <rect key="frame" x="346" y="106" width="48" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="Traded"/>
-                                <connections>
-                                    <action selector="tradedButton:" destination="RzU-rH-gpd" eventType="touchUpInside" id="9tb-9m-HCa"/>
-                                </connections>
-                            </button>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="9E1-hX-9vI">
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="9E1-hX-9vI">
                                 <rect key="frame" x="0.0" y="144" width="414" height="669"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="tableCell" id="fnn-M5-XPC">
@@ -67,41 +58,47 @@
                                             <rect key="frame" x="0.0" y="0.0" width="414" height="43.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="cP5-Ua-0AH">
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="cP5-Ua-0AH">
                                                     <rect key="frame" x="0.0" y="-32" width="127" height="108"/>
-                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" constant="127" id="nqj-yx-Jlw"/>
+                                                    </constraints>
                                                 </imageView>
                                             </subviews>
+                                            <constraints>
+                                                <constraint firstItem="cP5-Ua-0AH" firstAttribute="leading" secondItem="ava-Xb-8U4" secondAttribute="leading" id="8gP-jV-sCh"/>
+                                                <constraint firstItem="cP5-Ua-0AH" firstAttribute="centerY" secondItem="ava-Xb-8U4" secondAttribute="centerY" id="QeU-vZ-DHw"/>
+                                                <constraint firstItem="cP5-Ua-0AH" firstAttribute="top" secondItem="ava-Xb-8U4" secondAttribute="topMargin" constant="-43" id="yYg-Dh-5Y9"/>
+                                            </constraints>
                                         </tableViewCellContentView>
                                     </tableViewCell>
                                 </prototypes>
                             </tableView>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="RF6-ZE-e9H">
-                                <rect key="frame" x="20" y="106" width="62" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="Favorites"/>
-                                <connections>
-                                    <action selector="favoritesButton:" destination="RzU-rH-gpd" eventType="touchUpInside" id="PGR-6K-HIV"/>
-                                </connections>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3qB-iw-CjD">
-                                <rect key="frame" x="181" y="106" width="52" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="Trading"/>
-                                <connections>
-                                    <action selector="tradingButton:" destination="RzU-rH-gpd" eventType="touchUpInside" id="9cz-Dd-z1q"/>
-                                </connections>
-                            </button>
+                            <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="bar" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="xfH-e4-jeh">
+                                <rect key="frame" x="0.0" y="100" width="414" height="29"/>
+                                <segments>
+                                    <segment title="Favorites"/>
+                                    <segment title="Trading"/>
+                                    <segment title="Traded"/>
+                                </segments>
+                                <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </segmentedControl>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="9E1-hX-9vI" firstAttribute="leading" secondItem="vaa-h8-zwf" secondAttribute="leading" id="7uP-f1-zUE"/>
+                            <constraint firstItem="9E1-hX-9vI" firstAttribute="bottom" secondItem="vaa-h8-zwf" secondAttribute="bottom" id="Soj-Wc-zle"/>
+                            <constraint firstItem="9E1-hX-9vI" firstAttribute="trailing" secondItem="vaa-h8-zwf" secondAttribute="trailing" id="c8a-dC-QeQ"/>
+                            <constraint firstItem="vaa-h8-zwf" firstAttribute="trailing" secondItem="xfH-e4-jeh" secondAttribute="trailing" id="d6H-1Y-Ckz"/>
+                            <constraint firstItem="xfH-e4-jeh" firstAttribute="leading" secondItem="vaa-h8-zwf" secondAttribute="leading" id="nDJ-BS-9Ja"/>
+                            <constraint firstItem="9E1-hX-9vI" firstAttribute="top" secondItem="xfH-e4-jeh" secondAttribute="bottom" constant="16" id="qV3-Ay-Un9"/>
+                            <constraint firstItem="xfH-e4-jeh" firstAttribute="top" secondItem="vaa-h8-zwf" secondAttribute="top" constant="12" id="yIr-ML-07C"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="vaa-h8-zwf"/>
                     </view>
                     <navigationItem key="navigationItem" id="wnE-cb-dRm"/>
                     <connections>
-                        <outlet property="favoritesOutlet" destination="RF6-ZE-e9H" id="MrW-Id-575"/>
                         <outlet property="tableView" destination="9E1-hX-9vI" id="7TJ-Gs-NFT"/>
-                        <outlet property="tradedOutlet" destination="m7F-ww-VSY" id="7rO-bN-r8Z"/>
-                        <outlet property="tradingOutlet" destination="3qB-iw-CjD" id="qwd-ko-hNj"/>
                         <segue destination="RXu-2l-gKJ" kind="show" identifier="infoView" id="03i-KG-kFv"/>
                     </connections>
                 </viewController>
