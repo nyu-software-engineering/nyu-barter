@@ -52,7 +52,7 @@ class Home extends React.Component {
       userID: '',
       dateTime: '',
       keys: [],
-      temp: ''
+      emails: {}
     }
     this.onSubmit = this.onSubmit.bind(this);
     this.handleChange = this.handleChange.bind(this);
@@ -115,6 +115,17 @@ class Home extends React.Component {
       this.setState({userID:user['uid']});
     });
     firebase.database().ref('barters').on('value', this.gotData.bind(this), this.errData);
+    firebase.database().ref('users').on('value', this.makeEmail.bind(this));
+  }
+  makeEmail(data){
+    var users = data.val();
+    var keys = Object.keys(users);
+    const result = {}
+    for(var i = 0; i < keys.length;i++){
+      var k = keys[i];
+      result[k] = users[k].email;
+    }
+    this.setState({emails: result});
   }
   gotData(data){
     var barters = data.val();
@@ -170,17 +181,7 @@ class Home extends React.Component {
       var uniqueID = "h" + uuidv4();
       label = "#" + uniqueID;
       var heartBool = false;
-      let email = 'no email found';
-      firebase.database().ref('users/' + itemId.user).once('value').then((snapshot)=> {
-        if(snapshot.val()){
-          console.log(snapshot.val().email)
-          //this.setState({temp : snapshot.val().email});
-        }
-        else{
-          //this.setState({temp : 'email not found'});
-        }
-      });
-      console.log(this.state.temp);
+      let email = this.state.emails[itemId.user];
       return(
         <div className = "col-3">
        <div className ="card" styles="width: 18rem;">
@@ -194,7 +195,7 @@ class Home extends React.Component {
                  <div class="modal-body">
                    <h4> Would like to trade for - </h4>
                    <h6> {itemId.descr}</h6>
-                   <Contact email={this.state.temp}/>
+                   <Contact email={email}/>
                  </div>
                </div>
              </div>
