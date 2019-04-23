@@ -14,6 +14,8 @@ import {faSearch} from '@fortawesome/free-solid-svg-icons'
 import {faBars} from '@fortawesome/free-solid-svg-icons'
 import {faHome} from '@fortawesome/free-solid-svg-icons'
 import {faArchway} from '@fortawesome/free-solid-svg-icons'
+import {faHeart as solidHeart} from '@fortawesome/free-solid-svg-icons'
+import {faHeart as regularHeart} from '@fortawesome/free-regular-svg-icons'
 const uuidv4 = require('uuid/v4');
 
 
@@ -22,6 +24,7 @@ library.add(faSearch)
 library.add(faBars)
 library.add(faHome)
 library.add(faArchway)
+// library.add(faHeart)
 
 const config = {
     apiKey: process.env.REACT_APP_FIREBASE_KEY,
@@ -65,7 +68,6 @@ class Home extends React.Component {
     }
   }
   onSubmit(event){
-      var userRef = firebase.database().ref('barterUsers/' + userID).child('myItems')
       var newPostKey = firebase.database().ref().child('barters').push().key;
       let {isSignedIn, title, descr, photoUrl, picture, userID} = this.state;
       var storageRef = firebase.storage().ref();
@@ -85,15 +87,6 @@ class Home extends React.Component {
         })
       });
 
-    var newUserKey = firebase.database().ref('barterUsers/' + userID + '/myItems').push().key;
-    firebase.database().ref('barterUsers/' + userID + '/myItems/' + newUserKey).set({
-      dateTime: firebase.database.ServerValue.TIMESTAMP,
-      descr,
-      photoUrl,
-      title,
-      userID,
-    })
-
     this.setState({dateTime: ''});
     this.setState({descr: ''});
     this.setState({photoUrl: ''});
@@ -102,20 +95,20 @@ class Home extends React.Component {
 
   componentDidMount = ()=>{
     firebase.auth().onAuthStateChanged(user =>{
-      //Start change
       if(user){
-        const userRef = firebase.database().ref('barterUsers')
+        const userRef = firebase.database().ref('users')
         const curUser = user.uid;
 
         userRef.orderByValue().equalTo(curUser).once("value",snapshot => {
           if (!snapshot.exists()){
-            //userRef.child('userID').set(curUser)
-            userRef.child(curUser)
+            firebase.database().ref('users/' + curUser).child('email').set(user.email);
+            firebase.database().ref('users/' + curUser).child('photoURL').set(user.photoURL);
+            
           }
 
         })
       }
-      //End changes
+      
       this.setState({isSignedIn:!!user});
       this.setState({userID:user['uid']});
     });
@@ -131,7 +124,7 @@ class Home extends React.Component {
       var title = barters[k].title;
       var photoUrl = barters[k].photoUrl;
       var descr = barters[k].descr;
-      result.push({user, title, photoUrl, descr});
+      result.push({user, title, photoUrl, descr, _id: k});
     }
     this.setState({keys: result});
   }
@@ -147,21 +140,45 @@ class Home extends React.Component {
     });
   }
 
+  addFave = (i) => () => {
+    console.log(this.state.userID); 
+    const item = this.state.keys[i]; 
+    // console.log(item); 
+    const uID = item.userID; 
+    const userRef = firebase.database().ref(`users/${this.state.userID}/faves`); 
+    userRef.child(item._id).set(true, () => {
+      console.log('done');
+      // console.log("for user=" + uID);
+    }); 
+    // console.log(this.state.keys[i]);
+
+  }; 
+
+  removeFave = (i) => () => {
+    this.setState((prevState) => {
+      const nextState = { ...prevState}; 
+      nextState.faves.splice(i,1); 
+      return nextState; 
+    }); 
+  }; 
+
   renderCards () {
     const keys = this.state.keys;
     var counter = 0;
     var label = '';
     var displayDescr = 'displayDescr';
-    const itemList = keys.map(itemId => {
+    const itemList = keys.map((itemId,i) => {
       counter += 1;
       var uniqueID = "h" + uuidv4();
       label = "#" + uniqueID;
+      var heartBool = false;
       return(
         <div className = "col-3">
        <div className ="card" styles="width: 18rem;">
          <p className = "card-img top"><PreviewPicture photoUrl={itemId.photoUrl}/></p>
          <div className ="card-body">
            <a href="#" class="item-title" data-toggle="modal" data-target={label}><h5 className ="card-title">{itemId.title}</h5></a>
+           <button className="heart pull-right" key={i} onClick={this.addFave(i)}><FontAwesomeIcon icon={heartBool ? solidHeart : regularHeart} /> </button> 
            <div class="modal fade" id={uniqueID} tabindex="-1" role="dialog" aria-labelledby="descrLabel" aria-hidden="true">
              <div class="modal-dialog" role="document">
                <div class="modal-content">
@@ -180,6 +197,8 @@ class Home extends React.Component {
     return itemList;
   }
 
+
+
   render() {
 
     return (
@@ -191,7 +210,8 @@ class Home extends React.Component {
             <script src="https://www.gstatic.com/firebasejs/5.8.4/firebase.js"></script>
 
             <nav class="navbar navbar-expand-lg navbar-light bg-light">
-              <a class="navbar-brand" href="#">NYU Barter</a>
+              {/* <NavLink to="/" class="navbar-brand">NYU Barter</NavLink> */}
+              <a class="navbar-brand homeLink" href="/">NYU Barter</a>
               <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
               <span class="navbar-toggler-icon"></span>
               </button>
