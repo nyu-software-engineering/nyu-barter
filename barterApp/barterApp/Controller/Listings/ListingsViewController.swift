@@ -10,17 +10,7 @@ import UIKit
 import Firebase
 import GoogleSignIn
 
-class Celll{
-    var title: String?
-    var descr: String?
-    var image: UIImage?
-    
-    init(title: String?, descr: String?, image: UIImage?){
-        self.title = title
-        self.descr = descr
-        self.image = image
-    }
-}
+
 
 
 class ListingsViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
@@ -33,16 +23,28 @@ class ListingsViewController: UIViewController, UITableViewDelegate, UITableView
     var barterItems: [BABarterItem] = []
     var serviceObserver: UInt?
     var barter : BABarterItem!
+    
+    //default image if nil
     var image: UIImage!
     
     override func viewWillAppear(_ animated: Bool) {
+        //initially on items to trade
+        tradingButton(self)
+        tableView.estimatedRowHeight = 100
         
-        //initially on Favorites
-        favoritesButton(self)
+    }
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        self.hero.isEnabled = true
+        
+        tableView.delegate = self
+        tableView.dataSource = self
+        
+        loadFromFirebase()
     }
     
     
-
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return barterItems.count
     }
@@ -51,6 +53,24 @@ class ListingsViewController: UIViewController, UITableViewDelegate, UITableView
         let cell = tableView.dequeueReusableCell(withIdentifier: "tableCell", for: indexPath)
         let index = barterItems.count - indexPath.row - 1
         cell.textLabel?.text = barterItems[index].title
+        cell.detailTextLabel?.text = barterItems[index].descr
+        
+        let photoUrl = barterItems[index].photoUrl
+        
+        let storageRef = Storage.storage().reference(forURL: photoUrl)
+        
+        storageRef.getData(maxSize: 1 * 1024 * 1024) { (data, error) -> Void in
+            // Create a UIImage, add it to the array
+            if(data == nil){
+                cell.imageView?.image = UIImage.init(named: "default")
+            }
+            else{
+                let pic = UIImage(data: data!)
+                cell.imageView?.image = pic
+            }
+        }
+        
+        
         
         return cell
         
@@ -84,19 +104,7 @@ class ListingsViewController: UIViewController, UITableViewDelegate, UITableView
     
     @IBOutlet weak var tableView: UITableView!
     
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        tableView.delegate = self
-        tableView.dataSource = self
-        
-        
-        
-        
-        
-        
-
-        // Do any additional setup after loading the view.
-    }
+   
     
     func loadFromFirebase(){
         ref = Database.database().reference()
@@ -105,9 +113,8 @@ class ListingsViewController: UIViewController, UITableViewDelegate, UITableView
             let item = BABarterItem(snapshot: snapshot )
             self.barterItems.append(item)
             
-            self.barterItems.append(title)
             DispatchQueue.main.async {
-                self.callListTableView.reloadData()
+                self.tableView.reloadData()
             }
         })
         
@@ -121,7 +128,10 @@ class ListingsViewController: UIViewController, UITableViewDelegate, UITableView
     
     
     
-    //-----
+    
+    
+    //-------
+
     
 
     @IBAction func logOut(_ sender: Any) {
