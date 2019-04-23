@@ -10,10 +10,18 @@ import UIKit
 import Firebase
 import GoogleSignIn
 
-struct Cell{
-    let image: UIImage?
-    let title: String?
+class Celll{
+    var title: String?
+    var descr: String?
+    var image: UIImage?
+    
+    init(title: String?, descr: String?, image: UIImage?){
+        self.title = title
+        self.descr = descr
+        self.image = image
+    }
 }
+
 
 class ListingsViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
@@ -27,6 +35,11 @@ class ListingsViewController: UIViewController, UITableViewDelegate, UITableView
     var barter : BABarterItem!
     var image: UIImage!
     
+    override func viewWillAppear(_ animated: Bool) {
+        
+        //initially on Favorites
+        favoritesButton(self)
+    }
     
     
 
@@ -76,8 +89,6 @@ class ListingsViewController: UIViewController, UITableViewDelegate, UITableView
         tableView.delegate = self
         tableView.dataSource = self
         
-        ref = Database.database().reference()
-        
         
         
         
@@ -85,6 +96,22 @@ class ListingsViewController: UIViewController, UITableViewDelegate, UITableView
         
 
         // Do any additional setup after loading the view.
+    }
+    
+    func loadFromFirebase(){
+        ref = Database.database().reference()
+        let userID = Auth.auth().currentUser?.uid
+        ref?.child("barters").queryOrdered(byChild: "userID").queryEqual(toValue: userID!).observe(.childAdded, with: { (snapshot) in
+            let item = BABarterItem(snapshot: snapshot )
+            self.barterItems.append(item)
+            
+            self.barterItems.append(title)
+            DispatchQueue.main.async {
+                self.callListTableView.reloadData()
+            }
+        })
+        
+        
     }
     
     
