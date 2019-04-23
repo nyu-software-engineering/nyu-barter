@@ -11,7 +11,7 @@ class Contact extends React.Component{
   render(){
     return(
       <div>
-      Contact: <button onClick={this.sendMail}> {this.props.email || 'email not found'}</button>
+      Contact: <button class="btn btn-primary" onClick={this.sendMail}> {this.props.email || 'email not found'}</button>
       </div>
     )
   }
