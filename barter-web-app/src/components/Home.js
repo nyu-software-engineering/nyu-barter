@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import Contact from './Contact.js';
 import '../App.css';
 import 'bootstrap/dist/js/bootstrap.bundle.min';
 import firebase from 'firebase';
@@ -51,6 +52,7 @@ class Home extends React.Component {
       userID: '',
       dateTime: '',
       keys: [],
+      temp: ''
     }
     this.onSubmit = this.onSubmit.bind(this);
     this.handleChange = this.handleChange.bind(this);
@@ -103,12 +105,12 @@ class Home extends React.Component {
           if (!snapshot.exists()){
             firebase.database().ref('users/' + curUser).child('email').set(user.email);
             firebase.database().ref('users/' + curUser).child('photoURL').set(user.photoURL);
-            
+
           }
 
         })
       }
-      
+
       this.setState({isSignedIn:!!user});
       this.setState({userID:user['uid']});
     });
@@ -141,26 +143,22 @@ class Home extends React.Component {
   }
 
   addFave = (i) => () => {
-    console.log(this.state.userID); 
-    const item = this.state.keys[i]; 
-    // console.log(item); 
-    const uID = item.userID; 
-    const userRef = firebase.database().ref(`users/${this.state.userID}/faves`); 
+    const item = this.state.keys[i];
+    const uID = item.userID;
+    const userRef = firebase.database().ref(`users/${this.state.userID}/faves`);
     userRef.child(item._id).set(true, () => {
       console.log('done');
-      // console.log("for user=" + uID);
-    }); 
-    // console.log(this.state.keys[i]);
+    });
 
-  }; 
+  };
 
   removeFave = (i) => () => {
     this.setState((prevState) => {
-      const nextState = { ...prevState}; 
-      nextState.faves.splice(i,1); 
-      return nextState; 
-    }); 
-  }; 
+      const nextState = { ...prevState};
+      nextState.faves.splice(i,1);
+      return nextState;
+    });
+  };
 
   renderCards () {
     const keys = this.state.keys;
@@ -172,19 +170,31 @@ class Home extends React.Component {
       var uniqueID = "h" + uuidv4();
       label = "#" + uniqueID;
       var heartBool = false;
+      let email = 'no email found';
+      firebase.database().ref('users/' + itemId.user).once('value').then((snapshot)=> {
+        if(snapshot.val()){
+          console.log(snapshot.val().email)
+          //this.setState({temp : snapshot.val().email});
+        }
+        else{
+          //this.setState({temp : 'email not found'});
+        }
+      });
+      console.log(this.state.temp);
       return(
         <div className = "col-3">
        <div className ="card" styles="width: 18rem;">
          <p className = "card-img top"><PreviewPicture photoUrl={itemId.photoUrl}/></p>
          <div className ="card-body">
            <a href="#" class="item-title" data-toggle="modal" data-target={label}><h5 className ="card-title">{itemId.title}</h5></a>
-           <button className="heart pull-right" key={i} onClick={this.addFave(i)}><FontAwesomeIcon icon={heartBool ? solidHeart : regularHeart} /> </button> 
+           <button className="heart pull-right" key={i} onClick={this.addFave(i)}><FontAwesomeIcon icon={heartBool ? solidHeart : regularHeart} /> </button>
            <div class="modal fade" id={uniqueID} tabindex="-1" role="dialog" aria-labelledby="descrLabel" aria-hidden="true">
              <div class="modal-dialog" role="document">
                <div class="modal-content">
                  <div class="modal-body">
                    <h4> Would like to trade for - </h4>
                    <h6> {itemId.descr}</h6>
+                   <Contact email={this.state.temp}/>
                  </div>
                </div>
              </div>
