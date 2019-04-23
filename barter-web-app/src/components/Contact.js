@@ -1,10 +1,17 @@
 import React, { Component } from 'react';
 
 class Contact extends React.Component{
+  constructor(){
+    super();
+    this.sendMail = this.sendMail.bind(this);
+  }
+  sendMail(){
+    window.open(`mailto:${this.props.email}`);
+  }
   render(){
     return(
       <div>
-      <p>Contact: {this.props.email || 'email not found'}</p>
+      Contact: <button onClick={this.sendMail}> {this.props.email || 'email not found'}</button>
       </div>
     )
   }
