@@ -22,9 +22,9 @@ class ListingsViewController: UIViewController, UITableViewDelegate, UITableView
     
     var barterItems: [BABarterItem] = []
     var serviceObserver: UInt?
-    var barter : BABarterItem!
     
-    //default image if nil
+    //to pass
+    var barter : BABarterItem!
     var image: UIImage!
     
     override func viewWillAppear(_ animated: Bool) {
@@ -36,12 +36,39 @@ class ListingsViewController: UIViewController, UITableViewDelegate, UITableView
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.hero.isEnabled = true
+        
         
         tableView.delegate = self
         tableView.dataSource = self
         
         loadFromFirebase()
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let cell = tableView.cellForRow(at: indexPath) as! UITableViewCell
+        let index = barterItems.count - indexPath.row - 1
+        barter = barterItems[index]
+        image = cell.imageView?.image
+        performSegue(withIdentifier: "infoView", sender: self)
+        
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "infoView"
+        {
+            let destViewController = segue.destination as! UINavigationController
+            let infoVC = destViewController.viewControllers.first as! ItemInfoViewController
+            infoVC.barterItem = barter
+            
+            //nil handling
+            if(image == nil){
+                infoVC.passPhoto = UIImage.init(named: "listings")!
+            }
+            else{
+                infoVC.passPhoto = image
+            }
+            
+        }
     }
     
     
