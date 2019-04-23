@@ -28,7 +28,6 @@
                     <tabBarItem key="tabBarItem" title="Feed" selectedImage="home" id="vfT-go-ULm"/>
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="jDN-hB-i9o">
-                        <rect key="frame" x="0.0" y="44" width="414" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -146,7 +145,6 @@
         <!--Navigation Controller-->
         <scene sceneID="awv-ss-9x7">
             <objects>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="us5-qd-d31" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <navigationController hidesBottomBarWhenPushed="YES" id="9vG-OV-M49" sceneMemberID="viewController">
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="paE-fQ-J7f">
                         <rect key="frame" x="0.0" y="44" width="414" height="44"/>
@@ -159,6 +157,7 @@
                         <segue destination="qAJ-zY-4c2" kind="relationship" relationship="rootViewController" id="BWl-H9-uGp"/>
                     </connections>
                 </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="us5-qd-d31" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1190" y="90"/>
         </scene>
@@ -206,6 +205,9 @@
                                 <state key="normal" title="Contact">
                                     <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </state>
+                                <connections>
+                                    <action selector="sendEmail:" destination="qAJ-zY-4c2" eventType="touchUpInside" id="EO9-sR-iZv"/>
+                                </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
