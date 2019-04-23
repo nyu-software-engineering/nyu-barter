@@ -40,24 +40,30 @@ class TakePhotoController: UIViewController  {
     
     
     func showAlert(){
+        
         if(flag){
+            
             let actionSheet = UIAlertController(title: nil, message: nil, preferredStyle: .actionSheet)
             
             actionSheet.addAction(UIAlertAction(title: "Camera", style: .default, handler: { (alert:UIAlertAction!) -> Void in
                 self.camera()
+                
             }))
             
             actionSheet.addAction(UIAlertAction(title: "Gallery", style: .default, handler: { (alert:UIAlertAction!) -> Void in
                 self.photoLibrary()
+                
             }))
             
             //actionSheet.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
             actionSheet.addAction(UIAlertAction(title: "Cancel", style: .default, handler: { (alert:UIAlertAction!) -> Void in
                 self.tabBarController?.selectedIndex = 0
+                self.flag = true
             }))
             
+            self.flag = false
             self.present(actionSheet, animated: true, completion: nil)
-            flag = false
+            
         }
     }
     
@@ -79,8 +85,18 @@ class TakePhotoController: UIViewController  {
                     "photoUrl"  : url,
                     ])
                 }
-            self.tabBarController?.selectedIndex = 0
+            
         }
+        
+        self.tabBarController?.selectedIndex = 0
+        //bug fixes 4/16/19
+        self.flag = true
+        self.photo.isHidden = true
+        self.descriptionOutlet.text = "";
+        self.titleOutlet.text = "";
+        
+        
+        
     }
     
 
@@ -135,6 +151,7 @@ extension TakePhotoController: UITextFieldDelegate, UIImagePickerControllerDeleg
     
     override func viewWillAppear(_ animated: Bool) {
         self.subscribeToKeyboardNotifications()
+        
     }
     
     override func viewDidLoad() {
@@ -145,7 +162,7 @@ extension TakePhotoController: UITextFieldDelegate, UIImagePickerControllerDeleg
     
     
     func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
-        currentVC.dismiss(animated: true, completion: nil)
+        self.dismiss(animated: true, completion: nil)
     }
     
     
@@ -156,7 +173,7 @@ extension TakePhotoController: UITextFieldDelegate, UIImagePickerControllerDeleg
         
     }
     
-    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
+    @objc func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
         
         // The info dictionary may contain multiple representations of the image. You want to use the original.
         guard let selectedImage = info[.originalImage] as? UIImage else {
