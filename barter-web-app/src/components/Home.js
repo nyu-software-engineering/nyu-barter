@@ -220,7 +220,6 @@ class Home extends React.Component {
          <div className ="card-body">
            <a href="#" class="item-title" data-toggle="modal" data-target={label}><h5 className ="card-title">{itemId.title}</h5></a>
            <button className="heart pull-right" key={i} onClick={this.handleFave(i)}><FontAwesomeIcon icon={heartBool ? solidHeart : regularHeart} /> </button> 
-           <button className="heart pull-right" key={i} onClick={this.addFave(i)}><FontAwesomeIcon icon={heartBool ? solidHeart : regularHeart} /> </button>
            <div class="modal fade" id={uniqueID} tabindex="-1" role="dialog" aria-labelledby="descrLabel" aria-hidden="true">
              <div class="modal-dialog" role="document">
                <div class="modal-content">
