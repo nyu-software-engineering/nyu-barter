@@ -74,8 +74,6 @@ class FeedViewController: UIViewController, UICollectionViewDataSource, UICollec
         self.navigationController?.navigationBar.topItem?.titleView!.endEditing(true)
     }
         
-
-    
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return barterItems.count
     }

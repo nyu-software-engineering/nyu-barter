@@ -57,11 +57,53 @@ class ItemInfoViewController: UIViewController {
     func getPoster(){
         serviceObserver = DataService.sharedInstance.SELLER_REF.child(barterItem.userId).observe(.value, with: { snapshot in
             self.seller = BASellingUser(snapshot: snapshot)
-            let value = snapshot.value as? NSDictionary
-            let url = URL(string: value?["photoURL"] as? String ?? "")
-            self.posterImage.kf.setImage(with: url)
+           // let value = snapshot.value as? NSDictionary
+            //let url = URL(string: value?["photoURL"] as? String ?? "")
+            //self.posterImage.kf.setImage(with: url)
+            do {
+                try self.setInfo(snapshot: snapshot)
+                print("Success! Photo is set.")
+            } catch SellerError.invalidPhotoURL {
+                print("Invalid Selection.")
+            } catch SellerError.invalidInternetConnection {
+                print("No internet connection.")
+            } catch SellerError.invalidPrivldeges{
+                print("This account does not have privldeges to read from Firebase.")
+            } catch {
+                print("Unexpected error: \(error).")
+            }
         }) { (error) in
             print(error.localizedDescription)
+        }
+    }
+    
+    
+    func setInfo(snapshot: DataSnapshot) throws{
+        guard let value = snapshot.value as? NSDictionary else{
+            throw SellerError.invalidPrivldeges
+        }
+        guard let url = URL(string: value["photoURL"] as? String ?? "") else{
+            throw SellerError.invalidPhotoURL
+        }
+        self.posterImage.kf.setImage(with: url){ result in
+            // `result` is either a `.success(RetrieveImageResult)` or a `.failure(KingfisherError)`
+            switch result {
+            case .success(let value):
+                // The image was set to image view:
+                print(value.image)
+                
+                // From where the image was retrieved:
+                // - .none - Just downloaded.
+                // - .memory - Got from memory cache.
+                // - .disk - Got from disk cache.
+                print(value.cacheType)
+                
+                // The source object which contains information like `url`.
+                print(value.source)
+                
+            case .failure(let error):
+                print(error) // The error happens
+            }
         }
     }
     /*
@@ -74,4 +116,12 @@ class ItemInfoViewController: UIViewController {
     }
     */
 
+}
+
+
+
+enum SellerError: Error {
+    case invalidPhotoURL
+    case invalidInternetConnection
+    case invalidPrivldeges
 }
