@@ -6,6 +6,7 @@ import Rebase from 're-base';
 import StyledFirebaseAuth from "react-firebaseui/StyledFirebaseAuth";
 import { NavLink } from "react-router-dom";
 import PreviewPicture from './PreviewPicture';
+import Card from './Card';
 import 'bootstrap/dist/js/bootstrap.bundle.min';
 import { library } from '@fortawesome/fontawesome-svg-core'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
@@ -245,7 +246,9 @@ class Inventory extends React.Component {
         <section className='display-item'>
           <div className='wrapper'>
             <div className="row">
-              {this.renderCards()}
+              {//this.renderCards()
+                this.state.keys.map(key => <Card data={key} />)
+              }
             </div>
           </div>
         </section>

@@ -6,6 +6,7 @@ import Rebase from 're-base';
 import StyledFirebaseAuth from "react-firebaseui/StyledFirebaseAuth";
 import { NavLink } from "react-router-dom";
 import PreviewPicture from './PreviewPicture';
+import Card from './Card';
 import 'bootstrap/dist/js/bootstrap.bundle.min';
 import { library } from '@fortawesome/fontawesome-svg-core'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
@@ -17,7 +18,7 @@ import {faArchway} from '@fortawesome/free-solid-svg-icons'
 import {faHeart as solidHeart} from '@fortawesome/free-solid-svg-icons'
 import {faHeart as regularHeart} from '@fortawesome/free-regular-svg-icons'
 const uuidv4 = require('uuid/v4');
-
+var heartBool = false;
 
 library.add(faCamera)
 library.add(faSearch)
@@ -140,20 +141,36 @@ class Home extends React.Component {
     });
   }
 
-  addFave = (i) => () => {
+  handleFave = (i) => () => {
     console.log(this.state.userID); 
     const item = this.state.keys[i]; 
-    // console.log(item); 
     const uID = item.userID; 
+    let itemVal = false ; 
     const userRef = firebase.database().ref(`users/${this.state.userID}/faves`); 
-    userRef.child(item._id).set(true, () => {
-      console.log('done');
-      // console.log("for user=" + uID);
+    userRef.child(item._id).once('value').then(function(snapshot) { 
+       itemVal = snapshot.val(); 
+    }).then(function(){
+    
+      if( itemVal === false ||  itemVal === null){
+          userRef.child(item._id).set(true, () => {
+            console.log('true done');
+          }); 
+          heartBool = true; 
+  
+      }
+      else {
+       
+        userRef.child(item._id).set(false, () => {
+          console.log('false done');
+        }); 
+        heartBool = false; 
+      }
+    
     }); 
-    // console.log(this.state.keys[i]);
+    
+  }
 
-  }; 
-
+  
   removeFave = (i) => () => {
     this.setState((prevState) => {
       const nextState = { ...prevState}; 
@@ -171,14 +188,14 @@ class Home extends React.Component {
       counter += 1;
       var uniqueID = "h" + uuidv4();
       label = "#" + uniqueID;
-      var heartBool = false;
+      
       return(
         <div className = "col-3">
        <div className ="card" styles="width: 18rem;">
          <p className = "card-img top"><PreviewPicture photoUrl={itemId.photoUrl}/></p>
          <div className ="card-body">
            <a href="#" class="item-title" data-toggle="modal" data-target={label}><h5 className ="card-title">{itemId.title}</h5></a>
-           <button className="heart pull-right" key={i} onClick={this.addFave(i)}><FontAwesomeIcon icon={heartBool ? solidHeart : regularHeart} /> </button> 
+           <button className="heart pull-right" key={i} onClick={this.handleFave(i)}><FontAwesomeIcon icon={heartBool ? solidHeart : regularHeart} /> </button> 
            <div class="modal fade" id={uniqueID} tabindex="-1" role="dialog" aria-labelledby="descrLabel" aria-hidden="true">
              <div class="modal-dialog" role="document">
                <div class="modal-content">
@@ -293,6 +310,9 @@ class Home extends React.Component {
           <div className='wrapper'>
             <div className="row">
               {this.renderCards()}
+              {/* {
+                 this.state.keys.map(key => <HomeCard data={key} />)
+              } */}
             </div>
           </div>
         </section>

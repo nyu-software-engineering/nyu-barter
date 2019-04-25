@@ -7,6 +7,7 @@ import Rebase from 're-base';
 import StyledFirebaseAuth from "react-firebaseui/StyledFirebaseAuth";
 import { NavLink } from "react-router-dom";
 import PreviewPicture from './PreviewPicture';
+import Card from './Card';
 import 'bootstrap/dist/js/bootstrap.bundle.min';
 import { library } from '@fortawesome/fontawesome-svg-core'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
@@ -77,22 +78,30 @@ class Interests extends React.Component {
       return;
     }
     var keys = Object.keys(faves); 
+    var values = Object.values(faves);
+    
     this.setState({
       items: []
     });
     keys.forEach(key => {
+
+      if(faves[key] === true ){
       // console.log(key);
-      firebase.database().ref(`barters/${key}`).on('value', (snap) => {
-        const val = snap.val();
+        firebase.database().ref(`barters/${key}`).on('value', (snap) => {
+          const val = snap.val();
+          console.log("this val is= " + val);
+          this.setState(prevState => {
+            const nextState = {...prevState};
 
-        this.setState(prevState => {
-          const nextState = {...prevState};
-
-          nextState.items.push(val);
-          console.log(nextState);
-          return nextState;
+            nextState.items.push(val);
+            console.log(nextState);
+            return nextState;
+          });
         });
-      });
+    }
+
+      // look for `users/${userID}/faves/${key}
+      // using that value, set local state favorite to true or false for this item
     });
 
   }
@@ -223,7 +232,8 @@ class Interests extends React.Component {
       <section className='display-item'>
         <div className='wrapper'>
           <div className="row">
-            {this.state.items.length ? this.renderCards() : <h1>No Faves....</h1>}
+            {/* {this.renderCards()} */}
+            {this.state.items.length ? this.state.items.map(key => <Card data={key} />): <h1>No Faves....</h1>}
           </div>
         </div>
       </section>
