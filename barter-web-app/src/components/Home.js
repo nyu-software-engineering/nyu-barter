@@ -53,10 +53,12 @@ class Home extends React.Component {
       userID: '',
       dateTime: '',
       keys: [],
-      emails: {}
+      emails: {},
+      toggle: true
     }
     this.onSubmit = this.onSubmit.bind(this);
     this.handleChange = this.handleChange.bind(this);
+    this.faveHandler = this.faveHandler.bind(this);
   }
 
   uiConfig = {
@@ -70,6 +72,7 @@ class Home extends React.Component {
       signInSuccess: () => false
     }
   }
+
   onSubmit(event){
       var newPostKey = firebase.database().ref().child('barters').push().key;
       let {isSignedIn, title, descr, photoUrl, picture, userID} = this.state;
@@ -109,14 +112,36 @@ class Home extends React.Component {
 
           }
 
-        })
+        });
+
+        firebase.database().ref(`users/${curUser}/faves`).on("value", this.updateFaves.bind(this)); 
       }
 
       this.setState({isSignedIn:!!user});
       this.setState({userID:user['uid']});
     });
     firebase.database().ref('barters').on('value', this.gotData.bind(this), this.errData);
+    
     firebase.database().ref('users').on('value', this.makeEmail.bind(this));
+  }
+
+  updateFaves(snap){
+    const data = snap.val(); 
+    for(let fKey in data){
+      const matches = this.state.keys.filter(key => key._id === fKey); 
+      if(matches.length){
+        const index = matches[0].index; 
+        this.setState(prevState => {
+          const nextState = {
+            keys: [...prevState.keys]
+          }; 
+          nextState.keys[index].fave = data[fKey]; 
+          return nextState; 
+        }); 
+       
+      }
+    }
+    
   }
   makeEmail(data){
     var users = data.val();
@@ -132,13 +157,17 @@ class Home extends React.Component {
     var barters = data.val();
     var keys = Object.keys(barters);
     const result = []
-    for(var i = 0; i < keys.length;i++){
+    for(let i = 0; i < keys.length;i++){
       var k = keys[i];
       var user = barters[k].userID;
       var title = barters[k].title;
       var photoUrl = barters[k].photoUrl;
       var descr = barters[k].descr;
-      result.push({user, title, photoUrl, descr, _id: k});
+      var fave = false;  // change this
+      var index = i; 
+      // condition called fave
+      // fave is true/false, and written as part of this object in the array
+      result.push({user, title, photoUrl, descr, _id: k, fave, index});
     }
     this.setState({keys: result});
   }
@@ -157,6 +186,13 @@ class Home extends React.Component {
   handleFave = (i) => () => {
     console.log(this.state.userID); 
     const item = this.state.keys[i]; 
+    
+    this.setState(prevState => {
+      const nextState = {keys: [...prevState.keys]}; 
+      nextState.keys[i].fave = !item.fave; 
+      return nextState; 
+    }); 
+
     const uID = item.userID; 
     let itemVal = false ; 
     const userRef = firebase.database().ref(`users/${this.state.userID}/faves`); 
@@ -168,7 +204,8 @@ class Home extends React.Component {
           userRef.child(item._id).set(true, () => {
             console.log('true done');
           }); 
-          heartBool = true; 
+          item.fave = true;
+          
   
       }
       else {
@@ -176,12 +213,23 @@ class Home extends React.Component {
         userRef.child(item._id).set(false, () => {
           console.log('false done');
         }); 
-        heartBool = false; 
+        item.fave = false;
+       
       }
     
     }); 
+
     
   }
+
+  faveHandler(event) {
+    console.log("I am handling fave");
+    this.setState((prevState) => ({
+        toggle: !prevState.toggle
+      })
+    );
+  }
+
   addFave = (i) => () => {
     const item = this.state.keys[i];
     const uID = item.userID;
@@ -213,13 +261,14 @@ class Home extends React.Component {
       
       var heartBool = false;
       let email = this.state.emails[itemId.user];
+      // console.log(itemId);
       return(
-        <div className = "col-3">
+        <div className = "col-3" key={itemId}>
        <div className ="card" styles="width: 18rem;">
          <p className = "card-img top"><PreviewPicture photoUrl={itemId.photoUrl}/></p>
          <div className ="card-body">
            <a href="#" class="item-title" data-toggle="modal" data-target={label}><h5 className ="card-title">{itemId.title}</h5></a>
-           <button className="heart pull-right" key={i} onClick={this.handleFave(i)}><FontAwesomeIcon icon={heartBool ? solidHeart : regularHeart} /> </button> 
+           <button className="heart pull-right" key={i} onClick={this.handleFave(i)}><FontAwesomeIcon icon={itemId.fave ? solidHeart : regularHeart} /> </button> 
            <div class="modal fade" id={uniqueID} tabindex="-1" role="dialog" aria-labelledby="descrLabel" aria-hidden="true">
              <div class="modal-dialog" role="document">
                <div class="modal-content">
@@ -290,7 +339,7 @@ class Home extends React.Component {
           </div>
         </header>
       <div className='container'>
-      <div class="modal fade" id="addItem" tabindex="-1" role="dialog" aria-labelledby="addItemLabel" aria-hidden="true">
+      <div className="modal fade" id="addItem" tabindex="-1" role="dialog" aria-labelledby="addItemLabel" aria-hidden="true">
         <div class="modal-dialog" role="document">
           <div class="modal-content">
             <div class="modal-header">
