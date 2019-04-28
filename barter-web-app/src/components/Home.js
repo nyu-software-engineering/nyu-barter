@@ -157,7 +157,7 @@ class Home extends React.Component {
     var barters = data.val();
     var keys = Object.keys(barters);
     const result = []
-    for(let i = 0; i < keys.length;i++){
+    for(let i = keys.length-1; i >= 0; i--){
       var k = keys[i];
       var user = barters[k].userID;
       var title = barters[k].title;
