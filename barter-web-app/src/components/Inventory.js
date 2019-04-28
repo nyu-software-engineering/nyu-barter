@@ -155,7 +155,7 @@ class Inventory extends React.Component {
       return (
         
         <div> 
-          
+        {this.state.isSignedIn ? (
           <span>
           <header>
           <div className='wrapper'>
@@ -254,6 +254,14 @@ class Inventory extends React.Component {
         </section>
       </div>
           </span>
+          ) : (
+            <StyledFirebaseAuth class="LoginButtons"
+              uiConfig={this.uiConfig}
+              firebaseAuth={firebase.auth()}
+  
+            />
+  
+          )}
         </div>
       );
    }
