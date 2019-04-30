@@ -289,7 +289,7 @@ class Home extends React.Component {
          <div className = "card-img top cardImg" styles="background-size:500px auto;"><PreviewPicture photoUrl={itemId.photoUrl}/></div>
          <div className ="card-body" >
            <a href="#" class="item-title" data-toggle="modal" data-target={label} ><h5 className ="card-title" styles="padding-top: 30%;">{itemId.title}</h5></a>
-           <button className="heart pull-right" styles="position: relative; display:inline-block;" key={i} onClick={this.handleFave(i)}><FontAwesomeIcon icon={itemId.fave ? solidHeart : regularHeart} /> </button> 
+           <button className="heart pull-right" styles="position: relative; display:inline-block;" key={i} onClick={this.handleFave(i)}><FontAwesomeIcon icon={itemId.fave ? solidHeart : regularHeart} /> </button>
            <div class="modal fade" id={uniqueID} tabindex="-1" role="dialog" aria-labelledby="descrLabel" aria-hidden="true">
              <div class="modal-dialog" role="document">
                <div class="modal-content">
@@ -309,7 +309,7 @@ class Home extends React.Component {
     return itemList;
   }
 
-  
+
 
 
   render() {
@@ -321,7 +321,7 @@ class Home extends React.Component {
           <header>
           <div className='wrapper'>
             <script src="https://www.gstatic.com/firebasejs/5.8.4/firebase.js"></script>
-          <div class="barterNav" styles="background-color: rgb(255, 63, 85);"> 
+          <div class="barterNav" styles="background-color: rgb(255, 63, 85);">
             <nav class="navbar navbar-expand-lg" >
               {/* <NavLink to="/" class="navbar-brand">NYU Barter</NavLink> */}
               <a class="navbar-brand homeLink" href="/">NYU Barter</a>
@@ -331,13 +331,12 @@ class Home extends React.Component {
               <div class="collapse navbar-collapse" id="navbarSupportedContent">
               <form class="form-inline my-2 my-lg-0">
                 <div className="input-group mb-0 searchBtn">
-                    <input class="form-control mr-sm-2" name = "search" type="search" placeholder="Search" aria-label="Search" />
+                    <input id="searchText" class="form-control mr-sm-2" name = "search" type="search" placeholder="Search" aria-label="Search" />
                     <span className="input-group-text "><FontAwesomeIcon icon="search" /></span>
-                <button class="btn btn-outline-success my-2 my-sm-0" onClick = {this.searchClicked} type="submit">Search</button>
-                    
-                  
+                <button class="btn btn-outline-success my-2 my-sm-0" onClick = {this.searchClicked} type="button">Search</button>
+
                 </div>
-                
+
               </form>
 
                 <ul class="navbar-nav ml-auto">
