@@ -157,6 +157,7 @@ class Home extends React.Component {
     var barters = data.val();
     //search comes up blank
     if(!barters){
+      this.setState({keys: []});
       return
     }
     var keys = Object.keys(barters);
