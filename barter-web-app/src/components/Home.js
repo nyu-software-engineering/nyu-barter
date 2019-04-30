@@ -60,6 +60,7 @@ class Home extends React.Component {
       toggle: true
     }
     this.onSubmit = this.onSubmit.bind(this);
+    this.searchClicked = this.searchClicked.bind(this);
     this.handleChange = this.handleChange.bind(this);
     this.faveHandler = this.faveHandler.bind(this);
   }
@@ -112,39 +113,38 @@ class Home extends React.Component {
           if (!snapshot.exists()){
             firebase.database().ref('users/' + curUser).child('email').set(user.email);
             firebase.database().ref('users/' + curUser).child('photoURL').set(user.photoURL);
-
           }
 
         });
 
-        firebase.database().ref(`users/${curUser}/faves`).on("value", this.updateFaves.bind(this)); 
+        firebase.database().ref(`users/${curUser}/faves`).on("value", this.updateFaves.bind(this));
       }
 
       this.setState({isSignedIn:!!user});
       this.setState({userID:user['uid']});
     });
     firebase.database().ref('barters').on('value', this.gotData.bind(this), this.errData);
-    
+
     firebase.database().ref('users').on('value', this.makeEmail.bind(this));
   }
 
   updateFaves(snap){
-    const data = snap.val(); 
+    const data = snap.val();
     for(let fKey in data){
-      const matches = this.state.keys.filter(key => key._id === fKey); 
+      const matches = this.state.keys.filter(key => key._id === fKey);
       if(matches.length){
-        const index = matches[0].index; 
+        const index = matches[0].index;
         this.setState(prevState => {
           const nextState = {
             keys: [...prevState.keys]
-          }; 
-          nextState.keys[index].fave = data[fKey]; 
-          return nextState; 
-        }); 
-       
+          };
+          nextState.keys[index].fave = data[fKey];
+          return nextState;
+        });
+
       }
     }
-    
+
   }
   makeEmail(data){
     var users = data.val();
@@ -158,23 +158,33 @@ class Home extends React.Component {
   }
   gotData(data){
     var barters = data.val();
+    //search comes up blank
+    if(!barters){
+      this.setState({keys: []});
+      return
+    }
     var keys = Object.keys(barters);
     const result = []
-    for(let i = 0; i < keys.length;i++){
+    for(let i = keys.length-1; i >= 0; i--){
       var k = keys[i];
       var user = barters[k].userID;
       var title = barters[k].title;
       var photoUrl = barters[k].photoUrl;
       var descr = barters[k].descr;
       var fave = false;  // change this
-      var index = i; 
+      var index = i;
       // condition called fave
       // fave is true/false, and written as part of this object in the array
       result.push({user, title, photoUrl, descr, _id: k, fave, index});
     }
     this.setState({keys: result});
   }
-
+  searchClicked(){
+    const search = document.querySelector('#searchText');
+    const searchValue = search.value;
+    const bartersRef = firebase.database().ref('barters');
+    bartersRef.orderByChild('title').equalTo(searchValue).on("value", this.gotData.bind(this), this.errData);
+  }
   errData(err){
     console.log('Error!');
     console.log(err);
@@ -187,42 +197,42 @@ class Home extends React.Component {
   }
 
   handleFave = (i) => () => {
-    console.log(this.state.userID); 
-    const item = this.state.keys[i]; 
-    
-    this.setState(prevState => {
-      const nextState = {keys: [...prevState.keys]}; 
-      nextState.keys[i].fave = !item.fave; 
-      return nextState; 
-    }); 
+    console.log(this.state.userID);
+    const item = this.state.keys[i];
 
-    const uID = item.userID; 
-    let itemVal = false ; 
-    const userRef = firebase.database().ref(`users/${this.state.userID}/faves`); 
-    userRef.child(item._id).once('value').then(function(snapshot) { 
-       itemVal = snapshot.val(); 
+    this.setState(prevState => {
+      const nextState = {keys: [...prevState.keys]};
+      nextState.keys[i].fave = !item.fave;
+      return nextState;
+    });
+
+    const uID = item.userID;
+    let itemVal = false ;
+    const userRef = firebase.database().ref(`users/${this.state.userID}/faves`);
+    userRef.child(item._id).once('value').then(function(snapshot) {
+       itemVal = snapshot.val();
     }).then(function(){
-    
+
       if( itemVal === false ||  itemVal === null){
           userRef.child(item._id).set(true, () => {
             console.log('true done');
-          }); 
+          });
           item.fave = true;
-          
-  
+
+
       }
       else {
-       
+
         userRef.child(item._id).set(false, () => {
           console.log('false done');
-        }); 
+        });
         item.fave = false;
-       
-      }
-    
-    }); 
 
-    
+      }
+
+    });
+
+
   }
 
   faveHandler(event) {
@@ -243,7 +253,7 @@ class Home extends React.Component {
 
   };
 
-  
+
   removeFave = (i) => () => {
     this.setState((prevState) => {
       const nextState = { ...prevState};
@@ -261,17 +271,25 @@ class Home extends React.Component {
       counter += 1;
       var uniqueID = "h" + uuidv4();
       label = "#" + uniqueID;
-      
+
       var heartBool = false;
       let email = this.state.emails[itemId.user];
       // console.log(itemId);
       return(
         <div className = "col-3" key={itemId}>
+<<<<<<< HEAD
        <div className ="card" styles="width: 30rem;">
          <div className = "card-img top cardImg" styles="background-size:500px auto;"><PreviewPicture photoUrl={itemId.photoUrl}/></div>
          <div className ="card-body" >
            <a href="#" class="item-title" data-toggle="modal" data-target={label} ><h5 className ="card-title" styles="padding-top: 30%;">{itemId.title}</h5></a>
            <button className="heart pull-right" styles="position: relative; display:inline-block;" key={i} onClick={this.handleFave(i)}><FontAwesomeIcon icon={itemId.fave ? solidHeart : regularHeart} /> </button> 
+=======
+       <div className ="card" styles="width: 18rem;">
+         <p className = "card-img top"><PreviewPicture photoUrl={itemId.photoUrl}/></p>
+         <div className ="card-body">
+           <a href="#" class="item-title" data-toggle="modal" data-target={label}><h5 className ="card-title">{itemId.title}</h5></a>
+           <button className="heart pull-right" key={i} onClick={this.handleFave(i)}><FontAwesomeIcon icon={itemId.fave ? solidHeart : regularHeart} /> </button>
+>>>>>>> 0521655b41b2c4ff98d335c715b56633285715a0
            <div class="modal fade" id={uniqueID} tabindex="-1" role="dialog" aria-labelledby="descrLabel" aria-hidden="true">
              <div class="modal-dialog" role="document">
                <div class="modal-content">
@@ -313,6 +331,7 @@ class Home extends React.Component {
               <div class="collapse navbar-collapse" id="navbarSupportedContent">
               <form class="form-inline my-2 my-lg-0">
                 <div className="input-group mb-0 searchBtn">
+<<<<<<< HEAD
                     <input class="form-control mr-sm-2" name = "search" type="search" placeholder="Search" aria-label="Search" />
                     <span className="input-group-text "><FontAwesomeIcon icon="search" /></span>
                 <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
@@ -320,6 +339,14 @@ class Home extends React.Component {
                   
                 </div>
                 
+=======
+                  <div className="input-group-prepend">
+                    <span className="input-group-text"><FontAwesomeIcon icon="search" /></span>
+                  </div>
+                </div>
+                <input id="searchText" class="form-control mr-sm-2" name = "search" type="search" placeholder="Search" aria-label="Search" />
+                <button class="btn btn-outline-success my-2 my-sm-0" onClick={this.searchClicked} type="button">Search</button>
+>>>>>>> 0521655b41b2c4ff98d335c715b56633285715a0
               </form>
 
                 <ul class="navbar-nav ml-auto">
