@@ -57,6 +57,7 @@ class Home extends React.Component {
       toggle: true
     }
     this.onSubmit = this.onSubmit.bind(this);
+    this.searchClicked = this.searchClicked.bind(this);
     this.handleChange = this.handleChange.bind(this);
     this.faveHandler = this.faveHandler.bind(this);
   }
@@ -109,7 +110,6 @@ class Home extends React.Component {
           if (!snapshot.exists()){
             firebase.database().ref('users/' + curUser).child('email').set(user.email);
             firebase.database().ref('users/' + curUser).child('photoURL').set(user.photoURL);
-
           }
 
         });
@@ -175,13 +175,7 @@ class Home extends React.Component {
     const search = document.querySelector('#searchText');
     const searchValue = search.value;
     const bartersRef = firebase.database().ref('barters');
-    bartersRef.orderByChild('title').equalTo(searchValue).on("value", function(snapshot) {
-    const listOfMatches = []
-    snapshot.forEach(function(data) {
-        listOfMatches.push(data.key);
-    });
-    console.log(listOfMatches);
-});
+    bartersRef.orderByChild('title').equalTo(searchValue).on("value", this.gotData.bind(this), this.errData);
   }
   errData(err){
     console.log('Error!');
