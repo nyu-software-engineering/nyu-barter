@@ -155,7 +155,7 @@ class Home extends React.Component {
   }
   gotData(data){
     var barters = data.val();
-    //search comes up blank
+    //no matches
     if(!barters){
       this.setState({keys: []});
       return
@@ -179,8 +179,16 @@ class Home extends React.Component {
   searchClicked(){
     const search = document.querySelector('#searchText');
     const searchValue = search.value;
-    const bartersRef = firebase.database().ref('barters');
-    bartersRef.orderByChild('title').equalTo(searchValue).on("value", this.gotData.bind(this), this.errData);
+    if(searchValue){
+      const bartersRef = firebase.database().ref('barters');
+      bartersRef.orderByChild('title').equalTo(searchValue).on("value", (snapshot)=>{
+        console.log(snapshot.val());
+        this.gotData(snapshot);
+      });
+    }
+    else{ //searching notihing goes back to home page
+      firebase.database().ref('barters').on('value', this.gotData.bind(this), this.errData);
+    }
   }
   errData(err){
     console.log('Error!');
