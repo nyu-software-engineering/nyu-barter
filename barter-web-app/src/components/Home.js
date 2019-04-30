@@ -155,6 +155,10 @@ class Home extends React.Component {
   }
   gotData(data){
     var barters = data.val();
+    //search comes up blank
+    if(!barters){
+      return
+    }
     var keys = Object.keys(barters);
     const result = []
     for(let i = keys.length-1; i >= 0; i--){
