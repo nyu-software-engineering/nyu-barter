@@ -172,9 +172,16 @@ class Home extends React.Component {
     this.setState({keys: result});
   }
   searchClicked(){
-    console.log('ok');
     const search = document.querySelector('#searchText');
     const searchValue = search.value;
+    const bartersRef = firebase.database().ref('barters');
+    bartersRef.orderByChild('title').equalTo(searchValue).on("value", function(snapshot) {
+    const listOfMatches = []
+    snapshot.forEach(function(data) {
+        listOfMatches.push(data.key);
+    });
+    console.log(listOfMatches);
+});
   }
   errData(err){
     console.log('Error!');
