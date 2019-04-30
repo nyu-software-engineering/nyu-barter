@@ -18,7 +18,10 @@ import {faHome} from '@fortawesome/free-solid-svg-icons'
 import {faArchway} from '@fortawesome/free-solid-svg-icons'
 import {faHeart as solidHeart} from '@fortawesome/free-solid-svg-icons'
 import {faHeart as regularHeart} from '@fortawesome/free-regular-svg-icons'
+// import './assets/css/fonts.css';
+
 const uuidv4 = require('uuid/v4');
+
 var heartBool = false;
 
 library.add(faCamera)
@@ -264,11 +267,11 @@ class Home extends React.Component {
       // console.log(itemId);
       return(
         <div className = "col-3" key={itemId}>
-       <div className ="card" styles="width: 18rem;">
-         <p className = "card-img top"><PreviewPicture photoUrl={itemId.photoUrl}/></p>
-         <div className ="card-body">
-           <a href="#" class="item-title" data-toggle="modal" data-target={label}><h5 className ="card-title">{itemId.title}</h5></a>
-           <button className="heart pull-right" key={i} onClick={this.handleFave(i)}><FontAwesomeIcon icon={itemId.fave ? solidHeart : regularHeart} /> </button> 
+       <div className ="card" styles="width: 30rem;">
+         <div className = "card-img top cardImg" styles="background-size:500px auto;"><PreviewPicture photoUrl={itemId.photoUrl}/></div>
+         <div className ="card-body" >
+           <a href="#" class="item-title" data-toggle="modal" data-target={label} ><h5 className ="card-title" styles="padding-top: 30%;">{itemId.title}</h5></a>
+           <button className="heart pull-right" styles="position: relative; display:inline-block;" key={i} onClick={this.handleFave(i)}><FontAwesomeIcon icon={itemId.fave ? solidHeart : regularHeart} /> </button> 
            <div class="modal fade" id={uniqueID} tabindex="-1" role="dialog" aria-labelledby="descrLabel" aria-hidden="true">
              <div class="modal-dialog" role="document">
                <div class="modal-content">
@@ -288,6 +291,7 @@ class Home extends React.Component {
     return itemList;
   }
 
+  
 
 
   render() {
@@ -299,8 +303,8 @@ class Home extends React.Component {
           <header>
           <div className='wrapper'>
             <script src="https://www.gstatic.com/firebasejs/5.8.4/firebase.js"></script>
-
-            <nav class="navbar navbar-expand-lg navbar-light bg-light">
+          <div class="barterNav" styles="background-color: rgb(255, 63, 85);"> 
+            <nav class="navbar navbar-expand-lg" >
               {/* <NavLink to="/" class="navbar-brand">NYU Barter</NavLink> */}
               <a class="navbar-brand homeLink" href="/">NYU Barter</a>
               <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -309,12 +313,13 @@ class Home extends React.Component {
               <div class="collapse navbar-collapse" id="navbarSupportedContent">
               <form class="form-inline my-2 my-lg-0">
                 <div className="input-group mb-0 searchBtn">
-                  <div className="input-group-prepend">
-                    <span className="input-group-text"><FontAwesomeIcon icon="search" /></span>
-                  </div>
-                </div>
-                <input class="form-control mr-sm-2" name = "search" type="search" placeholder="Search" aria-label="Search" />
+                    <input class="form-control mr-sm-2" name = "search" type="search" placeholder="Search" aria-label="Search" />
+                    <span className="input-group-text "><FontAwesomeIcon icon="search" /></span>
                 <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+                    
+                  
+                </div>
+                
               </form>
 
                 <ul class="navbar-nav ml-auto">
@@ -336,6 +341,7 @@ class Home extends React.Component {
 
               </div>
             </nav>
+          </div>
           </div>
         </header>
       <div className='container'>

@@ -4,8 +4,11 @@
 
 } */
 
+@import url('https://fonts.googleapis.com/css?family=Roboto');
+/* @import PreviewPicture from './PreviewPicture'; */
+
 body{
-  font-family: "Comic Sans MS", cursive, sans-serif; 
+  font-family: "Roboto", sans-serif; 
 }
 
 .btn-primary, .btn-primary:hover, .btn-primary:active, .btn-primary:visited {
@@ -81,7 +84,31 @@ body{
   font-size: 20px;
   
 }
+
+.cardImg{
+
+  position: relative;
+  margin-left: 30%;
+  width: 300px;
+  height: 100%; 
+  padding-top: 5%;
   
+  /* background-size: 300px 100px; */
+
+}
+
+.barterNav {
+  background-color:#ed094d; 
+  color: white;
+  
+}
+
+.barterNav a{
+  color: white;
+  font-weight: bold;
+}
+  
+
 
 
 
