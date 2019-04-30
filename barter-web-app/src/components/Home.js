@@ -277,19 +277,11 @@ class Home extends React.Component {
       // console.log(itemId);
       return(
         <div className = "col-3" key={itemId}>
-<<<<<<< HEAD
        <div className ="card" styles="width: 30rem;">
          <div className = "card-img top cardImg" styles="background-size:500px auto;"><PreviewPicture photoUrl={itemId.photoUrl}/></div>
          <div className ="card-body" >
            <a href="#" class="item-title" data-toggle="modal" data-target={label} ><h5 className ="card-title" styles="padding-top: 30%;">{itemId.title}</h5></a>
            <button className="heart pull-right" styles="position: relative; display:inline-block;" key={i} onClick={this.handleFave(i)}><FontAwesomeIcon icon={itemId.fave ? solidHeart : regularHeart} /> </button> 
-=======
-       <div className ="card" styles="width: 18rem;">
-         <p className = "card-img top"><PreviewPicture photoUrl={itemId.photoUrl}/></p>
-         <div className ="card-body">
-           <a href="#" class="item-title" data-toggle="modal" data-target={label}><h5 className ="card-title">{itemId.title}</h5></a>
-           <button className="heart pull-right" key={i} onClick={this.handleFave(i)}><FontAwesomeIcon icon={itemId.fave ? solidHeart : regularHeart} /> </button>
->>>>>>> 0521655b41b2c4ff98d335c715b56633285715a0
            <div class="modal fade" id={uniqueID} tabindex="-1" role="dialog" aria-labelledby="descrLabel" aria-hidden="true">
              <div class="modal-dialog" role="document">
                <div class="modal-content">
@@ -331,22 +323,13 @@ class Home extends React.Component {
               <div class="collapse navbar-collapse" id="navbarSupportedContent">
               <form class="form-inline my-2 my-lg-0">
                 <div className="input-group mb-0 searchBtn">
-<<<<<<< HEAD
                     <input class="form-control mr-sm-2" name = "search" type="search" placeholder="Search" aria-label="Search" />
                     <span className="input-group-text "><FontAwesomeIcon icon="search" /></span>
-                <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+                <button class="btn btn-outline-success my-2 my-sm-0" onClick = {this.searchClicked} type="submit">Search</button>
                     
                   
                 </div>
                 
-=======
-                  <div className="input-group-prepend">
-                    <span className="input-group-text"><FontAwesomeIcon icon="search" /></span>
-                  </div>
-                </div>
-                <input id="searchText" class="form-control mr-sm-2" name = "search" type="search" placeholder="Search" aria-label="Search" />
-                <button class="btn btn-outline-success my-2 my-sm-0" onClick={this.searchClicked} type="button">Search</button>
->>>>>>> 0521655b41b2c4ff98d335c715b56633285715a0
               </form>
 
                 <ul class="navbar-nav ml-auto">
