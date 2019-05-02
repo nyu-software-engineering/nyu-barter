@@ -159,11 +159,11 @@ class Home extends React.Component {
   search(title, search){
     var str = title.toLowerCase();
     var str2 = search.toLowerCase();
-    var n = str.search(str2);
-    if(n !== -1){
+    var n1 = str.search(str2);
+    var n2 = str2.search(str);
+    if(n1 !== -1 || n2 !== -1){
       return true;
     }
-
     return false;
   }
   gotData(data, filter){
