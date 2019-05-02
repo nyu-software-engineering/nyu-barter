@@ -233,7 +233,7 @@ class Interests extends React.Component {
         <div className='wrapper'>
           <div className="row">
             {/* {this.renderCards()} */}
-            {this.state.items.length ? this.state.items.map(key => <Card data={key} />): <h1>No Faves....</h1>}
+            {this.state.items.length ? this.state.items.map(key => <Card data={key} />): <h1>No Favorited Items</h1>}
           </div>
         </div>
       </section>
