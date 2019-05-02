@@ -16,6 +16,8 @@ import {faBars} from '@fortawesome/free-solid-svg-icons'
 import {faHome} from '@fortawesome/free-solid-svg-icons'
 import {faArchway} from '@fortawesome/free-solid-svg-icons'
 import {faHeart} from '@fortawesome/free-solid-svg-icons'
+import {faTrashAlt} from '@fortawesome/free-solid-svg-icons'
+import {faHeart as regularHeart} from '@fortawesome/free-regular-svg-icons'
 const uuidv4 = require('uuid/v4');
 
 
@@ -36,6 +38,7 @@ class Inventory extends React.Component {
     }
     this.onSubmit = this.onSubmit.bind(this);
     this.handleChange = this.handleChange.bind(this);
+    this.handleRemove = this.handleRemove.bind(this);
   }
   gotData(data){
     var curUser = firebase.auth().currentUser.uid;
@@ -44,13 +47,16 @@ class Inventory extends React.Component {
     var keys = Object.keys(barters);
     const result = []
     for(var i = 0; i < keys.length;i++){
+      
       var k = keys[i];
+      var itemNum = k+'';
       var user = barters[k].userID;
       var title = barters[k].title;
       var descr = barters[k].descr;
       var photoUrl = barters[k].photoUrl;
+
       if(user==curUser){
-        result.push({user, title,descr, photoUrl});
+        result.push({user, title,descr, photoUrl, itemNum});
       }
     }
     this.setState({keys: result});
@@ -101,6 +107,11 @@ class Inventory extends React.Component {
   componentWillUnmount(){
   }
 
+  handleRemove(itemRef) {
+    var ref = firebase.database().ref('barters/' + itemRef);
+    ref.remove();
+  };
+
   handleChange(e) {
     this.setState({
       [e.target.name]: e.target.value
@@ -110,14 +121,14 @@ class Inventory extends React.Component {
   renderCards () {
     const keys = this.state.keys;
     const itemList = keys.map(itemId => {
-      console.log(itemId.title, itemId.descr);
+      console.log(itemId.itemNum);
       return(
         <div className = "col-3">
         <div className ="card" styles="width: 18rem;">
           <p className = "card-img top"><PreviewPicture photoUrl={itemId.photoUrl}/></p>
           <div className ="card-body">
             <a href="#" class="item-title" data-toggle="modal" data-target="#displayDescr"><h5 className ="card-title">{itemId.title}</h5></a>
-            
+            <button className="heart pull-right" styles="position: relative; display:inline-block;" onClick={()=>{this.handleRemove(itemId.itemNum)}}>Delete </button>
           </div>
         </div>
       </div>
@@ -127,30 +138,6 @@ class Inventory extends React.Component {
   }
 
   render() {
-
-    //   const keys = this.state.keys;
-    //   const itemList = keys.map(itemId => {
-    //     return(
-    //       <div className = "col-3">
-    //    <div className ="card" styles="width: 18rem;">
-    //      <p className = "card-img top"><PreviewPicture photoUrl={itemId.photoUrl}/></p>
-    //      <div className ="card-body">
-    //        <a href="#" class="item-title" data-toggle="modal" data-target="#displayDescr"><h5 className ="card-title">{itemId.title}</h5></a>
-    //        <div class="modal fade" id="displayDescr" tabindex="-1" role="dialog" aria-labelledby="descrLabel" aria-hidden="true">
-    //          <div class="modal-dialog" role="document">
-    //            <div class="modal-content">
-    //              <div class="modal-body" id="descrLabel">
-    //                <h4> Would like to trade for - </h4>
-    //                <h6> {itemId.descr}  </h6>
-    //              </div>
-    //            </div>
-    //          </div>
-    //        </div>
-    //      </div>
-    //    </div>
-    //  </div>
-    //     )
-    //   });
 
       return (
         
@@ -246,8 +233,8 @@ class Inventory extends React.Component {
         <section className='display-item'>
           <div className='wrapper'>
             <div className="row">
-              {//this.renderCards()
-                this.state.keys.map(key => <Card data={key} />)
+              {this.renderCards()
+                //this.state.keys.map(key => <Card data={key} />)
               }
             </div>
           </div>
