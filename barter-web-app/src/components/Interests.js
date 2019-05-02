@@ -27,7 +27,7 @@ class Interests extends React.Component {
     }
     this.handleChange = this.handleChange.bind(this);
   }
-  
+
 
   errData(err){
     console.log('Error!');
@@ -35,7 +35,7 @@ class Interests extends React.Component {
   }
 
   componentDidMount(){
-    
+
     firebase.auth().onAuthStateChanged(user =>{
       //Start change
       if(user){
@@ -55,10 +55,10 @@ class Interests extends React.Component {
       this.setState({userID:user['uid']});
 
       firebase.database().ref(`users/${user.uid}/faves`).on('value', this.getFaves);
-      console.log("id"); 
+      console.log("id");
       console.log(this.state.userID);
     });
-    
+
 
   }
   componentWillUnmount(){
@@ -71,15 +71,15 @@ class Interests extends React.Component {
   }
 
   getFaves = (snap) => {
-    
+
     console.log("logging snap");
-    var faves = snap.val(); 
+    var faves = snap.val();
     if(!faves) {
       return;
     }
-    var keys = Object.keys(faves); 
+    var keys = Object.keys(faves);
     var values = Object.values(faves);
-    
+
     this.setState({
       items: []
     });
@@ -140,8 +140,8 @@ class Interests extends React.Component {
   }
   render() {
       return (
-        <div> 
-          
+        <div>
+
         <span>
         <header>
         <div className='wrapper'>

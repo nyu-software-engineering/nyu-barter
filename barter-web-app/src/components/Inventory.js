@@ -88,10 +88,10 @@ class Inventory extends React.Component {
   }
 
   componentDidMount(){
-    
+
     firebase.auth().onAuthStateChanged(user =>{
 
-      
+
       this.setState({isSignedIn:!!user});
       this.setState({userID:user['uid']});
     });
@@ -117,7 +117,7 @@ class Inventory extends React.Component {
           <p className = "card-img top"><PreviewPicture photoUrl={itemId.photoUrl}/></p>
           <div className ="card-body">
             <a href="#" class="item-title" data-toggle="modal" data-target="#displayDescr"><h5 className ="card-title">{itemId.title}</h5></a>
-            
+
           </div>
         </div>
       </div>
@@ -153,8 +153,8 @@ class Inventory extends React.Component {
     //   });
 
       return (
-        
-        <div> 
+
+        <div>
         {this.state.isSignedIn ? (
           <span>
           <header>
@@ -258,9 +258,9 @@ class Inventory extends React.Component {
             <StyledFirebaseAuth class="LoginButtons"
               uiConfig={this.uiConfig}
               firebaseAuth={firebase.auth()}
-  
+
             />
-  
+
           )}
         </div>
       );
