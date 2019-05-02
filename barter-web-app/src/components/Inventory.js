@@ -94,10 +94,10 @@ class Inventory extends React.Component {
   }
 
   componentDidMount(){
-    
+
     firebase.auth().onAuthStateChanged(user =>{
 
-      
+
       this.setState({isSignedIn:!!user});
       this.setState({userID:user['uid']});
     });
@@ -140,8 +140,8 @@ class Inventory extends React.Component {
   render() {
 
       return (
-        
-        <div> 
+
+        <div>
         {this.state.isSignedIn ? (
           <span>
           <header>
@@ -245,9 +245,9 @@ class Inventory extends React.Component {
             <StyledFirebaseAuth class="LoginButtons"
               uiConfig={this.uiConfig}
               firebaseAuth={firebase.auth()}
-  
+
             />
-  
+
           )}
         </div>
       );

@@ -156,29 +156,62 @@ class Home extends React.Component {
     }
     this.setState({emails: result});
   }
-  gotData(data){
+  search(title, search){
+    var str = title.toLowerCase();
+    var str2 = search.toLowerCase();
+    var n1 = str.search(str2);
+    var n2 = str2.search(str);
+    if(n1 !== -1 || n2 !== -1){
+      return true;
+    }
+    return false;
+  }
+  gotData(data, filter){
     var barters = data.val();
     //no matches
     if(!barters){
       this.setState({keys: []});
       return
     }
-    var keys = Object.keys(barters);
-    const result = []
-    for(let i = keys.length-1; i >= 0; i--){
-      var k = keys[i];
-      var user = barters[k].userID;
-      var title = barters[k].title;
-      var photoUrl = barters[k].photoUrl;
-      var descr = barters[k].descr;
-      var fave = false;  // change this
-      var index = i;
-      // condition called fave
-      // fave is true/false, and written as part of this object in the array
-      result.push({user, title, photoUrl, descr, _id: k, fave, index});
+    if(filter){
+      console.log(filter, "okrr");
+      var keys = Object.keys(barters);
+      const result = []
+      for(let i = keys.length-1; i >= 0; i--){
+        var k = keys[i];
+        if(this.search(barters[k].title, filter)){
+          var user = barters[k].userID;
+          var title = barters[k].title;
+          var photoUrl = barters[k].photoUrl;
+          var descr = barters[k].descr;
+          var fave = false;  // change this
+          var index = i;
+          // condition called fave
+          // fave is true/false, and written as part of this object in the array
+          result.push({user, title, photoUrl, descr, _id: k, fave, index});
+        }
+      }
+      this.setState({keys: result});
     }
-    this.setState({keys: result});
+    else{
+      var keys = Object.keys(barters);
+      const result = []
+      for(let i = keys.length-1; i >= 0; i--){
+        var k = keys[i];
+        var user = barters[k].userID;
+        var title = barters[k].title;
+        var photoUrl = barters[k].photoUrl;
+        var descr = barters[k].descr;
+        var fave = false;  // change this
+        var index = i;
+        // condition called fave
+        // fave is true/false, and written as part of this object in the array
+        result.push({user, title, photoUrl, descr, _id: k, fave, index});
+      }
+      this.setState({keys: result});
+    }
   }
+  /*
   searchClicked(){
     const search = document.querySelector('#searchText');
     const searchValue = search.value;
@@ -193,6 +226,14 @@ class Home extends React.Component {
       firebase.database().ref('barters').on('value', this.gotData.bind(this), this.errData);
     }
   }
+  */
+  searchClicked(){
+    const search = document.querySelector('#searchText');
+    const searchValue = search.value;
+    console.log(searchValue);
+    firebase.database().ref('barters').on('value', (snapshot) => this.gotData(snapshot, searchValue), this.errData);
+  }
+
   errData(err){
     console.log('Error!');
     console.log(err);
@@ -205,42 +246,31 @@ class Home extends React.Component {
   }
 
   handleFave = (i) => () => {
-    console.log(this.state.userID);
     const item = this.state.keys[i];
-
     this.setState(prevState => {
       const nextState = {keys: [...prevState.keys]};
       nextState.keys[i].fave = !item.fave;
       return nextState;
     });
-
     const uID = item.userID;
     let itemVal = false ;
     const userRef = firebase.database().ref(`users/${this.state.userID}/faves`);
     userRef.child(item._id).once('value').then(function(snapshot) {
        itemVal = snapshot.val();
     }).then(function(){
-
       if( itemVal === false ||  itemVal === null){
           userRef.child(item._id).set(true, () => {
             console.log('true done');
           });
           item.fave = true;
-
-
       }
       else {
-
         userRef.child(item._id).set(false, () => {
           console.log('false done');
         });
         item.fave = false;
-
       }
-
     });
-
-
   }
 
   faveHandler(event) {
