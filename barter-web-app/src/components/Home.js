@@ -211,22 +211,6 @@ class Home extends React.Component {
       this.setState({keys: result});
     }
   }
-  /*
-  searchClicked(){
-    const search = document.querySelector('#searchText');
-    const searchValue = search.value;
-    if(searchValue){
-      const bartersRef = firebase.database().ref('barters');
-      bartersRef.orderByChild('title').equalTo(searchValue).on("value", (snapshot)=>{
-        console.log(snapshot.val());
-        this.gotData(snapshot);
-      });
-    }
-    else{ //searching notihing goes back to home page
-      firebase.database().ref('barters').on('value', this.gotData.bind(this), this.errData);
-    }
-  }
-  */
   searchClicked(){
     const search = document.querySelector('#searchText');
     const searchValue = search.value;
@@ -359,15 +343,12 @@ class Home extends React.Component {
               <span class="navbar-toggler-icon"></span>
               </button>
               <div class="collapse navbar-collapse" id="navbarSupportedContent">
-              <form class="form-inline my-2 my-lg-0">
-                <div className="input-group mb-0 searchBtn">
-                    <input id="searchText" class="form-control mr-sm-2" name = "search" type="search" placeholder="Search" aria-label="Search" />
-                    <span className="input-group-text "><FontAwesomeIcon icon="search" /></span>
-                <button class="btn btn-outline-success my-2 my-sm-0" onClick = {this.searchClicked} type="button">Search</button>
+              <div className="input-group mb-0 searchBtn">
+                  <input id="searchText" class="form-control mr-sm-2" name = "search" type="search" placeholder="Search" aria-label="Search" />
+                  <span className="input-group-text "><FontAwesomeIcon icon="search" /></span>
+              <button class="btn btn-outline-success my-2 my-sm-0" onClick = {this.searchClicked} type="button">Search</button>
 
-                </div>
-
-              </form>
+              </div>
 
                 <ul class="navbar-nav ml-auto">
                 <li class="nav-item active">
