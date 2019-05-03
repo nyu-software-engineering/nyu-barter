@@ -206,7 +206,7 @@ class Home extends React.Component {
     }
     this.setState({keys: result});
   }
-  searchClicked(){
+  searchClicked(e){
     firebase.database().ref('barters').on('value', (snapshot) => this.gotData(snapshot), this.errData);
   }
 
@@ -340,11 +340,12 @@ class Home extends React.Component {
               <span class="navbar-toggler-icon"></span>
               </button>
               <div class="collapse navbar-collapse" id="navbarSupportedContent">
-              <div className="input-group mb-0 searchBtn">
-                  <input id="searchText" class="form-control mr-sm-2" name = "search" type="search" placeholder="Search" aria-label="Search" />
-                  <span className="input-group-text "><FontAwesomeIcon icon="search" /></span>
-              <button class="btn btn-outline-success my-2 my-sm-0" onClick = {this.searchClicked} type="button">Search</button>
-
+              <div class="form-inline my-2  my-lg-0">
+                <div className="input-group mb-0 searchBtn">
+                    <input id="searchText" class="form-control mr-sm-2" name = "search" type="search" placeholder="Search" aria-label="Search" />
+                    <span className="input-group-text "><FontAwesomeIcon icon="search" /></span>
+                <button class="btn btn-outline-success my-2 my-sm-0" onClick={this.searchClicked} type="button">Search</button>
+                </div>
               </div>
 
                 <ul class="navbar-nav ml-auto">
