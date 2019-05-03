@@ -6,6 +6,7 @@ import Rebase from 're-base';
 import StyledFirebaseAuth from "react-firebaseui/StyledFirebaseAuth";
 import { NavLink } from "react-router-dom";
 import PreviewPicture from './PreviewPicture';
+import GetProfileImg from './GetProfileImg';
 import Card from './Card';
 import 'bootstrap/dist/js/bootstrap.bundle.min';
 import { library } from '@fortawesome/fontawesome-svg-core'
@@ -34,6 +35,7 @@ class Inventory extends React.Component {
       photoUrl: null,
       picture: null,
       userID: '',
+      userPhoto: '',
       dateTime: '',
       category: '',
       dateTime: '',
@@ -101,8 +103,9 @@ class Inventory extends React.Component {
   componentDidMount(){
 
     firebase.auth().onAuthStateChanged(user =>{
-
-
+      if(user){
+        this.setState({userPhoto: user['photoURL']});
+      }
       this.setState({isSignedIn:!!user});
       this.setState({userID:user['uid']});
     });
@@ -154,7 +157,8 @@ class Inventory extends React.Component {
             <script src="https://www.gstatic.com/firebasejs/5.8.4/firebase.js"></script>
 
             <nav class="navbar navbar-expand-lg navbar-light bg-light">
-              <a class="navbar-brand homeLink" href="/">NYU Barter</a>
+              {/*<a class="navbar-brand homeLink" href="/">NYU Barter</a>*/}
+              <GetProfileImg userPhoto={this.state.userPhoto}/>
               <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
               <span class="navbar-toggler-icon"></span>
               </button>
