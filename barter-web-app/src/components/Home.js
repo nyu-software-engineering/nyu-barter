@@ -137,11 +137,14 @@ class Home extends React.Component {
   }
 
   updateFaves(snap){
+    console.log('updating faves');
     const data = snap.val();
     for(let fKey in data){
       const matches = this.state.keys.filter(key => key._id === fKey);
       if(matches.length){
         const index = matches[0].index;
+        console.log(matches[0]._id);
+        console.log(this.state.keys[index]._id);
         this.setState(prevState => {
           const nextState = {
             keys: [...prevState.keys]
@@ -174,6 +177,7 @@ class Home extends React.Component {
     }
     return false;
   }
+
   gotData(data, oldOrNew, category){
     const search = document.querySelector('#searchText');
     let filter = null;
@@ -197,8 +201,10 @@ class Home extends React.Component {
           var title = barters[k].title;
           var photoUrl = barters[k].photoUrl;
           var descr = barters[k].descr;
-          var fave = false;  // change this
-          var index = i;
+          var fave = false; 
+          var index = keys.length-i-1;
+          console.log("fave is  = "); 
+          console.log(fave);
           // condition called fave
           // fave is true/false, and written as part of this object in the array
           result.push({user, dateTime, title, photoUrl, descr, _id: k, fave, index});
@@ -236,15 +242,20 @@ class Home extends React.Component {
   }
 
   handleFave = (i) => () => {
+    // console.log("handling fave function is called");
+    // console.log("==========dskjdlsla;")
     const item = this.state.keys[i];
-    this.setState(prevState => {
-      const nextState = {keys: [...prevState.keys]};
-      nextState.keys[i].fave = !item.fave;
-      return nextState;
-    });
+    console.log(item);
+    // this.setState(prevState => {
+    //   const nextState = {keys: [...prevState.keys]};
+    //   nextState.keys[i].fave = !item.fave;
+    //   return nextState;
+    // });
     const uID = item.userID;
     let itemVal = false ;
     const userRef = firebase.database().ref(`users/${this.state.userID}/faves`);
+    console.log("printing state");
+    console.log(firebase.database().ref(`users/${this.state.userID}/faves`).child(item._id));
     userRef.child(item._id).once('value').then(function(snapshot) {
        itemVal = snapshot.val();
     }).then(function(){
@@ -252,13 +263,11 @@ class Home extends React.Component {
           userRef.child(item._id).set(true, () => {
             console.log('true done');
           });
-          item.fave = true;
       }
       else {
         userRef.child(item._id).set(false, () => {
           console.log('false done');
         });
-        item.fave = false;
       }
     });
   }
@@ -278,6 +287,8 @@ class Home extends React.Component {
     userRef.child(item._id).set(true, () => {
       console.log('done');
     });
+
+    
 
   };
 
@@ -302,9 +313,10 @@ class Home extends React.Component {
 
       var heartBool = false;
       let email = this.state.emails[itemId.user];
-      // console.log(itemId);
+      // console.log("item id is = ");
+      // console.log(itemId._id);
       return(
-        <div className = "col-3" key={itemId}>
+        <div className = "col-3" key={itemId._id}>
        <div className ="card" styles="width: 30rem;">
          <div className = "card-img top cardImg" styles="background-size:500px auto;"><PreviewPicture photoUrl={itemId.photoUrl}/></div>
          <div className ="card-body" >
