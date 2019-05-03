@@ -13,25 +13,25 @@ class Navbar extends React.Component {
     super(props);
     this._onMouseEnter = this._onMouseEnter.bind(this);
     this._onMouseLeave = this._onMouseLeave.bind(this);
-  
+
     this.state = {
       class: STATUS.NORMAL,
     };
-  } 
+  }
 
   _onMouseEnter() {
     this.setState({class: STATUS.HOVERED});
-  } 
+  }
 
   _onMouseLeave() {
     this.setState({class: STATUS.NORMAL});
-  } 
+  }
 
   render() {
     return (
-      <nav> 
-      <div> 
-      <ul> 
+      <nav>
+      <div>
+      <ul>
         <li>
           <Link page="/"
                 onMouseEnter ={this._onMouseEnter}
@@ -39,12 +39,12 @@ class Navbar extends React.Component {
                 Home
           </Link>
         </li>
-        
-        
+
+
         <li><a href="/interests">Interests</a></li>
         <li><a href="/inventory">Inventory</a></li>
-      </ul> 
-      </div> 
+      </ul>
+      </div>
       </nav> 
 
     );
@@ -66,4 +66,3 @@ class Navbar extends React.Component {
 
 
 export default Navbar;
-

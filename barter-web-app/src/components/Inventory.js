@@ -18,6 +18,7 @@ import {faArchway} from '@fortawesome/free-solid-svg-icons'
 import {faHeart} from '@fortawesome/free-solid-svg-icons'
 import {faTrashAlt} from '@fortawesome/free-solid-svg-icons'
 import {faHeart as regularHeart} from '@fortawesome/free-regular-svg-icons'
+import {faHeart as solidHeart} from '@fortawesome/free-solid-svg-icons'
 const uuidv4 = require('uuid/v4');
 
 
@@ -34,6 +35,8 @@ class Inventory extends React.Component {
       picture: null,
       userID: '',
       dateTime: '',
+      category: '',
+      dateTime: '',
       keys: [],
     }
     this.onSubmit = this.onSubmit.bind(this);
@@ -47,7 +50,7 @@ class Inventory extends React.Component {
     var keys = Object.keys(barters);
     const result = []
     for(var i = 0; i < keys.length;i++){
-      
+
       var k = keys[i];
       var itemNum = k+'';
       var user = barters[k].userID;
@@ -63,30 +66,32 @@ class Inventory extends React.Component {
   }
 
   onSubmit(event){
-    var newPostKey = firebase.database().ref().child('barters').push().key;
-    let {isSignedIn, title, descr, photoUrl, picture, userID} = this.state;
-    var storageRef = firebase.storage().ref();
-    var uniqueID = uuidv4();
-    var itemPhotosRef = storageRef.child(`itemPhotos/${uniqueID}`);
-    let picUrl = null;
-    itemPhotosRef.put(picture).then((snapshot)=> {
-      snapshot.ref.getDownloadURL().then((downloadURL) =>{
-        photoUrl = downloadURL;
-        firebase.database().ref('barters/' + newPostKey).set({
-            dateTime: firebase.database.ServerValue.TIMESTAMP,
-            descr,
-            photoUrl,
-            title,
-            userID,
-        });
-      })
-    });
+      var newPostKey = firebase.database().ref().child('barters').push().key;
+      let {isSignedIn, title, descr, photoUrl, picture, userID, category} = this.state;
+      var storageRef = firebase.storage().ref();
+      var uniqueID = uuidv4();
+      var itemPhotosRef = storageRef.child(`itemPhotos/${uniqueID}`);
+      let picUrl = null;
+      itemPhotosRef.put(picture).then((snapshot)=> {
+        snapshot.ref.getDownloadURL().then((downloadURL) =>{
+          photoUrl = downloadURL;
+          firebase.database().ref('barters/' + newPostKey).set({
+              dateTime: firebase.database.ServerValue.TIMESTAMP,
+              descr,
+              category,
+              photoUrl,
+              title,
+              userID,
+          });
+        })
+      });
 
-  this.setState({dateTime: ''});
-  this.setState({descr: ''});
-  this.setState({photoUrl: ''});
-  this.setState({title: ''});
-}
+    this.setState({dateTime: ''});
+    this.setState({descr: ''});
+    this.setState({photoUrl: ''});
+    this.setState({title: ''});
+    this.setState({category: ''});
+  }
 
   errData(err){
     console.log('Error!');
@@ -170,11 +175,14 @@ class Inventory extends React.Component {
                     <FontAwesomeIcon icon="camera" /> Add Item
                   </button>
                 </li>
+                <li class="nav-item active">
+                  <NavLink to="/"> <button className = "btn btn-primary m-2 " type="myItems"><FontAwesomeIcon icon="home" /> Home</button></NavLink>
+                </li>
                   <li class="nav-item active">
-                    <NavLink to="/inventory"> <button className = "btn btn-primary m-2 " type="myItems"><FontAwesomeIcon icon="home" /> My Posts</button></NavLink>
+                    <NavLink to="/inventory"> <button className = "btn btn-primary m-2 " type="myItems"><FontAwesomeIcon icon="archway" /> My Posts</button></NavLink>
                   </li>
                   <li class="nav-item">
-                    <NavLink to="/interests"><button className = "btn btn-primary m-2" type="interestedItem"><FontAwesomeIcon icon="archway" /> Favorites</button></NavLink>
+                    <NavLink to="/interests"><button className = "btn btn-primary m-2" type="interestedItem"><FontAwesomeIcon icon={solidHeart} /> Favorites</button></NavLink>
                   </li>
                 <li class="nav-item">
                   <button className = "btn btn-primary m-2" >Logout</button>
@@ -210,6 +218,20 @@ class Inventory extends React.Component {
               <div class="form-group row">
                 <div class="col-sm-10">
                   <input type="text" class="form-control" name="descr" placeholder="Describe your item" onChange={this.handleChange} value={this.state.descr} />
+                </div>
+              </div>
+              Category
+              <div class="form-group row">
+                <div class="col-sm-10">
+                    <select name="category" class="form-control" onChange={this.handleChange} value={this.state.category}>
+                      <option name="Electronics">Electronics</option>
+                      <option name="Fashion">Fashion</option>
+                      <option name="Home">Home</option>
+                      <option name="Sporting">Sporting</option>
+                      <option name="School">School</option>
+                      <option name="Music">Music</option>
+                      <option name="Other">Other</option>
+                    </select>
                 </div>
               </div>
               <label class="upload-group">

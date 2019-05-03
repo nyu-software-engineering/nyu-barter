@@ -16,6 +16,7 @@ import {faSearch} from '@fortawesome/free-solid-svg-icons'
 import {faBars} from '@fortawesome/free-solid-svg-icons'
 import {faHome} from '@fortawesome/free-solid-svg-icons'
 import {faArchway} from '@fortawesome/free-solid-svg-icons'
+import {faStore} from '@fortawesome/free-solid-svg-icons'
 import {faHeart as solidHeart} from '@fortawesome/free-solid-svg-icons'
 import {faHeart as regularHeart} from '@fortawesome/free-regular-svg-icons'
 // import './assets/css/fonts.css';
@@ -29,6 +30,7 @@ library.add(faSearch)
 library.add(faBars)
 library.add(faHome)
 library.add(faArchway)
+library.add(faStore)
 // library.add(faHeart)
 
 const config = {
@@ -171,7 +173,10 @@ class Home extends React.Component {
   }
   gotData(data, oldOrNew, category){
     const search = document.querySelector('#searchText');
-    const filter = search.value
+    let filter = null;
+    if(search){
+      filter = search.value;
+    }
     var barters = data.val();
     //no matches
     if(!barters){
@@ -355,10 +360,13 @@ class Home extends React.Component {
                   </button>
                 </li>
                   <li class="nav-item active">
-                    <NavLink to="/inventory"> <button className = "btn btn-primary m-2 " type="myItems"><FontAwesomeIcon icon="home" /> My Posts</button></NavLink>
+                    <NavLink to="/"> <button className = "btn btn-primary m-2 " type="myItems"><FontAwesomeIcon icon="home" /> Home</button></NavLink>
+                  </li>
+                  <li class="nav-item active">
+                    <NavLink to="/inventory"> <button className = "btn btn-primary m-2 " type="myItems"><FontAwesomeIcon icon="archway" /> My Posts</button></NavLink>
                   </li>
                   <li class="nav-item">
-                    <NavLink to="/interests"><button className = "btn btn-primary m-2" type="interestedItem"><FontAwesomeIcon icon="archway" /> Favorites</button></NavLink>
+                    <NavLink to="/interests"><button className = "btn btn-primary m-2" type="interestedItem"><FontAwesomeIcon icon={solidHeart} /> Favorites</button></NavLink>
                   </li>
                 <li class="nav-item">
                   <button className = "btn btn-primary m-2" onClick={() => firebase.auth().signOut()}>Logout</button>
