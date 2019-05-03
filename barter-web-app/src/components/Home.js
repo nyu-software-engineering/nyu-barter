@@ -139,6 +139,7 @@ class Home extends React.Component {
   updateFaves(snap){
     console.log('updating faves');
     const data = snap.val();
+    this.setState({faves: data});
     for(let fKey in data){
       const matches = this.state.keys.filter(key => key._id === fKey);
       if(matches.length){
@@ -201,13 +202,12 @@ class Home extends React.Component {
           var title = barters[k].title;
           var photoUrl = barters[k].photoUrl;
           var descr = barters[k].descr;
-          var fave = false; 
-          var index = keys.length-i-1;
+          var fave = false;
           console.log("fave is  = "); 
           console.log(fave);
           // condition called fave
           // fave is true/false, and written as part of this object in the array
-          result.push({user, dateTime, title, photoUrl, descr, _id: k, fave, index});
+          result.push({user, dateTime, title, photoUrl, descr, _id: k, fave});
         }
       }
     }
@@ -218,7 +218,14 @@ class Home extends React.Component {
         return new Date(a.dateTime) - new Date(b.dateTime);
       });
     }
-    this.setState({keys: result});
+
+    for(let i=0;i<result.length;i++){
+      result[i].index = i; 
+    }
+    this.setState({keys: result}, () => {
+      this.updateFaves({val: () => this.state.faves}); 
+    });
+    
   }
   searchClicked(e){
     const oldOrNew = document.querySelector("#exampleFormControlSelect1").value;
