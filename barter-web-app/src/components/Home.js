@@ -308,6 +308,7 @@ class Home extends React.Component {
              <div class="modal-dialog" role="document">
                <div class="modal-content">
                  <div class="modal-body">
+                   <div className = "card-img top cardImg" styles="background-size:500px auto;"><PreviewPicture photoUrl={itemId.photoUrl}/></div>
                    <h4> Would like to trade for - </h4>
                    <h6> {itemId.descr}</h6>
                    <Contact email={email}/>
@@ -357,10 +358,10 @@ class Home extends React.Component {
                   </button>
                 </li>
                   <li class="nav-item active">
-                    <NavLink to="/inventory"> <button className = "btn btn-primary m-2 " type="myItems"><FontAwesomeIcon icon="home" /> My Items</button></NavLink>
+                    <NavLink to="/inventory"> <button className = "btn btn-primary m-2 " type="myItems"><FontAwesomeIcon icon="home" /> My Posts</button></NavLink>
                   </li>
                   <li class="nav-item">
-                    <NavLink to="/interests"><button className = "btn btn-primary m-2" type="interestedItem"><FontAwesomeIcon icon="archway" /> Interested Items</button></NavLink>
+                    <NavLink to="/interests"><button className = "btn btn-primary m-2" type="interestedItem"><FontAwesomeIcon icon="archway" /> Favorites</button></NavLink>
                   </li>
                 <li class="nav-item">
                   <button className = "btn btn-primary m-2" onClick={() => firebase.auth().signOut()}>Logout</button>
