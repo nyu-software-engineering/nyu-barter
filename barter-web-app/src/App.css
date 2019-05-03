@@ -8,7 +8,7 @@
 /* @import PreviewPicture from './PreviewPicture'; */
 
 body{
-  font-family: "Roboto", sans-serif; 
+  font-family: "Roboto", sans-serif;
 }
 
 .btn-primary, .btn-primary:hover, .btn-primary:active, .btn-primary:visited {
@@ -24,33 +24,40 @@ body{
   width: 500px;
   vertical-align: middle;
 }
-
+#exampleFormControlSelect1{
+  width: 115px;
+  margin-right: 5px;
+}
+#exampleFormControlSelect2{
+  width: 115px;
+  margin-right: 5px;
+}
 .homeLink{
-  color:rgb(255, 63, 85); 
-  font-family: "Comic Sans MS", cursive, sans-serif; 
+  color:rgb(255, 63, 85);
+  font-family: "Comic Sans MS", cursive, sans-serif;
   font-size: 17px;
   /* margin-bottom:150px; */
 }
 
 #addItemLabel{
   font-size: 15px;
-  background-color:rgb(255, 63, 85); 
+  background-color:rgb(255, 63, 85);
 }
 
 #addItemBtn{
   font-size:12px;
-  background-color: white; 
+  background-color: white;
   color:  rgb(255, 63, 85);
   border-radius: 10px;
 }
 
 
 .modal-header, .modal-footer{
-  background-color: rgb(255, 63, 85); 
-  color:white; 
+  background-color: rgb(255, 63, 85);
+  color:white;
   font-size: 20px;
   font-family: sans-serif;
-   
+
 }
 
 .col-3{
@@ -61,16 +68,16 @@ body{
 
 .logoutBtn, .logoutBtn:hover  {
   background-color: white;
-  color: rgb(255, 63, 85); 
+  color: rgb(255, 63, 85);
 }
 
 .pageHeader{
-  background-color:  rgb(255, 63, 85); 
+  background-color:  rgb(255, 63, 85);
   color: white;
-  
+
   height: 90px;
   /* line-height: 90px; */
-  text-align: center; 
+  text-align: center;
   /* height: 80px; */
 }
 .pageText{
@@ -82,7 +89,7 @@ body{
   color: red;
   float: right;
   font-size: 20px;
-  
+
 }
 
 .cardImg{
@@ -90,24 +97,24 @@ body{
   position: relative;
   margin-left: 30%;
   width: 300px;
-  height: 100%; 
+  height: 100%;
   padding-top: 5%;
-  
+
   /* background-size: 300px 100px; */
 
 }
 
 .barterNav {
-  background-color:#ed094d; 
+  background-color:#ed094d;
   color: white;
-  
+
 }
 
 .barterNav a{
   color: white;
   font-weight: bold;
 }
-  
+
 
 
 

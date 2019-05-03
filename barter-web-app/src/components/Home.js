@@ -57,12 +57,14 @@ class Home extends React.Component {
       dateTime: '',
       keys: [],
       emails: {},
+      category: '',
       toggle: true
     }
     this.onSubmit = this.onSubmit.bind(this);
     this.searchClicked = this.searchClicked.bind(this);
     this.handleChange = this.handleChange.bind(this);
     this.faveHandler = this.faveHandler.bind(this);
+    this.setPreferences = this.setPreferences.bind(this);
   }
 
   uiConfig = {
@@ -79,7 +81,7 @@ class Home extends React.Component {
 
   onSubmit(event){
       var newPostKey = firebase.database().ref().child('barters').push().key;
-      let {isSignedIn, title, descr, photoUrl, picture, userID} = this.state;
+      let {isSignedIn, title, descr, photoUrl, picture, userID, category} = this.state;
       var storageRef = firebase.storage().ref();
       var uniqueID = uuidv4();
       var itemPhotosRef = storageRef.child(`itemPhotos/${uniqueID}`);
@@ -90,6 +92,7 @@ class Home extends React.Component {
           firebase.database().ref('barters/' + newPostKey).set({
               dateTime: firebase.database.ServerValue.TIMESTAMP,
               descr,
+              category,
               photoUrl,
               title,
               userID,
@@ -123,7 +126,7 @@ class Home extends React.Component {
       this.setState({isSignedIn:!!user});
       this.setState({userID:user['uid']});
     });
-    firebase.database().ref('barters').on('value', this.gotData.bind(this), this.errData);
+    firebase.database().ref('barters').on('value', (snapshot) => this.gotData(snapshot), this.errData);
 
     firebase.database().ref('users').on('value', this.makeEmail.bind(this));
   }
@@ -166,21 +169,23 @@ class Home extends React.Component {
     }
     return false;
   }
-  gotData(data, filter){
+  gotData(data, oldOrNew, category){
+    const search = document.querySelector('#searchText');
+    const filter = search.value
     var barters = data.val();
     //no matches
     if(!barters){
       this.setState({keys: []});
       return
     }
-    if(filter){
-      console.log(filter, "okrr");
-      var keys = Object.keys(barters);
-      const result = []
+    var keys = Object.keys(barters);
+    const result = []
       for(let i = keys.length-1; i >= 0; i--){
-        var k = keys[i];
-        if(this.search(barters[k].title, filter)){
+      var k = keys[i];
+      if(!filter || this.search(barters[k].title, filter)){
+        if(!category || category === 'No Category' || category === barters[k].category){
           var user = barters[k].userID;
+          var dateTime = barters[k].dateTime;
           var title = barters[k].title;
           var photoUrl = barters[k].photoUrl;
           var descr = barters[k].descr;
@@ -188,41 +193,32 @@ class Home extends React.Component {
           var index = i;
           // condition called fave
           // fave is true/false, and written as part of this object in the array
-          result.push({user, title, photoUrl, descr, _id: k, fave, index});
+          result.push({user, dateTime, title, photoUrl, descr, _id: k, fave, index});
         }
       }
-      this.setState({keys: result});
     }
-    else{
-      var keys = Object.keys(barters);
-      const result = []
-      for(let i = keys.length-1; i >= 0; i--){
-        var k = keys[i];
-        var user = barters[k].userID;
-        var title = barters[k].title;
-        var photoUrl = barters[k].photoUrl;
-        var descr = barters[k].descr;
-        var fave = false;  // change this
-        var index = i;
-        // condition called fave
-        // fave is true/false, and written as part of this object in the array
-        result.push({user, title, photoUrl, descr, _id: k, fave, index});
-      }
-      this.setState({keys: result});
+    if(oldOrNew === 'Oldest'){
+      result.sort(function(a,b){
+        // Turn your strings into dates, and then subtract them
+        // to get a value that is either negative, positive, or zero.
+        return new Date(a.dateTime) - new Date(b.dateTime);
+      });
     }
+    this.setState({keys: result});
   }
   searchClicked(){
-    const search = document.querySelector('#searchText');
-    const searchValue = search.value;
-    console.log(searchValue);
-    firebase.database().ref('barters').on('value', (snapshot) => this.gotData(snapshot, searchValue), this.errData);
+    firebase.database().ref('barters').on('value', (snapshot) => this.gotData(snapshot), this.errData);
   }
 
   errData(err){
     console.log('Error!');
     console.log(err);
   }
-
+  setPreferences(){
+    const oldOrNew = document.querySelector("#exampleFormControlSelect1").value;
+    const category = document.querySelector("#exampleFormControlSelect2").value;
+    firebase.database().ref('barters').on('value', (snapshot) => this.gotData(snapshot, oldOrNew, category), this.errData);
+  }
   handleChange(e) {
     this.setState({
       [e.target.name]: e.target.value
@@ -396,6 +392,20 @@ class Home extends React.Component {
                   <input type="text" class="form-control" name="descr" placeholder="Describe your item" onChange={this.handleChange} value={this.state.descr} />
                 </div>
               </div>
+              Category
+              <div class="form-group row">
+                <div class="col-sm-10">
+                    <select name="category" class="form-control" onChange={this.handleChange} value={this.state.category}>
+                      <option name="Electronics">Electronics</option>
+                      <option name="Fashion">Fashion</option>
+                      <option name="Home">Home</option>
+                      <option name="Sporting">Sporting</option>
+                      <option name="School">School</option>
+                      <option name="Music">Music</option>
+                      <option name="Other">Other</option>
+                    </select>
+                </div>
+              </div>
               <label class="upload-group">
                   Upload Image
                 <br/>
@@ -414,6 +424,32 @@ class Home extends React.Component {
           </div>
         </div>
       </div>
+      <br></br>
+      <form>
+        <div class="form-row">
+        <div class="form-group">
+          <select class="form-control" id="exampleFormControlSelect1">
+          <option>Latest</option>
+          <option>Oldest</option>
+          </select>
+        </div>
+          <div class="form-group">
+            <select class="form-control" id="exampleFormControlSelect2">
+            <option>No Category</option>
+            <option>Electronics</option>
+            <option>Fashion</option>
+            <option>Home</option>
+            <option>Sporting</option>
+            <option>School</option>
+            <option>Music</option>
+            <option>Other</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <button type="button" class="btn btn-primary" onClick={this.setPreferences}>Set Preferences</button>
+          </div>
+        </div>
+      </form>
         <section className='display-item'>
           <div className='wrapper'>
             <div className="row">
