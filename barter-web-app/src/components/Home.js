@@ -7,6 +7,7 @@ import Rebase from 're-base';
 import StyledFirebaseAuth from "react-firebaseui/StyledFirebaseAuth";
 import { NavLink } from "react-router-dom";
 import PreviewPicture from './PreviewPicture';
+import GetProfileImg from './GetProfileImg';
 import Card from './Card';
 import 'bootstrap/dist/js/bootstrap.bundle.min';
 import { library } from '@fortawesome/fontawesome-svg-core'
@@ -56,6 +57,7 @@ class Home extends React.Component {
       photoUrl: null,
       picture: null,
       userID: '',
+      userPhoto: '',
       dateTime: '',
       keys: [],
       emails: {},
@@ -123,10 +125,11 @@ class Home extends React.Component {
         });
 
         firebase.database().ref(`users/${curUser}/faves`).on("value", this.updateFaves.bind(this));
+        this.setState({userPhoto: user['photoURL']});
       }
-
       this.setState({isSignedIn:!!user});
       this.setState({userID:user['uid']});
+
     });
     firebase.database().ref('barters').on('value', (snapshot) => this.gotData(snapshot), this.errData);
 
@@ -339,8 +342,8 @@ class Home extends React.Component {
             <script src="https://www.gstatic.com/firebasejs/5.8.4/firebase.js"></script>
           <div class="barterNav" styles="background-color: rgb(255, 63, 85);">
             <nav class="navbar navbar-expand-lg" >
-              {/* <NavLink to="/" class="navbar-brand">NYU Barter</NavLink> */}
-              <a class="navbar-brand homeLink" href="/">NYU Barter</a>
+              {/*<a class="navbar-brand homeLink" href="/">NYU Barter</a>*/}
+              <GetProfileImg userPhoto={this.state.userPhoto}/>
               <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
               <span class="navbar-toggler-icon"></span>
               </button>

@@ -28,6 +28,11 @@ body{
   width: 118px;
   margin-right: 5px;
 }
+#profileImg{
+  width: 40px;
+  margin-right: 5px;
+  border-radius: 50%;
+}
 #exampleFormControlSelect2{
   width: 115px;
   margin-right: 5px;
