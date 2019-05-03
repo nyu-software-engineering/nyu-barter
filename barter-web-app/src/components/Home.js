@@ -215,7 +215,9 @@ class Home extends React.Component {
     this.setState({keys: result});
   }
   searchClicked(e){
-    firebase.database().ref('barters').on('value', (snapshot) => this.gotData(snapshot), this.errData);
+    const oldOrNew = document.querySelector("#exampleFormControlSelect1").value;
+    const category = document.querySelector("#exampleFormControlSelect2").value;
+    firebase.database().ref('barters').on('value', (snapshot) => this.gotData(snapshot, oldOrNew, category), this.errData);
   }
 
   errData(err){
