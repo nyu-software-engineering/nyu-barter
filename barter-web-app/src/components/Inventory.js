@@ -46,25 +46,39 @@ class Inventory extends React.Component {
     this.handleRemove = this.handleRemove.bind(this);
   }
   gotData(data){
-    var curUser = firebase.auth().currentUser.uid;
-    //console.log(data.val())
-    var barters = data.val();
-    var keys = Object.keys(barters);
-    const result = []
-    for(var i = 0; i < keys.length;i++){
+    if(firebase.auth().currentUser!=null){
+      var curUser = firebase.auth().currentUser.uid;
+      //console.log(data.val())
+      var barters = data.val();
+      var keys = Object.keys(barters);
+      const result = []
+      for(var i = 0; i < keys.length;i++){
 
-      var k = keys[i];
-      var itemNum = k+'';
-      var user = barters[k].userID;
-      var title = barters[k].title;
-      var descr = barters[k].descr;
-      var photoUrl = barters[k].photoUrl;
+        var k = keys[i];
+        var itemNum = k+'';
+        var user = barters[k].userID;
+        var title = barters[k].title;
+        var descr = barters[k].descr;
+        var photoUrl = barters[k].photoUrl;
 
-      if(user==curUser){
-        result.push({user, title,descr, photoUrl, itemNum});
+        if(user==curUser){
+          result.push({user, title,descr, photoUrl, itemNum});
+        }
       }
+      this.setState({keys: result});
     }
-    this.setState({keys: result});
+  }
+
+  uiConfig = {
+    signInFlow: "popup",
+    signInOptions: [
+        firebase.auth.FacebookAuthProvider.PROVIDER_ID,
+        firebase.auth.GoogleAuthProvider.PROVIDER_ID,
+        firebase.auth.EmailAuthProvider.PROVIDER_ID
+    ],
+    callbacks: {
+      signInSuccess: () => false
+    }
   }
 
   onSubmit(event){
@@ -101,15 +115,17 @@ class Inventory extends React.Component {
   }
 
   componentDidMount(){
-
+    var run = false;
     firebase.auth().onAuthStateChanged(user =>{
       if(user){
         this.setState({userPhoto: user['photoURL']});
+        this.setState({userID:user['uid']});
       }
       this.setState({isSignedIn:!!user});
-      this.setState({userID:user['uid']});
+      
+      firebase.database().ref('barters').on('value', this.gotData.bind(this), this.errData);
     });
-  firebase.database().ref('barters').on('value', this.gotData.bind(this), this.errData);
+  
 
   }
   componentWillUnmount(){
@@ -189,7 +205,7 @@ class Inventory extends React.Component {
                     <NavLink to="/interests"><button className = "btn btn-primary m-2" type="interestedItem"><FontAwesomeIcon icon={solidHeart} /> Favorites</button></NavLink>
                   </li>
                 <li class="nav-item">
-                  <button className = "btn btn-primary m-2" >Logout</button>
+                  <button className = "btn btn-primary m-2" onClick={() => firebase.auth().signOut()}>Logout</button>
                 </li>
               </ul>
 
