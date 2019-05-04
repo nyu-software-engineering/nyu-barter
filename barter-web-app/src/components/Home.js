@@ -113,18 +113,24 @@ class Home extends React.Component {
   componentDidMount = ()=>{
     firebase.auth().onAuthStateChanged(user =>{
       if(user){
+        console.log(user);
         const userRef = firebase.database().ref('users')
         const curUser = user.uid;
 
         userRef.orderByValue().equalTo(curUser).once("value",snapshot => {
           if (!snapshot.exists()){
             firebase.database().ref('users/' + curUser).child('email').set(user.email);
+            // console.log(firebase.database().ref('users/' + curUser).child('email').set(user.email));
             firebase.database().ref('users/' + curUser).child('photoURL').set(user.photoURL);
           }
 
         });
 
+       
+       
+
         firebase.database().ref(`users/${curUser}/faves`).on("value", this.updateFaves.bind(this));
+        this.setState({userEmail: user.email}); 
         this.setState({userPhoto: user['photoURL']});
       }
       this.setState({isSignedIn:!!user});
@@ -137,15 +143,15 @@ class Home extends React.Component {
   }
 
   updateFaves(snap){
-    console.log('updating faves');
+    // console.log('updating faves');
     const data = snap.val();
     this.setState({faves: data});
     for(let fKey in data){
       const matches = this.state.keys.filter(key => key._id === fKey);
       if(matches.length){
         const index = matches[0].index;
-        console.log(matches[0]._id);
-        console.log(this.state.keys[index]._id);
+        // console.log(matches[0]._id);
+        // console.log(this.state.keys[index]._id);
         this.setState(prevState => {
           const nextState = {
             keys: [...prevState.keys]
@@ -364,7 +370,7 @@ class Home extends React.Component {
           <div class="barterNav" styles="background-color: rgb(255, 63, 85);">
             <nav class="navbar navbar-expand-lg" >
               {/*<a class="navbar-brand homeLink" href="/">NYU Barter</a>*/}
-              <GetProfileImg userPhoto={this.state.userPhoto}/>
+              <GetProfileImg userPhoto={this.state.userPhoto} userEmail={this.state.userEmail}/>
               <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
               <span class="navbar-toggler-icon"></span>
               </button>
@@ -392,9 +398,7 @@ class Home extends React.Component {
                   <li class="nav-item">
                     <NavLink to="/interests"><button className = "btn btn-primary m-2" type="interestedItem"><FontAwesomeIcon icon={solidHeart} /> Favorites</button></NavLink>
                   </li>
-                <li class="nav-item">
-                  <button className = "btn btn-primary m-2" onClick={() => firebase.auth().signOut()}>Logout</button>
-                </li>
+                
               </ul>
 
               </div>
