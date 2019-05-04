@@ -120,6 +120,7 @@ class Inventory extends React.Component {
       if(user){
         this.setState({userPhoto: user['photoURL']});
         this.setState({userID:user['uid']});
+        this.setState({userEmail: user.email});
       }
       this.setState({isSignedIn:!!user});
       
@@ -174,7 +175,7 @@ class Inventory extends React.Component {
 
             <nav class="navbar navbar-expand-lg navbar-light bg-light">
               {/*<a class="navbar-brand homeLink" href="/">NYU Barter</a>*/}
-              <GetProfileImg userPhoto={this.state.userPhoto}/>
+              <GetProfileImg userPhoto={this.state.userPhoto} userEmail={this.state.userEmail}/>
               <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
               <span class="navbar-toggler-icon"></span>
               </button>
