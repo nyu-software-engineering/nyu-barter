@@ -369,40 +369,50 @@ class Home extends React.Component {
             <script src="https://www.gstatic.com/firebasejs/5.8.4/firebase.js"></script>
           <div class="barterNav" styles="background-color: rgb(255, 63, 85);">
             <nav class="navbar navbar-expand-lg" >
-              {/*<a class="navbar-brand homeLink" href="/">NYU Barter</a>*/}
-              <GetProfileImg userPhoto={this.state.userPhoto} userEmail={this.state.userEmail}/>
+              <a class="navbar-brand homeLink" href="/">NYU Barter</a>
+              
               <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
               <span class="navbar-toggler-icon"></span>
               </button>
               <div class="collapse navbar-collapse" id="navbarSupportedContent">
               <div class="form-inline my-2  my-lg-0">
-                <div className="input-group mb-0 searchBtn">
+                <div className="input-group mb-3 search-box">
                     <input id="searchText" class="form-control mr-sm-2" name = "search" type="search" placeholder="Search" aria-label="Search" />
-                    <span className="input-group-text "><FontAwesomeIcon icon="search" /></span>
-                <button class="btn btn-outline-success my-2 my-sm-0" onClick={this.searchClicked} type="button">Search</button>
+                    <div class="input-group-append">
+                    <button className="input-group-text" onClick={this.searchClicked} type="button"><FontAwesomeIcon icon="search" /></button>
+                    </div>
+                {/* <button class="btn btn-outline-success my-2 my-sm-0" onClick={this.searchClicked} type="button">Search</button> */}
                 </div>
-              </div>
-
-                <ul class="navbar-nav ml-auto">
-                <li class="nav-item active">
-                  <button type="button" class="btn btn-primary m-2" data-toggle="modal" data-target="#addItem">
-                    <FontAwesomeIcon icon="camera" /> Add Item
-                  </button>
-                </li>
-                  <li class="nav-item active">
-                    <NavLink to="/"> <button className = "btn btn-primary m-2 " type="myItems"><FontAwesomeIcon icon="home" /> Home</button></NavLink>
-                  </li>
-                  <li class="nav-item active">
-                    <NavLink to="/inventory"> <button className = "btn btn-primary m-2 " type="myItems"><FontAwesomeIcon icon="archway" /> My Posts</button></NavLink>
-                  </li>
-                  <li class="nav-item">
-                    <NavLink to="/interests"><button className = "btn btn-primary m-2" type="interestedItem"><FontAwesomeIcon icon={solidHeart} /> Favorites</button></NavLink>
-                  </li>
                 
-              </ul>
+              </div>
+              
+
+                  
+                  <ul class="navbar-nav ml-auto">
+                  <li class="nav-item active">
+                    <button type="button" class="btn btn-primary m-2" data-toggle="modal" data-target="#addItem">
+                      <FontAwesomeIcon icon="camera" /> Add Item
+                    </button>
+                  </li>
+                    <li class="nav-item active">
+                      <NavLink to="/">  <button className = "btn btn-primary m-2 " type="myItems"> <FontAwesomeIcon icon="home" /> Home</button></NavLink>
+                    </li>
+                    <li class="nav-item active">
+                      <NavLink to="/inventory"><button className = "btn btn-primary m-2 " type="myItems"><FontAwesomeIcon icon="archway" /> My Posts</button></NavLink>
+                    </li>
+                    <li class="nav-item">
+                      <NavLink to="/interests"><button className = "btn btn-primary m-2" type="interestedItem"><FontAwesomeIcon icon={solidHeart} /> Favorites</button></NavLink>
+                    </li>
+
+                    <GetProfileImg userPhoto={this.state.userPhoto} userEmail={this.state.userEmail}/>
+                  
+                </ul>
+                
+            
 
               </div>
             </nav>
+            <hr/>
           </div>
           </div>
         </header>
@@ -484,7 +494,7 @@ class Home extends React.Component {
             </select>
           </div>
           <div class="form-group">
-            <button type="button" class="btn btn-primary" onClick={this.setPreferences}>Set Preferences</button>
+            <button type="button" class="btn btn-primary" onClick={this.setPreferences}>Sort</button>
           </div>
         </div>
       </form>

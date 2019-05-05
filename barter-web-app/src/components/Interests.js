@@ -216,7 +216,7 @@ class Interests extends React.Component {
 
             <nav class="navbar navbar-expand-lg navbar-light bg-light">
               {/*<a class="navbar-brand homeLink" href="/">NYU Barter</a>*/}
-              <GetProfileImg userPhoto={this.state.userPhoto} userEmail={this.state.userEmail}/>
+              {/* <GetProfileImg userPhoto={this.state.userPhoto} userEmail={this.state.userEmail}/> */}
               <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
               <span class="navbar-toggler-icon"></span>
               </button>
@@ -227,6 +227,7 @@ class Interests extends React.Component {
                     <span className="input-group-text"><FontAwesomeIcon icon="search" /></span>
                   </div>
                 </div>
+                
                 <input class="form-control mr-sm-2" name = "search" type="search" placeholder="Search" aria-label="Search" />
                 <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
               </form>
@@ -247,9 +248,10 @@ class Interests extends React.Component {
                   <li class="nav-item">
                     <NavLink to="/interests"><button className = "btn btn-primary m-2" type="interestedItem"><FontAwesomeIcon icon={solidHeart} /> Favorites</button></NavLink>
                   </li>
-                <li class="nav-item">
-                  <button className = "btn btn-primary m-2" onClick={() => firebase.auth().signOut()}>Logout</button>
-                </li>
+                {/* <li class="nav-item"> */}
+                  {/* <button className = "btn btn-primary m-2" onClick={() => firebase.auth().signOut()}>Logout</button> */}
+                {/* </li> */}
+                <GetProfileImg userPhoto={this.state.userPhoto} userEmail={this.state.userEmail}/>
               </ul>
 
               </div>
