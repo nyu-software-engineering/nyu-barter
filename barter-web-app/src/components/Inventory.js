@@ -121,6 +121,7 @@ class Inventory extends React.Component {
         this.setState({userPhoto: user['photoURL']});
         this.setState({userID:user['uid']});
         this.setState({userEmail: user.email});
+        this.setState({userName: user.displayName}); 
       }
       this.setState({isSignedIn:!!user});
       
@@ -173,49 +174,58 @@ class Inventory extends React.Component {
           <div className='wrapper'>
             <script src="https://www.gstatic.com/firebasejs/5.8.4/firebase.js"></script>
 
-            <nav class="navbar navbar-expand-lg navbar-light bg-light">
-              {/*<a class="navbar-brand homeLink" href="/">NYU Barter</a>*/}
-              <GetProfileImg userPhoto={this.state.userPhoto} userEmail={this.state.userEmail}/>
+           
+            <div class="barterNav">
+            <nav class="navbar navbar-expand-lg" >
+              <a class="navbar-brand homeLink" href="/">NYU Barter</a>
+              
               <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
               <span class="navbar-toggler-icon"></span>
               </button>
               <div class="collapse navbar-collapse" id="navbarSupportedContent">
-              <form class="form-inline my-2 my-lg-0">
-                <div className="input-group mb-0 searchBtn">
-                  <div className="input-group-prepend">
-                    <span className="input-group-text"><FontAwesomeIcon icon="search" /></span>
-                  </div>
+              <div class="form-inline my-2  my-lg-0">
+                <div className="input-group mb-3 search-box">
+                    <input id="searchText" class="form-control mr-sm-2" name = "search" type="search" placeholder="Search" aria-label="Search" />
+                    <div class="input-group-append">
+                    <button className="input-group-text" onClick={this.searchClicked} type="button"><FontAwesomeIcon icon="search" /></button>
+                    </div>
+                {/* <button class="btn btn-outline-success my-2 my-sm-0" onClick={this.searchClicked} type="button">Search</button> */}
                 </div>
-                <input class="form-control mr-sm-2" name = "search" type="search" placeholder="Search" aria-label="Search" />
-                <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
-              </form>
+                
+              </div>
+              
 
-                <ul class="navbar-nav ml-auto">
-                <li class="nav-item active">
-                  <button type="button" class="btn btn-primary m-2" data-toggle="modal" data-target="#addItem">
-                    <FontAwesomeIcon icon="camera" /> Add Item
-                  </button>
-                </li>
-                <li class="nav-item active">
-                  <NavLink to="/"> <button className = "btn btn-primary m-2 " type="myItems"><FontAwesomeIcon icon="home" /> Home</button></NavLink>
-                </li>
+                  
+                  <ul class="navbar-nav ml-auto">
                   <li class="nav-item active">
-                    <NavLink to="/inventory"> <button className = "btn btn-primary m-2 " type="myItems"><FontAwesomeIcon icon="archway" /> My Posts</button></NavLink>
+                    <button type="button" class="btn btn-primary m-2" data-toggle="modal" data-target="#addItem">
+                      <FontAwesomeIcon icon="camera" /> Add Item
+                    </button>
                   </li>
-                  <li class="nav-item">
-                    <NavLink to="/interests"><button className = "btn btn-primary m-2" type="interestedItem"><FontAwesomeIcon icon={solidHeart} /> Favorites</button></NavLink>
-                  </li>
-                <li class="nav-item">
-                  <button className = "btn btn-primary m-2" onClick={() => firebase.auth().signOut()}>Logout</button>
-                </li>
-              </ul>
+                    <li class="nav-item active">
+                      <NavLink to="/">  <button className = "btn btn-primary m-2 " type="myItems"> <FontAwesomeIcon icon="home" /> Home</button></NavLink>
+                    </li>
+                    <li class="nav-item active">
+                      <NavLink to="/inventory"><button className = "btn btn-primary m-2 " type="myItems"><FontAwesomeIcon icon="archway" /> My Posts </button></NavLink>
+                    </li>
+                    <li class="nav-item">
+                      <NavLink to="/interests"><button className = "btn btn-primary m-2" type="interestedItem"><FontAwesomeIcon icon={solidHeart} /> Favorites</button></NavLink>
+                    </li>
+                    
+                    <GetProfileImg userPhoto={this.state.userPhoto} userEmail={this.state.userEmail} userName = {this.state.userName}/>
+                   
+                </ul>
+                
+            
 
               </div>
             </nav>
+            <hr/>
+          </div>
           </div>
         </header>
         <header className="pageHeader">
-            <h1 className="pageText">Inventory</h1>
+            <h1 className="pageText">My Posts</h1>
           </header>
       <div className='container'>
       <div class="modal fade" id="addItem" tabindex="-1" role="dialog" aria-labelledby="addItemLabel" aria-hidden="true">
@@ -230,20 +240,26 @@ class Inventory extends React.Component {
               </button>
             </div>
             <div class="modal-body">
+             
               <div class="form-group row">
                 <div class="col-sm-10">
-                    <input type="text" class="form-control" name="title" placeholder="What item do you want to trade?" onChange={this.handleChange} value={this.state.item} />
+                Item
+                  <input type="text" class="form-control addItem" name="title" placeholder="What item do you want to trade?" onChange={this.handleChange} value={this.state.item} />
                 </div>
               </div>
-              <br />
+             
+             
               <div class="form-group row">
-                <div class="col-sm-10">
-                  <input type="text" class="form-control" name="descr" placeholder="Describe your item" onChange={this.handleChange} value={this.state.descr} />
+              
+               <div class="col-sm-10">
+               Description
+                   <input type="text" class="form-control addItem" name="descr" placeholder="Describe your item" onChange={this.handleChange} value={this.state.descr} />
                 </div>
               </div>
-              Category
+              
               <div class="form-group row">
                 <div class="col-sm-10">
+                Category
                     <select name="category" class="form-control" onChange={this.handleChange} value={this.state.category}>
                       <option name="Electronics">Electronics</option>
                       <option name="Fashion">Fashion</option>

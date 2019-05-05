@@ -113,13 +113,14 @@ class Home extends React.Component {
   componentDidMount = ()=>{
     firebase.auth().onAuthStateChanged(user =>{
       if(user){
-        console.log(user);
         const userRef = firebase.database().ref('users')
         const curUser = user.uid;
 
         userRef.orderByValue().equalTo(curUser).once("value",snapshot => {
           if (!snapshot.exists()){
             firebase.database().ref('users/' + curUser).child('email').set(user.email);
+            //displayName
+            firebase.database().ref('users/' + curUser).child('email').set(user.displayName);
             // console.log(firebase.database().ref('users/' + curUser).child('email').set(user.email));
             firebase.database().ref('users/' + curUser).child('photoURL').set(user.photoURL);
           }
@@ -131,6 +132,7 @@ class Home extends React.Component {
 
         firebase.database().ref(`users/${curUser}/faves`).on("value", this.updateFaves.bind(this));
         this.setState({userEmail: user.email}); 
+        this.setState({userName: user.displayName}); 
         this.setState({userPhoto: user['photoURL']});
       }
       this.setState({isSignedIn:!!user});
@@ -326,6 +328,8 @@ class Home extends React.Component {
 
       var heartBool = false;
       let email = this.state.emails[itemId.user];
+      console.log("item id user is = "); 
+      console.log(this.state.emails[itemId.user]);
       // console.log("item id is = ");
       // console.log(itemId._id);
       return(
@@ -340,7 +344,7 @@ class Home extends React.Component {
                <div class="modal-content">
                  <div class="modal-body">
                    <div className = "card-img top cardImg" styles="background-size:500px auto;"><PreviewPicture photoUrl={itemId.photoUrl}/></div>
-                   <h4> Would like to trade for - </h4>
+                   <h4> Description </h4>
                    <h6> {itemId.descr}</h6>
                    <Contact email={email}/>
                  </div>
@@ -367,7 +371,7 @@ class Home extends React.Component {
           <header>
           <div className='wrapper'>
             <script src="https://www.gstatic.com/firebasejs/5.8.4/firebase.js"></script>
-          <div class="barterNav" styles="background-color: rgb(255, 63, 85);">
+          <div class="barterNav">
             <nav class="navbar navbar-expand-lg" >
               <a class="navbar-brand homeLink" href="/">NYU Barter</a>
               
@@ -403,9 +407,9 @@ class Home extends React.Component {
                     <li class="nav-item">
                       <NavLink to="/interests"><button className = "btn btn-primary m-2" type="interestedItem"><FontAwesomeIcon icon={solidHeart} /> Favorites</button></NavLink>
                     </li>
-
-                    <GetProfileImg userPhoto={this.state.userPhoto} userEmail={this.state.userEmail}/>
-                  
+                    
+                    <GetProfileImg userPhoto={this.state.userPhoto} userEmail={this.state.userEmail} userName = {this.state.userName}/>
+                   
                 </ul>
                 
             
@@ -429,20 +433,25 @@ class Home extends React.Component {
               </button>
             </div>
             <div class="modal-body">
+              
               <div class="form-group row">
                 <div class="col-sm-10">
-                    <input type="text" class="form-control" name="title" placeholder="What item do you want to trade?" onChange={this.handleChange} value={this.state.item} />
+                Item
+                    <input type="text" class="form-control addItem" name="title" placeholder="What item do you want to trade?" onChange={this.handleChange} value={this.state.item} />
                 </div>
               </div>
-              <br />
+              
+             
               <div class="form-group row">
                 <div class="col-sm-10">
-                  <input type="text" class="form-control" name="descr" placeholder="Describe your item" onChange={this.handleChange} value={this.state.descr} />
+                 Description
+                  <input type="text" class="form-control addItem" name="descr" placeholder="Describe your item" onChange={this.handleChange} value={this.state.descr} />
                 </div>
               </div>
-              Category
+             
               <div class="form-group row">
                 <div class="col-sm-10">
+                Category
                     <select name="category" class="form-control" onChange={this.handleChange} value={this.state.category}>
                       <option name="Electronics">Electronics</option>
                       <option name="Fashion">Fashion</option>
@@ -494,7 +503,7 @@ class Home extends React.Component {
             </select>
           </div>
           <div class="form-group">
-            <button type="button" class="btn btn-primary" onClick={this.setPreferences}>Sort</button>
+            <button type="button" class="btn btn-primary sort" onClick={this.setPreferences}>Sort</button>
           </div>
         </div>
       </form>

@@ -16,7 +16,7 @@ body{
   background-color: rgb(255, 63, 85);
   border-color:  rgb(255, 63, 85);
   border-radius: 15px;
-
+  outline: none !important;
 }
 
 .form-inline .form-control {
@@ -44,15 +44,16 @@ body{
 }
 
 #addItemLabel{
-  font-size: 15px;
+  font-size: 20px;
   background-color:rgb(255, 63, 85);
 }
 
 #addItemBtn{
-  font-size:12px;
+  font-size:15px;
   background-color: white;
   color:  rgb(255, 63, 85);
-  border-radius: 10px;
+  border-radius: 2px;
+  outline:none !important;
 }
 
 
@@ -76,13 +77,15 @@ body{
 }
 
 .pageHeader{
-  background-color:  rgb(255, 63, 85);
-  color: white;
-
-  height: 90px;
+  /* background-color:  rgb(255, 63, 85); */
+  color:rgb(255, 63, 85);;
+  font-weight: 20;
+  /* height: 90px; */
   /* line-height: 90px; */
-  text-align: center;
-  /* height: 80px; */
+  /* text-align: center; */
+  height: 80px;
+  position: relative;
+  left: 10%;
 }
 .pageText{
   padding-top:15px;
@@ -143,9 +146,9 @@ body{
 
 .form-control {
   width: 60%;
-  
+  outline:none !important;
   margin-top: 9px; 
-  margin-left: 30px;
+  margin-left: 20px;
   border: 1px solid #ed094d !important;  
   border-top-left-radius: 20px !important; 
   border-bottom-left-radius: 20px !important;
@@ -156,26 +159,48 @@ body{
 
 }
 
+.addItem{
+  width: 100%;
+  
+  margin-top: 9px; 
+  margin-left: 20px;
+  border: 1px solid #ed094d !important;  
+  border-top-left-radius: 5px !important; 
+  border-bottom-left-radius: 5px !important;
+  border-top-right-radius: 5px !important; 
+  border-bottom-right-radius: 5px !important; 
+  box-shadow: none;
+  outline: none !important;
+
+}
+
+.sort{
+  position:relative; 
+  top:20%;
+  left: 10%; 
+  outline: none !important;
+}
+
+
+
 hr { 
+  margin: 0;
   border: 1px solid #ed094d !important; 
   
 }
 
-/* .menu-bar{
-  width: 40%; 
-  height: 57px; 
-  float:right; 
-} */
+
 
 
 
 .nav-item{
-  border-left: 1px solid #fff;
+  border-left: 2px solid #fff;
   list-style-type:none; 
-  padding: 10px 5px; 
+  padding: 20px 5px; 
   text-align: center; 
   background-color:  #ed094d; 
   cursor: pointer;
+  margin: 0;
 }
 
 .nav-item button{
@@ -186,19 +211,10 @@ hr {
   outline: none !important;
 }
 
-.dropbtn {
-  background-color: #4CAF50;
-  color: white;
-  padding: 16px;
-  font-size: 16px;
-  border: none;
-  cursor: pointer;
-  display: inline-block !important;
-}
-
 .dropdown {
   position: relative;
   display: inline-block;
+  margin:15px;
 }
 
 .dropdown-content {
@@ -209,14 +225,11 @@ hr {
   min-width: 160px;
   box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
   z-index: 1;
+  color:darkgrey;
+  text-align:center;
 }
 
-.dropdown-content a {
-  color: black;
-  padding: 12px 16px;
-  text-decoration: none;
-  display: block;
-}
+
 
 .dropdown-content a:hover {background-color: #f1f1f1;}
 
@@ -224,9 +237,6 @@ hr {
   display: block;
 }
 
-.dropdown:hover .dropbtn {
-  background-color: #3e8e41;
-}
 
 
 
