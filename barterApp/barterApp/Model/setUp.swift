@@ -26,7 +26,7 @@ class setUp: NSObject{
         }
 
 
-      //  menuBtn.addTarget(self, action: #selector(setUp.sideMenu), for: UIControl.Event.touchUpInside)
+        menuBtn.addTarget(self, action: #selector(userSettings), for: UIControl.Event.touchUpInside)
         menuBtn.showsTouchWhenHighlighted = true
         let menuBarItem = UIBarButtonItem(customView: menuBtn)
         let currWidth = menuBarItem.customView?.widthAnchor.constraint(equalToConstant: 30)
@@ -37,6 +37,10 @@ class setUp: NSObject{
         menuBtn.layer.cornerRadius = radius
         menuBtn.layer.masksToBounds = true
         navItem.leftBarButtonItem = menuBarItem
+    }
+    
+    @objc func userSettings(){
+        print("settings")
     }
     
     

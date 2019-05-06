@@ -49,6 +49,7 @@ class InitialViewController: UIViewController {
             if let user = user {
                 BACurrentUser.currentUser.uid = user.uid
                 BACurrentUser.currentUser.fName = user.displayName
+                BACurrentUser.currentUser.email = user.email
                 BACurrentUser.currentUser.photoURL = user.photoURL?.absoluteString
 //                TheMessageService.getUser(user.uid, { (user, error) in
 //                    if (user != nil) {

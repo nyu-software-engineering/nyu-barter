@@ -10,6 +10,7 @@ import UIKit
 import Hero
 import Firebase
 import Kingfisher
+import SwiftEntryKit
 
 class ItemInfoViewController: UIViewController {
     
@@ -18,6 +19,7 @@ class ItemInfoViewController: UIViewController {
     @IBOutlet weak var itemPhoto: UIImageView!
     @IBOutlet weak var posterImage: UIImageView!
     @IBOutlet weak var btnContact : UIButton!
+    var ref: DatabaseReference!
     
     var barterItem : BABarterItem!
     var seller : BASellingUser!
@@ -26,7 +28,9 @@ class ItemInfoViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-       
+//        let tap = UITapGestureRecognizer(target: self, action: #selector(doubleTapped))
+//        tap.numberOfTapsRequired = 2
+//        view.addGestureRecognizer(tap)
         
         self.hero.isEnabled = true
         setUp.setUpPicNav(navCon: self.navigationController!)
@@ -37,11 +41,11 @@ class ItemInfoViewController: UIViewController {
         posterImage.layer.borderWidth = 1
         posterImage.layer.masksToBounds = false
         posterImage.layer.borderColor = UIColor.white.cgColor
-        posterImage.layer.cornerRadius = posterImage.frame.height/2
+        posterImage.layer.cornerRadius = posterImage.bounds.size.height / 2
         posterImage.clipsToBounds = true
         
        // btnContact.backgroundColor = .clear
-        btnContact.layer.cornerRadius = btnContact.bounds.size.height/2
+        btnContact.layer.cornerRadius = 10
         btnContact.clipsToBounds = true
         //btnContact.layer.borderColor = UIColor.black.cgColor
         
@@ -106,6 +110,16 @@ class ItemInfoViewController: UIViewController {
             }
         }
     }
+
+    
+    @objc func doubleTapped() {
+        ref = Database.database().reference().child("users")
+        let dateTime = ServerValue.timestamp()
+        if let user = BACurrentUser.currentUser.uid{
+            ref.child(user).child("faves").updateChildValues([barterItem.uid : true])
+            displayPopUp()
+        }
+    }
     
     @IBAction func sendEmail(_ sender: Any) {
         let email = seller.email!
@@ -117,6 +131,23 @@ class ItemInfoViewController: UIViewController {
             }
         }
         //print(seller.email)
+    }
+    
+    func displayPopUp(){
+        var attributes = EKAttributes.topFloat
+        attributes.entryBackground = .gradient(gradient: .init(colors: [.white, .white], startPoint: .zero, endPoint: CGPoint(x: 1, y: 1)))
+        attributes.popBehavior = .animated(animation: .init(translate: .init(duration: 0.3), scale: .init(from: 1, to: 0.7, duration: 0.7)))
+        attributes.shadow = .active(with: .init(color: .black, opacity: 0.5, radius: 10, offset: .zero))
+        attributes.statusBar = .dark
+        attributes.scroll = .enabled(swipeable: true, pullbackAnimation: .jolt)
+        //attributes.positionConstraints.maxSize = .init(width: .constant(value: UIScreen.main.minEdge), height: .intrinsic)
+        let title = EKProperty.LabelContent(text: "Barter App", style: .init(font: (UIFont(name: "SF Pro Text", size: 20) ?? nil)!, color: .black))
+        let description = EKProperty.LabelContent(text: "You have added this item to your favorites!", style: .init(font: (UIFont(name: "SF Pro Text", size: 15) ?? nil)!, color: .black))
+        let image = EKProperty.ImageContent(image: UIImage(named: "give")!, size: CGSize(width: 35, height: 35))
+        let simpleMessage = EKSimpleMessage(image: image, title: title, description: description)
+        let notificationMessage = EKNotificationMessage(simpleMessage: simpleMessage)
+        let contentView = EKNotificationMessageView(with: notificationMessage)
+        SwiftEntryKit.display(entry: contentView, using: attributes)
     }
     
 }

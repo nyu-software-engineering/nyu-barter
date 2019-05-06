@@ -42,7 +42,7 @@ class FeedViewController: UIViewController, UICollectionViewDataSource, UICollec
         //Navigation Setup
         setUp.feedNav(navItem: self.navigationItem)
         setUp.filterButton(navItem: self.navigationItem)
-        setUp.setUpNav(navCon: self.navigationController!)
+        setPic()
         
         //Search Bar Setup
         let searchBar = UISearchBar()
@@ -107,13 +107,40 @@ class FeedViewController: UIViewController, UICollectionViewDataSource, UICollec
         }
     }
     
+    @objc func userSettings(){
+        self.performSegue(withIdentifier: "settings", sender: self)
+    }
+    
+    func setPic(){
+        let menuBtn = UIButton(type: .custom)
+        menuBtn.frame = CGRect(x: 0.0, y: 0.0, width: 30, height: 30)
+        menuBtn.setImage(UIImage(named:"BlankProfilePicture.png"), for: .normal)
+        if let usersPhoto = BACurrentUser.currentUser.photoURL {
+            let url = URL(string: usersPhoto)
+            menuBtn.kf.setImage(with: url, for: .normal, placeholder: UIImage(named:"BlankProfilePicture.png"))
+        }
+        
+        
+        menuBtn.addTarget(self, action: #selector(userSettings), for: UIControl.Event.touchUpInside)
+        menuBtn.showsTouchWhenHighlighted = true
+        let menuBarItem = UIBarButtonItem(customView: menuBtn)
+        let currWidth = menuBarItem.customView?.widthAnchor.constraint(equalToConstant: 30)
+        currWidth?.isActive = true
+        let currHeight = menuBarItem.customView?.heightAnchor.constraint(equalToConstant: 30)
+        currHeight?.isActive = true
+        let radius = menuBtn.layer.frame.width/2.0
+        menuBtn.layer.cornerRadius = radius
+        menuBtn.layer.masksToBounds = true
+        navigationItem.leftBarButtonItem = menuBarItem
+    }
+    
     
     @objc func observeServicesOnBackend() {
         serviceObserver = DataService.sharedInstance.FEED_REF.observe(.value, with: { snapshot in
             
             self.barterItems = []
             if let _ = snapshot.value as? NSNull {
-                debugPrint("No bulletins available.")
+                debugPrint("No barters available.")
             } else {
                 if snapshot.hasChildren() {
                     for snapshot in snapshot.children {

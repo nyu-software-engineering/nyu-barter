@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		40A12E8752F781D8990F0D9B /* Pods_barterAppTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 201EB24DE270DF9CAFC78EBD /* Pods_barterAppTests.framework */; };
+		98048D882280E99100C1E3A6 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98048D872280E99100C1E3A6 /* SettingsViewController.swift */; };
 		9811BCBD225D9A07005EF041 /* ItemInfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9811BCBC225D9A07005EF041 /* ItemInfoViewController.swift */; };
 		9811BCC0225DB58C005EF041 /* BASellingUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9811BCBF225DB58C005EF041 /* BASellingUser.swift */; };
 		9811BCC1225DBEF2005EF041 /* SF-Pro-Display-Black.otf in Resources */ = {isa = PBXBuildFile; fileRef = 98E879B92225F6E20015F62D /* SF-Pro-Display-Black.otf */; };
@@ -80,6 +81,7 @@
 		61CB81D1574D37924D861EB6 /* Pods-barterApp.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-barterApp.release.xcconfig"; path = "Pods/Target Support Files/Pods-barterApp/Pods-barterApp.release.xcconfig"; sourceTree = "<group>"; };
 		75CF628420DCC6EF37086D70 /* Pods-barterApp.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-barterApp.debug.xcconfig"; path = "Pods/Target Support Files/Pods-barterApp/Pods-barterApp.debug.xcconfig"; sourceTree = "<group>"; };
 		7B884781614DAD20890DA042 /* Pods-barterAppTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-barterAppTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-barterAppTests/Pods-barterAppTests.debug.xcconfig"; sourceTree = "<group>"; };
+		98048D872280E99100C1E3A6 /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
 		9811BCBC225D9A07005EF041 /* ItemInfoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemInfoViewController.swift; sourceTree = "<group>"; };
 		9811BCBF225DB58C005EF041 /* BASellingUser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BASellingUser.swift; sourceTree = "<group>"; };
 		98351CC822230400007EC636 /* barterApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = barterApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -316,6 +318,7 @@
 			children = (
 				98E879DC22260E700015F62D /* FeedViewController.swift */,
 				9811BCBC225D9A07005EF041 /* ItemInfoViewController.swift */,
+				98048D872280E99100C1E3A6 /* SettingsViewController.swift */,
 			);
 			path = Feed;
 			sourceTree = "<group>";
@@ -629,6 +632,8 @@
 				"${BUILT_PRODUCTS_DIR}/GoogleUtilities/GoogleUtilities.framework",
 				"${BUILT_PRODUCTS_DIR}/Hero/Hero.framework",
 				"${BUILT_PRODUCTS_DIR}/Kingfisher/Kingfisher.framework",
+				"${BUILT_PRODUCTS_DIR}/QuickLayout/QuickLayout.framework",
+				"${BUILT_PRODUCTS_DIR}/SwiftEntryKit/SwiftEntryKit.framework",
 				"${BUILT_PRODUCTS_DIR}/SwiftyOnboard/SwiftyOnboard.framework",
 				"${BUILT_PRODUCTS_DIR}/leveldb-library/leveldb.framework",
 				"${BUILT_PRODUCTS_DIR}/nanopb/nanopb.framework",
@@ -644,6 +649,8 @@
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GoogleUtilities.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Hero.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Kingfisher.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/QuickLayout.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwiftEntryKit.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwiftyOnboard.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/leveldb.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/nanopb.framework",
@@ -719,6 +726,7 @@
 				9836687C225B9CB6003CBD24 /* CustomPage.swift in Sources */,
 				9811BCC0225DB58C005EF041 /* BASellingUser.swift in Sources */,
 				E9A4570422331D4C000D6744 /* TakePhotoController.swift in Sources */,
+				98048D882280E99100C1E3A6 /* SettingsViewController.swift in Sources */,
 				98351CCC22230400007EC636 /* AppDelegate.swift in Sources */,
 				98EA82432230490A00F0AFC9 /* BABarterItem.swift in Sources */,
 			);
