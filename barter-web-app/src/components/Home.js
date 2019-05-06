@@ -118,21 +118,22 @@ class Home extends React.Component {
 
         userRef.orderByValue().equalTo(curUser).once("value",snapshot => {
           if (!snapshot.exists()){
+            console.log('littt')
             firebase.database().ref('users/' + curUser).child('email').set(user.email);
-            //displayName
-            firebase.database().ref('users/' + curUser).child('email').set(user.displayName);
-            // console.log(firebase.database().ref('users/' + curUser).child('email').set(user.email));
+            //firebase.database().ref('users/' + curUser).child('email').set(user.displayName);
+            const userNameArr = user.displayName.split(' ');
+            firebase.database().ref('users/' + curUser).child('fName').set(userNameArr[0]);
+            firebase.database().ref('users/' + curUser).child('lName').set(userNameArr[1]);
             firebase.database().ref('users/' + curUser).child('photoURL').set(user.photoURL);
           }
-
         });
 
-       
-       
+
+
 
         firebase.database().ref(`users/${curUser}/faves`).on("value", this.updateFaves.bind(this));
-        this.setState({userEmail: user.email}); 
-        this.setState({userName: user.displayName}); 
+        this.setState({userEmail: user.email});
+        this.setState({userName: user.displayName});
         this.setState({userPhoto: user['photoURL']});
       }
       this.setState({isSignedIn:!!user});
@@ -211,7 +212,7 @@ class Home extends React.Component {
           var photoUrl = barters[k].photoUrl;
           var descr = barters[k].descr;
           var fave = false;
-          console.log("fave is  = "); 
+          console.log("fave is  = ");
           console.log(fave);
           // condition called fave
           // fave is true/false, and written as part of this object in the array
@@ -228,12 +229,12 @@ class Home extends React.Component {
     }
 
     for(let i=0;i<result.length;i++){
-      result[i].index = i; 
+      result[i].index = i;
     }
     this.setState({keys: result}, () => {
-      this.updateFaves({val: () => this.state.faves}); 
+      this.updateFaves({val: () => this.state.faves});
     });
-    
+
   }
   searchClicked(e){
     const oldOrNew = document.querySelector("#exampleFormControlSelect1").value;
@@ -303,7 +304,7 @@ class Home extends React.Component {
       console.log('done');
     });
 
-    
+
 
   };
 
@@ -329,7 +330,7 @@ class Home extends React.Component {
 
       var heartBool = false;
       let email = this.state.emails[itemId.user];
-      console.log("item id user is = "); 
+      console.log("item id user is = ");
       console.log(this.state.emails[itemId.user]);
       // console.log("item id is = ");
       // console.log(itemId._id);
@@ -375,7 +376,7 @@ class Home extends React.Component {
           <div class="barterNav">
             <nav class="navbar navbar-expand-lg" >
               <a class="navbar-brand homeLink">NYU Barter</a>
-              
+
               <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
               <span class="navbar-toggler-icon"></span>
               </button>
@@ -388,11 +389,11 @@ class Home extends React.Component {
                     </div>
                 {/* <button class="btn btn-outline-success my-2 my-sm-0" onClick={this.searchClicked} type="button">Search</button> */}
                 </div>
-                
-              </div>
-              
 
-                  
+              </div>
+
+
+
                   <ul class="navbar-nav ml-auto">
                   <li class="nav-item active">
                     <button type="button" class="btn btn-primary m-2" data-toggle="modal" data-target="#addItem">
@@ -408,12 +409,12 @@ class Home extends React.Component {
                     <li class="nav-item">
                       <NavLink to="/interests"><button className = "btn btn-primary m-2" type="interestedItem"><FontAwesomeIcon icon={solidHeart} /> Favorites</button></NavLink>
                     </li>
-                    
+
                     <GetProfileImg userPhoto={this.state.userPhoto} userEmail={this.state.userEmail} userName = {this.state.userName}/>
-                   
+
                 </ul>
-                
-            
+
+
 
               </div>
             </nav>
@@ -434,22 +435,22 @@ class Home extends React.Component {
               </button>
             </div>
             <div class="modal-body">
-              
+
               <div class="form-group row">
                 <div class="col-sm-10">
                 Item
                     <input type="text" class="form-control addItem" name="title" placeholder="What item do you want to trade?" onChange={this.handleChange} value={this.state.item} />
                 </div>
               </div>
-              
-             
+
+
               <div class="form-group row">
                 <div class="col-sm-10">
                  Description
                   <input type="text" class="form-control addItem" name="descr" placeholder="Describe your item" onChange={this.handleChange} value={this.state.descr} />
                 </div>
               </div>
-             
+
               <div class="form-group row">
                 <div class="col-sm-10">
                 Category
