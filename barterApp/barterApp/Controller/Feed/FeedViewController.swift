@@ -107,6 +107,10 @@ class FeedViewController: UIViewController, UICollectionViewDataSource, UICollec
         }
     }
     
+    @objc func userSettings(){
+        self.performSegue(withIdentifier: "settings", sender: self)
+    }
+    
     
     @objc func observeServicesOnBackend() {
         serviceObserver = DataService.sharedInstance.FEED_REF.observe(.value, with: { snapshot in

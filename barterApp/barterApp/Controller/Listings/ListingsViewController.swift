@@ -16,6 +16,7 @@ import GoogleSignIn
 class ListingsViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
     
+    @IBOutlet weak var segmentedControl: UISegmentedControl!
     var ref: DatabaseReference?
     var databaseHandle: DatabaseHandle?
     
@@ -42,6 +43,7 @@ class ListingsViewController: UIViewController, UITableViewDelegate, UITableView
         tableView.dataSource = self
         
         loadFromFirebase()
+        tableView.separatorStyle = .none
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
@@ -81,60 +83,22 @@ class ListingsViewController: UIViewController, UITableViewDelegate, UITableView
         let index = barterItems.count - indexPath.row - 1
         cell.textLabel?.text = barterItems[index].title
         cell.detailTextLabel?.text = barterItems[index].descr
+        cell.selectionStyle = .none
         let image = UIImage(named: "BlankProfilePicture")
         let photoUrl = URL(string: barterItems[index].photoUrl)
         cell.imageView?.kf.setImage(with: photoUrl, placeholder: image)
-        
-       // let storageRef = Storage.storage().reference(forURL: photoUrl)
-        
-//        storageRef.getData(maxSize: 1 * 1024 * 1024) { (data, error) -> Void in
-//            // Create a UIImage, add it to the array
-//            if(data == nil){
-//                cell.imageView?.image = UIImage.init(named: "default")
-//            }
-//            else{
-//                let pic = UIImage(data: data!)
-//                cell.imageView?.image = pic
-//            }
-//        }
-        
-        
-        
+
         return cell
         
     }
-    
-//    @IBOutlet weak var favoritesOutlet: UIButton!
-//    @IBOutlet weak var tradingOutlet: UIButton!
-//    @IBOutlet weak var tradedOutlet: UIButton!
-//    
-//    
-//    @IBAction func favoritesButton(_ sender: Any) {
-//        enableAllButtons()
-//        favoritesOutlet.isEnabled = false
-//    }
-//    
-//    @IBAction func tradingButton(_ sender: Any) {
-//        enableAllButtons()
-//        tradingOutlet.isEnabled = false
-//    }
-//    
-//    @IBAction func tradedButton(_ sender: Any) {
-//        enableAllButtons()
-//        tradedOutlet.isEnabled = false
-//    }
-//    
-//    func enableAllButtons(){
-//        favoritesOutlet.isEnabled = true
-//        tradingOutlet.isEnabled = true
-//        tradedOutlet.isEnabled = true
-//    }
+
     
     @IBOutlet weak var tableView: UITableView!
     
    
     
     func loadFromFirebase(){
+        self.barterItems  = []
         ref = Database.database().reference()
         let userID = Auth.auth().currentUser?.uid
         ref?.child("barters").queryOrdered(byChild: "userID").queryEqual(toValue: userID!).observe(.childAdded, with: { (snapshot) in
@@ -145,24 +109,52 @@ class ListingsViewController: UIViewController, UITableViewDelegate, UITableView
                 self.tableView.reloadData()
             }
         })
-        
-        
     }
     
-    //class function Singleton
-    
-    class func sharedInstance() -> ListingsViewController {
-        struct Singleton {
-            static var sharedInstance = ListingsViewController()
+    func fetchFavorites(){
+        self.barterItems  = []
+        ref = Database.database().reference()
+        let userID = Auth.auth().currentUser?.uid
+        ref?.child("users").child(userID!).child("faves").observeSingleEvent(of: .value) { snapshot in
+            let enumerator = snapshot.children
+            while let rest = enumerator.nextObject() as? DataSnapshot {
+                if(rest.value as! Bool){
+                    self.getPost(postID: rest.key)
+                }
+            }
         }
-        return Singleton.sharedInstance
+
+
     }
     
+
+    @IBAction func switchTable(_ sender: Any) {
+        let index = segmentedControl.selectedSegmentIndex
+        if (index == 0){
+            loadFromFirebase()
+        }else{
+            fetchFavorites()
+        }
+    }
     
+    func getPost(postID: String){
+        ref = Database.database().reference()
+        ref?.child("barters").child(postID).observeSingleEvent(of: .value) { snapshot in
+            let item = BABarterItem(snapshot: snapshot )
+            self.barterItems.append(item)
+            print(item.title)
+            self.tableView.reloadData()
+        }
+    }
     
-    
-    
-    
+    override func viewDidAppear(_ animated: Bool) {
+        print("we are back")
+        if (segmentedControl.selectedSegmentIndex == 0){
+            loadFromFirebase()
+        }else{
+            fetchFavorites()
+        }
+    }
     
     
     

@@ -87,16 +87,20 @@
                     <navigationItem key="navigationItem" id="wnE-cb-dRm">
                         <nil key="title"/>
                         <segmentedControl key="titleView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="bar" selectedSegmentIndex="0" id="xfH-e4-jeh">
-                            <rect key="frame" x="102.5" y="7.5" width="209" height="30"/>
+                            <rect key="frame" x="102.5" y="7" width="209" height="30"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <segments>
                                 <segment title="My Items"/>
                                 <segment title="Favorites"/>
                             </segments>
                             <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <connections>
+                                <action selector="switchTable:" destination="RzU-rH-gpd" eventType="valueChanged" id="2gf-dC-qb0"/>
+                            </connections>
                         </segmentedControl>
                     </navigationItem>
                     <connections>
+                        <outlet property="segmentedControl" destination="xfH-e4-jeh" id="6dm-ck-Hyw"/>
                         <outlet property="tableView" destination="9E1-hX-9vI" id="7TJ-Gs-NFT"/>
                         <segue destination="RXu-2l-gKJ" kind="show" identifier="infoView" id="03i-KG-kFv"/>
                     </connections>
