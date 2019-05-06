@@ -77,13 +77,18 @@ class ListingsViewController: UIViewController, UITableViewDelegate, UITableView
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "tableCell", for: indexPath)
+        let cell: ListingsCell = tableView.dequeueReusableCell(withIdentifier: "tableCell", for: indexPath) as! ListingsCell
         let index = barterItems.count - indexPath.row - 1
-        cell.textLabel?.text = barterItems[index].title
-        cell.detailTextLabel?.text = barterItems[index].descr
+        //cell.textLabel?.text = barterItems[index].title
+        cell.title?.text = barterItems[index].title
+        //cell.detailTextLabel?.text = barterItems[index].descr
+        cell.descr?.text = barterItems[index].descr
+        
         let image = UIImage(named: "BlankProfilePicture")
         let photoUrl = URL(string: barterItems[index].photoUrl)
-        cell.imageView?.kf.setImage(with: photoUrl, placeholder: image)
+        //cell.imageView?.kf.setImage(with: photoUrl, placeholder: image)
+        cell.imagee?.kf.setImage(with: photoUrl, placeholder: image)
+        
         
        // let storageRef = Storage.storage().reference(forURL: photoUrl)
         
