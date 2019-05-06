@@ -322,6 +322,7 @@ class Home extends React.Component {
     var label = '';
     var displayDescr = 'displayDescr';
     const itemList = keys.map((itemId,i) => {
+      console.log(itemId);
       counter += 1;
       var uniqueID = "h" + uuidv4();
       label = "#" + uniqueID;
@@ -373,7 +374,7 @@ class Home extends React.Component {
             <script src="https://www.gstatic.com/firebasejs/5.8.4/firebase.js"></script>
           <div class="barterNav">
             <nav class="navbar navbar-expand-lg" >
-              <a class="navbar-brand homeLink" href="/">NYU Barter</a>
+              <a class="navbar-brand homeLink">NYU Barter</a>
               
               <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
               <span class="navbar-toggler-icon"></span>
