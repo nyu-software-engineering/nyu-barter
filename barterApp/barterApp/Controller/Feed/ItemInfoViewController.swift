@@ -28,9 +28,9 @@ class ItemInfoViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        let tap = UITapGestureRecognizer(target: self, action: #selector(doubleTapped))
-        tap.numberOfTapsRequired = 2
-        view.addGestureRecognizer(tap)
+//        let tap = UITapGestureRecognizer(target: self, action: #selector(doubleTapped))
+//        tap.numberOfTapsRequired = 2
+//        view.addGestureRecognizer(tap)
         
         self.hero.isEnabled = true
         setUp.setUpPicNav(navCon: self.navigationController!)
