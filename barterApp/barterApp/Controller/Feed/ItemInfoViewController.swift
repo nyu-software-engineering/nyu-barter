@@ -67,8 +67,8 @@ class ItemInfoViewController: UIViewController {
                 print("Invalid Selection.")
             } catch SellerError.invalidInternetConnection {
                 print("No internet connection.")
-            } catch SellerError.invalidPrivldeges{
-                print("This account does not have privldeges to read from Firebase.")
+            } catch SellerError.invalidPrivileges{
+                print("This account does not have privileges to read from Firebase.")
             } catch {
                 print("Unexpected error: \(error).")
             }
@@ -80,7 +80,7 @@ class ItemInfoViewController: UIViewController {
     
     func setInfo(snapshot: DataSnapshot) throws{
         guard let value = snapshot.value as? NSDictionary else{
-            throw SellerError.invalidPrivldeges
+            throw SellerError.invalidPrivileges
         }
         guard let url = URL(string: value["photoURL"] as? String ?? "") else{
             throw SellerError.invalidPhotoURL
@@ -106,16 +106,19 @@ class ItemInfoViewController: UIViewController {
             }
         }
     }
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+    
+    @IBAction func sendEmail(_ sender: Any) {
+        let email = seller.email!
+        if let url = URL(string: "mailto:\(email)") {
+            if #available(iOS 10.0, *) {
+                UIApplication.shared.open(url)
+            } else {
+                UIApplication.shared.openURL(url)
+            }
+        }
+        //print(seller.email)
     }
-    */
-
+    
 }
 
 
@@ -123,5 +126,5 @@ class ItemInfoViewController: UIViewController {
 enum SellerError: Error {
     case invalidPhotoURL
     case invalidInternetConnection
-    case invalidPrivldeges
+    case invalidPrivileges
 }

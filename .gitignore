@@ -44,3 +44,4 @@ Pods/
 *.xcworkspace
 
 iOSInjectionProject/
+*.xcuserstate

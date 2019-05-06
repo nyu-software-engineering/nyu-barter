@@ -184,20 +184,10 @@ class ListingsViewController: UIViewController, UITableViewDelegate, UITableView
         }
         goFirstScreen()
     }
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    */
     
     func goFirstScreen() {
         self.view.window!.rootViewController?.dismiss(animated: false, completion: nil)
         //self.navigationController?.popToRootViewController(animated: true)
-        
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
         let mainPage = storyboard.instantiateViewController(withIdentifier: "MenuViewController")
         self.present(mainPage, animated: true, completion: nil)
