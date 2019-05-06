@@ -54,6 +54,7 @@
 		98EA82432230490A00F0AFC9 /* BABarterItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98EA82422230490A00F0AFC9 /* BABarterItem.swift */; };
 		DF718798D009A59E19ACEF75 /* Pods_barterApp.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E7C551CF3357B1AAB2E555C5 /* Pods_barterApp.framework */; };
 		E9A4570422331D4C000D6744 /* TakePhotoController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9A4570322331D4C000D6744 /* TakePhotoController.swift */; };
+		E9F522EE22809F3E001AFC01 /* ListingsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9F522ED22809F3E001AFC01 /* ListingsCell.swift */; };
 		F48E1712624F6243C17D7415 /* Pods_barterAppUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A5FD9221E211AE9564CBE8DE /* Pods_barterAppUITests.framework */; };
 /* End PBXBuildFile section */
 
@@ -158,6 +159,7 @@
 		B7003D5486C680322740605B /* Pods-barterAppTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-barterAppTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-barterAppTests/Pods-barterAppTests.release.xcconfig"; sourceTree = "<group>"; };
 		E7C551CF3357B1AAB2E555C5 /* Pods_barterApp.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_barterApp.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		E9A4570322331D4C000D6744 /* TakePhotoController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TakePhotoController.swift; sourceTree = "<group>"; };
+		E9F522ED22809F3E001AFC01 /* ListingsCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListingsCell.swift; sourceTree = "<group>"; };
 		FEFFDE00223A46AA057BE3AE /* Pods-barterAppUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-barterAppUITests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-barterAppUITests/Pods-barterAppUITests.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -288,6 +290,7 @@
 			isa = PBXGroup;
 			children = (
 				98366889225BBFED003CBD24 /* ListingsViewController.swift */,
+				E9F522ED22809F3E001AFC01 /* ListingsCell.swift */,
 			);
 			path = Listings;
 			sourceTree = "<group>";
@@ -716,6 +719,7 @@
 				98351CD422230400007EC636 /* barterApp.xcdatamodeld in Sources */,
 				9836687C225B9CB6003CBD24 /* CustomPage.swift in Sources */,
 				9811BCC0225DB58C005EF041 /* BASellingUser.swift in Sources */,
+				E9F522EE22809F3E001AFC01 /* ListingsCell.swift in Sources */,
 				E9A4570422331D4C000D6744 /* TakePhotoController.swift in Sources */,
 				98351CCC22230400007EC636 /* AppDelegate.swift in Sources */,
 				98EA82432230490A00F0AFC9 /* BABarterItem.swift in Sources */,
