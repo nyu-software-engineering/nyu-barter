@@ -19,6 +19,7 @@ import {faHome} from '@fortawesome/free-solid-svg-icons'
 import {faArchway} from '@fortawesome/free-solid-svg-icons'
 import {faHeart} from '@fortawesome/free-solid-svg-icons'
 import {faHeart as solidHeart} from '@fortawesome/free-solid-svg-icons'
+import Contact from './Contact.js';
 const uuidv4 = require('uuid/v4');
 
 class Interests extends React.Component {
@@ -34,7 +35,8 @@ class Interests extends React.Component {
       userID: '',
       userPhoto: '',
       dateTime: '',
-      category: ''
+      category: '',
+      emails: {},
     }
     this.handleChange = this.handleChange.bind(this);
     this.onSubmit = this.onSubmit.bind(this);
@@ -113,12 +115,13 @@ class Interests extends React.Component {
       console.log("id");
       console.log(this.state.userID);
     });
-
+    firebase.database().ref('users').on('value', this.makeEmail.bind(this));
 
   }
   componentWillUnmount(){
   }
 
+  
   handleChange = (e) => {
     this.setState({
       [e.target.name]: e.target.value
@@ -160,6 +163,22 @@ class Interests extends React.Component {
     });
 
   }
+
+  makeEmail(data){
+
+    var users = data.val();
+    console.log("HERE");
+    console.log(data);
+    var keys = Object.keys(users);
+    const result = {}
+    for(var i = 0; i < keys.length;i++){
+      var k = keys[i];
+      result[k] = users[k].email;
+    }
+    console.log(result);
+    this.setState({emails: result});
+  }
+
   displayPicture(event){
     //new
     let reader = new FileReader();
@@ -173,28 +192,37 @@ class Interests extends React.Component {
     };
     reader.readAsDataURL(file);
   }
+
   renderCards () {
-    const items = this.state.items;
+    const keys = this.state.items;
     var counter = 0;
     var label = '';
     var displayDescr = 'displayDescr';
-    const itemList = items.map((itemId,i) => {
+    const itemList = keys.map((itemId,i) => {
+      console.log(itemId);
       counter += 1;
       var uniqueID = "h" + uuidv4();
       label = "#" + uniqueID;
+
+      let email = this.state.emails[itemId.userID];
+      console.log("item id user is = "); 
+      console.log(this.state.emails[itemId.UserID]);
+      // console.log("item id is = ");
+      // console.log(itemId._id);
       return(
-        <div className = "col-3">
-       <div className ="card" styles="width: 18rem;">
-         <p className = "card-img top"><PreviewPicture photoUrl={itemId.photoUrl}/></p>
-         <div className ="card-body">
-           <a href="#" class="item-title" data-toggle="modal" data-target={label}><h5 className ="card-title">{itemId.title}</h5></a>
-           {/* <button className="heart pull-right" key={i} onClick={this.addFave(i)}><FontAwesomeIcon icon="heart" /> </button>  */}
+        <div className = "col-3" key={itemId._id}>
+       <div className ="card" styles="width: 30rem;">
+         <div className = "card-img top cardImg" styles="background-size:500px auto;"><PreviewPicture photoUrl={itemId.photoUrl}/></div>
+         <div className ="card-body" >
+           <a href="#" class="item-title" data-toggle="modal" data-target={label} ><h5 className ="card-title" styles="padding-top: 30%;">{itemId.title}</h5></a>
            <div class="modal fade" id={uniqueID} tabindex="-1" role="dialog" aria-labelledby="descrLabel" aria-hidden="true">
              <div class="modal-dialog" role="document">
                <div class="modal-content">
                  <div class="modal-body">
-                   <h4> Would like to trade for - </h4>
+                   <div className = "card-img top cardImg" styles="background-size:500px auto;"><PreviewPicture photoUrl={itemId.photoUrl}/></div>
+                   <h4> Description </h4>
                    <h6> {itemId.descr}</h6>
+                   <Contact email={email}/>
                  </div>
                </div>
              </div>
@@ -217,7 +245,7 @@ class Interests extends React.Component {
 
             <div class="barterNav">
             <nav class="navbar navbar-expand-lg" >
-              <a class="navbar-brand homeLink" href="/">NYU Barter</a>
+              <a class="navbar-brand homeLink">NYU Barter</a>
               
               <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
               <span class="navbar-toggler-icon"></span>
@@ -332,8 +360,8 @@ class Interests extends React.Component {
         <section className='display-item'>
           <div className='wrapper'>
             <div className="row">
-              {/* {this.renderCards()} */}
-              {this.state.items.length ? this.state.items.map(key => <Card data={key} />): <h1>No Favorited Items</h1>}
+              { this.renderCards() }
+              
             </div>
           </div>
         </section>
