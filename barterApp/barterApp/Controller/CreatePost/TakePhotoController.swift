@@ -30,6 +30,7 @@ class TakePhotoController: UIViewController  {
     @IBOutlet weak var titleOutlet: UITextField!
     @IBOutlet weak var descriptionOutlet: UITextField!
     
+    @IBOutlet weak var postBtn: UIButton!
     
   
     
@@ -157,6 +158,13 @@ extension TakePhotoController: UITextFieldDelegate, UIImagePickerControllerDeleg
     override func viewDidLoad() {
         self.titleOutlet.delegate = self
         self.descriptionOutlet.delegate = self
+        self.navigationController?.navigationBar.barStyle = UIBarStyle.black
+        self.navigationController?.navigationBar.barTintColor = UIColor(red:0.21, green:0.64, blue:1.00, alpha:1.0)
+        self.navigationController?.navigationBar.tintColor = UIColor.white
+        self.navigationController?.navigationBar.shadowImage = UIImage()
+        title = "Add Item"
+        postBtn.layer.cornerRadius = 10
+        postBtn.clipsToBounds = true
         
     }
     
