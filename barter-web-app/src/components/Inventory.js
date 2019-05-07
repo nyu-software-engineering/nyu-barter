@@ -121,13 +121,13 @@ class Inventory extends React.Component {
         this.setState({userPhoto: user['photoURL']});
         this.setState({userID:user['uid']});
         this.setState({userEmail: user.email});
-        this.setState({userName: user.displayName}); 
+        this.setState({userName: user.displayName});
       }
       this.setState({isSignedIn:!!user});
-      
+
       firebase.database().ref('barters').on('value', this.gotData.bind(this), this.errData);
     });
-  
+
 
   }
   componentWillUnmount(){
@@ -174,11 +174,11 @@ class Inventory extends React.Component {
           <div className='wrapper'>
             <script src="https://www.gstatic.com/firebasejs/5.8.4/firebase.js"></script>
 
-           
+
             <div class="barterNav">
             <nav class="navbar navbar-expand-lg" >
-              <a class="navbar-brand homeLink">NYU Barter</a>
-              
+              <a class="navbar-brand homeLink"><img id="logo" src="/logo.png"/></a>
+
               <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
               <span class="navbar-toggler-icon"></span>
               </button>
@@ -191,32 +191,32 @@ class Inventory extends React.Component {
                     </div>
                 {/* <button class="btn btn-outline-success my-2 my-sm-0" onClick={this.searchClicked} type="button">Search</button> */}
                 </div>
-                
-              </div>
-              
 
-                  
+              </div>
+
+
+
                   <ul class="navbar-nav ml-auto">
-                  <li class="nav-item active">
+                  <li>
                     <button type="button" class="btn btn-primary m-2" data-toggle="modal" data-target="#addItem">
                       <FontAwesomeIcon icon="camera" /> Add Item
                     </button>
                   </li>
-                    <li class="nav-item active">
+                    <li>
                       <NavLink to="/">  <button className = "btn btn-primary m-2 " type="myItems"> <FontAwesomeIcon icon="home" /> Home</button></NavLink>
                     </li>
-                    <li class="nav-item active">
+                    <li>
                       <NavLink to="/inventory"><button className = "btn btn-primary m-2 " type="myItems"><FontAwesomeIcon icon="archway" /> My Posts </button></NavLink>
                     </li>
-                    <li class="nav-item">
+                    <li>
                       <NavLink to="/interests"><button className = "btn btn-primary m-2" type="interestedItem"><FontAwesomeIcon icon={solidHeart} /> Favorites</button></NavLink>
                     </li>
-                    
+
                     <GetProfileImg userPhoto={this.state.userPhoto} userEmail={this.state.userEmail} userName = {this.state.userName}/>
-                   
+
                 </ul>
-                
-            
+
+
 
               </div>
             </nav>
@@ -240,23 +240,23 @@ class Inventory extends React.Component {
               </button>
             </div>
             <div class="modal-body">
-             
+
               <div class="form-group row">
                 <div class="col-sm-10">
                 Item
                   <input type="text" class="form-control addItem" name="title" placeholder="What item do you want to trade?" onChange={this.handleChange} value={this.state.item} />
                 </div>
               </div>
-             
-             
+
+
               <div class="form-group row">
-              
+
                <div class="col-sm-10">
                Description
                    <input type="text" class="form-control addItem" name="descr" placeholder="Describe your item" onChange={this.handleChange} value={this.state.descr} />
                 </div>
               </div>
-              
+
               <div class="form-group row">
                 <div class="col-sm-10">
                 Category

@@ -15,6 +15,7 @@ body{
   margin-top: 7px;
 }
 
+
 .btn-primary, .btn-primary:hover, .btn-primary:active, .btn-primary:visited {
 
   background-color: rgb(255, 63, 85);
@@ -177,7 +178,9 @@ body{
   outline: none !important;
 
 }
-
+#logo{
+  width:  150px;
+}
 .sort{
   position:relative;
   top:20%;
