@@ -304,27 +304,31 @@ class Home extends React.Component {
       let email = this.state.emails[itemId.user];
 
       return(
-        <div className = "col-3" key={itemId._id}>
-       <div className ="card" styles="width: 30rem;">
-         <div className = "card-img top cardImg" styles="background-size:500px auto;"><PreviewPicture photoUrl={itemId.photoUrl}/></div>
-         <div className ="card-body" >
-           <a href="#" class="item-title" data-toggle="modal" data-target={label} ><h5 className ="card-title" styles="padding-top: 30%;">{itemId.title}</h5></a>
-           <button className="heart pull-right" styles="position: relative; display:inline-block;" key={i} onClick={this.handleFave(i)}><FontAwesomeIcon icon={itemId.fave ? solidHeart : regularHeart} /> </button>
-           <div class="modal fade" id={uniqueID} tabindex="-1" role="dialog" aria-labelledby="descrLabel" aria-hidden="true">
-             <div class="modal-dialog" role="document">
-               <div class="modal-content">
-                 <div class="modal-body">
-                   <div className = "card-img top cardImg" styles="background-size:500px auto;"><PreviewPicture photoUrl={itemId.photoUrl}/></div>
-                   <h4> Description </h4>
-                   <h6> {itemId.descr}</h6>
-                   <Contact email={email}/>
+
+            <div className = "col-sm-4" key={itemId._id}>
+              <div className ="card" styles="width: 30rem;">
+                <img class="card-img-top img-fluid" id="itemPhoto" src={itemId.photoUrl} />
+                  <div className ="card-body" >
+                    <a href="#" class="item-title" data-toggle="modal" data-target={label} ><h5 className ="card-title" styles="padding-top: 30%;">{itemId.title}</h5></a>
+                    <button className="heart pull-right" styles="position: relative; display:inline-block;" key={i} onClick={this.handleFave(i)}><FontAwesomeIcon icon={itemId.fave ? solidHeart : regularHeart} /> </button>
+
+                    <div class="modal fade" id={uniqueID} tabindex="-1" role="dialog" aria-labelledby="descrLabel" aria-hidden="true">
+                      <div class="modal-dialog" role="document">
+                        <div class="modal-content">
+                           <div class="modal-body">
+                             <div className = "card-img top cardImg" styles="background-size:500px auto;"><PreviewPicture photoUrl={itemId.photoUrl}/></div>
+                             <h4> Description </h4>
+                             <h6> {itemId.descr}</h6>
+                             <Contact email={email}/>
+                           </div>
+                       </div>
+                     </div>
+                   </div>
+
                  </div>
-               </div>
              </div>
            </div>
-         </div>
-       </div>
-     </div>
+
       )
     });
     return itemList;
@@ -343,8 +347,8 @@ class Home extends React.Component {
           <div className='wrapper'>
             <script src="https://www.gstatic.com/firebasejs/5.8.4/firebase.js"></script>
           <div class="barterNav">
-            <nav class="navbar navbar-expand-lg" >
-              <a class="navbar-brand homeLink">NYU Barter</a>
+            <nav class="navbar navbar-expand-lg navbar-light" >
+              <a class="navbar-brand homeLink"><img id="logo" src="/logo.png"/></a>
 
               <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
               <span class="navbar-toggler-icon"></span>
@@ -364,23 +368,23 @@ class Home extends React.Component {
 
 
                   <ul class="navbar-nav ml-auto">
-                  <li class="nav-item active">
+                  <li>
                     <button type="button" class="btn btn-primary m-2" data-toggle="modal" data-target="#addItem">
                       <FontAwesomeIcon icon="camera" /> Add Item
                     </button>
                   </li>
-                    <li class="nav-item active">
+                    <li>
                       <NavLink to="/">  <button className = "btn btn-primary m-2 " type="myItems"> <FontAwesomeIcon icon="home" /> Home</button></NavLink>
                     </li>
-                    <li class="nav-item active">
+                    <li>
                       <NavLink to="/inventory"><button className = "btn btn-primary m-2 " type="myItems"><FontAwesomeIcon icon="archway" /> My Posts</button></NavLink>
                     </li>
-                    <li class="nav-item">
+                    <li>
                       <NavLink to="/interests"><button className = "btn btn-primary m-2" type="interestedItem"><FontAwesomeIcon icon={solidHeart} /> Favorites</button></NavLink>
                     </li>
-
+                    <li>
                     <GetProfileImg userPhoto={this.state.userPhoto} userEmail={this.state.userEmail} userName = {this.state.userName}/>
-
+                    </li>
                 </ul>
 
 
@@ -479,7 +483,7 @@ class Home extends React.Component {
         </div>
       </form>
         <section className='display-item'>
-          <div className='wrapper'>
+          <div className='container-fluid'>
             <div className="row">
               {this.renderCards()}
               {/* {

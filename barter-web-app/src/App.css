@@ -4,12 +4,38 @@
 
 } */
 
+@media only screen and (max-width: 1111px) {
+    .search-box{
+        display: none!important;
+    }
+}
+@media only screen and (min-width: 1111px) {
+    .search-box{
+        display: block;
+    }
+}
+
+@media only screen and (min-width: 580px) {
+  .card-img-top{
+    width: 30vw;
+    height: 25vw;
+  }
+}
+
 @import url('https://fonts.googleapis.com/css?family=Roboto');
 /* @import PreviewPicture from './PreviewPicture'; */
 
 body{
   font-family: "Roboto", sans-serif;
 }
+.card{
+  margin-bottom: 30px;
+}
+#profileDiv{
+  padding-top: 0;
+  margin-top: 7px;
+}
+
 
 .btn-primary, .btn-primary:hover, .btn-primary:active, .btn-primary:visited {
 
@@ -99,17 +125,7 @@ body{
 
 }
 
-.cardImg{
 
-  position: relative;
-  margin-left: 30%;
-  width: 300px;
-  height: 100%;
-  padding-top: 5%;
-
-  /* background-size: 300px 100px; */
-
-}
 
 .barterNav {
   background-color: white;
@@ -128,32 +144,35 @@ body{
   background: #ed094d !important;
   border: 1px solid #ed094d !important;
   color: white;
-  margin: 7.5px 0 0 0; 
+  margin: 7.5px 0 0 0;
   /* margin-right:0px; */
   border-top-left-radius: 0px !important;
-  border-bottom-left-radius: 0px !important; 
-  border-top-right-radius: 20px !important; 
-  border-bottom-right-radius: 20px !important; 
-  cursor: pointer; 
+  border-bottom-left-radius: 0px !important;
+  border-top-right-radius: 20px !important;
+  border-bottom-right-radius: 20px !important;
+  cursor: pointer;
   outline:none !important;
 }
 
 .search-box{
-    display: inline-flex; 
+    display: inline-flex;
     /* width: 500px; */
     /* width: 60%; */
+}
+#searchText{
+  width:25vw;
 }
 
 .form-control {
   width: 60%;
   outline:none !important;
-  margin-top: 9px; 
+  margin-top: 9px;
   margin-left: 20px;
-  border: 1px solid #ed094d !important;  
-  border-top-left-radius: 20px !important; 
+  border: 1px solid #ed094d !important;
+  border-top-left-radius: 20px !important;
   border-bottom-left-radius: 20px !important;
-  border-top-right-radius: 0 !important; 
-  border-bottom-right-radius: 0 !important; 
+  border-top-right-radius: 0 !important;
+  border-bottom-right-radius: 0 !important;
   box-shadow: none;
   outline: none !important;
 
@@ -161,32 +180,35 @@ body{
 
 .addItem{
   width: 100%;
-  
-  margin-top: 9px; 
+
+  margin-top: 9px;
   margin-left: 20px;
-  border: 1px solid #ed094d !important;  
-  border-top-left-radius: 5px !important; 
+  border: 1px solid #ed094d !important;
+  border-top-left-radius: 5px !important;
   border-bottom-left-radius: 5px !important;
-  border-top-right-radius: 5px !important; 
-  border-bottom-right-radius: 5px !important; 
+  border-top-right-radius: 5px !important;
+  border-bottom-right-radius: 5px !important;
   box-shadow: none;
   outline: none !important;
 
 }
+#logo{
+  width:  150px;
+}
 
 .sort{
-  position:relative; 
+  position:relative;
   top:20%;
-  left: 10%; 
+  left: 10%;
   outline: none !important;
 }
 
 
 
-hr { 
+hr {
   margin: 0;
-  border: 1px solid #ed094d !important; 
-  
+  border: 1px solid #ed094d !important;
+
 }
 
 
@@ -195,17 +217,17 @@ hr {
 
 .nav-item{
   border-left: 2px solid #fff;
-  list-style-type:none; 
-  padding: 20px 5px; 
-  text-align: center; 
-  background-color:  #ed094d; 
+  list-style-type:none;
+  padding: 20px 5px;
+  text-align: center;
+  background-color:  #ed094d;
   cursor: pointer;
   margin: 0;
 }
 
 .nav-item button{
-  font-size: 16px; 
-  font-weight: bold; 
+  font-size: 16px;
+  font-weight: bold;
   color:  #fff;
   text-decoration: none;
   outline: none !important;

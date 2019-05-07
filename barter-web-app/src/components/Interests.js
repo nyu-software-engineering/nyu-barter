@@ -104,12 +104,12 @@ class Interests extends React.Component {
         })
         this.setState({userPhoto: user['photoURL']});
         this.setState({userEmail: user.email});
-        this.setState({userName: user.displayName}); 
+        this.setState({userName: user.displayName});
         this.setState({userID:user['uid']});
       }
       //End changes
       this.setState({isSignedIn:!!user});
-      
+
 
       firebase.database().ref(`users/${user.uid}/faves`).on('value', this.getFaves);
       console.log("id");
@@ -121,7 +121,7 @@ class Interests extends React.Component {
   componentWillUnmount(){
   }
 
-  
+
   handleChange = (e) => {
     this.setState({
       [e.target.name]: e.target.value
@@ -205,16 +205,17 @@ class Interests extends React.Component {
       label = "#" + uniqueID;
 
       let email = this.state.emails[itemId.userID];
-      console.log("item id user is = "); 
+      console.log("item id user is = ");
       console.log(this.state.emails[itemId.UserID]);
       // console.log("item id is = ");
       // console.log(itemId._id);
       return(
-        <div className = "col-3" key={itemId._id}>
-       <div className ="card" styles="width: 30rem;">
-         <div className = "card-img top cardImg" styles="background-size:500px auto;"><PreviewPicture photoUrl={itemId.photoUrl}/></div>
-         <div className ="card-body" >
-           <a href="#" class="item-title" data-toggle="modal" data-target={label} ><h5 className ="card-title" styles="padding-top: 30%;">{itemId.title}</h5></a>
+        <div className = "col-sm-4" key={itemId._id}>
+          <div className ="card" styles="width: 30rem;">
+            <img class="card-img-top img-fluid" id="itemPhoto" src={itemId.photoUrl} />
+              <div className ="card-body" >
+                <a href="#" class="item-title" data-toggle="modal" data-target={label} ><h5 className ="card-title" styles="padding-top: 30%;">{itemId.title}</h5></a>
+
            <div class="modal fade" id={uniqueID} tabindex="-1" role="dialog" aria-labelledby="descrLabel" aria-hidden="true">
              <div class="modal-dialog" role="document">
                <div class="modal-content">
@@ -244,9 +245,9 @@ class Interests extends React.Component {
             <script src="https://www.gstatic.com/firebasejs/5.8.4/firebase.js"></script>
 
             <div class="barterNav">
-            <nav class="navbar navbar-expand-lg" >
-              <a class="navbar-brand homeLink">NYU Barter</a>
-              
+            <nav class="navbar navbar-expand-lg navbar-light" >
+              <a class="navbar-brand homeLink"><img id="logo" src="/logo.png"/></a>
+
               <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
               <span class="navbar-toggler-icon"></span>
               </button>
@@ -259,32 +260,32 @@ class Interests extends React.Component {
                     </div>
                 {/* <button class="btn btn-outline-success my-2 my-sm-0" onClick={this.searchClicked} type="button">Search</button> */}
                 </div>
-                
-              </div>
-              
 
-                  
+              </div>
+
+
+
                   <ul class="navbar-nav ml-auto">
-                  <li class="nav-item active">
+                  <li>
                     <button type="button" class="btn btn-primary m-2" data-toggle="modal" data-target="#addItem">
                       <FontAwesomeIcon icon="camera" /> Add Item
                     </button>
                   </li>
-                    <li class="nav-item active">
+                    <li>
                       <NavLink to="/">  <button className = "btn btn-primary m-2 " type="myItems"> <FontAwesomeIcon icon="home" /> Home</button></NavLink>
                     </li>
-                    <li class="nav-item active">
+                    <li >
                       <NavLink to="/inventory"><button className = "btn btn-primary m-2 " type="myItems"><FontAwesomeIcon icon="archway" /> My Posts</button></NavLink>
                     </li>
-                    <li class="nav-item">
+                    <li>
                       <NavLink to="/interests"><button className = "btn btn-primary m-2" type="interestedItem"><FontAwesomeIcon icon={solidHeart} /> Favorites</button></NavLink>
                     </li>
-                    
+
                     <GetProfileImg userPhoto={this.state.userPhoto} userEmail={this.state.userEmail} userName = {this.state.userName}/>
-                   
+
                 </ul>
-                
-            
+
+
 
               </div>
             </nav>
@@ -295,7 +296,7 @@ class Interests extends React.Component {
         <header className="pageHeader">
             <h1 className="pageText">My Favorites</h1>
           </header>
-         
+
       <div className='container'>
       <div class="modal fade" id="addItem" tabindex="-1" role="dialog" aria-labelledby="addItemLabel" aria-hidden="true">
         <div class="modal-dialog" role="document">
@@ -309,22 +310,22 @@ class Interests extends React.Component {
               </button>
             </div>
             <div class="modal-body">
-             
+
               <div class="form-group row">
                 <div class="col-sm-10">
                 Item
                     <input type="text" class="form-control addItem" name="title" placeholder="What item do you want to trade?" onChange={this.handleChange} value={this.state.item} />
                 </div>
               </div>
-             
+
               <div class="form-group row">
-                
+
                 <div class="col-sm-10">
                  Description
                   <input type="text" class="form-control addItem" name="descr" placeholder="Describe your item" onChange={this.handleChange} value={this.state.descr} />
                 </div>
               </div>
-             
+
               <div class="form-group row">
                 <div class="col-sm-10">
                 Category
@@ -358,10 +359,10 @@ class Interests extends React.Component {
         </div>
       </div>
         <section className='display-item'>
-          <div className='wrapper'>
+          <div className='container-fluid'>
             <div className="row">
               { this.renderCards() }
-              
+
             </div>
           </div>
         </section>
