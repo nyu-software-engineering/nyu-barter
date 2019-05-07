@@ -196,7 +196,7 @@ class Home extends React.Component {
       for(let i = keys.length-1; i >= 0; i--){
       var k = keys[i];
       if(!filter || this.search(barters[k].title, filter)){
-        if(!category || category === 'No Category' || category === barters[k].category){
+        if(!category || category === 'All' || category === barters[k].category){
           var user = barters[k].userID;
           var dateTime = barters[k].dateTime;
           var title = barters[k].title;
@@ -467,7 +467,7 @@ class Home extends React.Component {
         </div>
           <div class="form-group">
             <select class="form-control" id="exampleFormControlSelect2">
-            <option>No Category</option>
+            <option>All</option>
             <option>Electronics</option>
             <option>Fashion</option>
             <option>Home</option>
