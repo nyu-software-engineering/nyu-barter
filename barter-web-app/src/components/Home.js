@@ -494,12 +494,23 @@ class Home extends React.Component {
         </section>
       </div>
           </span>
+        
         ) : (
+          <div> 
+            <header> 
+            <img id="logoLogin" src="/logo.png"/> 
+            {/* <h3 styles="position:'relative';left:10%; top:5%;">Exchange goods & services </h3>  */}
+            </header>
+           
+
           <StyledFirebaseAuth class="LoginButtons"
             uiConfig={this.uiConfig}
-            firebaseAuth={firebase.auth()}
-
+            firebaseAuth={firebase.auth()
+            }
           />
+          <img id="appstoreLogo" src="/appstoreLogo.png"/>
+          </div> 
+          
 
         )}
       </div>
