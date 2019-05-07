@@ -3,7 +3,16 @@
   /* margin-right: 150px;
 
 } */
-
+@media only screen and (max-width: 1111px) {
+    .search-box{
+        display: none!important;
+    }
+}
+@media only screen and (min-width: 1111px) {
+    .search-box{
+        display: block;
+    }
+}
 @import url('https://fonts.googleapis.com/css?family=Roboto');
 /* @import PreviewPicture from './PreviewPicture'; */
 
@@ -148,6 +157,9 @@ body{
     /* width: 500px; */
     /* width: 60%; */
 }
+#searchText{
+  width:25vw;
+}
 
 .form-control {
   width: 60%;
@@ -181,6 +193,7 @@ body{
 #logo{
   width:  150px;
 }
+
 .sort{
   position:relative;
   top:20%;

@@ -343,7 +343,7 @@ class Home extends React.Component {
           <div className='wrapper'>
             <script src="https://www.gstatic.com/firebasejs/5.8.4/firebase.js"></script>
           <div class="barterNav">
-            <nav class="navbar navbar-expand-lg" >
+            <nav class="navbar navbar-expand-lg navbar-light" >
               <a class="navbar-brand homeLink"><img id="logo" src="/logo.png"/></a>
 
               <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
