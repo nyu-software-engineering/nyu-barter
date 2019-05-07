@@ -14,14 +14,11 @@
         display: block;
     }
 }
-@media only screen and (max-width: 580px) {
-  
-}
+
 @media only screen and (min-width: 580px) {
   .card-img-top{
     width: 30vw;
     height: 25vw;
-    margin-bottom: 30px;
   }
 }
 
@@ -30,6 +27,9 @@
 
 body{
   font-family: "Roboto", sans-serif;
+}
+.card{
+  margin-bottom: 30px;
 }
 #profileDiv{
   padding-top: 0;

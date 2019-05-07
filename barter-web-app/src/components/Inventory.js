@@ -149,11 +149,13 @@ class Inventory extends React.Component {
     const itemList = keys.map(itemId => {
       console.log(itemId.itemNum);
       return(
-        <div className = "col-3">
-        <div className ="card" styles="width: 18rem;">
-          <p className = "card-img top"><PreviewPicture photoUrl={itemId.photoUrl}/></p>
+
+        <div className = "col-sm-4">
+        <div className ="card" styles="width: 30rem;">
+          <img class="card-img-top img-fluid" id="itemPhoto" src={itemId.photoUrl} />
           <div className ="card-body">
             <a href="#" class="item-title" data-toggle="modal" data-target="#displayDescr"><h5 className ="card-title">{itemId.title}</h5></a>
+
             <button className="heart pull-right" styles="position: relative; display:inline-block;" onClick={()=>{this.handleRemove(itemId.itemNum)}}>Delete </button>
           </div>
         </div>
@@ -290,7 +292,7 @@ class Inventory extends React.Component {
         </div>
       </div>
         <section className='display-item'>
-          <div className='wrapper'>
+          <div className='container-fluid'>
             <div className="row">
               {this.renderCards()
                 //this.state.keys.map(key => <Card data={key} />)

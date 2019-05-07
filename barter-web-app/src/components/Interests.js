@@ -210,11 +210,12 @@ class Interests extends React.Component {
       // console.log("item id is = ");
       // console.log(itemId._id);
       return(
-        <div className = "col-3" key={itemId._id}>
-       <div className ="card" styles="width: 30rem;">
-         <div className = "card-img top cardImg" styles="background-size:500px auto;"><PreviewPicture photoUrl={itemId.photoUrl}/></div>
-         <div className ="card-body" >
-           <a href="#" class="item-title" data-toggle="modal" data-target={label} ><h5 className ="card-title" styles="padding-top: 30%;">{itemId.title}</h5></a>
+        <div className = "col-sm-4" key={itemId._id}>
+          <div className ="card" styles="width: 30rem;">
+            <img class="card-img-top img-fluid" id="itemPhoto" src={itemId.photoUrl} />
+              <div className ="card-body" >
+                <a href="#" class="item-title" data-toggle="modal" data-target={label} ><h5 className ="card-title" styles="padding-top: 30%;">{itemId.title}</h5></a>
+
            <div class="modal fade" id={uniqueID} tabindex="-1" role="dialog" aria-labelledby="descrLabel" aria-hidden="true">
              <div class="modal-dialog" role="document">
                <div class="modal-content">
@@ -358,7 +359,7 @@ class Interests extends React.Component {
         </div>
       </div>
         <section className='display-item'>
-          <div className='wrapper'>
+          <div className='container-fluid'>
             <div className="row">
               { this.renderCards() }
 
