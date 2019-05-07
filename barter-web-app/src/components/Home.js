@@ -114,8 +114,10 @@ class Home extends React.Component {
     firebase.auth().onAuthStateChanged(user =>{
       if(user){
         const userRef = firebase.database().ref('users')
-        const curUser = user.uid;
-
+        let curUser = null
+        if(user){
+          curUser = user.uid;
+        }
         userRef.child(curUser).once("value",snapshot => {
           if (!snapshot.val()){
             firebase.database().ref('users/' + curUser).child('email').set(user.email);
@@ -131,7 +133,9 @@ class Home extends React.Component {
         this.setState({userPhoto: user['photoURL']});
       }
       this.setState({isSignedIn:!!user});
-      this.setState({userID:user['uid']});
+      if(user){
+        this.setState({userID:user['uid']});
+      }
 
     });
     firebase.database().ref('barters').on('value', (snapshot) => this.gotData(snapshot), this.errData);
@@ -494,14 +498,14 @@ class Home extends React.Component {
         </section>
       </div>
           </span>
-        
+
         ) : (
-          <div> 
-            <header> 
-            <img id="logoLogin" src="/logo.png"/> 
+          <div>
+            <header>
+            <img id="logoLogin" src="/logo.png"/>
             {/* <h3 styles="position:'relative';left:10%; top:5%;">Exchange goods & services </h3>  */}
             </header>
-           
+
 
           <StyledFirebaseAuth class="LoginButtons"
             uiConfig={this.uiConfig}
@@ -509,8 +513,8 @@ class Home extends React.Component {
             }
           />
           <img id="appstoreLogo" src="/appstoreLogo.png"/>
-          </div> 
-          
+          </div>
+
 
         )}
       </div>
