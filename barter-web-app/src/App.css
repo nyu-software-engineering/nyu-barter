@@ -260,8 +260,18 @@ hr {
 }
 
 
+#logoLogin{ 
+  width: 70%;
+ 
+}
 
-
+#appstoreLogo{
+  width:15%;
+  position: relative;
+  left: 42%; 
+  top: 20%;
+  
+}
 
 
 
