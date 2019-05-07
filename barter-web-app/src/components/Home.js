@@ -364,23 +364,23 @@ class Home extends React.Component {
 
 
                   <ul class="navbar-nav ml-auto">
-                  <li class="nav-item active">
+                  <li>
                     <button type="button" class="btn btn-primary m-2" data-toggle="modal" data-target="#addItem">
                       <FontAwesomeIcon icon="camera" /> Add Item
                     </button>
                   </li>
-                    <li class="nav-item active">
+                    <li>
                       <NavLink to="/">  <button className = "btn btn-primary m-2 " type="myItems"> <FontAwesomeIcon icon="home" /> Home</button></NavLink>
                     </li>
-                    <li class="nav-item active">
+                    <li>
                       <NavLink to="/inventory"><button className = "btn btn-primary m-2 " type="myItems"><FontAwesomeIcon icon="archway" /> My Posts</button></NavLink>
                     </li>
-                    <li class="nav-item">
+                    <li>
                       <NavLink to="/interests"><button className = "btn btn-primary m-2" type="interestedItem"><FontAwesomeIcon icon={solidHeart} /> Favorites</button></NavLink>
                     </li>
-
+                    <li>
                     <GetProfileImg userPhoto={this.state.userPhoto} userEmail={this.state.userEmail} userName = {this.state.userName}/>
-
+                    </li>
                 </ul>
 
 
