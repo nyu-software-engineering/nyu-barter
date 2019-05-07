@@ -116,21 +116,15 @@ class Home extends React.Component {
         const userRef = firebase.database().ref('users')
         const curUser = user.uid;
 
-        userRef.orderByValue().equalTo(curUser).once("value",snapshot => {
-          if (!snapshot.exists()){
-            console.log('littt')
+        userRef.child(curUser).once("value",snapshot => {
+          if (!snapshot.val()){
             firebase.database().ref('users/' + curUser).child('email').set(user.email);
-            //firebase.database().ref('users/' + curUser).child('email').set(user.displayName);
             const userNameArr = user.displayName.split(' ');
             firebase.database().ref('users/' + curUser).child('fName').set(userNameArr[0]);
             firebase.database().ref('users/' + curUser).child('lName').set(userNameArr[1]);
             firebase.database().ref('users/' + curUser).child('photoURL').set(user.photoURL);
           }
         });
-
-
-
-
         firebase.database().ref(`users/${curUser}/faves`).on("value", this.updateFaves.bind(this));
         this.setState({userEmail: user.email});
         this.setState({userName: user.displayName});
@@ -146,15 +140,12 @@ class Home extends React.Component {
   }
 
   updateFaves(snap){
-    // console.log('updating faves');
     const data = snap.val();
     this.setState({faves: data});
     for(let fKey in data){
       const matches = this.state.keys.filter(key => key._id === fKey);
       if(matches.length){
         const index = matches[0].index;
-        // console.log(matches[0]._id);
-        // console.log(this.state.keys[index]._id);
         this.setState(prevState => {
           const nextState = {
             keys: [...prevState.keys]
@@ -212,10 +203,6 @@ class Home extends React.Component {
           var photoUrl = barters[k].photoUrl;
           var descr = barters[k].descr;
           var fave = false;
-          console.log("fave is  = ");
-          console.log(fave);
-          // condition called fave
-          // fave is true/false, and written as part of this object in the array
           result.push({user, dateTime, title, photoUrl, descr, _id: k, fave});
         }
       }
@@ -244,7 +231,6 @@ class Home extends React.Component {
 
   errData(err){
     console.log('Error!');
-    console.log(err);
   }
   setPreferences(){
     const oldOrNew = document.querySelector("#exampleFormControlSelect1").value;
@@ -258,38 +244,25 @@ class Home extends React.Component {
   }
 
   handleFave = (i) => () => {
-    // console.log("handling fave function is called");
-    // console.log("==========dskjdlsla;")
     const item = this.state.keys[i];
-    console.log(item);
-    // this.setState(prevState => {
-    //   const nextState = {keys: [...prevState.keys]};
-    //   nextState.keys[i].fave = !item.fave;
-    //   return nextState;
-    // });
     const uID = item.userID;
     let itemVal = false ;
     const userRef = firebase.database().ref(`users/${this.state.userID}/faves`);
-    console.log("printing state");
-    console.log(firebase.database().ref(`users/${this.state.userID}/faves`).child(item._id));
     userRef.child(item._id).once('value').then(function(snapshot) {
        itemVal = snapshot.val();
     }).then(function(){
       if( itemVal === false ||  itemVal === null){
           userRef.child(item._id).set(true, () => {
-            console.log('true done');
           });
       }
       else {
         userRef.child(item._id).set(false, () => {
-          console.log('false done');
         });
       }
     });
   }
 
   faveHandler(event) {
-    console.log("I am handling fave");
     this.setState((prevState) => ({
         toggle: !prevState.toggle
       })
@@ -323,17 +296,13 @@ class Home extends React.Component {
     var label = '';
     var displayDescr = 'displayDescr';
     const itemList = keys.map((itemId,i) => {
-      console.log(itemId);
       counter += 1;
       var uniqueID = "h" + uuidv4();
       label = "#" + uniqueID;
 
       var heartBool = false;
       let email = this.state.emails[itemId.user];
-      console.log("item id user is = ");
-      console.log(this.state.emails[itemId.user]);
-      // console.log("item id is = ");
-      // console.log(itemId._id);
+
       return(
         <div className = "col-3" key={itemId._id}>
        <div className ="card" styles="width: 30rem;">
