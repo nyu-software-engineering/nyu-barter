@@ -45,22 +45,10 @@ class Navbar extends React.Component {
         <li><a href="/inventory">Inventory</a></li>
       </ul>
       </div>
-      </nav> 
+      </nav>
 
     );
   }
-
-  // return(
-  //   <nav>
-  //     <div>
-  //       <ul>
-  //         <li><NavLink to="/">Home</NavLink></li>
-  //         <li><NavLink to="/interests">Interests</NavLink></li>
-  //         <li><NavLink to="/inventory">Inventory</NavLink></li>
-  //       </ul>
-  //     </div>
-  //   </nav>
-  //   )
 
 }
 

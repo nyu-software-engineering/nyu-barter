@@ -278,7 +278,7 @@ class Home extends React.Component {
     const uID = item.userID;
     const userRef = firebase.database().ref(`users/${this.state.userID}/faves`);
     userRef.child(item._id).set(true, () => {
-      console.log('done');
+      //console.log('done');
     });
 
 

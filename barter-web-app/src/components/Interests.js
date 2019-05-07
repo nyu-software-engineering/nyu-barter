@@ -45,7 +45,6 @@ class Interests extends React.Component {
 
   errData(err){
     console.log('Error!');
-    console.log(err);
   }
   onSubmit(event){
       var newPostKey = firebase.database().ref().child('barters').push().key;
@@ -112,8 +111,6 @@ class Interests extends React.Component {
 
 
       firebase.database().ref(`users/${user.uid}/faves`).on('value', this.getFaves);
-      console.log("id");
-      console.log(this.state.userID);
     });
     firebase.database().ref('users').on('value', this.makeEmail.bind(this));
 
@@ -129,8 +126,6 @@ class Interests extends React.Component {
   }
 
   getFaves = (snap) => {
-
-    console.log("logging snap");
     var faves = snap.val();
     if(!faves) {
       return;
@@ -144,15 +139,12 @@ class Interests extends React.Component {
     keys.forEach(key => {
 
       if(faves[key] === true ){
-      // console.log(key);
         firebase.database().ref(`barters/${key}`).on('value', (snap) => {
           const val = snap.val();
-          console.log("this val is= " + val);
           this.setState(prevState => {
             const nextState = {...prevState};
 
             nextState.items.push(val);
-            console.log(nextState);
             return nextState;
           });
         });
@@ -167,15 +159,13 @@ class Interests extends React.Component {
   makeEmail(data){
 
     var users = data.val();
-    console.log("HERE");
-    console.log(data);
     var keys = Object.keys(users);
     const result = {}
     for(var i = 0; i < keys.length;i++){
       var k = keys[i];
       result[k] = users[k].email;
     }
-    console.log(result);
+
     this.setState({emails: result});
   }
 
@@ -199,16 +189,11 @@ class Interests extends React.Component {
     var label = '';
     var displayDescr = 'displayDescr';
     const itemList = keys.map((itemId,i) => {
-      console.log(itemId);
       counter += 1;
       var uniqueID = "h" + uuidv4();
       label = "#" + uniqueID;
 
       let email = this.state.emails[itemId.userID];
-      console.log("item id user is = ");
-      console.log(this.state.emails[itemId.UserID]);
-      // console.log("item id is = ");
-      // console.log(itemId._id);
       return(
         <div className = "col-sm-4" key={itemId._id}>
           <div className ="card" styles="width: 30rem;">

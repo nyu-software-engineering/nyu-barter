@@ -48,7 +48,6 @@ class Inventory extends React.Component {
   gotData(data){
     if(firebase.auth().currentUser!=null){
       var curUser = firebase.auth().currentUser.uid;
-      //console.log(data.val())
       var barters = data.val();
       var keys = Object.keys(barters);
       const result = []
@@ -111,7 +110,6 @@ class Inventory extends React.Component {
 
   errData(err){
     console.log('Error!');
-    console.log(err);
   }
 
   componentDidMount(){
@@ -147,7 +145,6 @@ class Inventory extends React.Component {
   renderCards () {
     const keys = this.state.keys;
     const itemList = keys.map(itemId => {
-      console.log(itemId.itemNum);
       return(
 
         <div className = "col-sm-4">
