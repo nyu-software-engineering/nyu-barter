@@ -37,7 +37,7 @@ You can run app the on our [website](https://barter.cf/)
 
 ## Available Scripts
 
-In the project directory bater-web-app you need our secret .env file to connect to our firebase databse, once you have the .env you can run:
+In the project directory bater-web-app you need our secret .env file to connect to our firebase database, next do npm install on terminal once you have the .env and installed modules you can run:
 
 ### `npm start`
 
